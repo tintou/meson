@@ -1,0 +1,15 @@
+{
+    "installed": [
+        { "type": "file", "file": "usr/lib/pkgconfig/test1.pc"},
+        { "type": "file", "file": "usr/lib/pkgconfig/test2.pc"}
+    ],
+    "matrix": {
+        "options": {
+            "default_library": [
+                { "val": "shared" },
+                { "val": "static" },
+                { "val": "both" }
+            ]
+        }
+    }
+}
