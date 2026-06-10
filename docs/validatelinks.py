@@ -11,13 +11,17 @@ import asyncio
 LINK = re.compile(r'\[(?P<name>[^\]]+)\]\((?P<url>.*?)\)')
 
 
-async def fetch(session, name, url, timeout):
-    try:
-        async with session.get(url, timeout=timeout) as r:
-            if not r.ok:
-                return (name, url, r.status)
-    except Exception as e:
-        return (name, url, str(e))
+async def fetch(session, name, url, timeout, retries=2):
+    last_error = None
+    for _ in range(retries + 1):
+        try:
+            async with session.get(url, timeout=timeout) as r:
+                if r.ok:
+                    return None
+                last_error = r.status
+        except Exception as e:
+            last_error = str(e)
+    return (name, url, last_error)
 
 
 async def main(filename):
