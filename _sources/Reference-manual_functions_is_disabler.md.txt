@@ -1,0 +1,58 @@
+## is_disabler()
+
+Returns true if a variable is a disabler and false otherwise.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.52.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns true if a variable is a disabler and false otherwise
+[[#@bool]] is_disabler(
+  [[#@any]]                                  <a href="#is_disabler_var"><b>var</b></a>,     # The variable to test
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+  The function `is_disabler()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="is_disabler_var">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">var</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@any]]</span>
+  </td>
+        <td>
+  
+  The variable to test
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+

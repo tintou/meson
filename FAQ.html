@@ -1,0 +1,1274 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Meson Frequently Asked Questions &#8212; Meson documentation 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d99633c1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'FAQ';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Videos" href="Videos.html" />
+    <link rel="prev" title="Releasing a new Meson version" href="Releasing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/meson_logo.png" class="logo__image only-light" alt="Meson documentation 1.0 documentation - Home"/>
+    <img src="_static/meson_logo.png" class="logo__image only-dark pst-js-only" alt="Meson documentation 1.0 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Additional.html">Additional documentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Comparisons.html">Comparing Meson with other build systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Conference-presentations.html">Conference presentations on Meson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Contact-information.html">Contact information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Continuous-Integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Design-rationale.html">This is the original design rationale for Meson. The syntax it
+describes does not match the released version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Donating.html">Donating to support Meson development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IndepthTutorial.html">An in-depth tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="In-the-press.html">In the press</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mixing-build-systems.html">Meson’s policy on mixing multiple build systems in one build directory</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Performance-comparison.html">Performance comparison</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="ARM-performance-test.html">Arm performance test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Simple-comparison.html">A simple comparison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="Pkg-config-files.html">Pkg config files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Porting-from-autotools.html">Porting from Autotools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-procedure.html">Release procedure</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Use-of-Python.html">Use of Python</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Users.html">Notable projects and organizations using Meson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-multiple-build-directories.html">Using multiple build directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Vs-External.html">Visual Studio’s external build projects</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Contributing.html">Contributing to Meson</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Yaml-RefMan.html">Reference Manual</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="MesonCI.html">Meson CI setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Releasing.html">Releasing a new Meson version</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Meson Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Videos.html">Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legal.html">Legal information</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Release-notes.html">Release notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.11.0.html">1.11.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.10.0.html">1.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.9.0.html">1.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.8.0.html">1.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.7.0.html">1.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.6.0.html">1.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.5.0.html">1.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.4.0.html">1.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.3.0.html">1.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.2.0.html">1.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.1.0.html">1.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.0.0.html">1.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.64.0.html">0.64.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.63.0.html">0.63.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.62.0.html">0.62.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.61.0.html">0.61.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.60.0.html">0.60.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.59.0.html">0.59.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.58.0.html">0.58.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.57.0.html">0.57.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.56.0.html">0.56.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.55.0.html">0.55.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.54.0.html">0.54.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.53.0.html">0.53.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.52.0.html">0.52.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.51.0.html">0.51.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.50.0.html">0.50.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.49.0.html">0.49.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.48.0.html">0.48.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.47.0.html">0.47.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.46.0.html">0.46.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.45.0.html">0.45.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.44.0.html">0.44.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.43.0.html">Portability improvements to Boost Dependency</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.42.0.html">0.42.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.41.0.html">0.41.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.40.0.html">0.40.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.39.0.html">0.39.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.38.0.html">Uninstall target</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.37.0.html">0.37.0</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="About.html" class="nav-link">About</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Meson Frequently Asked Questions</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="meson-frequently-asked-questions">
+<h1>Meson Frequently Asked Questions<a class="headerlink" href="#meson-frequently-asked-questions" title="Link to this heading">#</a></h1>
+<p>See also <a class="reference internal" href="howtox.html"><span class="std std-doc">How do I do X in Meson</span></a>.</p>
+<section id="why-is-it-called-meson">
+<h2>Why is it called Meson?<a class="headerlink" href="#why-is-it-called-meson" title="Link to this heading">#</a></h2>
+<p>When the name was originally chosen, there were two main limitations:
+there must not exist either a Debian package or a Sourceforge project
+of the given name. This ruled out tens of potential project names. At
+some point the name Gluon was considered. Gluons are elementary
+particles that hold protons and neutrons together, much like a build
+system’s job is to take pieces of source code and a compiler and bind
+them to a complete whole.</p>
+<p>Unfortunately this name was taken, too. Then the rest of subatomic
+particles were examined and Meson was found to be available.</p>
+</section>
+<section id="what-is-the-correct-way-to-use-threads-such-as-pthreads">
+<h2>What is the correct way to use threads (such as pthreads)?<a class="headerlink" href="#what-is-the-correct-way-to-use-threads-such-as-pthreads" title="Link to this heading">#</a></h2>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">thread_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;threads&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will set up everything on your behalf. People coming from
+Autotools or CMake want to do this by looking for <code class="docutils literal notranslate"><span class="pre">libpthread.so</span></code>
+manually. Don’t do that, it has tricky corner cases especially when
+cross compiling.</p>
+</section>
+<section id="how-to-use-meson-on-a-host-where-it-is-not-available-in-system-packages">
+<h2>How to use Meson on a host where it is not available in system packages?<a class="headerlink" href="#how-to-use-meson-on-a-host-where-it-is-not-available-in-system-packages" title="Link to this heading">#</a></h2>
+<p>Starting from version 0.29.0, Meson is available from the <a class="reference external" href="https://pypi.python.org/pypi/meson/">Python
+Package Index</a>, so installing it
+simply a matter of running this command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip3<span class="w"> </span>install<span class="w"> </span>&lt;your<span class="w"> </span>options<span class="w"> </span>here&gt;<span class="w"> </span>meson
+</pre></div>
+</div>
+<p>If you don’t have access to PyPI, that is not a problem either. Meson
+has been designed to be easily runnable from an extracted source
+tarball or even a git checkout. First you need to download Meson. Then
+use this command to set up you build instead of plain <code class="docutils literal notranslate"><span class="pre">meson</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/path/to/meson.py<span class="w"> </span>&lt;options&gt;
+</pre></div>
+</div>
+<p>After this you don’t have to care about invoking Meson any more. It
+remembers where it was originally invoked from and calls itself
+appropriately. As a user the only thing you need to do is to <code class="docutils literal notranslate"><span class="pre">cd</span></code> into
+your build directory and invoke <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">compile</span></code>.</p>
+</section>
+<section id="why-can-t-i-specify-target-files-with-a-wildcard">
+<h2>Why can’t I specify target files with a wildcard?<a class="headerlink" href="#why-can-t-i-specify-target-files-with-a-wildcard" title="Link to this heading">#</a></h2>
+<p>Instead of specifying files explicitly, people seem to want to do this:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">executable</span><span class="p">(</span><span class="s">&#39;myprog&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;*.cpp&#39;</span><span class="p">)</span><span class="w"> </span><span class="c"># This does NOT work!</span>
+</pre></div>
+</div>
+<p>Meson does not support this syntax and the reason for this is simple.
+This cannot be made both reliable and fast. By reliable we mean that
+if the user adds a new source file to the subdirectory, Meson should
+detect that and make it part of the build automatically.</p>
+<p>One of the main requirements of Meson is that it must be fast. This
+means that a no-op build in a tree of 10 000 source files must take no
+more than a fraction of a second. This is only possible because Meson
+knows the exact list of files to check. If any target is specified as
+a wildcard glob, this is no longer possible. Meson would need to
+re-evaluate the glob every time and compare the list of files produced
+against the previous list. This means inspecting the entire source
+tree (because the glob pattern could be <code class="docutils literal notranslate"><span class="pre">src/\*/\*/\*/\*.cpp</span></code> or
+something like that). This is impossible to do efficiently.</p>
+<p>The main backend of Meson is Ninja, which does not support wildcard
+matches either, and for the same reasons.</p>
+<p>Because of this, all source files must be specified explicitly.</p>
+</section>
+<section id="but-i-really-want-to-use-wildcards">
+<h2>But I really want to use wildcards!<a class="headerlink" href="#but-i-really-want-to-use-wildcards" title="Link to this heading">#</a></h2>
+<p>If the tradeoff between reliability and convenience is acceptable to
+you, then Meson gives you all the tools necessary to do wildcard
+globbing. You are allowed to run arbitrary commands during
+configuration. First you need to write a script that locates the files
+to compile. Here’s a simple shell script that writes all <code class="docutils literal notranslate"><span class="pre">.c</span></code> files in
+the current directory, one per line.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>*.c<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>Then you need to run this script in your Meson file, convert the
+output into a string array and use the result in a target.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">run_command</span><span class="p">(</span><span class="s">&#39;grabber.sh&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">check</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<span class="n">sources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">stdout</span><span class="p">().</span><span class="n">strip</span><span class="p">().</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;\n&#39;</span><span class="p">)</span>
+<span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">executable</span><span class="p">(</span><span class="s">&#39;prog&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The script can be any executable, so it can be written in shell,
+Python, Lua, Perl or whatever you wish.</p>
+<p>As mentioned above, the tradeoff is that just adding new files to the
+source directory does <em>not</em> add them to the build automatically. To
+add them you need to tell Meson to reinitialize itself. The simplest
+way is to touch the <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> file in your source root. Then Meson
+will reconfigure itself next time the build command is run. Advanced
+users can even write a small background script that utilizes a
+filesystem event queue, such as
+<a class="reference external" href="https://en.wikipedia.org/wiki/Inotify">inotify</a>, to do this
+automatically.</p>
+</section>
+<section id="should-i-use-subdir-or-subproject">
+<h2>Should I use <code class="docutils literal notranslate"><span class="pre">subdir</span></code> or <code class="docutils literal notranslate"><span class="pre">subproject</span></code>?<a class="headerlink" href="#should-i-use-subdir-or-subproject" title="Link to this heading">#</a></h2>
+<p>The answer is almost always <code class="docutils literal notranslate"><span class="pre">subdir</span></code>. Subproject exists for a very
+specific use case: embedding external dependencies into your build
+process. As an example, suppose we are writing a game and wish to use
+SDL. Let us further suppose that SDL comes with a Meson build
+definition. Let us suppose even further that we don’t want to use
+prebuilt binaries but want to compile SDL for ourselves.</p>
+<p>In this case you would use <code class="docutils literal notranslate"><span class="pre">subproject</span></code>. The way to do it would be to
+grab the source code of SDL and put it inside your own source
+tree. Then you would do <code class="docutils literal notranslate"><span class="pre">sdl</span> <span class="pre">=</span> <span class="pre">subproject('sdl')</span></code>, which would cause
+Meson to build SDL as part of your build and would then allow you to
+link against it or do whatever else you may prefer.</p>
+<p>For every other use you would use <code class="docutils literal notranslate"><span class="pre">subdir</span></code>. As an example, if you
+wanted to build a shared library in one dir and link tests against it
+in another dir, you would do something like this:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">project</span><span class="p">(</span><span class="s">&#39;simple&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+<span class="nb">subdir</span><span class="p">(</span><span class="s">&#39;src&#39;</span><span class="p">)</span><span class="w">   </span><span class="c"># library is built here</span>
+<span class="nb">subdir</span><span class="p">(</span><span class="s">&#39;tests&#39;</span><span class="p">)</span><span class="w"> </span><span class="c"># test binaries would link against the library here</span>
+</pre></div>
+</div>
+</section>
+<section id="why-is-there-not-a-make-backend">
+<h2>Why is there not a Make backend?<a class="headerlink" href="#why-is-there-not-a-make-backend" title="Link to this heading">#</a></h2>
+<p>Because Make is slow. This is not an implementation issue, Make simply
+cannot be made fast. For further info we recommend you read <a class="reference external" href="http://neugierig.org/software/chromium/notes/2011/02/ninja.html">this
+post</a>
+by Evan Martin, the author of Ninja. Makefiles also have a syntax that
+is very unpleasant to write which makes them a big maintenance burden.</p>
+<p>The only reason why one would use Make instead of Ninja is working on
+a platform that does not have a Ninja port. Even in this case it is an
+order of magnitude less work to port Ninja than it is to write a Make
+backend for Meson.</p>
+<p>Just use Ninja, you’ll be happier that way. I guarantee it.</p>
+</section>
+<section id="why-is-meson-not-just-a-python-module-so-i-could-code-my-build-setup-in-python">
+<h2>Why is Meson not just a Python module so I could code my build setup in Python?<a class="headerlink" href="#why-is-meson-not-just-a-python-module-so-i-could-code-my-build-setup-in-python" title="Link to this heading">#</a></h2>
+<p>A related question to this is <em>Why is Meson’s configuration language
+not Turing-complete?</em></p>
+<p>There are many good reasons for this, most of which are summarized on
+this web page: <a class="reference external" href="https://taint.org/2011/02/18/001527a.html">Against The Use Of Programming Languages in
+Configuration Files</a>.</p>
+<p>In addition to those reasons, not exposing Python or any other “real”
+programming language makes it possible to port Meson’s implementation
+to a different language. This might become necessary if, for example,
+Python turns out to be a performance bottleneck. This is an actual
+problem that has caused complications for GNU Autotools and SCons.</p>
+</section>
+<section id="how-do-i-do-the-equivalent-of-libtools-export-symbol-and-export-regex">
+<h2>How do I do the equivalent of Libtools export-symbol and export-regex?<a class="headerlink" href="#how-do-i-do-the-equivalent-of-libtools-export-symbol-and-export-regex" title="Link to this heading">#</a></h2>
+<p>Either by using <a class="reference external" href="https://gcc.gnu.org/wiki/Visibility">GCC symbol
+visibility</a> or by writing a
+<a class="reference external" href="https://sourceware.org/binutils/docs/ld.html">linker
+script</a>. This
+has the added benefit that your symbol definitions are in a standalone
+file instead of being buried inside your build definitions. An example
+can be found
+<a class="reference external" href="https://github.com/jpakkane/meson/tree/master/test%20cases/linuxlike/3%20linker%20script">here</a>.</p>
+</section>
+<section id="my-project-works-fine-on-linux-and-mingw-but-fails-to-link-with-msvc-due-to-a-missing-lib-file-fatal-error-lnk1181-why">
+<h2>My project works fine on Linux and MinGW but fails to link with MSVC due to a missing .lib file (fatal error LNK1181). Why?<a class="headerlink" href="#my-project-works-fine-on-linux-and-mingw-but-fails-to-link-with-msvc-due-to-a-missing-lib-file-fatal-error-lnk1181-why" title="Link to this heading">#</a></h2>
+<p>With GCC, all symbols on shared libraries are exported automatically
+unless you specify otherwise. With MSVC no symbols are exported by
+default. If your shared library exports no symbols, MSVC will silently
+not produce an import library file leading to failures. The solution
+is to add symbol visibility definitions <a class="reference external" href="https://gcc.gnu.org/wiki/Visibility">as specified in GCC
+wiki</a>.</p>
+</section>
+<section id="i-added-some-compiler-flags-and-now-the-build-fails-with-weird-errors-what-is-happening">
+<h2>I added some compiler flags and now the build fails with weird errors. What is happening?<a class="headerlink" href="#i-added-some-compiler-flags-and-now-the-build-fails-with-weird-errors-what-is-happening" title="Link to this heading">#</a></h2>
+<p>You probably did the equivalent to this:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">executable</span><span class="p">(</span><span class="s">&#39;foobar&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">...</span>
+<span class="w">           </span><span class="n">c_args</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;-some_arg -other_arg&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Meson is <em>explicit</em>. In this particular case it will <strong>not</strong>
+automatically split your strings at whitespaces, instead it will take
+it as is and work extra hard to pass it to the compiler unchanged,
+including quoting it properly over shell invocations. This is
+mandatory to make e.g. files with spaces in them work flawlessly. To
+pass multiple command line arguments, you need to explicitly put them
+in an array like this:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">executable</span><span class="p">(</span><span class="s">&#39;foobar&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">...</span>
+<span class="w">           </span><span class="n">c_args</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;-some_arg&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;-other_arg&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="why-are-changes-to-default-project-options-ignored">
+<h2>Why are changes to default project options ignored?<a class="headerlink" href="#why-are-changes-to-default-project-options-ignored" title="Link to this heading">#</a></h2>
+<p>You probably had a project that looked something like this:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">project</span><span class="p">(</span><span class="s">&#39;foobar&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;cpp&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This defaults to <code class="docutils literal notranslate"><span class="pre">c++11</span></code> on GCC compilers. Suppose you want to use
+<code class="docutils literal notranslate"><span class="pre">c++14</span></code> instead, so you change the definition to this:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">project</span><span class="p">(</span><span class="s">&#39;foobar&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;cpp&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">default_options</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;cpp_std=c++14&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>But when you recompile, it still uses <code class="docutils literal notranslate"><span class="pre">c++11</span></code>. The reason for this is
+that default options are only looked at when you are setting up a
+build directory for the very first time. After that the setting is
+considered to have a value and thus the default value is ignored. To
+change an existing build dir to <code class="docutils literal notranslate"><span class="pre">c++14</span></code>, either reconfigure your build
+dir with <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">configure</span></code> or delete the build dir and recreate it
+from scratch.</p>
+<p>The reason we don’t automatically change the option value when the
+default is changed is that it is impossible to know to do that
+reliably. The actual question that we need to solve is “if the
+option’s value is foo and the default value is bar, should we change
+the option value to bar also”. There are many choices:</p>
+<ul class="simple">
+<li><p>if the user has changed the value themselves from the default, then
+we must not change it back</p></li>
+<li><p>if the user has not changed the value, but changes the default
+value, then this section’s premise would seem to indicate that the
+value should be changed</p></li>
+<li><p>suppose the user changes the value from the default to foo, then
+back to bar and then changes the default value to bar, the correct
+step to take is ambiguous by itself</p></li>
+</ul>
+<p>In order to solve the latter question we would need to remember not
+only the current and old value, but also all the times the user has
+changed the value and from which value to which other value. Since
+people don’t remember their own actions that far back, toggling
+between states based on long history would be confusing.</p>
+<p>Because of this we do the simple and understandable thing: default
+values are only defaults and will never affect the value of an option
+once set.</p>
+</section>
+<section id="does-wrap-download-sources-behind-my-back">
+<h2>Does wrap download sources behind my back?<a class="headerlink" href="#does-wrap-download-sources-behind-my-back" title="Link to this heading">#</a></h2>
+<p>It does not. In order for Meson to download anything from the net
+while building, two conditions must be met.</p>
+<p>First of all there needs to be a <code class="docutils literal notranslate"><span class="pre">.wrap</span></code> file with a download URL in
+the <code class="docutils literal notranslate"><span class="pre">subprojects</span></code> directory. If one does not exist, Meson will not
+download anything.</p>
+<p>The second requirement is that there needs to be an explicit
+subproject invocation in your <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> files. Either
+<code class="docutils literal notranslate"><span class="pre">subproject('foobar')</span></code> or <code class="docutils literal notranslate"><span class="pre">dependency('foobar',</span> <span class="pre">fallback</span> <span class="pre">:</span> <span class="pre">['foobar',</span> <span class="pre">'foo_dep'])</span></code>. If these declarations either are not in any build file
+or they are not called (due to e.g. <code class="docutils literal notranslate"><span class="pre">if/else</span></code>) then nothing is
+downloaded.</p>
+<p>If this is not sufficient for you, starting from release 0.40.0 Meson
+has an option called <code class="docutils literal notranslate"><span class="pre">wrap-mode</span></code> which can be used to disable wrap
+downloads altogether with <code class="docutils literal notranslate"><span class="pre">--wrap-mode=nodownload</span></code>. You can also
+disable dependency fallbacks altogether with <code class="docutils literal notranslate"><span class="pre">--wrap-mode=nofallback</span></code>,
+which also implies the <code class="docutils literal notranslate"><span class="pre">nodownload</span></code> option.</p>
+<p>If on the other hand, you want Meson to always use the fallback
+for dependencies, even when an external dependency exists and could
+satisfy the version requirements, for example in order to make
+sure your project builds when fallbacks are used, you can use
+<code class="docutils literal notranslate"><span class="pre">--wrap-mode=forcefallback</span></code> since 0.46.0.</p>
+</section>
+<section id="why-is-meson-implemented-in-python-rather-than-programming-language-x">
+<h2>Why is Meson implemented in Python rather than [programming language X]?<a class="headerlink" href="#why-is-meson-implemented-in-python-rather-than-programming-language-x" title="Link to this heading">#</a></h2>
+<p>Because build systems are special in ways normal applications aren’t.</p>
+<p>Perhaps the biggest limitation is that because Meson is used to build
+software at the very lowest levels of the OS, it is part of the core
+bootstrap for new systems. Whenever support for a new CPU architecture
+is added, Meson must run on the system before software using it can be
+compiled natively. This requirement adds two hard limitations.</p>
+<p>The first one is that Meson must have the minimal amount of
+dependencies, because they must all be built during the bootstrap to
+get Meson to work.</p>
+<p>The second is that Meson must support all CPU architectures, both
+existing and future ones. As an example many new programming languages
+have only an LLVM based compiler available. LLVM has limited CPU
+support compared to, say, GCC, and thus bootstrapping Meson on such
+platforms would first require adding new processor support to
+LLVM. This is in most cases unfeasible.</p>
+<p>A further limitation is that we want developers on as many platforms
+as possible to submit to Meson development using the default tools
+provided by their operating system. In practice what this means is
+that Windows developers should be able to contribute using nothing but
+Visual Studio.</p>
+<p>At the time of writing (April 2018) there are only three languages
+that could fulfill these requirements:</p>
+<ul class="simple">
+<li><p>C</p></li>
+<li><p>C++</p></li>
+<li><p>Python</p></li>
+</ul>
+<p>Out of these we have chosen Python because it is the best fit for our
+needs.</p>
+</section>
+<section id="do-you-at-least-support-my-ancient-python-install">
+<h2>Do you at least support my ancient python install?<a class="headerlink" href="#do-you-at-least-support-my-ancient-python-install" title="Link to this heading">#</a></h2>
+<p>Yes! :) We have a relatively sedate version support policy. You can read about
+it in the <a class="reference internal" href="Contributing.html#python"><span class="std std-ref">Contributing documentation</span></a></p>
+<p>We are also willing to support old versions of meson as LTS releases,
+particularly, if it is the final version to support a given python version. If
+you have a use case, please discuss it with us and be willing to help backport
+bug fixes.</p>
+<ul class="simple">
+<li><p>python 3.5: <a class="reference internal" href="Release-notes-for-0.56.0.html#python-3-5-support-will-be-dropped-in-the-next-release"><span class="std std-ref">supported through Meson 0.56.2</span></a></p></li>
+<li><p>python 3.6: <a class="reference internal" href="Release-notes-for-0.61.0.html#python-3-6-support-will-be-dropped-in-the-next-release"><span class="std std-ref">supported through Meson 0.61.5</span></a></p></li>
+<li><p>python 3.7: <a class="reference internal" href="Release-notes-for-1.11.0.html#last-major-version-supporting-python-3-7-3-8-and-3-9"><span class="std std-ref">supported through Meson 1.11.x</span></a></p></li>
+<li><p>python 3.8: <a class="reference internal" href="Release-notes-for-1.11.0.html#last-major-version-supporting-python-3-7-3-8-and-3-9"><span class="std std-ref">supported through Meson 1.11.x</span></a></p></li>
+<li><p>python 3.9: <a class="reference internal" href="Release-notes-for-1.11.0.html#last-major-version-supporting-python-3-7-3-8-and-3-9"><span class="std std-ref">supported through Meson 1.11.x</span></a></p></li>
+<li><p>python 3.10: Currently supported</p></li>
+</ul>
+<p>We encourage projects to support a wide range of Meson versions if they are not
+actually using the latest features anyway. In many, many cases it is quite
+practical to support e.g. Meson 0.61.</p>
+</section>
+<section id="but-i-really-want-a-version-of-meson-that-doesn-t-use-python">
+<h2>But I really want a version of Meson that doesn’t use python!<a class="headerlink" href="#but-i-really-want-a-version-of-meson-that-doesn-t-use-python" title="Link to this heading">#</a></h2>
+<p>Ecosystem diversity is good. We encourage interested users to write this
+competing implementation of Meson themselves. As of September 2021, there are 3
+projects attempting to do just this:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://git.sr.ht/~lattis/muon">muon</a></p></li>
+<li><p><a class="reference external" href="https://github.com/dcbaker/meson-plus-plus">Meson++</a></p></li>
+<li><p><a class="reference external" href="https://git.sr.ht/~bl4ckb0ne/boson">boson</a></p></li>
+</ul>
+</section>
+<section id="i-have-proprietary-compiler-toolchain-x-that-does-not-work-with-meson-how-can-i-make-it-work">
+<h2>I have proprietary compiler toolchain X that does not work with Meson, how can I make it work?<a class="headerlink" href="#i-have-proprietary-compiler-toolchain-x-that-does-not-work-with-meson-how-can-i-make-it-work" title="Link to this heading">#</a></h2>
+<p>Meson needs to know several details about each compiler in order to
+compile code with it. These include things such as which compiler
+flags to use for each option and how to detect the compiler from its
+output. This information cannot be input via a configuration file,
+instead it requires changes to Meson’s source code that need to be
+submitted to Meson master repository. In theory you can run your own
+forked version with custom patches, but that’s not good use of your
+time. Please submit the code upstream so everyone can use the
+toolchain.</p>
+<p>The steps for adding a new compiler for an existing language are
+roughly the following. For simplicity we’re going to assume a C
+compiler.</p>
+<ul class="simple">
+<li><p>Create a new class with a proper name in
+<code class="docutils literal notranslate"><span class="pre">mesonbuild/compilers/c.py</span></code>. Look at the methods that other
+compilers for the same language have and duplicate what they do.</p></li>
+<li><p>If the compiler can only be used for cross compilation, make sure to
+flag it as such (see existing compiler classes for examples).</p></li>
+<li><p>Add detection logic to <code class="docutils literal notranslate"><span class="pre">mesonbuild/environment.py</span></code>, look for a
+method called <code class="docutils literal notranslate"><span class="pre">detect_c_compiler</span></code>.</p></li>
+<li><p>Run the test suite and fix issues until the tests pass.</p></li>
+<li><p>Submit a pull request, add the result of the test suite to your MR
+(linking an existing page is fine).</p></li>
+<li><p>If the compiler is freely available, consider adding it to the CI
+system.</p></li>
+</ul>
+</section>
+<section id="why-does-building-my-project-with-msvc-output-static-libraries-called-libfoo-a">
+<h2>Why does building my project with MSVC output static libraries called <code class="docutils literal notranslate"><span class="pre">libfoo.a</span></code>?<a class="headerlink" href="#why-does-building-my-project-with-msvc-output-static-libraries-called-libfoo-a" title="Link to this heading">#</a></h2>
+<p>The naming convention for static libraries on Windows is usually
+<code class="docutils literal notranslate"><span class="pre">foo.lib</span></code>.  Unfortunately, import libraries are also called <code class="docutils literal notranslate"><span class="pre">foo.lib</span></code>.</p>
+<p>This causes filename collisions with the default library type where we
+build both shared and static libraries, and also causes collisions
+during installation since all libraries are installed to the same
+directory by default.</p>
+<p>To resolve this, we decided to default to creating static libraries of
+the form <code class="docutils literal notranslate"><span class="pre">libfoo.a</span></code> when building with MSVC. This has the following
+advantages:</p>
+<ol class="arabic simple">
+<li><p>Filename collisions are completely avoided.</p></li>
+<li><p>The format for MSVC static libraries is <code class="docutils literal notranslate"><span class="pre">ar</span></code>, which is the same as the GNU
+static library format, so using this extension is semantically correct.</p></li>
+<li><p>The static library filename format is now the same on all platforms and with
+all toolchains.</p></li>
+<li><p>Both Clang and GNU compilers can search for <code class="docutils literal notranslate"><span class="pre">libfoo.a</span></code> when specifying
+a library as <code class="docutils literal notranslate"><span class="pre">-lfoo</span></code>. This does not work for alternative naming schemes for
+static libraries such as <code class="docutils literal notranslate"><span class="pre">libfoo.lib</span></code>.</p></li>
+<li><p>Since <code class="docutils literal notranslate"><span class="pre">-lfoo</span></code> works out of the box, pkgconfig files will work correctly for
+projects built with both MSVC, GCC, and Clang on Windows.</p></li>
+<li><p>MSVC does not have arguments to search for library filenames, and <a class="reference external" href="https://docs.microsoft.com/en-us/cpp/build/reference/link-input-files?view=vs-2019">it does
+not care what the extension is</a>,
+so specifying <code class="docutils literal notranslate"><span class="pre">libfoo.a</span></code> instead of <code class="docutils literal notranslate"><span class="pre">foo.lib</span></code> does not change the workflow,
+and is an improvement since it’s less ambiguous.</p></li>
+<li><p>Projects built with the MinGW compiler are fully compatible with
+MSVC as long as they use the same CRT (e.g. UCRT with MSYS2).
+These projects also name their static libraries <code class="docutils literal notranslate"><span class="pre">libfoo.a</span></code>.</p></li>
+</ol>
+<p>If, for some reason, you really need your project to output static
+libraries of the form <code class="docutils literal notranslate"><span class="pre">foo.lib</span></code> when building with MSVC, you can set
+the
+<a class="reference external" href="https://mesonbuild.com/Reference-manual.html#library"><code class="docutils literal notranslate"><span class="pre">name_prefix:</span></code></a>
+kwarg to <code class="docutils literal notranslate"><span class="pre">''</span></code> and the
+<a class="reference external" href="https://mesonbuild.com/Reference-manual.html#library"><code class="docutils literal notranslate"><span class="pre">name_suffix:</span></code></a>
+kwarg to <code class="docutils literal notranslate"><span class="pre">'lib'</span></code>. To get the default behaviour for each, you can
+either not specify the kwarg, or pass <code class="docutils literal notranslate"><span class="pre">[]</span></code> (an empty array) to it.</p>
+</section>
+<section id="do-i-need-to-add-my-headers-to-the-sources-list-like-in-autotools">
+<h2>Do I need to add my headers to the sources list like in Autotools?<a class="headerlink" href="#do-i-need-to-add-my-headers-to-the-sources-list-like-in-autotools" title="Link to this heading">#</a></h2>
+<p>Autotools requires you to add private and public headers to the sources list so
+that it knows what files to include in the tarball generated by <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">dist</span></code>.
+Meson’s <code class="docutils literal notranslate"><span class="pre">dist</span></code> command simply gathers everything committed to your git/hg
+repository and adds it to the tarball, so adding headers to the sources list is
+pointless.</p>
+<p>Meson uses Ninja which uses compiler dependency information to automatically
+figure out dependencies between C sources and headers, so it will rebuild
+things correctly when a header changes.</p>
+<p>The only exception to this are generated headers, for which you must <a class="reference internal" href="#how-do-i-tell-meson-that-my-sources-use-generated-headers">declare
+dependencies correctly</a>.</p>
+<p>If, for whatever reason, you do add non-generated headers to the sources list
+of a target, Meson will simply ignore them.</p>
+</section>
+<section id="how-do-i-tell-meson-that-my-sources-use-generated-headers">
+<h2>How do I tell Meson that my sources use generated headers?<a class="headerlink" href="#how-do-i-tell-meson-that-my-sources-use-generated-headers" title="Link to this heading">#</a></h2>
+<p>Let’s say you use a <a class="reference external" href="https://mesonbuild.com/Reference-manual.html#custom_target"><code class="docutils literal notranslate"><span class="pre">custom_target()</span></code></a>
+to generate the headers, and then <code class="docutils literal notranslate"><span class="pre">#include</span></code> them in your C code. Here’s how
+you ensure that Meson generates the headers before trying to compile any
+sources in the build target:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">libfoo_gen_headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">custom_target</span><span class="p">(</span><span class="s">&#39;gen-headers&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="n">output</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;foo-gen.h&#39;</span><span class="p">)</span>
+<span class="n">libfoo_sources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">files</span><span class="p">(</span><span class="s">&#39;foo-utils.c&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;foo-lib.c&#39;</span><span class="p">)</span>
+<span class="c"># Add generated headers to the list of sources for the build target</span>
+<span class="n">libfoo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">library</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">libfoo_sources</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">libfoo_gen_headers</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Now let’s say you have a new target that links to <code class="docutils literal notranslate"><span class="pre">libfoo</span></code>:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">libbar_sources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">files</span><span class="p">(</span><span class="s">&#39;bar-lib.c&#39;</span><span class="p">)</span>
+<span class="n">libbar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">library</span><span class="p">(</span><span class="s">&#39;bar&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">:</span><span class="w"> </span><span class="n">libbar_sources</span><span class="p">,</span><span class="w"> </span><span class="n">link_with</span><span class="p">:</span><span class="w"> </span><span class="n">libfoo</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This adds a <strong>link-time</strong> dependency between the two targets, but note that the
+sources of the targets have <strong>no compile-time</strong> dependencies and can be built
+in any order; which improves parallelism and speeds up builds.</p>
+<p>If the sources in <code class="docutils literal notranslate"><span class="pre">libbar</span></code> <em>also</em> use <code class="docutils literal notranslate"><span class="pre">foo-gen.h</span></code>, that’s a <em>compile-time</em>
+dependency, and you’ll have to add <code class="docutils literal notranslate"><span class="pre">libfoo_gen_headers</span></code> to <code class="docutils literal notranslate"><span class="pre">sources:</span></code> for
+<code class="docutils literal notranslate"><span class="pre">libbar</span></code> too:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">libbar_sources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">files</span><span class="p">(</span><span class="s">&#39;bar-lib.c&#39;</span><span class="p">)</span>
+<span class="n">libbar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">library</span><span class="p">(</span><span class="s">&#39;bar&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">:</span><span class="w"> </span><span class="n">libbar_sources</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">libfoo_gen_headers</span><span class="p">,</span><span class="w"> </span><span class="n">link_with</span><span class="p">:</span><span class="w"> </span><span class="n">libfoo</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Alternatively, if you have multiple libraries with sources that link to
+a library and also use its generated headers, this code is equivalent to above:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="c"># Add generated headers to the list of sources for the build target</span>
+<span class="n">libfoo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">library</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">:</span><span class="w"> </span><span class="n">libfoo_sources</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">libfoo_gen_headers</span><span class="p">)</span>
+
+<span class="c"># Declare a dependency that will add the generated headers to sources</span>
+<span class="n">libfoo_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">declare_dependency</span><span class="p">(</span><span class="n">link_with</span><span class="p">:</span><span class="w"> </span><span class="n">libfoo</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">:</span><span class="w"> </span><span class="n">libfoo_gen_headers</span><span class="p">)</span>
+
+<span class="p">...</span>
+
+<span class="n">libbar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">library</span><span class="p">(</span><span class="s">&#39;bar&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">:</span><span class="w"> </span><span class="n">libbar_sources</span><span class="p">,</span><span class="w"> </span><span class="n">dependencies</span><span class="p">:</span><span class="w"> </span><span class="n">libfoo_dep</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> You should only add <em>headers</em> to <code class="docutils literal notranslate"><span class="pre">sources:</span></code> while declaring
+a dependency. If your custom target outputs both sources and headers, you can
+use the subscript notation to get only the header(s):</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">libfoo_gen_sources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">custom_target</span><span class="p">(</span><span class="s">&#39;gen-headers&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="n">output</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;foo-gen.h&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;foo-gen.c&#39;</span><span class="p">])</span>
+<span class="n">libfoo_gen_headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">libfoo_gen_sources</span><span class="p">[</span><span class="err">0</span><span class="p">]</span>
+
+<span class="c"># Add static and generated sources to the target</span>
+<span class="n">libfoo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">library</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">:</span><span class="w"> </span><span class="n">libfoo_sources</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">libfoo_gen_sources</span><span class="p">)</span>
+
+<span class="c"># Declare a dependency that will add the generated *headers* to sources</span>
+<span class="n">libfoo_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">declare_dependency</span><span class="p">(</span><span class="n">link_with</span><span class="p">:</span><span class="w"> </span><span class="n">libfoo</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">:</span><span class="w"> </span><span class="n">libfoo_gen_headers</span><span class="p">)</span>
+<span class="p">...</span>
+<span class="n">libbar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">library</span><span class="p">(</span><span class="s">&#39;bar&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">:</span><span class="w"> </span><span class="n">libbar_sources</span><span class="p">,</span><span class="w"> </span><span class="n">dependencies</span><span class="p">:</span><span class="w"> </span><span class="n">libfoo_dep</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A good example of a generator that outputs both sources and headers is
+<a class="reference external" href="https://mesonbuild.com/Gnome-module.html#gnomemkenums"><code class="docutils literal notranslate"><span class="pre">gnome.mkenums()</span></code></a>.</p>
+</section>
+<section id="how-do-i-disable-exceptions-and-rtti-in-my-c-project">
+<h2>How do I disable exceptions and RTTI in my C++ project?<a class="headerlink" href="#how-do-i-disable-exceptions-and-rtti-in-my-c-project" title="Link to this heading">#</a></h2>
+<p>With the <code class="docutils literal notranslate"><span class="pre">cpp_eh</span></code> and <code class="docutils literal notranslate"><span class="pre">cpp_rtti</span></code> options. A typical invocation would
+look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="o">-</span><span class="n">Dcpp_eh</span><span class="o">=</span><span class="n">none</span> <span class="o">-</span><span class="n">Dcpp_rtti</span><span class="o">=</span><span class="n">false</span> <span class="o">&lt;</span><span class="n">other</span> <span class="n">options</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The RTTI option is only available since Meson version 0.53.0.</p>
+</section>
+<section id="should-i-check-for-buildtype-or-individual-options-like-debug-in-my-build-files">
+<h2>Should I check for <code class="docutils literal notranslate"><span class="pre">buildtype</span></code> or individual options like <code class="docutils literal notranslate"><span class="pre">debug</span></code> in my build files?<a class="headerlink" href="#should-i-check-for-buildtype-or-individual-options-like-debug-in-my-build-files" title="Link to this heading">#</a></h2>
+<p>This depends highly on what you actually need to happen. The
+´buildtype` option is meant do describe the current build’s
+<em>intent</em>. That is, what it will be used for. Individual options are
+for determining what the exact state is. This becomes clearer with a
+few examples.</p>
+<p>Suppose you have a source file that is known to miscompile when using
+<code class="docutils literal notranslate"><span class="pre">-O3</span></code> and requires a workaround. Then you’d write something like this:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="nb">get_option</span><span class="p">(</span><span class="s">&#39;optimization&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
+<span class="w">    </span><span class="nb">add_project_arguments</span><span class="p">(</span><span class="s">&#39;-DOPTIMIZATION_WORKAROUND&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+<span class="k">endif</span>
+</pre></div>
+</div>
+<p>On the other hand if your project has extra logging and sanity checks
+that you would like to be enabled during the day to day development
+work (which uses the <code class="docutils literal notranslate"><span class="pre">debug</span></code> buildtype), you’d do this instead:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="nb">get_option</span><span class="p">(</span><span class="s">&#39;buildtype&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&#39;debug&#39;</span>
+<span class="w">    </span><span class="nb">add_project_arguments</span><span class="p">(</span><span class="s">&#39;-DENABLE_EXTRA_CHECKS&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+<span class="k">endif</span>
+</pre></div>
+</div>
+<p>In this way the extra options are automatically used during
+development but are not compiled in release builds. Note that (since
+Meson 0.57.0) you can set optimization to, say, 2 in your debug builds
+if you want to. If you tried to set this flag based on optimization
+level, it would fail in this case.</p>
+</section>
+<section id="how-do-i-use-a-library-before-declaring-it">
+<h2>How do I use a library before declaring it?<a class="headerlink" href="#how-do-i-use-a-library-before-declaring-it" title="Link to this heading">#</a></h2>
+<p>This is valid (and good) code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">libA</span> <span class="o">=</span> <span class="n">library</span><span class="p">(</span><span class="s1">&#39;libA&#39;</span><span class="p">,</span> <span class="s1">&#39;fileA.cpp&#39;</span><span class="p">,</span> <span class="n">link_with</span> <span class="p">:</span> <span class="p">[])</span>
+<span class="n">libB</span> <span class="o">=</span> <span class="n">library</span><span class="p">(</span><span class="s1">&#39;libB&#39;</span><span class="p">,</span> <span class="s1">&#39;fileB.cpp&#39;</span><span class="p">,</span> <span class="n">link_with</span> <span class="p">:</span> <span class="p">[</span><span class="n">libA</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>But there is currently no way to get something like this to work:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">libB</span> <span class="o">=</span> <span class="n">library</span><span class="p">(</span><span class="s1">&#39;libB&#39;</span><span class="p">,</span> <span class="s1">&#39;fileB.cpp&#39;</span><span class="p">,</span> <span class="n">link_with</span> <span class="p">:</span> <span class="p">[</span><span class="n">libA</span><span class="p">])</span>
+<span class="n">libA</span> <span class="o">=</span> <span class="n">library</span><span class="p">(</span><span class="s1">&#39;libA&#39;</span><span class="p">,</span> <span class="s1">&#39;fileA.cpp&#39;</span><span class="p">,</span> <span class="n">link_with</span> <span class="p">:</span> <span class="p">[])</span>
+</pre></div>
+</div>
+<p>This means that you HAVE to write your <code class="docutils literal notranslate"><span class="pre">library(...)</span></code> calls in the order that the
+dependencies flow. While ideas to make arbitrary orders possible exist, they were
+rejected because reordering the <code class="docutils literal notranslate"><span class="pre">library(...)</span></code> calls was considered the “proper”
+way. See <a class="reference external" href="https://github.com/mesonbuild/meson/issues/8178">here</a> for the discussion.</p>
+</section>
+<section id="why-doesn-t-meson-have-user-defined-functions-macros">
+<h2>Why doesn’t meson have user defined functions/macros?<a class="headerlink" href="#why-doesn-t-meson-have-user-defined-functions-macros" title="Link to this heading">#</a></h2>
+<p>The tl;dr answer to this is that meson’s design is focused on solving specific
+problems rather than providing a general purpose language to write complex
+code solutions in build files. Build systems should be quick to write and
+quick to understand, functions muddle this simplicity.</p>
+<p>The long answer is twofold:</p>
+<p>First, Meson aims to provide a rich set of tools that solve specific problems
+simply out of the box. This is similar to the “batteries included” mentality of
+Python. By providing tools that solve common problems in the simplest way
+possible <em>in</em> Meson we are solving that problem for everyone instead of forcing
+everyone to solve that problem for themselves over and over again, often
+badly. One example of this are Meson’s dependency wrappers around various
+config-tool executables (sdl-config, llvm-config, etc). In other build
+systems each user of that dependency writes a wrapper and deals with the
+corner cases (or doesn’t, as is often the case), in Meson we handle them
+internally, everyone gets fixes and the corner cases are ironed out for
+<em>everyone</em>. Providing user defined functions or macros goes directly against
+this design goal.</p>
+<p>Second, functions and macros makes the build system more difficult to reason
+about. When you encounter some function call, you can refer to the reference
+manual to see that function and its signature. Instead of spending
+frustrating hours trying to interpret some bit of m4 or follow long include
+paths to figure out what <code class="docutils literal notranslate"><span class="pre">function1</span></code> (which calls <code class="docutils literal notranslate"><span class="pre">function2</span></code>, which calls
+<code class="docutils literal notranslate"><span class="pre">function3</span></code>, ad infinitum), you know what the build system is doing. Unless
+you’re actively developing Meson itself, it’s just a tool to orchestrate
+building the thing you actually care about. We want you to spend as little
+time worrying about build systems as possible so you can spend more time on
+<em>your code</em>.</p>
+<p>Many times user defined functions are used due to a lack of loops or
+because loops are tedious to use in the language. Meson has both arrays/lists
+and hashes/dicts natively. Compare the following pseudo code:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">func</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">,</span><span class="w"> </span><span class="n">extra_args</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">executable</span><span class="p">(</span>
+<span class="w">    </span><span class="n">name</span><span class="p">,</span>
+<span class="w">    </span><span class="n">sources</span><span class="p">,</span>
+<span class="w">    </span><span class="n">c_args</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">extra_args</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="n">endfunc</span>
+
+<span class="n">func</span><span class="p">(</span><span class="n">exe1</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;1.c&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;common.c&#39;</span><span class="p">],</span><span class="w"> </span><span class="p">[])</span>
+<span class="n">func</span><span class="p">(</span><span class="n">exe2</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;2.c&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;common.c&#39;</span><span class="p">],</span><span class="w"> </span><span class="p">[])</span>
+<span class="n">func</span><span class="p">(</span><span class="n">exe2_a</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;2.c&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;common.c&#39;</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;-arg&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="k">foreach</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="s">&#39;1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;1.c&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[]],</span>
+<span class="w">             </span><span class="p">[</span><span class="s">&#39;2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;2.c&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[]],</span>
+<span class="w">             </span><span class="p">[</span><span class="s">&#39;2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;2.c&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;-arg&#39;</span><span class="p">]]]</span>
+<span class="w">  </span><span class="nb">executable</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&#39;exe&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">[</span><span class="err">0</span><span class="p">],</span>
+<span class="w">    </span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+<span class="w">    </span><span class="n">c_args</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">e</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="k">endforeach</span>
+</pre></div>
+</div>
+<p>The loop is both less code and is much easier to reason about than the function
+version is, especially if the function were to live in a separate file, as is
+common in other popular build systems.</p>
+<p>Build system DSLs also tend to be badly thought out as generic programming
+languages, Meson tries to make it easy to use external scripts or programs
+for handling complex problems. While one can’t always convert build logic
+into a scripting language (or compiled language), when it can be done this is
+often a better solution. External languages tend to be well-thought-out and
+tested, generally don’t regress, and users are more likely to have domain
+knowledge about them. They also tend to have better tooling (such as
+autocompletion, linting, testing solutions), which make them a lower
+maintenance burden over time.</p>
+</section>
+<section id="why-don-t-the-arguments-passed-to-add-project-link-arguments-affect-anything">
+<h2>Why don’t the arguments passed to <code class="docutils literal notranslate"><span class="pre">add_project_link_arguments</span></code> affect anything?<a class="headerlink" href="#why-don-t-the-arguments-passed-to-add-project-link-arguments-affect-anything" title="Link to this heading">#</a></h2>
+<p>Given code like this:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">add_project_link_arguments</span><span class="p">([</span><span class="s">&#39;-Wl,-foo&#39;</span><span class="p">],</span><span class="w"> </span><span class="n">language</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;c&#39;</span><span class="p">])</span>
+<span class="nb">executable</span><span class="p">(</span>
+<span class="w">  </span><span class="s">&#39;main&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&#39;main.c&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&#39;helper.cpp&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>One might be surprised to find that <code class="docutils literal notranslate"><span class="pre">-Wl,-foo</span></code> is <em>not</em> applied to the linkage
+of the <code class="docutils literal notranslate"><span class="pre">main</span></code> executable. In this Meson is working as expected, since meson will
+attempt to determine the correct linker to use automatically. This avoids
+situations like in autotools where dummy C++ sources have to be added to some
+compilation targets to get correct linkage. So in the above case the C++ linker
+is used, instead of the C linker, as <code class="docutils literal notranslate"><span class="pre">helper.cpp</span></code> likely cannot be linked using
+the C linker.</p>
+<p>Generally the best way to resolve this is to add the <code class="docutils literal notranslate"><span class="pre">cpp</span></code> language to the
+<code class="docutils literal notranslate"><span class="pre">add_project_link_arguments</span></code> call.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">add_project_link_arguments</span><span class="p">([</span><span class="s">&#39;-Wl,-foo&#39;</span><span class="p">],</span><span class="w"> </span><span class="n">language</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;c&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;cpp&#39;</span><span class="p">])</span>
+<span class="nb">executable</span><span class="p">(</span>
+<span class="w">  </span><span class="s">&#39;main&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&#39;main.c&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&#39;helper.cpp&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>To force the use of the C linker anyway the <code class="docutils literal notranslate"><span class="pre">link_language</span></code> keyword argument can
+be used. Note that this can result in a compilation failure if there are symbols
+that the C linker cannot resolve.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">add_project_link_arguments</span><span class="p">([</span><span class="s">&#39;-Wl,-foo&#39;</span><span class="p">],</span><span class="w"> </span><span class="n">language</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;c&#39;</span><span class="p">])</span>
+<span class="nb">executable</span><span class="p">(</span>
+<span class="w">  </span><span class="s">&#39;main&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&#39;main.c&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&#39;helper.cpp&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">link_language</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="how-do-i-ignore-the-build-directory-in-my-vcs">
+<h2>How do I ignore the build directory in my VCS?<a class="headerlink" href="#how-do-i-ignore-the-build-directory-in-my-vcs" title="Link to this heading">#</a></h2>
+<p>You don’t need to, assuming you use git or mercurial! Meson &gt;=0.57.0 will
+create a <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> and <code class="docutils literal notranslate"><span class="pre">.hgignore</span></code> file for you, inside each build
+directory. It glob ignores <code class="docutils literal notranslate"><span class="pre">&quot;*&quot;</span></code>, since all generated files should not be
+checked into git.</p>
+<p>Users of older versions of Meson may need to set up ignore files themselves.</p>
+</section>
+<section id="how-to-add-preprocessor-defines-to-a-target">
+<h2>How to add preprocessor defines to a target?<a class="headerlink" href="#how-to-add-preprocessor-defines-to-a-target" title="Link to this heading">#</a></h2>
+<p>Just add <code class="docutils literal notranslate"><span class="pre">-DFOO</span></code> to <code class="docutils literal notranslate"><span class="pre">c_args</span></code> or <code class="docutils literal notranslate"><span class="pre">cpp_args</span></code>. This works for all known compilers.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">mylib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">library</span><span class="p">(</span><span class="s">&#39;mylib&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;mysource.c&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">c_args</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;-DFOO&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Even though <a class="reference external" href="https://learn.microsoft.com/en-us/cpp/build/reference/d-preprocessor-definitions">MSVC documentation</a>
+uses <code class="docutils literal notranslate"><span class="pre">/D</span></code> for preprocessor defines, its <a class="reference external" href="https://learn.microsoft.com/en-us/cpp/build/reference/compiler-command-line-syntax">command-line syntax</a>
+accepts <code class="docutils literal notranslate"><span class="pre">-</span></code> instead of <code class="docutils literal notranslate"><span class="pre">/</span></code>.
+It’s not necessary to treat preprocessor defines specially in Meson (<a class="reference external" href="https://github.com/mesonbuild/meson/issues/6269#issuecomment-560003922">GH-6269</a>).</p>
+</section>
+<section id="why-do-all-outputs-go-to-the-build-directory-that-corresponds-to-the-source-directory-in-which-they-are-declared">
+<h2>Why do all outputs go to the build directory that corresponds to the source directory in which they are declared?<a class="headerlink" href="#why-do-all-outputs-go-to-the-build-directory-that-corresponds-to-the-source-directory-in-which-they-are-declared" title="Link to this heading">#</a></h2>
+<p>This simplifies debugging build problems, since you always know that files in
+build directory X must come from the corresponding source directory X.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Releasing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Releasing a new Meson version</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Videos.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Videos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-it-called-meson">Why is it called Meson?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-correct-way-to-use-threads-such-as-pthreads">What is the correct way to use threads (such as pthreads)?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-meson-on-a-host-where-it-is-not-available-in-system-packages">How to use Meson on a host where it is not available in system packages?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-can-t-i-specify-target-files-with-a-wildcard">Why can’t I specify target files with a wildcard?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#but-i-really-want-to-use-wildcards">But I really want to use wildcards!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#should-i-use-subdir-or-subproject">Should I use <code class="docutils literal notranslate"><span class="pre">subdir</span></code> or <code class="docutils literal notranslate"><span class="pre">subproject</span></code>?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-there-not-a-make-backend">Why is there not a Make backend?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-meson-not-just-a-python-module-so-i-could-code-my-build-setup-in-python">Why is Meson not just a Python module so I could code my build setup in Python?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-i-do-the-equivalent-of-libtools-export-symbol-and-export-regex">How do I do the equivalent of Libtools export-symbol and export-regex?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#my-project-works-fine-on-linux-and-mingw-but-fails-to-link-with-msvc-due-to-a-missing-lib-file-fatal-error-lnk1181-why">My project works fine on Linux and MinGW but fails to link with MSVC due to a missing .lib file (fatal error LNK1181). Why?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-added-some-compiler-flags-and-now-the-build-fails-with-weird-errors-what-is-happening">I added some compiler flags and now the build fails with weird errors. What is happening?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-are-changes-to-default-project-options-ignored">Why are changes to default project options ignored?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#does-wrap-download-sources-behind-my-back">Does wrap download sources behind my back?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-meson-implemented-in-python-rather-than-programming-language-x">Why is Meson implemented in Python rather than [programming language X]?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#do-you-at-least-support-my-ancient-python-install">Do you at least support my ancient python install?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#but-i-really-want-a-version-of-meson-that-doesn-t-use-python">But I really want a version of Meson that doesn’t use python!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-have-proprietary-compiler-toolchain-x-that-does-not-work-with-meson-how-can-i-make-it-work">I have proprietary compiler toolchain X that does not work with Meson, how can I make it work?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-does-building-my-project-with-msvc-output-static-libraries-called-libfoo-a">Why does building my project with MSVC output static libraries called <code class="docutils literal notranslate"><span class="pre">libfoo.a</span></code>?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#do-i-need-to-add-my-headers-to-the-sources-list-like-in-autotools">Do I need to add my headers to the sources list like in Autotools?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-i-tell-meson-that-my-sources-use-generated-headers">How do I tell Meson that my sources use generated headers?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-i-disable-exceptions-and-rtti-in-my-c-project">How do I disable exceptions and RTTI in my C++ project?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#should-i-check-for-buildtype-or-individual-options-like-debug-in-my-build-files">Should I check for <code class="docutils literal notranslate"><span class="pre">buildtype</span></code> or individual options like <code class="docutils literal notranslate"><span class="pre">debug</span></code> in my build files?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-i-use-a-library-before-declaring-it">How do I use a library before declaring it?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-doesn-t-meson-have-user-defined-functions-macros">Why doesn’t meson have user defined functions/macros?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-don-t-the-arguments-passed-to-add-project-link-arguments-affect-anything">Why don’t the arguments passed to <code class="docutils literal notranslate"><span class="pre">add_project_link_arguments</span></code> affect anything?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-i-ignore-the-build-directory-in-my-vcs">How do I ignore the build directory in my VCS?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-add-preprocessor-defines-to-a-target">How to add preprocessor defines to a target?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-all-outputs-go-to-the-build-directory-that-corresponds-to-the-source-directory-in-which-they-are-declared">Why do all outputs go to the build directory that corresponds to the source directory in which they are declared?</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/mesonbuild/meson/edit/master/docs/markdown/FAQ.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">Website licensing information are available on the <a href="legal.html">Legal</a> page.</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

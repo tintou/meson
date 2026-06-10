@@ -1,0 +1,135 @@
+---
+short-description: "Returned object: Subproject object"
+title: Subproject object
+render-subpages: false
+...
+# Subproject object (`subproject`)
+
+This object is returned by [[subproject]] and is an opaque object representing it.
+
+
+## Returned by
+
+Subproject object objects are returned by the following functions and methods:
+- [[subproject]]
+
+
+
+
+## Subproject object methods
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### subproject.found()
+
+Returns whether the subproject was successfully setup.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.48.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@bool]] found()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### subproject.get_variable()
+
+fetches the specified variable from inside the subproject.
+This is useful to, for instance, get a
+[[declare_dependency]] from the [subproject](Subprojects.md).
+
+If the variable does not exist, the variable `fallback` is returned.
+If a fallback is not specified, then attempting to read a non-existing
+variable will cause a fatal error.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># fetches the specified variable from inside the subproject
+[[#@any]] get_variable(
+  [[#@str]]                                  <a href="#get_variable_var_name"><b>var_name</b></a>,     # The name of the variable to query
+  [[#@any]]                                  [<a href="#get_variable_fallback"><b>fallback</b></a>],   # The fallback value to return if `var_name` does not exist
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+  [Argument flattening](Syntax.md#argument-flattening) is **NOT SUPPORTED** by this function.
+
+  The method `subproject.get_variable()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_variable_var_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">var_name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The name of the variable to query
+  </td>
+      </tr>
+      <tr id="get_variable_fallback">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">fallback</code>
+  <br>{meson:optional}` `
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@any]]</span>
+  </td>
+        <td>
+  
+  The fallback value to return if `var_name` does not exist.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+

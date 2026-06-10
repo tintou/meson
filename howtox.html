@@ -1,0 +1,893 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>How do I do X in Meson? &#8212; Meson documentation 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d99633c1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'howtox';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Compiling Java applications" href="Java.html" />
+    <link rel="prev" title="Reproducible builds" href="Reproducible-builds.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/meson_logo.png" class="logo__image only-light" alt="Meson documentation 1.0 documentation - Home"/>
+    <img src="_static/meson_logo.png" class="logo__image only-dark pst-js-only" alt="Meson documentation 1.0 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Running-Meson.html">Running Meson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Commands.html">Command-line commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuring-a-build-directory.html">Configuring a build directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-options.html">Build options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-targets.html">Build targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dependencies.html">Dependencies</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Subprojects.html">Subprojects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuration.html">Configuration</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generating-sources.html">Generating sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Custom-build-targets.html">Custom build targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-arguments.html">Adding arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compiler-properties.html">Compiler properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Include-directories.html">Include directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feature-autodetection.html">Feature autodetection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Disabler.html">Disabling parts of the build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Precompiled-headers.html">Precompiled headers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity-builds.html">Unity builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Threads.html">Threads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="External-commands.html">External commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Code-formatting.html">clang-format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-tests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Run-targets.html">Run targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IDE-integration.html">IDE integration</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Build-system-converters.html">Build system converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cross-compilation.html">Cross compilation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Machine-files.html">Cross and Native File reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Native-environments.html">Persistent native environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Localisation.html">Localisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-releases.html">Creating releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-OSX-packages.html">Creating OSX packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-Linux-binaries.html">Creating Linux binaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Project-templates.html">Project templates</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Reproducible-builds.html">Reproducible builds</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">How do I do X in Meson?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Java.html">Compiling Java applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Vala.html">Compiling Vala applications and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D.html">Compiling D applications</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Cython.html">Cython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rust.html">Using Rust with Meson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Using-with-Visual-Studio.html">Using with Visual Studio</a></li>
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="Wrap-dependency-system-manual.html">Wrap dependency system manual</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Wrapdb-projects.html">Meson WrapDB packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-projects-to-wrapdb.html">Adding new projects to WrapDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-the-WrapDB.html">Using the WrapDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-wraptool.html">Using wraptool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wrap-best-practices-and-tips.html">Wrap best practices and tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shipping-prebuilt-binaries-as-wraps.html">Shipping prebuilt binaries as wraps</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="Guide.html" class="nav-link">Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">How do I do X in Meson?</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="how-do-i-do-x-in-meson">
+<h1>How do I do X in Meson?<a class="headerlink" href="#how-do-i-do-x-in-meson" title="Link to this heading">#</a></h1>
+<p>This page lists code snippets for common tasks. These are written
+mostly using the C compiler, but the same approach should work on
+almost all other compilers.</p>
+<section id="set-compiler">
+<h2>Set compiler<a class="headerlink" href="#set-compiler" title="Link to this heading">#</a></h2>
+<p>When first running Meson, set it in an environment variable.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">CC</span><span class="o">=</span>mycc<span class="w"> </span>meson<span class="w"> </span>&lt;options&gt;
+</pre></div>
+</div>
+<p>Note that environment variables like <code class="docutils literal notranslate"><span class="pre">CC</span></code> only refer to the host
+platform in cross builds.  That is, <code class="docutils literal notranslate"><span class="pre">CC</span></code> refers to the compiler used to
+compile programs that run on the machine we will eventually install the
+project on. The compiler used to build things that run on the machine we
+do the building can be specified with <code class="docutils literal notranslate"><span class="pre">CC_FOR_BUILD</span></code>. You can use it in
+cross builds.</p>
+<p>Note that environment variables are never the idiomatic way to do
+anything with Meson, however. It is better to use the native and cross
+files. And the tools for the host platform in cross builds can only be
+specified with a cross file.</p>
+<p>There is a table of all environment variables supported
+<a class="reference internal" href="Reference-tables.html#compiler-and-linker-selection-variables"><span class="std std-ref">Here</span></a></p>
+</section>
+<section id="set-linker">
+<h2>Set linker<a class="headerlink" href="#set-linker" title="Link to this heading">#</a></h2>
+<p><em>New in 0.53.0</em></p>
+<p>Like the compiler, the linker is selected via the <code class="docutils literal notranslate"><span class="pre">&lt;compiler</span> <span class="pre">variable&gt;_LD</span></code> environment variable, or through the <code class="docutils literal notranslate"><span class="pre">&lt;compiler</span> <span class="pre">entry&gt;_ld</span></code> entry in a native or cross file. You must be aware of
+whether you’re using a compiler that invokes the linker itself (most
+compilers including GCC and Clang) or a linker that is invoked
+directly (when using MSVC or compilers that act like it, including
+Clang-Cl). With the former <code class="docutils literal notranslate"><span class="pre">c_ld</span></code> or <code class="docutils literal notranslate"><span class="pre">CC_LD</span></code> should be the value to
+pass to the compiler’s special argument (such as <code class="docutils literal notranslate"><span class="pre">-fuse-ld</span></code> with clang
+and gcc), with the latter it should be an executable, such as
+<code class="docutils literal notranslate"><span class="pre">lld-link.exe</span></code>.</p>
+<p><em>NOTE</em> In Meson 0.53.0 the <code class="docutils literal notranslate"><span class="pre">ld</span></code> entry in the cross/native file and the
+<code class="docutils literal notranslate"><span class="pre">LD</span></code> environment variable were used, this resulted in a large number
+of regressions and was changed in 0.53.1 to <code class="docutils literal notranslate"><span class="pre">&lt;lang&gt;_ld</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;comp</span> <span class="pre">variable&gt;_LD</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">CC</span><span class="o">=</span>clang<span class="w"> </span><span class="nv">CC_LD</span><span class="o">=</span>lld<span class="w"> </span>meson<span class="w"> </span>&lt;options&gt;
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">CC</span><span class="o">=</span>clang-cl<span class="w"> </span><span class="nv">CC_LD</span><span class="o">=</span>link<span class="w"> </span>meson<span class="w"> </span>&lt;options&gt;
+</pre></div>
+</div>
+<p>or in a cross or native file:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[binaries]</span>
+<span class="na">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;clang&#39;</span>
+<span class="na">c_ld</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;lld&#39;</span>
+</pre></div>
+</div>
+<p>There is a table of all environment variables supported
+<a class="reference internal" href="Reference-tables.html#compiler-and-linker-selection-variables"><span class="std std-ref">Here</span></a></p>
+</section>
+<section id="set-default-c-c-language-version">
+<h2>Set default C/C++ language version<a class="headerlink" href="#set-default-c-c-language-version" title="Link to this heading">#</a></h2>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">project</span><span class="p">(</span><span class="s">&#39;myproj&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;cpp&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">default_options</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;c_std=c11&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;cpp_std=c++11&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The language version can also be set on a per-target basis.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">executable</span><span class="p">(...,</span><span class="w"> </span><span class="n">override_options</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;c_std=c11&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="enable-threads">
+<h2>Enable threads<a class="headerlink" href="#enable-threads" title="Link to this heading">#</a></h2>
+<p>Lots of people seem to do this manually with <code class="docutils literal notranslate"><span class="pre">cc.find_library('pthread')</span></code>
+or something similar. Do not do that. It is not portable. Instead do
+this.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">thread_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;threads&#39;</span><span class="p">)</span>
+<span class="nb">executable</span><span class="p">(...,</span><span class="w"> </span><span class="n">dependencies</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">thread_dep</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="set-extra-compiler-and-linker-flags-from-the-outside-when-e-g-building-distro-packages">
+<h2>Set extra compiler and linker flags from the outside (when e.g. building distro packages)<a class="headerlink" href="#set-extra-compiler-and-linker-flags-from-the-outside-when-e-g-building-distro-packages" title="Link to this heading">#</a></h2>
+<p>The behavior is the same as with other build systems, with environment
+variables during first invocation. Do not use these when you need to
+rebuild the source</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">CFLAGS</span><span class="o">=</span>-fsomething<span class="w"> </span><span class="nv">LDFLAGS</span><span class="o">=</span>-Wl,--linker-flag<span class="w"> </span>meson<span class="w"> </span>&lt;options&gt;
+</pre></div>
+</div>
+</section>
+<section id="use-an-argument-only-with-a-specific-compiler">
+<h2>Use an argument only with a specific compiler<a class="headerlink" href="#use-an-argument-only-with-a-specific-compiler" title="Link to this heading">#</a></h2>
+<p>First check which arguments to use.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="vm">meson</span><span class="p">.</span><span class="n">get_compiler</span><span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">).</span><span class="n">get_id</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&#39;clang&#39;</span>
+<span class="w">  </span><span class="n">extra_args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;-fclang-flag&#39;</span><span class="p">]</span>
+<span class="k">else</span>
+<span class="w">  </span><span class="n">extra_args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+<span class="k">endif</span>
+</pre></div>
+</div>
+<p>Then use it in a target.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">executable</span><span class="p">(...,</span><span class="w"> </span><span class="n">c_args</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">extra_args</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you want to use the arguments on all targets, then do this.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="vm">meson</span><span class="p">.</span><span class="n">get_compiler</span><span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">).</span><span class="n">get_id</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&#39;clang&#39;</span>
+<span class="w">  </span><span class="nb">add_global_arguments</span><span class="p">(</span><span class="s">&#39;-fclang-flag&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">language</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+<span class="k">endif</span>
+</pre></div>
+</div>
+</section>
+<section id="set-a-command-s-output-to-configuration">
+<h2>Set a command’s output to configuration<a class="headerlink" href="#set-a-command-s-output-to-configuration" title="Link to this heading">#</a></h2>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">txt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">run_command</span><span class="p">(</span><span class="s">&#39;script&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;argument&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">check</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">).</span><span class="n">stdout</span><span class="p">().</span><span class="n">strip</span><span class="p">()</span>
+<span class="n">cdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">configuration_data</span><span class="p">()</span>
+<span class="n">cdata</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="s">&#39;SOMETHING&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">txt</span><span class="p">)</span>
+<span class="nb">configure_file</span><span class="p">(...)</span>
+</pre></div>
+</div>
+</section>
+<section id="generate-configuration-data-from-files">
+<h2>Generate configuration data from files<a class="headerlink" href="#generate-configuration-data-from-files" title="Link to this heading">#</a></h2>
+<p>The <a class="reference internal" href="Fs-module.html"><span class="std std-doc">fs module</span></a> offers the <code class="docutils literal notranslate"><span class="pre">read</span></code> function which enables adding
+the contents of arbitrary files to configuration data (among other uses):</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">import</span><span class="p">(</span><span class="s">&#39;fs&#39;</span><span class="p">)</span>
+<span class="n">cdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">configuration_data</span><span class="p">()</span>
+<span class="n">copyright</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;LICENSE&#39;</span><span class="p">)</span>
+<span class="n">cdata</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="s">&#39;COPYRIGHT&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">copyright</span><span class="p">)</span>
+<span class="k">if</span><span class="w"> </span><span class="vm">build_machine</span><span class="p">.</span><span class="n">system</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&#39;linux&#39;</span>
+<span class="w">    </span><span class="n">os_release</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;/etc/os-release&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">cdata</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="s">&#39;LINUX_BUILDER&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">os_release</span><span class="p">)</span>
+<span class="k">endif</span>
+<span class="nb">configure_file</span><span class="p">(...)</span>
+</pre></div>
+</div>
+</section>
+<section id="generate-a-runnable-script-with-configure-file">
+<h2>Generate a runnable script with <code class="docutils literal notranslate"><span class="pre">configure_file</span></code><a class="headerlink" href="#generate-a-runnable-script-with-configure-file" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">configure_file</span></code> preserves metadata so if your template file has
+execute permissions, the generated file will have them too.</p>
+</section>
+<section id="producing-a-coverage-report">
+<h2>Producing a coverage report<a class="headerlink" href="#producing-a-coverage-report" title="Link to this heading">#</a></h2>
+<p>First initialize the build directory with this command.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>meson<span class="w"> </span>setup<span class="w"> </span>&lt;other<span class="w"> </span>flags&gt;<span class="w"> </span>-Db_coverage<span class="o">=</span><span class="nb">true</span>
+</pre></div>
+</div>
+<p>Then issue the following commands.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>meson<span class="w"> </span>compile
+<span class="gp">$ </span>meson<span class="w"> </span><span class="nb">test</span>
+<span class="gp">$ </span>ninja<span class="w"> </span>coverage-html<span class="w"> </span><span class="o">(</span>or<span class="w"> </span>coverage-xml<span class="o">)</span>
+</pre></div>
+</div>
+<p>The coverage report can be found in the meson-logs subdirectory.</p>
+<p><em>New in 0.55.0</em> llvm-cov support for use with clang</p>
+</section>
+<section id="add-some-optimization-to-debug-builds">
+<h2>Add some optimization to debug builds<a class="headerlink" href="#add-some-optimization-to-debug-builds" title="Link to this heading">#</a></h2>
+<p>By default the debug build does not use any optimizations. This is the
+desired approach most of the time. However some projects benefit from
+having some minor optimizations enabled. GCC even has a specific
+compiler flag <code class="docutils literal notranslate"><span class="pre">-Og</span></code> for this. To enable its use, just issue the
+following command.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>meson<span class="w"> </span>configure<span class="w"> </span>-Dc_args<span class="o">=</span>-Og
+</pre></div>
+</div>
+<p>This causes all subsequent builds to use this command line argument.</p>
+</section>
+<section id="use-address-sanitizer">
+<h2>Use address sanitizer<a class="headerlink" href="#use-address-sanitizer" title="Link to this heading">#</a></h2>
+<p>Clang and gcc come with a selection of analysis tools such as the <a class="reference external" href="https://clang.llvm.org/docs/AddressSanitizer.html">address
+sanitizer</a>. Meson
+has native support for these with the <code class="docutils literal notranslate"><span class="pre">b_sanitize</span></code> option.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>meson<span class="w"> </span>setup<span class="w"> </span>&lt;other<span class="w"> </span>options&gt;<span class="w"> </span>-Db_sanitize<span class="o">=</span>address
+</pre></div>
+</div>
+<p>Clang users might also need to set <code class="docutils literal notranslate"><span class="pre">-Db_lundef=false</span></code>, since otherwise meson will pass
+<code class="docutils literal notranslate"><span class="pre">-Wl,--no-undefined</span></code>, which is an alias for <code class="docutils literal notranslate"><span class="pre">-Wl,-z,defs</span></code>, which is incompatible
+with the address sanitizer when building shared libraries with clang as
+documented <a class="reference external" href="https://clang.llvm.org/docs/AddressSanitizer.html#usage">by clang</a>.</p>
+<p>After this you just compile your code and run the test suite. Address
+sanitizer will abort executables which have bugs so they show up as
+test failures.</p>
+</section>
+<section id="use-clang-static-analyzer">
+<h2>Use Clang static analyzer<a class="headerlink" href="#use-clang-static-analyzer" title="Link to this heading">#</a></h2>
+<p>Install scan-build program, then do this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>meson<span class="w"> </span>setup<span class="w"> </span>builddir
+<span class="gp">$ </span>ninja<span class="w"> </span>-C<span class="w"> </span>builddir<span class="w"> </span>scan-build
+</pre></div>
+</div>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">SCANBUILD</span></code> environment variable to choose the
+scan-build executable.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">SCANBUILD</span><span class="o">=</span>&lt;your<span class="w"> </span>exe&gt;<span class="w"> </span>ninja<span class="w"> </span>-C<span class="w"> </span>builddir<span class="w"> </span>scan-build
+</pre></div>
+</div>
+<p>You can use it for passing arguments to scan-build program by
+creating a script, for example:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+scan-build<span class="w"> </span>-v<span class="w"> </span>--status-bugs<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>And then pass it through the variable (remember to use absolute path):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">SCANBUILD</span><span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/my-scan-build.sh<span class="w"> </span>ninja<span class="w"> </span>-C<span class="w"> </span>builddir<span class="w"> </span>scan-build
+</pre></div>
+</div>
+</section>
+<section id="use-clippy">
+<h2>Use clippy<a class="headerlink" href="#use-clippy" title="Link to this heading">#</a></h2>
+<p>If your project includes Rust targets, you can invoke clippy like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>meson<span class="w"> </span>setup<span class="w"> </span>builddir
+<span class="gp">$ </span>ninja<span class="w"> </span>-C<span class="w"> </span>builddir<span class="w"> </span>clippy
+</pre></div>
+</div>
+<p>Clippy will also obey the <code class="docutils literal notranslate"><span class="pre">werror</span></code> <a class="reference internal" href="Builtin-options.html#core-options"><span class="std std-ref">builtin option</span></a>.</p>
+<p>By default Meson uses as many concurrent processes as there are cores
+on the test machine. You can override this with the environment
+variable <code class="docutils literal notranslate"><span class="pre">MESON_NUM_PROCESSES</span></code>.</p>
+<p>Meson will look for <code class="docutils literal notranslate"><span class="pre">clippy-driver</span></code> in the same directory as <code class="docutils literal notranslate"><span class="pre">rustc</span></code>,
+or try to invoke it using <code class="docutils literal notranslate"><span class="pre">rustup</span></code> if <code class="docutils literal notranslate"><span class="pre">rustc</span></code> points to a <code class="docutils literal notranslate"><span class="pre">rustup</span></code>
+binary.  If <code class="docutils literal notranslate"><span class="pre">clippy-driver</span></code> is not detected properly, you can add it to
+a <a class="reference internal" href="Machine-files.html"><span class="std std-doc">machine file</span></a>.</p>
+</section>
+<section id="use-profile-guided-optimization">
+<h2>Use profile guided optimization<a class="headerlink" href="#use-profile-guided-optimization" title="Link to this heading">#</a></h2>
+<p>Using profile guided optimization with GCC is a two phase
+operation. First we set up the project with profile measurements
+enabled and compile it.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>meson<span class="w"> </span>setup<span class="w"> </span>&lt;Meson<span class="w"> </span>options,<span class="w"> </span>such<span class="w"> </span>as<span class="w"> </span>--buildtype<span class="o">=</span>debugoptimized&gt;<span class="w"> </span>-Db_pgo<span class="o">=</span>generate
+<span class="gp">$ </span>meson<span class="w"> </span>compile<span class="w"> </span>-C<span class="w"> </span>builddir
+</pre></div>
+</div>
+<p>Then we need to run the program with some representative input. This
+step depends on your project.</p>
+<p>Once that is done we change the compiler flags to use the generated
+information and rebuild.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>meson<span class="w"> </span>configure<span class="w"> </span>-Db_pgo<span class="o">=</span>use
+<span class="gp">$ </span>meson<span class="w"> </span>compile
+</pre></div>
+</div>
+<p>After these steps the resulting binary is fully optimized.</p>
+</section>
+<section id="add-math-library-lm-portably">
+<h2>Add math library (<code class="docutils literal notranslate"><span class="pre">-lm</span></code>) portably<a class="headerlink" href="#add-math-library-lm-portably" title="Link to this heading">#</a></h2>
+<p>Some platforms (e.g. Linux) have a standalone math library. Other
+platforms (pretty much everyone else) do not. How to specify that <code class="docutils literal notranslate"><span class="pre">m</span></code>
+is used only when needed?</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">cc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vm">meson</span><span class="p">.</span><span class="n">get_compiler</span><span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">m_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cc</span><span class="p">.</span><span class="n">find_library</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="nb">executable</span><span class="p">(...,</span><span class="w"> </span><span class="n">dependencies</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">m_dep</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="install-an-executable-to-libexecdir">
+<h2>Install an executable to <code class="docutils literal notranslate"><span class="pre">libexecdir</span></code><a class="headerlink" href="#install-an-executable-to-libexecdir" title="Link to this heading">#</a></h2>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">executable</span><span class="p">(...,</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="n">install_dir</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">get_option</span><span class="p">(</span><span class="s">&#39;libexecdir&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="use-existing-find-name-cmake-files">
+<h2>Use existing <code class="docutils literal notranslate"><span class="pre">Find&lt;name&gt;.cmake</span></code> files<a class="headerlink" href="#use-existing-find-name-cmake-files" title="Link to this heading">#</a></h2>
+<p>Meson can use the CMake <code class="docutils literal notranslate"><span class="pre">find_package()</span></code> ecosystem if CMake is
+installed. To find a dependency with custom <code class="docutils literal notranslate"><span class="pre">Find&lt;name&gt;.cmake</span></code>, set
+the <code class="docutils literal notranslate"><span class="pre">cmake_module_path</span></code> property to the path in your project where the
+CMake scripts are stored.</p>
+<p>Example for a <code class="docutils literal notranslate"><span class="pre">FindCmakeOnlyDep.cmake</span></code> in a <code class="docutils literal notranslate"><span class="pre">cmake</span></code> subdirectory:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">cm_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;CmakeOnlyDep&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">cmake_module_path</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;cmake&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">cmake_module_path</span></code> property is only needed for custom CMake scripts. System
+wide CMake scripts are found automatically.</p>
+<p>More information can be found <a class="reference internal" href="Dependencies.html#cmake"><span class="std std-ref">here</span></a></p>
+</section>
+<section id="get-a-default-not-found-dependency">
+<h2>Get a default not-found dependency?<a class="headerlink" href="#get-a-default-not-found-dependency" title="Link to this heading">#</a></h2>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">null_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This can be used in cases where you want a default value, but might override it
+later.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="c"># Not needed on Windows!</span>
+<span class="n">my_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="k">if</span><span class="w"> </span><span class="vm">host_machine</span><span class="p">.</span><span class="n">system</span><span class="p">()</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;freebsd&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;netbsd&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;openbsd&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;dragonfly&#39;</span><span class="p">]</span>
+<span class="w">  </span><span class="n">my_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;some dep&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="k">elif</span><span class="w"> </span><span class="vm">host_machine</span><span class="p">.</span><span class="n">system</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&#39;linux&#39;</span>
+<span class="w">  </span><span class="n">my_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;some other dep&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="k">endif</span>
+
+<span class="nb">executable</span><span class="p">(</span>
+<span class="w">  </span><span class="s">&#39;myexe&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">my_sources</span><span class="p">,</span>
+<span class="w">  </span><span class="n">deps</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">my_dep</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="exclude-a-file-from-unity-builds">
+<h2>Exclude a file from unity builds<a class="headerlink" href="#exclude-a-file-from-unity-builds" title="Link to this heading">#</a></h2>
+<p>If your project supports unity builds, you should fix any bugs that crop up when
+source files are concatenated together.
+Sometimes this isn’t possible, though, for example if the source files are
+generated.</p>
+<p>In this case, you can put them in a separate static library build target and
+override the unity setting.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">generated_files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span>
+<span class="n">unityproof_lib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">static_library</span><span class="p">(</span><span class="s">&#39;unityproof&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">generated_files</span><span class="p">,</span>
+<span class="w">  </span><span class="n">override_options</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;unity=off&#39;</span><span class="p">])</span>
+
+<span class="n">main_exe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">executable</span><span class="p">(</span><span class="s">&#39;main&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">main_sources</span><span class="p">,</span><span class="w"> </span><span class="n">link_with</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">unityproof_lib</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To link the static library into another library target, you may need to use
+<code class="docutils literal notranslate"><span class="pre">link_whole</span></code> instead of <code class="docutils literal notranslate"><span class="pre">link_with</span></code>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Reproducible-builds.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Reproducible builds</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Java.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Compiling Java applications</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-compiler">Set compiler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-linker">Set linker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-default-c-c-language-version">Set default C/C++ language version</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-threads">Enable threads</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-extra-compiler-and-linker-flags-from-the-outside-when-e-g-building-distro-packages">Set extra compiler and linker flags from the outside (when e.g. building distro packages)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-an-argument-only-with-a-specific-compiler">Use an argument only with a specific compiler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-a-command-s-output-to-configuration">Set a command’s output to configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-configuration-data-from-files">Generate configuration data from files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-runnable-script-with-configure-file">Generate a runnable script with <code class="docutils literal notranslate"><span class="pre">configure_file</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#producing-a-coverage-report">Producing a coverage report</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-some-optimization-to-debug-builds">Add some optimization to debug builds</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-address-sanitizer">Use address sanitizer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-clang-static-analyzer">Use Clang static analyzer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-clippy">Use clippy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-profile-guided-optimization">Use profile guided optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-math-library-lm-portably">Add math library (<code class="docutils literal notranslate"><span class="pre">-lm</span></code>) portably</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-an-executable-to-libexecdir">Install an executable to <code class="docutils literal notranslate"><span class="pre">libexecdir</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-existing-find-name-cmake-files">Use existing <code class="docutils literal notranslate"><span class="pre">Find&lt;name&gt;.cmake</span></code> files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-a-default-not-found-dependency">Get a default not-found dependency?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exclude-a-file-from-unity-builds">Exclude a file from unity builds</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/mesonbuild/meson/edit/master/docs/markdown/howtox.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">Website licensing information are available on the <a href="legal.html">Legal</a> page.</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

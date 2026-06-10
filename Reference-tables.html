@@ -1,0 +1,1704 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Reference tables &#8212; Meson documentation 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d99633c1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Reference-tables';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Meson file rewriter" href="Rewriter.html" />
+    <link rel="prev" title="Built-in options" href="Builtin-options.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/meson_logo.png" class="logo__image only-light" alt="Meson documentation 1.0 documentation - Home"/>
+    <img src="_static/meson_logo.png" class="logo__image only-dark pst-js-only" alt="Meson documentation 1.0 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Reference-manual.html">Reference manual</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Reference-manual_builtin.html">Builtin objects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_builtin_build_machine.html">Build machine information (<code class="docutils literal notranslate"><span class="pre">build_machine</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_builtin_host_machine.html">Host machine information (<code class="docutils literal notranslate"><span class="pre">host_machine</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_machine</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_builtin_meson.html">Meson object (<code class="docutils literal notranslate"><span class="pre">meson</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_builtin_target_machine.html">Target machine information (<code class="docutils literal notranslate"><span class="pre">target_machine</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_machine</span></code>)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Reference-manual_elementary.html">Elementary types</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_any.html">Any (<code class="docutils literal notranslate"><span class="pre">any</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_array.html">Array (<code class="docutils literal notranslate"><span class="pre">array</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_bool.html">Boolean (<code class="docutils literal notranslate"><span class="pre">bool</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_dict.html">Dict (<code class="docutils literal notranslate"><span class="pre">dict</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_int.html">Integer (<code class="docutils literal notranslate"><span class="pre">int</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_str.html">String (<code class="docutils literal notranslate"><span class="pre">str</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_void.html">void (<code class="docutils literal notranslate"><span class="pre">void</span></code>)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Reference-manual_functions.html">Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_global_arguments.html">add_global_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_global_link_arguments.html">add_global_link_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_languages.html">add_languages()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_project_arguments.html">add_project_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_project_dependencies.html">add_project_dependencies()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_project_link_arguments.html">add_project_link_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_test_setup.html">add_test_setup()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_alias_target.html">alias_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_assert.html">assert()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_benchmark.html">benchmark()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_both_libraries.html">both_libraries()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_build_target.html">build_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_configuration_data.html">configuration_data()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_configure_file.html">configure_file()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_custom_target.html">custom_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_debug.html">debug()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_declare_dependency.html">declare_dependency()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_dependency.html">dependency()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_disabler.html">disabler()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_environment.html">environment()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_error.html">error()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_executable.html">executable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_files.html">files()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_find_program.html">find_program()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_generator.html">generator()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_get_option.html">get_option()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_get_variable.html">get_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_import.html">import()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_include_directories.html">include_directories()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_data.html">install_data()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_emptydir.html">install_emptydir()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_headers.html">install_headers()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_man.html">install_man()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_subdir.html">install_subdir()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_symlink.html">install_symlink()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_is_disabler.html">is_disabler()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_is_variable.html">is_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_jar.html">jar()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_join_paths.html">join_paths()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_library.html">library()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_message.html">message()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_project.html">project()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_range.html">range()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_run_command.html">run_command()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_run_target.html">run_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_set_variable.html">set_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_shared_library.html">shared_library()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_shared_module.html">shared_module()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_static_library.html">static_library()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_structured_sources.html">structured_sources()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_subdir.html">subdir()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_subdir_done.html">subdir_done()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_subproject.html">subproject()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_summary.html">summary()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_test.html">test()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_unset_variable.html">unset_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_vcs_tag.html">vcs_tag()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_warning.html">warning()</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Reference-manual_returned.html">Returned objects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_alias_tgt.html">Alias target (<code class="docutils literal notranslate"><span class="pre">alias_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_both_libs.html">Both libraries object (<code class="docutils literal notranslate"><span class="pre">both_libs</span></code> extends <code class="docutils literal notranslate"><span class="pre">lib</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_build_tgt.html">Build target (<code class="docutils literal notranslate"><span class="pre">build_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_cfg_data.html">Configuration data object (<code class="docutils literal notranslate"><span class="pre">cfg_data</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_compiler.html">Compiler object (<code class="docutils literal notranslate"><span class="pre">compiler</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_custom_idx.html">Custom target index (<code class="docutils literal notranslate"><span class="pre">custom_idx</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_custom_tgt.html">Custom target (<code class="docutils literal notranslate"><span class="pre">custom_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_dep.html">Dependency object (<code class="docutils literal notranslate"><span class="pre">dep</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_disabler.html">Disabler (<code class="docutils literal notranslate"><span class="pre">disabler</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_env.html">Environment (<code class="docutils literal notranslate"><span class="pre">env</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_exe.html">Executable target (<code class="docutils literal notranslate"><span class="pre">exe</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_extracted_obj.html">Extracted object file (<code class="docutils literal notranslate"><span class="pre">extracted_obj</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_feature.html">Feature option object (<code class="docutils literal notranslate"><span class="pre">feature</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_file.html">File (<code class="docutils literal notranslate"><span class="pre">file</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_generated_list.html">Generated list object (<code class="docutils literal notranslate"><span class="pre">generated_list</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_generator.html">Generator object (<code class="docutils literal notranslate"><span class="pre">generator</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_inc.html">Include directories (<code class="docutils literal notranslate"><span class="pre">inc</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_jar.html">JAR build target (<code class="docutils literal notranslate"><span class="pre">jar</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_lib.html">Library target (<code class="docutils literal notranslate"><span class="pre">lib</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_module.html">Imported module object (<code class="docutils literal notranslate"><span class="pre">module</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_program.html">External program (<code class="docutils literal notranslate"><span class="pre">program</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_range.html">Range object (<code class="docutils literal notranslate"><span class="pre">range</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_run_tgt.html">Run target (<code class="docutils literal notranslate"><span class="pre">run_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_runresult.html">Run result object (<code class="docutils literal notranslate"><span class="pre">runresult</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_structured_src.html">Structured Source (<code class="docutils literal notranslate"><span class="pre">structured_src</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_subproject.html">Subproject object (<code class="docutils literal notranslate"><span class="pre">subproject</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_tgt.html">Meson Target (<code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Modules.html">Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="CMake-module.html">CMake module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Codegen-module.html">Codegen Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cuda-module.html">Unstable CUDA Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dlang-module.html">Dlang module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="External-Project-module.html">External Project module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Fs-module.html">FS (filesystem) module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Gnome-module.html">GNOME module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hotdoc-module.html">Hotdoc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Icestorm-module.html">Unstable IceStorm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Java-module.html">Java Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Keyval-module.html">keyval module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pkgconfig-module.html">Pkgconfig module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python-3-module.html">Python 3 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python-module.html">Python module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Qt4-module.html">Qt4 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Qt5-module.html">Qt5 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Qt6-module.html">Qt6 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rust-module.html">Rust module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Simd-module.html">Unstable SIMD module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Snippets-module.html">Snippets module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SourceSet-module.html">Source set module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Windows-module.html">Windows module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i18n-module.html">I18n module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wayland-module.html">Wayland Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="Syntax.html">Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Builtin-options.html">Built-in options</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Reference tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rewriter.html">Meson file rewriter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Style-guide.html">Style recommendations</a></li>
+
+
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="Reference.html" class="nav-link">Reference</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Reference tables</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="reference-tables">
+<h1>Reference tables<a class="headerlink" href="#reference-tables" title="Link to this heading">#</a></h1>
+<section id="compiler-ids">
+<h2>Compiler ids<a class="headerlink" href="#compiler-ids" title="Link to this heading">#</a></h2>
+<p>These are return values of the <code class="docutils literal notranslate"><span class="pre">get_id</span></code> (Compiler family) and
+<code class="docutils literal notranslate"><span class="pre">get_argument_syntax</span></code> (Argument syntax) method in a compiler object.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Compiler family</p></th>
+<th class="head"><p>Argument syntax</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>arm</p></td>
+<td><p>ARM compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>armclang</p></td>
+<td><p>ARMCLANG compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>ccomp</p></td>
+<td><p>The CompCert formally-verified C compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>ccrx</p></td>
+<td><p>Renesas RX Family C/C++ compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>clang</p></td>
+<td><p>The Clang compiler</p></td>
+<td><p>gcc</p></td>
+</tr>
+<tr class="row-odd"><td><p>clang-cl</p></td>
+<td><p>The Clang compiler (MSVC compatible driver)</p></td>
+<td><p>msvc</p></td>
+</tr>
+<tr class="row-even"><td><p>dmd</p></td>
+<td><p>D lang reference compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>emscripten</p></td>
+<td><p>Emscripten WASM compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>flang</p></td>
+<td><p>Classic Flang Fortran compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>g95</p></td>
+<td><p>The G95 Fortran compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>gcc</p></td>
+<td><p>The GNU Compiler Collection</p></td>
+<td><p>gcc</p></td>
+</tr>
+<tr class="row-odd"><td><p>intel</p></td>
+<td><p>Intel compiler (Linux and Mac)</p></td>
+<td><p>gcc</p></td>
+</tr>
+<tr class="row-even"><td><p>intel-cl</p></td>
+<td><p>Intel compiler (Windows)</p></td>
+<td><p>msvc</p></td>
+</tr>
+<tr class="row-odd"><td><p>intel-llvm</p></td>
+<td><p>Intel oneAPI LLVM-based compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>intel-llvm-cl</p></td>
+<td><p>Intel oneAPI LLVM-based compiler (Windows)</p></td>
+<td><p>msvc</p></td>
+</tr>
+<tr class="row-odd"><td><p>lcc</p></td>
+<td><p>Elbrus C/C++/Fortran Compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>llvm</p></td>
+<td><p>LLVM-based compiler (Swift, D)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>llvm-flang</p></td>
+<td><p>Flang Fortran compiler (LLVM-based)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>mono</p></td>
+<td><p>Xamarin C# compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>mwccarm</p></td>
+<td><p>Metrowerks C/C++ compiler for Embedded ARM</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>mwcceppc</p></td>
+<td><p>Metrowerks C/C++ compiler for Embedded PowerPC</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>msvc</p></td>
+<td><p>Microsoft Visual Studio</p></td>
+<td><p>msvc</p></td>
+</tr>
+<tr class="row-even"><td><p>nagfor</p></td>
+<td><p>The NAG Fortran compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>nvidia_hpc</p></td>
+<td><p>NVidia HPC SDK compilers</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>nvcc</p></td>
+<td><p>NVidia CUDA compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>open64</p></td>
+<td><p>The Open64 Fortran Compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>pathscale</p></td>
+<td><p>The Pathscale Fortran compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>pgi</p></td>
+<td><p>Portland PGI C/C++/Fortran compilers</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>rustc</p></td>
+<td><p>Rust compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>sun</p></td>
+<td><p>Sun Fortran compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>c2000</p></td>
+<td><p>Texas Instruments C/C++ Compiler (C2000)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>c6000</p></td>
+<td><p>Texas Instruments C/C++ Compiler (C6000)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>ti</p></td>
+<td><p>Texas Instruments C/C++ Compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>valac</p></td>
+<td><p>Vala compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>xc16</p></td>
+<td><p>Microchip XC16 C compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>xc32-gcc</p></td>
+<td><p>Microchip XC32 C/C++ compiler</p></td>
+<td><p>gcc</p></td>
+</tr>
+<tr class="row-even"><td><p>cython</p></td>
+<td><p>The Cython compiler</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>nasm</p></td>
+<td><p>The NASM compiler (Since 0.64.0)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>yasm</p></td>
+<td><p>The YASM compiler (Since 0.64.0)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>ml</p></td>
+<td><p>Microsoft Macro Assembler for x86 and x86_64 (Since 0.64.0)</p></td>
+<td><p>msvc</p></td>
+</tr>
+<tr class="row-even"><td><p>armasm</p></td>
+<td><p>Microsoft Macro Assembler for ARM and AARCH64 (Since 0.64.0)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>mwasmarm</p></td>
+<td><p>Metrowerks Assembler for Embedded ARM</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>mwasmeppc</p></td>
+<td><p>Metrowerks Assembler for Embedded PowerPC</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>tasking</p></td>
+<td><p>TASKING VX-toolset</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="linker-ids">
+<h2>Linker ids<a class="headerlink" href="#linker-ids" title="Link to this heading">#</a></h2>
+<p>These are return values of the <code class="docutils literal notranslate"><span class="pre">get_linker_id</span></code> method in a compiler object.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Linker family</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ld.bfd</p></td>
+<td><p>The GNU linker</p></td>
+</tr>
+<tr class="row-odd"><td><p>ld.eld</p></td>
+<td><p>Qualcomm’s embedded linker</p></td>
+</tr>
+<tr class="row-even"><td><p>ld.gold</p></td>
+<td><p>The GNU gold linker</p></td>
+</tr>
+<tr class="row-odd"><td><p>ld.lld</p></td>
+<td><p>The LLVM linker, with the GNU interface</p></td>
+</tr>
+<tr class="row-even"><td><p>ld.mold</p></td>
+<td><p>The fast MOLD linker</p></td>
+</tr>
+<tr class="row-odd"><td><p>ld.solaris</p></td>
+<td><p>Solaris and illumos</p></td>
+</tr>
+<tr class="row-even"><td><p>ld.wasm</p></td>
+<td><p>emscripten’s wasm-ld linker</p></td>
+</tr>
+<tr class="row-odd"><td><p>ld.zigcc</p></td>
+<td><p>The Zig linker (C/C++ frontend; GNU-like)</p></td>
+</tr>
+<tr class="row-even"><td><p>ld64</p></td>
+<td><p>Apple ld64</p></td>
+</tr>
+<tr class="row-odd"><td><p>ld64.lld</p></td>
+<td><p>The LLVM linker, with the ld64 interface</p></td>
+</tr>
+<tr class="row-even"><td><p>link</p></td>
+<td><p>MSVC linker</p></td>
+</tr>
+<tr class="row-odd"><td><p>lld-link</p></td>
+<td><p>The LLVM linker, with the MSVC interface</p></td>
+</tr>
+<tr class="row-even"><td><p>xilink</p></td>
+<td><p>Used with Intel-cl only, MSVC like</p></td>
+</tr>
+<tr class="row-odd"><td><p>optlink</p></td>
+<td><p>optlink (used with DMD)</p></td>
+</tr>
+<tr class="row-even"><td><p>rlink</p></td>
+<td><p>The Renesas linker, used with CCrx only</p></td>
+</tr>
+<tr class="row-odd"><td><p>xc16-ar</p></td>
+<td><p>The Microchip linker, used with XC16 only</p></td>
+</tr>
+<tr class="row-even"><td><p>ld.xc32</p></td>
+<td><p>The Microchip linker, used with XC32 only</p></td>
+</tr>
+<tr class="row-odd"><td><p>ar2000</p></td>
+<td><p>The Texas Instruments linker, used with C2000 only</p></td>
+</tr>
+<tr class="row-even"><td><p>ti-ar</p></td>
+<td><p>The Texas Instruments linker</p></td>
+</tr>
+<tr class="row-odd"><td><p>ar6000</p></td>
+<td><p>The Texas Instruments linker, used with C6000 only</p></td>
+</tr>
+<tr class="row-even"><td><p>armlink</p></td>
+<td><p>The ARM linker (arm and armclang compilers)</p></td>
+</tr>
+<tr class="row-odd"><td><p>pgi</p></td>
+<td><p>Portland/Nvidia PGI</p></td>
+</tr>
+<tr class="row-even"><td><p>nvlink</p></td>
+<td><p>Nvidia Linker used with cuda</p></td>
+</tr>
+<tr class="row-odd"><td><p>ccomp</p></td>
+<td><p>CompCert used as the linker driver</p></td>
+</tr>
+<tr class="row-even"><td><p>mwldarm</p></td>
+<td><p>The Metrowerks Linker with the ARM interface, used with mwccarm only</p></td>
+</tr>
+<tr class="row-odd"><td><p>mwldeppc</p></td>
+<td><p>The Metrowerks Linker with the PowerPC interface, used with mwcceppc only</p></td>
+</tr>
+<tr class="row-even"><td><p>tasking</p></td>
+<td><p>TASKING VX-toolset</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For languages that don’t have separate dynamic linkers such as C# and Java, the
+<code class="docutils literal notranslate"><span class="pre">get_linker_id</span></code> will return the compiler name.</p>
+</section>
+<section id="script-environment-variables">
+<h2>Script environment variables<a class="headerlink" href="#script-environment-variables" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MESONINTROSPECT</p></td>
+<td><p>Command to run to run the introspection command, may be of the form <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">/path/to/meson</span> <span class="pre">introspect</span></code>, user is responsible for splitting the path if necessary.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MESONREWRITE</p></td>
+<td><p>Command to run to run the rewriting command, only set when running <code class="docutils literal notranslate"><span class="pre">dist</span></code> scripts</p></td>
+</tr>
+<tr class="row-even"><td><p>MESON_BUILD_ROOT</p></td>
+<td><p>Absolute path to the build dir</p></td>
+</tr>
+<tr class="row-odd"><td><p>MESON_DIST_ROOT</p></td>
+<td><p>Points to the root of the staging directory, only set when running <code class="docutils literal notranslate"><span class="pre">dist</span></code> scripts</p></td>
+</tr>
+<tr class="row-even"><td><p>MESON_SOURCE_ROOT</p></td>
+<td><p>Absolute path to the source dir</p></td>
+</tr>
+<tr class="row-odd"><td><p>MESON_SUBDIR</p></td>
+<td><p>Current subdirectory, only set for <code class="docutils literal notranslate"><span class="pre">run_command</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="cpu-families">
+<h2>CPU families<a class="headerlink" href="#cpu-families" title="Link to this heading">#</a></h2>
+<p>These are returned by the <code class="docutils literal notranslate"><span class="pre">cpu_family</span></code> method of <code class="docutils literal notranslate"><span class="pre">build_machine</span></code>,
+<code class="docutils literal notranslate"><span class="pre">host_machine</span></code> and <code class="docutils literal notranslate"><span class="pre">target_machine</span></code>. For cross compilation they are
+set in the cross file.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>aarch64</p></td>
+<td><p>64 bit ARM processor</p></td>
+</tr>
+<tr class="row-odd"><td><p>alpha</p></td>
+<td><p>DEC Alpha processor</p></td>
+</tr>
+<tr class="row-even"><td><p>arc</p></td>
+<td><p>32 bit ARC processor</p></td>
+</tr>
+<tr class="row-odd"><td><p>arm</p></td>
+<td><p>32 bit ARM processor</p></td>
+</tr>
+<tr class="row-even"><td><p>avr</p></td>
+<td><p>Atmel AVR processor</p></td>
+</tr>
+<tr class="row-odd"><td><p>c2000</p></td>
+<td><p>32 bit C2000 processor</p></td>
+</tr>
+<tr class="row-even"><td><p>c6000</p></td>
+<td><p>32 bit C6000 processor</p></td>
+</tr>
+<tr class="row-odd"><td><p>csky</p></td>
+<td><p>32 bit CSky processor</p></td>
+</tr>
+<tr class="row-even"><td><p>dspic</p></td>
+<td><p>16 bit Microchip dsPIC</p></td>
+</tr>
+<tr class="row-odd"><td><p>e2k</p></td>
+<td><p>MCST Elbrus processor</p></td>
+</tr>
+<tr class="row-even"><td><p>ft32</p></td>
+<td><p>32 bit Bridgetek MCU</p></td>
+</tr>
+<tr class="row-odd"><td><p>ia64</p></td>
+<td><p>Itanium processor</p></td>
+</tr>
+<tr class="row-even"><td><p>loongarch64</p></td>
+<td><p>64 bit Loongson processor</p></td>
+</tr>
+<tr class="row-odd"><td><p>m68k</p></td>
+<td><p>Motorola 68000 processor</p></td>
+</tr>
+<tr class="row-even"><td><p>microblaze</p></td>
+<td><p>MicroBlaze processor</p></td>
+</tr>
+<tr class="row-odd"><td><p>mips</p></td>
+<td><p>32 bit MIPS processor</p></td>
+</tr>
+<tr class="row-even"><td><p>mips64</p></td>
+<td><p>64 bit MIPS processor</p></td>
+</tr>
+<tr class="row-odd"><td><p>msp430</p></td>
+<td><p>16 bit MSP430 processor</p></td>
+</tr>
+<tr class="row-even"><td><p>parisc</p></td>
+<td><p>HP PA-RISC processor</p></td>
+</tr>
+<tr class="row-odd"><td><p>pic24</p></td>
+<td><p>16 bit Microchip PIC24</p></td>
+</tr>
+<tr class="row-even"><td><p>pic32</p></td>
+<td><p>32 bit Microchip PIC32</p></td>
+</tr>
+<tr class="row-odd"><td><p>ppc</p></td>
+<td><p>32 bit PPC processors</p></td>
+</tr>
+<tr class="row-even"><td><p>ppc64</p></td>
+<td><p>64 bit PPC processors</p></td>
+</tr>
+<tr class="row-odd"><td><p>riscv32</p></td>
+<td><p>32 bit RISC-V Open ISA</p></td>
+</tr>
+<tr class="row-even"><td><p>riscv64</p></td>
+<td><p>64 bit RISC-V Open ISA</p></td>
+</tr>
+<tr class="row-odd"><td><p>rl78</p></td>
+<td><p>Renesas RL78</p></td>
+</tr>
+<tr class="row-even"><td><p>rx</p></td>
+<td><p>Renesas RX 32 bit MCU</p></td>
+</tr>
+<tr class="row-odd"><td><p>s390</p></td>
+<td><p>IBM zSystem s390</p></td>
+</tr>
+<tr class="row-even"><td><p>s390x</p></td>
+<td><p>IBM zSystem s390x</p></td>
+</tr>
+<tr class="row-odd"><td><p>sh4</p></td>
+<td><p>SuperH SH-4</p></td>
+</tr>
+<tr class="row-even"><td><p>sparc</p></td>
+<td><p>32 bit SPARC</p></td>
+</tr>
+<tr class="row-odd"><td><p>sparc64</p></td>
+<td><p>SPARC v9 processor</p></td>
+</tr>
+<tr class="row-even"><td><p>sw_64</p></td>
+<td><p>64 bit sunway processor</p></td>
+</tr>
+<tr class="row-odd"><td><p>wasm32</p></td>
+<td><p>32 bit Webassembly</p></td>
+</tr>
+<tr class="row-even"><td><p>wasm64</p></td>
+<td><p>64 bit Webassembly</p></td>
+</tr>
+<tr class="row-odd"><td><p>x86</p></td>
+<td><p>32 bit x86 processor</p></td>
+</tr>
+<tr class="row-even"><td><p>x86_64</p></td>
+<td><p>64 bit x86 processor</p></td>
+</tr>
+<tr class="row-odd"><td><p>tricore</p></td>
+<td><p>Tricore 32 bit processor</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Any cpu family not listed in the above list is not guaranteed to
+remain stable in future releases.</p>
+<p>Those porting from autotools should note that Meson does not add
+endianness to the name of the cpu_family. For example, autotools
+will call little endian PPC64 “ppc64le”, Meson will not, you must
+also check the <code class="docutils literal notranslate"><span class="pre">.endian()</span></code> value of the machine for this information.</p>
+</section>
+<section id="operating-system-names">
+<h2>Operating system names<a class="headerlink" href="#operating-system-names" title="Link to this heading">#</a></h2>
+<p>These are provided by the <code class="docutils literal notranslate"><span class="pre">.system()</span></code> method call.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>android</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>cygwin</p></td>
+<td><p>Cygwin or MSYS2 environment on Windows</p></td>
+</tr>
+<tr class="row-even"><td><p>darwin</p></td>
+<td><p>Either OSX or iOS</p></td>
+</tr>
+<tr class="row-odd"><td><p>dragonfly</p></td>
+<td><p>DragonFly BSD</p></td>
+</tr>
+<tr class="row-even"><td><p>emscripten</p></td>
+<td><p>Emscripten’s JavaScript environment</p></td>
+</tr>
+<tr class="row-odd"><td><p>freebsd</p></td>
+<td><p>FreeBSD and its derivatives</p></td>
+</tr>
+<tr class="row-even"><td><p>gnu</p></td>
+<td><p>GNU Hurd</p></td>
+</tr>
+<tr class="row-odd"><td><p>haiku</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>linux</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>netbsd</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>openbsd</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>windows</p></td>
+<td><p>Native Windows (not Cygwin or MSYS2)</p></td>
+</tr>
+<tr class="row-even"><td><p>sunos</p></td>
+<td><p>illumos and Solaris</p></td>
+</tr>
+<tr class="row-odd"><td><p>os/2</p></td>
+<td><p>OS/2</p></td>
+</tr>
+<tr class="row-even"><td><p>fuchsia</p></td>
+<td><p>Google’s Fuchsia</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Any string not listed above is not guaranteed to remain stable in
+future releases.</p>
+</section>
+<section id="kernel-names-since-1-2-0">
+<h2>Kernel names (since 1.2.0)<a class="headerlink" href="#kernel-names-since-1-2-0" title="Link to this heading">#</a></h2>
+<p>Native names as returned by the <code class="docutils literal notranslate"><span class="pre">.kernel()</span></code> method.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>linux</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>freebsd</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>openbsd</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>netbsd</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>gnu</p></td>
+<td><p>GNU Hurd</p></td>
+</tr>
+<tr class="row-odd"><td><p>nt</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>xnu</p></td>
+<td><p>Kernel of various Apple OSes</p></td>
+</tr>
+<tr class="row-odd"><td><p>illumos</p></td>
+<td><p>Kernel derived from OpenSolaris by community efforts</p></td>
+</tr>
+<tr class="row-even"><td><p>solaris</p></td>
+<td><p>Kernel derived from OpenSolaris by Oracle</p></td>
+</tr>
+<tr class="row-odd"><td><p>dragonfly</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>haiku</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>fuchsia</p></td>
+<td><p>Google’s Fuchsia</p></td>
+</tr>
+<tr class="row-even"><td><p>none</p></td>
+<td><p>For e.g. bare metal embedded</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="subsystem-names-since-1-2-0">
+<h2>Subsystem names (since 1.2.0)<a class="headerlink" href="#subsystem-names-since-1-2-0" title="Link to this heading">#</a></h2>
+<p>A more specific description of the system in question. Most values are
+meant to be used in cross files only, as those platforms can not run
+Meson natively.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>macos</p></td>
+<td><p>Apple macOS (formerly OSX)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ios</p></td>
+<td><p>Apple iOS</p></td>
+</tr>
+<tr class="row-even"><td><p>ios-simulator</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>tvos</p></td>
+<td><p>Apple tvOS</p></td>
+</tr>
+<tr class="row-even"><td><p>tvos-simulator</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>visionos</p></td>
+<td><p>Apple visionOS</p></td>
+</tr>
+<tr class="row-even"><td><p>visionos-simulator</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>watchos</p></td>
+<td><p>Apple watchOS</p></td>
+</tr>
+<tr class="row-even"><td><p>watchos-simulator</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="language-arguments-parameter-names">
+<h2>Language arguments parameter names<a class="headerlink" href="#language-arguments-parameter-names" title="Link to this heading">#</a></h2>
+<p>These are the parameter names for passing language specific arguments
+to your build target.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Language</p></th>
+<th class="head"><p>compiler name</p></th>
+<th class="head"><p>linker name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>C</p></td>
+<td><p>c_args</p></td>
+<td><p>c_link_args</p></td>
+</tr>
+<tr class="row-odd"><td><p>C++</p></td>
+<td><p>cpp_args</p></td>
+<td><p>cpp_link_args</p></td>
+</tr>
+<tr class="row-even"><td><p>C#</p></td>
+<td><p>cs_args</p></td>
+<td><p>cs_link_args</p></td>
+</tr>
+<tr class="row-odd"><td><p>CUDA</p></td>
+<td><p>cuda_args</p></td>
+<td><p>cuda_link_args</p></td>
+</tr>
+<tr class="row-even"><td><p>D</p></td>
+<td><p>d_args</p></td>
+<td><p>d_link_args</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fortran</p></td>
+<td><p>fortran_args</p></td>
+<td><p>fortran_link_args</p></td>
+</tr>
+<tr class="row-even"><td><p>Java</p></td>
+<td><p>java_args</p></td>
+<td><p>java_link_args</p></td>
+</tr>
+<tr class="row-odd"><td><p>Objective C</p></td>
+<td><p>objc_args</p></td>
+<td><p>objc_link_args</p></td>
+</tr>
+<tr class="row-even"><td><p>Objective C++</p></td>
+<td><p>objcpp_args</p></td>
+<td><p>objcpp_link_args</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rust</p></td>
+<td><p>rust_args</p></td>
+<td><p>rust_link_args</p></td>
+</tr>
+<tr class="row-even"><td><p>Vala</p></td>
+<td><p>vala_args</p></td>
+<td><p>vala_link_args</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cython</p></td>
+<td><p>cython_args</p></td>
+<td><p>cython_link_args</p></td>
+</tr>
+<tr class="row-even"><td><p>NASM</p></td>
+<td><p>nasm_args</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>MASM</p></td>
+<td><p>masm_args</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>Linear ASM</p></td>
+<td><p>linearasm_args</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>All these <code class="docutils literal notranslate"><span class="pre">&lt;lang&gt;_*</span></code> options are specified per machine. See in
+<a class="reference internal" href="Builtin-options.html#Specifying-options-per-machine"><span class="std std-ref">specifying options per
+machine</span></a> for on how
+to do this in cross builds.</p>
+</section>
+<section id="compiler-and-linker-flag-environment-variables">
+<h2>Compiler and linker flag environment variables<a class="headerlink" href="#compiler-and-linker-flag-environment-variables" title="Link to this heading">#</a></h2>
+<p>These environment variables will be used to modify the compiler and
+linker flags.</p>
+<p>It is recommended that you <strong>do not use these</strong>. They are provided
+purely to for backwards compatibility with other build systems. There
+are many caveats to their use, especially when rebuilding the project.
+It is <strong>highly</strong> recommended that you use <a class="reference internal" href="#language-arguments-parameter-names">the command line
+arguments</a> instead.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CFLAGS</p></td>
+<td><p>Flags for the C compiler</p></td>
+</tr>
+<tr class="row-odd"><td><p>CXXFLAGS</p></td>
+<td><p>Flags for the C++ compiler</p></td>
+</tr>
+<tr class="row-even"><td><p>CUFLAGS</p></td>
+<td><p>Flags for the CUDA compiler</p></td>
+</tr>
+<tr class="row-odd"><td><p>OBJCFLAGS</p></td>
+<td><p>Flags for the Objective C compiler</p></td>
+</tr>
+<tr class="row-even"><td><p>FFLAGS</p></td>
+<td><p>Flags for the Fortran compiler</p></td>
+</tr>
+<tr class="row-odd"><td><p>DFLAGS</p></td>
+<td><p>Flags for the D compiler</p></td>
+</tr>
+<tr class="row-even"><td><p>VALAFLAGS</p></td>
+<td><p>Flags for the Vala compiler</p></td>
+</tr>
+<tr class="row-odd"><td><p>RUSTFLAGS</p></td>
+<td><p>Flags for the Rust compiler</p></td>
+</tr>
+<tr class="row-even"><td><p>CYTHONFLAGS</p></td>
+<td><p>Flags for the Cython compiler</p></td>
+</tr>
+<tr class="row-odd"><td><p>LDFLAGS</p></td>
+<td><p>The linker flags, used for all languages</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>N.B. these settings are specified per machine, and so the environment
+variables actually come in pairs. See the <a class="reference internal" href="#Environment-variables-per-machine"><span class="xref myst">environment variables per
+machine</span></a> section for details.</p>
+</section>
+<section id="function-attributes">
+<h2>Function Attributes<a class="headerlink" href="#function-attributes" title="Link to this heading">#</a></h2>
+<p>These are the parameters names that are supported using
+<code class="docutils literal notranslate"><span class="pre">compiler.has_function_attribute()</span></code> or
+<code class="docutils literal notranslate"><span class="pre">compiler.get_supported_function_attributes()</span></code></p>
+<section id="gcc-attribute">
+<h3>GCC <code class="docutils literal notranslate"><span class="pre">__attribute__</span></code><a class="headerlink" href="#gcc-attribute" title="Link to this heading">#</a></h3>
+<p>These values are supported using the GCC style <code class="docutils literal notranslate"><span class="pre">__attribute__</span></code> annotations,
+which are supported by GCC, Clang, and other compilers.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>alias</p></td>
+</tr>
+<tr class="row-odd"><td><p>aligned</p></td>
+</tr>
+<tr class="row-even"><td><p>alloc_size</p></td>
+</tr>
+<tr class="row-odd"><td><p>always_inline</p></td>
+</tr>
+<tr class="row-even"><td><p>artificial</p></td>
+</tr>
+<tr class="row-odd"><td><p>cold</p></td>
+</tr>
+<tr class="row-even"><td><p>const</p></td>
+</tr>
+<tr class="row-odd"><td><p>constructor</p></td>
+</tr>
+<tr class="row-even"><td><p>constructor_priority</p></td>
+</tr>
+<tr class="row-odd"><td><p>counted_by⁸</p></td>
+</tr>
+<tr class="row-even"><td><p>deprecated</p></td>
+</tr>
+<tr class="row-odd"><td><p>destructor</p></td>
+</tr>
+<tr class="row-even"><td><p>error</p></td>
+</tr>
+<tr class="row-odd"><td><p>externally_visible</p></td>
+</tr>
+<tr class="row-even"><td><p>fallthrough</p></td>
+</tr>
+<tr class="row-odd"><td><p>flatten</p></td>
+</tr>
+<tr class="row-even"><td><p>format</p></td>
+</tr>
+<tr class="row-odd"><td><p>format_arg</p></td>
+</tr>
+<tr class="row-even"><td><p>force_align_arg_pointer³</p></td>
+</tr>
+<tr class="row-odd"><td><p>gnu_inline</p></td>
+</tr>
+<tr class="row-even"><td><p>hot</p></td>
+</tr>
+<tr class="row-odd"><td><p>ifunc</p></td>
+</tr>
+<tr class="row-even"><td><p>malloc</p></td>
+</tr>
+<tr class="row-odd"><td><p>noclone</p></td>
+</tr>
+<tr class="row-even"><td><p>noinline</p></td>
+</tr>
+<tr class="row-odd"><td><p>nonnull</p></td>
+</tr>
+<tr class="row-even"><td><p>noreturn</p></td>
+</tr>
+<tr class="row-odd"><td><p>nothrow</p></td>
+</tr>
+<tr class="row-even"><td><p>null_terminated_string_arg⁷</p></td>
+</tr>
+<tr class="row-odd"><td><p>optimize</p></td>
+</tr>
+<tr class="row-even"><td><p>packed</p></td>
+</tr>
+<tr class="row-odd"><td><p>pure</p></td>
+</tr>
+<tr class="row-even"><td><p>retain⁴</p></td>
+</tr>
+<tr class="row-odd"><td><p>returns_nonnull</p></td>
+</tr>
+<tr class="row-even"><td><p>section⁵</p></td>
+</tr>
+<tr class="row-odd"><td><p>sentinel⁵</p></td>
+</tr>
+<tr class="row-even"><td><p>unused</p></td>
+</tr>
+<tr class="row-odd"><td><p>used</p></td>
+</tr>
+<tr class="row-even"><td><p>vector_size⁶</p></td>
+</tr>
+<tr class="row-odd"><td><p>visibility*</p></td>
+</tr>
+<tr class="row-even"><td><p>visibility:default†</p></td>
+</tr>
+<tr class="row-odd"><td><p>visibility:hidden†</p></td>
+</tr>
+<tr class="row-even"><td><p>visibility:internal†</p></td>
+</tr>
+<tr class="row-odd"><td><p>visibility:protected†</p></td>
+</tr>
+<tr class="row-even"><td><p>warning</p></td>
+</tr>
+<tr class="row-odd"><td><p>warn_unused_result</p></td>
+</tr>
+<tr class="row-even"><td><p>weak</p></td>
+</tr>
+<tr class="row-odd"><td><p>weakref</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>* <em>Changed in 0.52.0</em> the “visibility” target no longer includes
+“protected”, which is not present in Apple’s clang.</p>
+<p>† <em>New in 0.52.0</em> These split visibility attributes are preferred to the plain
+“visibility” as they provide narrower checks.</p>
+<p>³ <em>New in 0.55.0</em></p>
+<p>⁴ <em>New in 0.62.0</em></p>
+<p>⁵ <em>New in 0.63.0</em></p>
+<p>⁶ <em>New in 1.1.0</em></p>
+<p>⁷ <em>New in 1.5.0</em></p>
+<p>⁸ <em>New in 1.10.0</em></p>
+</section>
+<section id="msvc-declspec">
+<h3>MSVC __declspec<a class="headerlink" href="#msvc-declspec" title="Link to this heading">#</a></h3>
+<p>These values are supported using the MSVC style <code class="docutils literal notranslate"><span class="pre">__declspec</span></code> annotation,
+which are supported by MSVC, GCC, Clang, and other compilers.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>dllexport</p></td>
+</tr>
+<tr class="row-odd"><td><p>dllimport</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="dependency-lookup-methods">
+<h2>Dependency lookup methods<a class="headerlink" href="#dependency-lookup-methods" title="Link to this heading">#</a></h2>
+<p>These are the values that can be passed to <code class="docutils literal notranslate"><span class="pre">dependency</span></code> function’s
+<code class="docutils literal notranslate"><span class="pre">method</span></code> keyword argument.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>auto</p></td>
+<td><p>Automatic method selection</p></td>
+</tr>
+<tr class="row-odd"><td><p>pkg-config</p></td>
+<td><p>Use Pkg-Config</p></td>
+</tr>
+<tr class="row-even"><td><p>cmake</p></td>
+<td><p>Look up as a CMake module</p></td>
+</tr>
+<tr class="row-odd"><td><p>config-tool</p></td>
+<td><p>Use a custom dep tool such as <code class="docutils literal notranslate"><span class="pre">cups-config</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>system</p></td>
+<td><p>System provided (e.g. OpenGL)</p></td>
+</tr>
+<tr class="row-odd"><td><p>extraframework</p></td>
+<td><p>A macOS/iOS framework</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="compiler-and-linker-selection-variables">
+<h2>Compiler and Linker selection variables<a class="headerlink" href="#compiler-and-linker-selection-variables" title="Link to this heading">#</a></h2>
+<p>N.B. these settings are specified per machine, and so the environment
+variables actually come in pairs. See the <a class="reference internal" href="#Environment-variables-per-machine"><span class="xref myst">environment variables per
+machine</span></a> section for details.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Language</p></th>
+<th class="head"><p>Compiler</p></th>
+<th class="head"><p>Linker</p></th>
+<th class="head"><p>Note</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>C</p></td>
+<td><p>CC</p></td>
+<td><p>CC_LD</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>C++</p></td>
+<td><p>CXX</p></td>
+<td><p>CXX_LD</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>D</p></td>
+<td><p>DC</p></td>
+<td><p>DC_LD</p></td>
+<td><p>Before 0.54 D_LD*</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fortran</p></td>
+<td><p>FC</p></td>
+<td><p>FC_LD</p></td>
+<td><p>Before 0.54 F_LD*</p></td>
+</tr>
+<tr class="row-even"><td><p>Objective-C</p></td>
+<td><p>OBJC</p></td>
+<td><p>OBJC_LD</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Objective-C++</p></td>
+<td><p>OBJCXX</p></td>
+<td><p>OBJCXX_LD</p></td>
+<td><p>Before 0.54 OBJCPP_LD*</p></td>
+</tr>
+<tr class="row-even"><td><p>Rust</p></td>
+<td><p>RUSTC</p></td>
+<td><p>RUSTC_LD</p></td>
+<td><p>Before 0.54 RUST_LD*</p></td>
+</tr>
+<tr class="row-odd"><td><p>Vala</p></td>
+<td><p>VALAC</p></td>
+<td><p></p></td>
+<td><p>Use CC_LD. Vala transpiles to C</p></td>
+</tr>
+<tr class="row-even"><td><p>C#</p></td>
+<td><p>CSC</p></td>
+<td><p>CSC</p></td>
+<td><p>The linker is the compiler</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cython</p></td>
+<td><p>CYTHON</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>nasm</p></td>
+<td><p>NASM</p></td>
+<td><p></p></td>
+<td><p>Uses the C linker</p></td>
+</tr>
+<tr class="row-odd"><td><p>archiver</p></td>
+<td><p></p></td>
+<td><p>AR</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>*The old environment variables are still supported, but are deprecated
+and will be removed in a future version of Meson.</p>
+<p><em>changed in 1.3.0</em> Paths with spaces were split unconditionally to extract
+components such as the <a class="reference internal" href="Feature-autodetection.html#ccache"><span class="std std-ref">path to Ccache</span></a>,
+intrinsic compiler flags like <code class="docutils literal notranslate"><span class="pre">-m32</span></code> or <code class="docutils literal notranslate"><span class="pre">--target</span></code>, etc. This broke passing
+a hardcoded compiler path to CMake subprojects. To work around this, paths
+must be wrapped with double quotes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">CC</span><span class="o">=</span><span class="s1">&#39;&quot;C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.34.31933/bin/Hostx64/x64/cl.exe&quot;&#39;</span>
+</pre></div>
+</div>
+<p>You can also set the values through <a class="reference internal" href="Machine-files.html#binaries"><span class="std std-ref">machine files</span></a>.</p>
+<p><em>New in 1.3.0</em> Paths that point to an existing executable no longer need
+wrapping:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">CC</span><span class="o">=</span><span class="s1">&#39;C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.34.31933/bin/Hostx64/x64/cl.exe&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="environment-variables-per-machine">
+<h2>Environment variables per machine<a class="headerlink" href="#environment-variables-per-machine" title="Link to this heading">#</a></h2>
+<p>Since <em>0.54.0</em>, Following Autotool and other legacy build systems,
+environment variables that affect machine-specific settings come in
+pairs: for every bare environment variable <code class="docutils literal notranslate"><span class="pre">FOO</span></code>, there is a suffixed
+<code class="docutils literal notranslate"><span class="pre">FOO_FOR_BUILD</span></code>, where <code class="docutils literal notranslate"><span class="pre">FOO</span></code> just affects the host machine
+configuration, while <code class="docutils literal notranslate"><span class="pre">FOO_FOR_BUILD</span></code> just affects the build machine
+configuration. For example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PKG_CONFIG_PATH_FOR_BUILD</span></code> controls the paths pkg-config will search for
+just <code class="docutils literal notranslate"><span class="pre">native:</span> <span class="pre">true</span></code> dependencies (build machine).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PKG_CONFIG_PATH</span></code> controls the paths pkg-config will search for just
+<code class="docutils literal notranslate"><span class="pre">native:</span> <span class="pre">false</span></code> dependencies (host machine).</p></li>
+</ul>
+<p>This mirrors the <code class="docutils literal notranslate"><span class="pre">build.</span></code> prefix used for (built-in) Meson options,
+which has the same meaning.</p>
+<p>This is useful for cross builds. In the native builds, build = host,
+and the unsuffixed environment variables alone will suffice.</p>
+<p>Prior to <em>0.54.0</em>, there was no <code class="docutils literal notranslate"><span class="pre">_FOR_BUILD</span></code>-suffixed variables, and
+most environment variables only effected native machine
+configurations, though this wasn’t consistent (e.g. <code class="docutils literal notranslate"><span class="pre">PKG_CONFIG_PATH</span></code>
+still affected cross builds).</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Builtin-options.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Built-in options</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Rewriter.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Meson file rewriter</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compiler-ids">Compiler ids</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linker-ids">Linker ids</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#script-environment-variables">Script environment variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cpu-families">CPU families</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-system-names">Operating system names</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-names-since-1-2-0">Kernel names (since 1.2.0)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subsystem-names-since-1-2-0">Subsystem names (since 1.2.0)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#language-arguments-parameter-names">Language arguments parameter names</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compiler-and-linker-flag-environment-variables">Compiler and linker flag environment variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-attributes">Function Attributes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gcc-attribute">GCC <code class="docutils literal notranslate"><span class="pre">__attribute__</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#msvc-declspec">MSVC __declspec</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependency-lookup-methods">Dependency lookup methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compiler-and-linker-selection-variables">Compiler and Linker selection variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-variables-per-machine">Environment variables per machine</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/mesonbuild/meson/edit/master/docs/markdown/Reference-tables.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">Website licensing information are available on the <a href="legal.html">Legal</a> page.</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

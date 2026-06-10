@@ -1,0 +1,268 @@
+## declare_dependency()
+
+This function returns a [[@dep]] object that
+behaves like the return value of [[dependency]] but is
+internal to the current build. One use case for this is in
+subprojects. This allows a subproject to easily specify how it should
+be used. This makes it interchangeable with the same dependency that
+is provided externally by the system. Another common use case is to
+declare project targets as dependencies so they may be used as
+dependencies of other build targets.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># This function returns a [[@dep]] object that
+[[#@dep]] declare_dependency(
+  <a href="#declare_dependency_compile_args"><b>compile_args</b></a>        : [[#@array]][[[#@str]]]                                                                                                                                                                                                                         # Compile arguments to use
+  <a href="#declare_dependency_d_import_dirs"><b>d_import_dirs</b></a>       : [[#@array]][[[#@inc]] | [[#@str]]]                                                                                                                                                                                                                   # the directories to add to the string search path (i
+  <a href="#declare_dependency_d_module_versions"><b>d_module_versions</b></a>   : [[#@str]] | [[#@int]] | [[#@array]][[[#@str]] | [[#@int]]]                                                                                                                                                                                                       # The [D version identifiers](https://dlang
+  <a href="#declare_dependency_dependencies"><b>dependencies</b></a>        : [[#@array]][[[#@dep]]]                                                                                                                                                                                                                         # Other dependencies needed to use this dependency
+  <a href="#declare_dependency_extra_files"><b>extra_files</b></a>         : [[#@array]][[[#@str]] | [[#@file]]]                                                                                                                                                                                                                  # extra files to add to targets
+  <a href="#declare_dependency_include_directories"><b>include_directories</b></a> : [[#@array]][[[#@inc]] | [[#@str]]]                                                                                                                                                                                                                   # the directories to add to header search path,
+  <a href="#declare_dependency_link_args"><b>link_args</b></a>           : [[#@array]][[[#@str]]]                                                                                                                                                                                                                         # Link arguments to use
+  <a href="#declare_dependency_link_whole"><b>link_whole</b></a>          : [[#@array]][[[#@lib]]]                                                                                                                                                                                                                         # Libraries to link fully, same as [[executable]].
+  <a href="#declare_dependency_link_with"><b>link_with</b></a>           : [[#@array]][[[#@lib]]]                                                                                                                                                                                                                         # Libraries to link against
+  <a href="#declare_dependency_objects"><b>objects</b></a>             : [[#@array]][[[#@extracted_obj]]]                                                                                                                                                                                                               # an array of object files, to be linked directly into the targets that use the
+  <a href="#declare_dependency_sources"><b>sources</b></a>             : [[#@array]][[[#@str]] | [[#@file]] | [[#@custom_tgt]] | [[#@custom_idx]] | [[#@generated_list]]]                                                                                                                                                                       # sources to add to targets
+  <a href="#declare_dependency_variables"><b>variables</b></a>           : [[#@dict]][[[#@str]]] | [[#@array]][[[#@str]]]                                                                                                                                                                                                             # a dictionary of arbitrary strings,
+  <a href="#declare_dependency_version"><b>version</b></a>             : [[#@str]]                                                                                                                                                                                                                                # the version of this dependency,
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+
+
+  The function `declare_dependency()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="declare_dependency_compile_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">compile_args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Compile arguments to use.
+  </td>
+      </tr>
+      <tr id="declare_dependency_d_import_dirs">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">d_import_dirs</code>
+  <br>{meson:since}`0.62.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  the directories to add to the string search path (i.e. `-J` switch for DMD).
+Must be [[@inc]] objects or plain strings.
+
+  </td>
+      </tr>
+      <tr id="declare_dependency_d_module_versions">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">d_module_versions</code>
+  <br>{meson:since}`0.62.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span>]
+  </td>
+        <td>
+  
+  The [D version identifiers](https://dlang.org/spec/version.html#version) to add
+during the compilation of D source files.
+
+  </td>
+      </tr>
+      <tr id="declare_dependency_dependencies">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dependencies</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@dep]]</span>]
+  </td>
+        <td>
+  
+  Other dependencies needed to use this dependency.
+  </td>
+      </tr>
+      <tr id="declare_dependency_extra_files">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">extra_files</code>
+  <br>{meson:since}`1.2.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span>]
+  </td>
+        <td>
+  
+  extra files to add to targets.
+mostly used for IDE integration.
+
+  </td>
+      </tr>
+      <tr id="declare_dependency_include_directories">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">include_directories</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  the directories to add to header search path,
+must be [[@inc]] objects or *(since 0.50.0)* plain strings.
+
+  </td>
+      </tr>
+      <tr id="declare_dependency_link_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">link_args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Link arguments to use.
+  </td>
+      </tr>
+      <tr id="declare_dependency_link_whole">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">link_whole</code>
+  <br>{meson:since}`0.46.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@lib]]</span>]
+  </td>
+        <td>
+  
+  Libraries to link fully, same as [[executable]].
+  </td>
+      </tr>
+      <tr id="declare_dependency_link_with">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">link_with</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@lib]]</span>]
+  </td>
+        <td>
+  
+  Libraries to link against.
+  </td>
+      </tr>
+      <tr id="declare_dependency_objects">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">objects</code>
+  <br>{meson:since}`1.1.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@extracted_obj]]</span>]
+  </td>
+        <td>
+  
+  an array of object files, to be linked directly into the targets that use the
+dependency.
+
+  </td>
+      </tr>
+      <tr id="declare_dependency_sources">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">sources</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@custom_tgt]]</span> | <span class="text-nowrap">[[@custom_idx]]</span> | <span class="text-nowrap">[[@generated_list]]</span>]
+  </td>
+        <td>
+  
+  sources to add to targets
+(or generated header files
+that should be built before sources including them are built)
+
+  </td>
+      </tr>
+      <tr id="declare_dependency_variables">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">variables</code>
+  <br>{meson:since}`0.54.0`
+  </td>
+        <td class="text-center">
+  
+  [[@dict]][<span class="text-nowrap">[[@str]]</span>] | [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  a dictionary of arbitrary strings,
+this is meant to be used
+in subprojects where special variables would be provided via cmake or
+pkg-config. *since 0.56.0* it can also be an array of `'key=value'` strings.
+
+  </td>
+      </tr>
+      <tr id="declare_dependency_version">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">version</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  the version of this dependency,
+such as `1.2.3`. Defaults to the project version.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>

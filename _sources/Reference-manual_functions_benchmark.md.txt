@@ -1,0 +1,339 @@
+## benchmark()
+
+Creates a benchmark item that will be run when the benchmark target is
+run. The behavior of this function is identical to [[test]]
+except for:
+
+* benchmark() has no `is_parallel` keyword because benchmarks are not run in parallel
+* benchmark() does not automatically add the `MALLOC_PERTURB_` environment variable
+
+Defined benchmarks can be run in a backend-agnostic way by calling
+`meson test --benchmark` inside the build dir, or by using backend-specific
+commands, such as `ninja benchmark` or `msbuild RUN_TESTS.vcxproj`.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Creates a benchmark item that will be run when the benchmark target is
+[[#@void]] benchmark(
+  [[#@str]]                                                                                                                                                                                                                                                        <a href="#benchmark_name"><b>name</b></a>,           # The *unique* test id
+  [[#@exe]] | [[#@jar]] | [[#@program]] | [[#@file]] | [[#@custom_tgt]] | [[#@custom_idx]]                                                                                                                                                                                                       <a href="#benchmark_executable"><b>executable</b></a>,     # The program to execute
+
+  # Keyword arguments:
+  <a href="#benchmark_args"><b>args</b></a>              : [[#@array]][[[#@str]] | [[#@file]] | [[#@tgt]] | [[#@program]]]                                                                                                                                                         # Arguments to pass to the executable
+  <a href="#benchmark_depends"><b>depends</b></a>           : [[#@array]][[[#@build_tgt]] | [[#@custom_tgt]] | [[#@custom_idx]] | [[#@program]]]                                                                                                                                      # specifies that this test depends on the specified
+  <a href="#benchmark_env"><b>env</b></a>               : [[#@env]] | [[#@array]][[[#@str]]] | [[#@dict]][[[#@str]]]                                                                                                                                                              # environment variables to set, such as `['NAME1=value1',
+  <a href="#benchmark_expected_exitcode"><b>expected_exitcode</b></a> : [[#@int]]                                                                                                                                                                                       # the test is considered passed if the
+  <a href="#benchmark_expected_fail"><b>expected_fail</b></a>     : [[#@bool]]                                                                                                                                                                                      # when true the test is considered passed if the
+  <a href="#benchmark_priority"><b>priority</b></a>          : [[#@int]]                                                                                                                                                                                       # specifies the priority of a test
+  <a href="#benchmark_protocol"><b>protocol</b></a>          : [[#@str]]                                                                                                                                                                                       # specifies how the test results are parsed and can
+  <a href="#benchmark_should_fail"><b>should_fail</b></a>       : [[#@bool]]                                                                                                                                                                                      # when true the test is considered passed if the
+  <a href="#benchmark_suite"><b>suite</b></a>             : [[#@str]] | [[#@array]][[[#@str]]]                                                                                                                                                                          # `'label'` (or array of labels `['label1', 'label2']`)
+  <a href="#benchmark_timeout"><b>timeout</b></a>           : [[#@int]]                                                                                                                                                                                       # the amount of seconds the test is allowed to run, a test
+  <a href="#benchmark_verbose"><b>verbose</b></a>           : [[#@bool]]                                                                                                                                                                                      # if true, forces the test results to be logged as if `--verbose` was passed
+  <a href="#benchmark_workdir"><b>workdir</b></a>           : [[#@str]]                                                                                                                                                                                       # absolute path that will be used as the working directory
+)</code></pre>
+
+
+```{note}
+Prior to 0.52.0 benchmark would warn that `depends` and `priority` were unsupported, this is incorrect.
+```
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+  The function `benchmark()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="benchmark_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The *unique* test id
+  </td>
+      </tr>
+      <tr id="benchmark_executable">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">executable</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@exe]]</span> | <span class="text-nowrap">[[@jar]]</span> | <span class="text-nowrap">[[@program]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@custom_tgt]]</span> | <span class="text-nowrap">[[@custom_idx]]</span>
+  </td>
+        <td>
+  
+  The program to execute. *(Since 1.4.0)* A CustomTarget is also accepted.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `benchmark()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="benchmark_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@tgt]]</span> | <span class="text-nowrap">[[@program]]</span>]
+  </td>
+        <td>
+  
+  Arguments to pass to the executable
+  </td>
+      </tr>
+      <tr id="benchmark_depends">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">depends</code>
+  <br>{meson:since}`0.46.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@build_tgt]]</span> | <span class="text-nowrap">[[@custom_tgt]]</span> | <span class="text-nowrap">[[@custom_idx]]</span> | <span class="text-nowrap">[[@program]]</span>]
+  </td>
+        <td>
+  
+  specifies that this test depends on the specified
+target(s), even though it does not take any of them as a command
+line argument. This is meant for cases where test finds those
+targets internally, e.g. plugins or globbing. Those targets are built
+before test is executed even if they have `build_by_default : false`.
+`program` is supported *since 1.11.2*.
+
+  </td>
+      </tr>
+      <tr id="benchmark_env">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">env</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@env]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>] | [[@dict]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  environment variables to set, such as `['NAME1=value1',
+'NAME2=value2']`, or an [[@env]] object which allows more sophisticated
+environment juggling. *(Since 0.52.0)* A dictionary is also accepted.
+
+  </td>
+      </tr>
+      <tr id="benchmark_expected_exitcode">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">expected_exitcode</code>
+  <br>{meson:since}`1.11.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@int]]</span>
+  <br><code class="language-meson text-nowrap">default = 0</code>
+  </td>
+        <td>
+  
+  the test is considered passed if the
+executable returns the specified returncode,
+only has effect when protocol is set to exitcode
+
+  </td>
+      </tr>
+      <tr id="benchmark_expected_fail">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">expected_fail</code>
+  <br>{meson:since}`1.11.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  when true the test is considered passed if the
+executable returns a non-zero return value (i.e. reports an error)
+
+  </td>
+      </tr>
+      <tr id="benchmark_priority">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">priority</code>
+  <br>{meson:since}`0.52.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@int]]</span>
+  <br><code class="language-meson text-nowrap">default = 0</code>
+  </td>
+        <td>
+  
+  specifies the priority of a test. Tests with a
+higher priority are *started* before tests with a lower priority.
+The starting order of tests with identical priorities is
+implementation-defined. The default priority is 0, negative numbers are
+permitted.
+
+  </td>
+      </tr>
+      <tr id="benchmark_protocol">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">protocol</code>
+  <br>{meson:since}`0.50.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  <br><code class="language-meson text-nowrap">default = 'exitcode'</code>
+  </td>
+        <td>
+  
+  specifies how the test results are parsed and can
+be one of `exitcode`, `tap`, or `gtest`. For more information about test
+harness protocol read [Unit Tests](Unit-tests.md). The following values are
+accepted:
+
+- `exitcode`: the executable's exit code is used by the test harness
+  to record the outcome of the test).
+- `tap`: [Test Anything Protocol](https://www.testanything.org/).
+- `gtest` *(since 0.55.0)*: for Google Tests.
+- `rust` *(since 0.56.0)*: for native rust tests
+
+  </td>
+      </tr>
+      <tr id="benchmark_should_fail">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">should_fail</code>
+  <br>{meson:deprecated}`1.11.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  when true the test is considered passed if the
+executable returns a non-zero return value (i.e. reports an error)
+
+  </td>
+      </tr>
+      <tr id="benchmark_suite">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">suite</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  `'label'` (or array of labels `['label1', 'label2']`)
+attached to this test. The suite name is qualified by a (sub)project
+name resulting in `(sub)project_name:label`. In the case of an array
+of strings, the suite names will be `(sub)project_name:label1`,
+`(sub)project_name:label2`, etc.
+
+  </td>
+      </tr>
+      <tr id="benchmark_timeout">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">timeout</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@int]]</span>
+  <br><code class="language-meson text-nowrap">default = 30</code>
+  </td>
+        <td>
+  
+  the amount of seconds the test is allowed to run, a test
+that exceeds its time limit is always considered failed, defaults to
+30 seconds. *Since 0.57* if timeout is `<= 0` the test has infinite duration,
+in previous versions of Meson the test would fail with a timeout immediately.
+
+  </td>
+      </tr>
+      <tr id="benchmark_verbose">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">verbose</code>
+  <br>{meson:since}`0.62.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  if true, forces the test results to be logged as if `--verbose` was passed
+to `meson test`.
+
+  </td>
+      </tr>
+      <tr id="benchmark_workdir">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">workdir</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  absolute path that will be used as the working directory
+for the test
+
+  </td>
+      </tr>
+    </tbody>
+  </table>

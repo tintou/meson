@@ -1,0 +1,887 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>New features &#8212; Meson documentation 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d99633c1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Release-notes-for-1.10.0';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="New features" href="Release-notes-for-1.9.0.html" />
+    <link rel="prev" title="New features" href="Release-notes-for-1.11.0.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/meson_logo.png" class="logo__image only-light" alt="Meson documentation 1.0 documentation - Home"/>
+    <img src="_static/meson_logo.png" class="logo__image only-dark pst-js-only" alt="Meson documentation 1.0 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Additional.html">Additional documentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Comparisons.html">Comparing Meson with other build systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Conference-presentations.html">Conference presentations on Meson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Contact-information.html">Contact information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Continuous-Integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Design-rationale.html">This is the original design rationale for Meson. The syntax it
+describes does not match the released version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Donating.html">Donating to support Meson development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IndepthTutorial.html">An in-depth tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="In-the-press.html">In the press</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mixing-build-systems.html">Meson’s policy on mixing multiple build systems in one build directory</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Performance-comparison.html">Performance comparison</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="ARM-performance-test.html">Arm performance test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Simple-comparison.html">A simple comparison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="Pkg-config-files.html">Pkg config files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Porting-from-autotools.html">Porting from Autotools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-procedure.html">Release procedure</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Use-of-Python.html">Use of Python</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Users.html">Notable projects and organizations using Meson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-multiple-build-directories.html">Using multiple build directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Vs-External.html">Visual Studio’s external build projects</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Contributing.html">Contributing to Meson</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Yaml-RefMan.html">Reference Manual</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="MesonCI.html">Meson CI setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Releasing.html">Releasing a new Meson version</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">Meson Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Videos.html">Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legal.html">Legal information</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Release-notes.html">Release notes</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.11.0.html">1.11.0</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.9.0.html">1.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.8.0.html">1.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.7.0.html">1.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.6.0.html">1.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.5.0.html">1.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.4.0.html">1.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.3.0.html">1.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.2.0.html">1.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.1.0.html">1.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.0.0.html">1.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.64.0.html">0.64.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.63.0.html">0.63.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.62.0.html">0.62.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.61.0.html">0.61.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.60.0.html">0.60.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.59.0.html">0.59.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.58.0.html">0.58.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.57.0.html">0.57.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.56.0.html">0.56.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.55.0.html">0.55.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.54.0.html">0.54.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.53.0.html">0.53.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.52.0.html">0.52.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.51.0.html">0.51.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.50.0.html">0.50.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.49.0.html">0.49.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.48.0.html">0.48.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.47.0.html">0.47.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.46.0.html">0.46.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.45.0.html">0.45.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.44.0.html">0.44.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.43.0.html">Portability improvements to Boost Dependency</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.42.0.html">0.42.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.41.0.html">0.41.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.40.0.html">0.40.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.39.0.html">0.39.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.38.0.html">Uninstall target</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.37.0.html">0.37.0</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="About.html" class="nav-link">About</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="Release-notes.html" class="nav-link">Release notes</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">New features</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="new-features">
+<h1>New features<a class="headerlink" href="#new-features" title="Link to this heading">#</a></h1>
+<p>Meson 1.10.0 was released on 08 December 2025</p>
+<section id="support-for-the-counted-by-attribute">
+<h2>Support for the <code class="docutils literal notranslate"><span class="pre">counted_by</span></code> attribute<a class="headerlink" href="#support-for-the-counted-by-attribute" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">compiler.has_function_attribute()</span></code> now supports for the new <code class="docutils literal notranslate"><span class="pre">counted_by</span></code>
+attribute.</p>
+</section>
+<section id="added-a-values-method-for-dictionaries">
+<h2>Added a <code class="docutils literal notranslate"><span class="pre">values()</span></code> method for dictionaries<a class="headerlink" href="#added-a-values-method-for-dictionaries" title="Link to this heading">#</a></h2>
+<p>Mesons built-in <a href="Reference-manual_elementary_dict.html"><code>dict</code></a> type now supports the <a href="Reference-manual_elementary_dict.html#dictvalues"><code>dict.values()</code></a> method
+to retrieve the dictionary values as an array, analogous to the
+<a href="Reference-manual_elementary_dict.html#dictkeys"><code>dict.keys()</code></a> method.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">dict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&#39;b&#39;</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;world&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;a&#39;</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;hello&#39;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="err">&lt;</span><span class="n">a</span><span class="w"> </span><span class="n">href</span><span class="o">=</span><span class="err">&quot;</span><span class="n">Reference</span><span class="o">-</span><span class="n">manual_elementary_dict</span><span class="p">.</span><span class="n">html</span><span class="c">#dictkeys&quot;&gt;dict.keys()&lt;/a&gt; # Returns [&#39;a&#39;, &#39;b&#39;]</span>
+<span class="err">&lt;</span><span class="n">a</span><span class="w"> </span><span class="n">href</span><span class="o">=</span><span class="err">&quot;</span><span class="n">Reference</span><span class="o">-</span><span class="n">manual_elementary_dict</span><span class="p">.</span><span class="n">html</span><span class="c">#dictvalues&quot;&gt;dict.values()&lt;/a&gt; # Returns [&#39;hello&#39;, &#39;world&#39;]</span>
+</pre></div>
+</div>
+</section>
+<section id="add-cmd-array-method-to-externalprogram">
+<h2>Add cmd_array method to ExternalProgram<a class="headerlink" href="#add-cmd-array-method-to-externalprogram" title="Link to this heading">#</a></h2>
+<p>Added a new <code class="docutils literal notranslate"><span class="pre">cmd_array()</span></code> method to the <code class="docutils literal notranslate"><span class="pre">ExternalProgram</span></code> object that returns
+an array containing the command(s) for the program. This is particularly useful
+in cases like pyInstaller where the Python command is <code class="docutils literal notranslate"><span class="pre">meson.exe</span> <span class="pre">runpython</span></code>,
+and the full path should not be used but rather the command array.</p>
+<p>The method returns a list of strings representing the complete command needed
+to execute the external program, which may differ from just the full path
+returned by <code class="docutils literal notranslate"><span class="pre">full_path()</span></code> in cases where wrapper commands or interpreters are
+involved.</p>
+</section>
+<section id="microchip-xc32-compiler-support">
+<h2>Microchip XC32 compiler support<a class="headerlink" href="#microchip-xc32-compiler-support" title="Link to this heading">#</a></h2>
+<p>The Microchip XC32 compiler is now supported.</p>
+</section>
+<section id="added-os-2-support">
+<h2>Added OS/2 support<a class="headerlink" href="#added-os-2-support" title="Link to this heading">#</a></h2>
+<p>Meson now supports OS/2 system. Especially, <code class="docutils literal notranslate"><span class="pre">shortname</span></code> kwarg and
+<code class="docutils literal notranslate"><span class="pre">os2_emxomf</span></code> builtin option are introduced.</p>
+<p><code class="docutils literal notranslate"><span class="pre">shortname</span></code> is used to specify a short DLL name fitting to a 8.3 rule.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">lib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">library</span><span class="p">(</span><span class="s">&#39;foo_library&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="n">shortname</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;foo&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>This will generate <code class="docutils literal notranslate"><span class="pre">foo.dll</span></code> not <code class="docutils literal notranslate"><span class="pre">foo_library.dll</span></code> on OS/2. If
+<code class="docutils literal notranslate"><span class="pre">shortname</span></code> is not used, <code class="docutils literal notranslate"><span class="pre">foo_libr.dll</span></code> which is truncated up to 8
+characters is generated.</p>
+<p><code class="docutils literal notranslate"><span class="pre">os2_emxomf</span></code> is used to generate OMF files with OMF tool-chains.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="n">setup</span> <span class="o">--</span><span class="n">os2</span><span class="o">-</span><span class="n">emxomf</span> <span class="n">builddir</span>
+</pre></div>
+</div>
+<p>This will generate OMF object files and <code class="docutils literal notranslate"><span class="pre">.lib</span></code> library files. If
+<code class="docutils literal notranslate"><span class="pre">--os2-emxomf</span></code> is not used, AOUT object files and <code class="docutils literal notranslate"><span class="pre">.a</span></code> library files are
+generated.</p>
+</section>
+<section id="android-cross-file-generator">
+<h2>Android cross file generator<a class="headerlink" href="#android-cross-file-generator" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">env2mfile</span></code> command now supports a <code class="docutils literal notranslate"><span class="pre">--android</span></code> argument. When
+specified, it tells the cross file generator to create cross files for
+all Android toolchains located on the current machines.</p>
+<p>This typically creates many files, so the <code class="docutils literal notranslate"><span class="pre">-o</span></code> argument specifies the
+output directory. A typical use case goes like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="n">env2mfile</span> <span class="o">--</span><span class="n">android</span> <span class="o">-</span><span class="n">o</span> <span class="n">androidcross</span>
+<span class="n">meson</span> <span class="n">setup</span> <span class="o">--</span><span class="n">cross</span><span class="o">-</span><span class="n">file</span> \
+  <span class="n">androidcross</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="mf">29.0.14033849</span><span class="o">-</span><span class="n">android35</span><span class="o">-</span><span class="n">aarch64</span><span class="o">-</span><span class="n">cross</span><span class="o">.</span><span class="n">txt</span> \
+  <span class="n">builddir</span>
+</pre></div>
+</div>
+</section>
+<section id="array-slice-method">
+<h2>Array <code class="docutils literal notranslate"><span class="pre">.slice()</span></code> method<a class="headerlink" href="#array-slice-method" title="Link to this heading">#</a></h2>
+<p>Arrays now have a <code class="docutils literal notranslate"><span class="pre">.slice()</span></code> method which allows for subsetting of arrays.</p>
+</section>
+<section id="db-vscrt-on-clang">
+<h2><code class="docutils literal notranslate"><span class="pre">-Db_vscrt</span></code> on clang<a class="headerlink" href="#db-vscrt-on-clang" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">-Db_vscrt</span></code> will now link the appropriate runtime library, and set
+the appropriate preprocessor symbols, also when the compiler is clang.
+This is only supported when using <code class="docutils literal notranslate"><span class="pre">link.exe</span></code> or <code class="docutils literal notranslate"><span class="pre">lld-link.exe</span></code> as the
+linker.</p>
+</section>
+<section id="added-build-subdir-arg-to-various-targets">
+<h2>Added <code class="docutils literal notranslate"><span class="pre">build_subdir</span></code> arg to various targets<a class="headerlink" href="#added-build-subdir-arg-to-various-targets" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">custom_target()</span></code>, <code class="docutils literal notranslate"><span class="pre">build_target()</span></code> and <code class="docutils literal notranslate"><span class="pre">configure_file()</span></code> now support
+the <code class="docutils literal notranslate"><span class="pre">build_subdir</span></code> argument. This directs Meson to place the build
+result within the specified sub-directory path of the build directory.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">configure_file</span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">files</span><span class="p">(</span><span class="s">&#39;config.h.in&#39;</span><span class="p">),</span>
+<span class="w">               </span><span class="n">output</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;config.h&#39;</span><span class="p">,</span>
+<span class="w">               </span><span class="n">build_subdir</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;config-subdir&#39;</span><span class="p">,</span>
+<span class="w">               </span><span class="n">install_dir</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;share/appdir&#39;</span><span class="p">,</span>
+<span class="w">               </span><span class="n">configuration</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">conf</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This places the build result, <code class="docutils literal notranslate"><span class="pre">config.h</span></code>, in a sub-directory named
+<code class="docutils literal notranslate"><span class="pre">config-subdir</span></code>, creating it if necessary. To prevent collisions
+within the build directory, <code class="docutils literal notranslate"><span class="pre">build_subdir</span></code> is not allowed to match a
+file or directory in the source directory nor contain ‘..’ to refer to
+the parent of the build directory. <code class="docutils literal notranslate"><span class="pre">build_subdir</span></code> does not affect the
+install directory path at all; <code class="docutils literal notranslate"><span class="pre">config.h</span></code> will be installed as
+<code class="docutils literal notranslate"><span class="pre">share/appdir/config.h</span></code>. <code class="docutils literal notranslate"><span class="pre">build_subdir</span></code> may contain multiple levels of
+directory names.</p>
+<p>This allows construction of files within the build system that have
+any required trailing path name components as well as building
+multiple files with the same basename from the same source directory.</p>
+</section>
+<section id="support-for-cargo-workspaces">
+<h2>Support for Cargo workspaces<a class="headerlink" href="#support-for-cargo-workspaces" title="Link to this heading">#</a></h2>
+<p>When parsing <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code> files, Meson now recognizes workspaces
+and will process all the required members and any requested optional
+members of the workspace.</p>
+<p>For the time being it is recommended to regroup all Cargo dependencies inside a
+single workspace invoked from the main Meson project. When invoking multiple
+different Cargo subprojects from Meson, feature resolution of common
+dependencies might be wrong.</p>
+</section>
+<section id="experimental-codegen-module">
+<h2>Experimental Codegen module<a class="headerlink" href="#experimental-codegen-module" title="Link to this heading">#</a></h2>
+<p>A new module wrapping some common code generators has been added. Currently it supports lex/flex and yacc/bison.</p>
+</section>
+<section id="methods-from-compiler-object-now-accept-strings-for-include-directories">
+<h2>Methods from compiler object now accept strings for include_directories<a class="headerlink" href="#methods-from-compiler-object-now-accept-strings-for-include-directories" title="Link to this heading">#</a></h2>
+<p>The various <a href="Reference-manual_returned_compiler.html"><code>compiler</code></a> methods with a <code class="docutils literal notranslate"><span class="pre">include_directories</span></code> keyword argument
+now accept strings or array of strings, in addition to <a href="Reference-manual_returned_inc.html"><code>inc</code></a> objects
+generated from <a href="Reference-manual_functions.html#include_directories"><code>include_directories()</code></a> function, as it was already the case for
+<a href="Reference-manual_functions.html#build_target"><code>build_target()</code></a> family of functions.</p>
+</section>
+<section id="meson-format-has-a-new-check-diff-option">
+<h2><code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">format</span></code> has a new <code class="docutils literal notranslate"><span class="pre">--check-diff</span></code> option<a class="headerlink" href="#meson-format-has-a-new-check-diff-option" title="Link to this heading">#</a></h2>
+<p>When using <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">format</span> <span class="pre">--check-only</span></code> to verify formatting in CI, it would
+previously silently exit with an error code if the code was not formatted
+correctly.</p>
+<p>A new <code class="docutils literal notranslate"><span class="pre">--check-diff</span></code> option has been added which will instead print a diff of
+the required changes and then exit with an error code.</p>
+</section>
+<section id="db-thinlto-cache-now-supported-for-gcc">
+<h2><code class="docutils literal notranslate"><span class="pre">-Db_thinlto_cache</span></code> now supported for GCC<a class="headerlink" href="#db-thinlto-cache-now-supported-for-gcc" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">-Db_thinlto_cache</span></code> is now supported for GCC 15’s incremental LTO, as is
+<code class="docutils literal notranslate"><span class="pre">-Db_thinlto_cache_dir</span></code>.</p>
+</section>
+<section id="using-meson-get-compiler-to-get-a-language-from-another-project-is-marked-broken">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">meson.get_compiler()</span></code> to get a language from another project is marked broken<a class="headerlink" href="#using-meson-get-compiler-to-get-a-language-from-another-project-is-marked-broken" title="Link to this heading">#</a></h2>
+<p>Meson currently will return a compiler instance from the <code class="docutils literal notranslate"><span class="pre">meson.get_compiler()</span></code>
+call, if that language has been initialized in any project. This can result in
+situations where a project can only work as a subproject, or if a dependency is
+provided by a subproject rather than by a pre-built dependency.</p>
+</section>
+<section id="experimental-c-import-std-support">
+<h2>Experimental C++ import std support<a class="headerlink" href="#experimental-c-import-std-support" title="Link to this heading">#</a></h2>
+<p><strong>Note</strong>: this feature is experimental and not guaranteed to be
+backwards compatible or even exist at all in future Meson releases.</p>
+<p>Meson now supports <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">std</span></code>, a new, modular way of using the C++
+standard library. This support is enabled with the new <code class="docutils literal notranslate"><span class="pre">cpp_importstd</span></code>
+option. It defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>, but you can set it to <code class="docutils literal notranslate"><span class="pre">true</span></code> either
+globally or per-target using <code class="docutils literal notranslate"><span class="pre">override_options</span></code> in the usual way.</p>
+<p>The implementation has many limitations. The biggest one is that the
+same module file is used on <em>all</em> targets. That means you can not mix
+multiple different C++ standards versions as the compiled module file
+can only be used with the same compiler options as were used to build
+it. This feature only works with the Ninja backend.</p>
+<p>As <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">std</span></code> is a major new feature in compilers, expect to
+encounter toolchain issues when using it. For an example <a class="reference external" href="https://gcc.gnu.org/bugzilla/show_bug.cgi?id=122614">see
+here</a>.</p>
+</section>
+<section id="common-cargo-lock-for-all-cargo-subprojects">
+<h2>Common <code class="docutils literal notranslate"><span class="pre">Cargo.lock</span></code> for all Cargo subprojects<a class="headerlink" href="#common-cargo-lock-for-all-cargo-subprojects" title="Link to this heading">#</a></h2>
+<p>Whenever Meson finds a <code class="docutils literal notranslate"><span class="pre">Cargo.lock</span></code> file in the toplevel directory
+of the project, it will use it to resolve the versions of Cargo
+subprojects in preference to per-subproject <code class="docutils literal notranslate"><span class="pre">Cargo.lock</span></code> files.
+Per-subproject lock files are only used if the invoking project
+did not have a <code class="docutils literal notranslate"><span class="pre">Cargo.lock</span></code> file itself.</p>
+<p>If you wish to experiment with Cargo subprojects, it is recommended
+to use <code class="docutils literal notranslate"><span class="pre">cargo</span></code> to set up <code class="docutils literal notranslate"><span class="pre">Cargo.lock</span></code> and <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code> files,
+encompassing all Rust targets, in the toplevel source directory.
+Cargo subprojects remain unstable and subject to change.</p>
+</section>
+<section id="add-a-configure-log-in-meson-logs">
+<h2>Add a configure log in meson-logs<a class="headerlink" href="#add-a-configure-log-in-meson-logs" title="Link to this heading">#</a></h2>
+<p>Add a second log file <code class="docutils literal notranslate"><span class="pre">meson-setup.txt</span></code> which contains the configure logs
+displayed on stdout during the meson <code class="docutils literal notranslate"><span class="pre">setup</span></code> stage.
+It allows user to navigate through the setup logs without searching in the terminal
+or the extensive information of <code class="docutils literal notranslate"><span class="pre">meson-log.txt</span></code>.</p>
+</section>
+<section id="added-new-namingscheme-option">
+<h2>Added new <code class="docutils literal notranslate"><span class="pre">namingscheme</span></code> option<a class="headerlink" href="#added-new-namingscheme-option" title="Link to this heading">#</a></h2>
+<p>Traditionally Meson has named output targets so that they don’t clash
+with each other. This has meant, among other things, that on Windows
+Meson uses a nonstandard <code class="docutils literal notranslate"><span class="pre">.a</span></code> suffix for static libraries because both
+static libraries and import libraries have the suffix <code class="docutils literal notranslate"><span class="pre">.lib</span></code>.</p>
+<p>There is now an option <code class="docutils literal notranslate"><span class="pre">namingscheme</span></code> that can be set to
+<code class="docutils literal notranslate"><span class="pre">platform</span></code>. This new platform native naming scheme that replicates
+what Rust does. That is, shared libraries on Windows get a suffix
+<code class="docutils literal notranslate"><span class="pre">.dll</span></code>, static libraries get <code class="docutils literal notranslate"><span class="pre">.lib</span></code> and import libraries have the name
+<code class="docutils literal notranslate"><span class="pre">.dll.lib</span></code>.</p>
+<p>We expect to change the default value of this option to <code class="docutils literal notranslate"><span class="pre">platform</span></code> in
+a future major version. Until that happens we reserve the right to
+alter how <code class="docutils literal notranslate"><span class="pre">platform</span></code> actually names its output files.</p>
+</section>
+<section id="rewriter-improvements">
+<h2>Rewriter improvements<a class="headerlink" href="#rewriter-improvements" title="Link to this heading">#</a></h2>
+<p>The <a class="reference internal" href="Rewriter.html"><span class="std std-doc">rewriter</span></a> added support for writing the <code class="docutils literal notranslate"><span class="pre">project()</span></code>
+<code class="docutils literal notranslate"><span class="pre">license_files</span></code> argument and for reading dict-valued kwargs.</p>
+<p>It also removed the unused but mandatory <code class="docutils literal notranslate"><span class="pre">value</span></code> arguments to the
+<code class="docutils literal notranslate"><span class="pre">default-options</span> <span class="pre">delete</span></code> and <code class="docutils literal notranslate"><span class="pre">kwargs</span> <span class="pre">delete</span></code> CLI subcommands.  To allow
+scripts to continue supporting previous releases, these arguments are
+still accepted (with a warning) if they’re all equal to the empty string.</p>
+</section>
+<section id="passing-c-default-linker-libraries-to-rustc">
+<h2>Passing <code class="docutils literal notranslate"><span class="pre">-C</span> <span class="pre">default-linker-libraries</span></code> to rustc<a class="headerlink" href="#passing-c-default-linker-libraries-to-rustc" title="Link to this heading">#</a></h2>
+<p>When calling rustc, Meson now passes the <code class="docutils literal notranslate"><span class="pre">-C</span> <span class="pre">default-linker-libraries</span></code> option.
+While rustc passes the necessary libraries for Rust programs, they are rarely
+enough for mixed Rust/C programs.</p>
+</section>
+<section id="rustc-will-receive-c-embed-bitcode-no-and-c-lto-command-line-options">
+<h2><code class="docutils literal notranslate"><span class="pre">rustc</span></code> will receive <code class="docutils literal notranslate"><span class="pre">-C</span> <span class="pre">embed-bitcode=no</span></code> and <code class="docutils literal notranslate"><span class="pre">-C</span> <span class="pre">lto</span></code> command line options<a class="headerlink" href="#rustc-will-receive-c-embed-bitcode-no-and-c-lto-command-line-options" title="Link to this heading">#</a></h2>
+<p>With this release, Meson passes command line arguments to <code class="docutils literal notranslate"><span class="pre">rustc</span></code> to
+enable LTO when the <code class="docutils literal notranslate"><span class="pre">b_lto</span></code> built-in option is set to true.  As an
+optimization, Meson also passes <code class="docutils literal notranslate"><span class="pre">-C</span> <span class="pre">embed-bitcode=no</span></code> when LTO is
+disabled; note that this is incompatible with passing <code class="docutils literal notranslate"><span class="pre">-C</span> <span class="pre">lto</span></code> via
+<code class="docutils literal notranslate"><span class="pre">rust_args</span></code>.</p>
+</section>
+<section id="new-method-to-handle-gnu-and-windows-symbol-visibility-for-c-c-objc-objc">
+<h2>New method to handle GNU and Windows symbol visibility for C/C++/ObjC/ObjC++<a class="headerlink" href="#new-method-to-handle-gnu-and-windows-symbol-visibility-for-c-c-objc-objc" title="Link to this heading">#</a></h2>
+<p>Defining public API of a cross platform C/C++/ObjC/ObjC++ library is often
+painful and requires copying macro snippets into every projects, typically using
+<code class="docutils literal notranslate"><span class="pre">__declspec(dllexport)</span></code>, <code class="docutils literal notranslate"><span class="pre">__declspec(dllimport)</span></code> or
+<code class="docutils literal notranslate"><span class="pre">__attribute__((visibility(&quot;default&quot;)))</span></code>.</p>
+<p>Meson can now generate a header file that defines exactly what’s needed for
+all supported platforms:
+<a class="reference internal" href="Snippets-module.html#symbol-visibility-header"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">snippets.symbol_visibility_header()</span></code></span></a>.</p>
+</section>
+<section id="vala-buildtarget-dependency-enhancements">
+<h2>Vala BuildTarget dependency enhancements<a class="headerlink" href="#vala-buildtarget-dependency-enhancements" title="Link to this heading">#</a></h2>
+<p>A BuildTarget that has Vala sources can now get a File dependency for its
+generated header, vapi, and gir files.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">lib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">library</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;foo.vala&#39;</span><span class="p">)</span>
+<span class="n">lib_h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lib</span><span class="p">.</span><span class="n">vala_header</span><span class="p">()</span>
+<span class="n">lib_s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">static_lib</span><span class="p">(</span><span class="s">&#39;static&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;static.c&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">lib_h</span><span class="p">)</span>
+
+<span class="n">lib_vapi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lib</span><span class="p">.</span><span class="n">vala_vapi</span><span class="p">()</span>
+
+<span class="nb">custom_target</span><span class="p">(</span>
+<span class="w">  </span><span class="s">&#39;foo-typelib&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">command</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;g-ir-compiler&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;--output&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;@OUTPUT@&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;@INPUT@&#39;</span><span class="p">],</span>
+<span class="w">  </span><span class="n">input</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">lib</span><span class="p">.</span><span class="n">vala_gir</span><span class="p">(),</span>
+<span class="w">  </span><span class="n">output</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Foo-1.0.typelib&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">static.c</span></code> will not start compilation until <code class="docutils literal notranslate"><span class="pre">lib.h</span></code> is generated.</p>
+</section>
+<section id="i18n-xgettext-now-accepts-customtarget-and-customtargetindex-as-sources">
+<h2><code class="docutils literal notranslate"><span class="pre">i18n.xgettext</span></code> now accepts CustomTarget and CustomTargetIndex as sources<a class="headerlink" href="#i18n-xgettext-now-accepts-customtarget-and-customtargetindex-as-sources" title="Link to this heading">#</a></h2>
+<p>Previously, <a href="Reference-manual_returned_custom_tgt.html"><code>custom_tgt</code></a> were accepted but silently ignored, and
+<a href="Reference-manual_returned_custom_idx.html"><code>custom_idx</code></a> were not accepted.</p>
+<p>Now, they both can be used, and the generated outputs will be scanned to extract
+translation strings.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Release-notes-for-1.11.0.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">New features</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Release-notes-for-1.9.0.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">New features</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-for-the-counted-by-attribute">Support for the <code class="docutils literal notranslate"><span class="pre">counted_by</span></code> attribute</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#added-a-values-method-for-dictionaries">Added a <code class="docutils literal notranslate"><span class="pre">values()</span></code> method for dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-cmd-array-method-to-externalprogram">Add cmd_array method to ExternalProgram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#microchip-xc32-compiler-support">Microchip XC32 compiler support</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#added-os-2-support">Added OS/2 support</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#android-cross-file-generator">Android cross file generator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-slice-method">Array <code class="docutils literal notranslate"><span class="pre">.slice()</span></code> method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#db-vscrt-on-clang"><code class="docutils literal notranslate"><span class="pre">-Db_vscrt</span></code> on clang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#added-build-subdir-arg-to-various-targets">Added <code class="docutils literal notranslate"><span class="pre">build_subdir</span></code> arg to various targets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-for-cargo-workspaces">Support for Cargo workspaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental-codegen-module">Experimental Codegen module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-from-compiler-object-now-accept-strings-for-include-directories">Methods from compiler object now accept strings for include_directories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-format-has-a-new-check-diff-option"><code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">format</span></code> has a new <code class="docutils literal notranslate"><span class="pre">--check-diff</span></code> option</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#db-thinlto-cache-now-supported-for-gcc"><code class="docutils literal notranslate"><span class="pre">-Db_thinlto_cache</span></code> now supported for GCC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-meson-get-compiler-to-get-a-language-from-another-project-is-marked-broken">Using <code class="docutils literal notranslate"><span class="pre">meson.get_compiler()</span></code> to get a language from another project is marked broken</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental-c-import-std-support">Experimental C++ import std support</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-cargo-lock-for-all-cargo-subprojects">Common <code class="docutils literal notranslate"><span class="pre">Cargo.lock</span></code> for all Cargo subprojects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-configure-log-in-meson-logs">Add a configure log in meson-logs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#added-new-namingscheme-option">Added new <code class="docutils literal notranslate"><span class="pre">namingscheme</span></code> option</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rewriter-improvements">Rewriter improvements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#passing-c-default-linker-libraries-to-rustc">Passing <code class="docutils literal notranslate"><span class="pre">-C</span> <span class="pre">default-linker-libraries</span></code> to rustc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rustc-will-receive-c-embed-bitcode-no-and-c-lto-command-line-options"><code class="docutils literal notranslate"><span class="pre">rustc</span></code> will receive <code class="docutils literal notranslate"><span class="pre">-C</span> <span class="pre">embed-bitcode=no</span></code> and <code class="docutils literal notranslate"><span class="pre">-C</span> <span class="pre">lto</span></code> command line options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-method-to-handle-gnu-and-windows-symbol-visibility-for-c-c-objc-objc">New method to handle GNU and Windows symbol visibility for C/C++/ObjC/ObjC++</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vala-buildtarget-dependency-enhancements">Vala BuildTarget dependency enhancements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i18n-xgettext-now-accepts-customtarget-and-customtargetindex-as-sources"><code class="docutils literal notranslate"><span class="pre">i18n.xgettext</span></code> now accepts CustomTarget and CustomTargetIndex as sources</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/mesonbuild/meson/edit/master/docs/markdown/Release-notes-for-1.10.0.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">Website licensing information are available on the <a href="legal.html">Legal</a> page.</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

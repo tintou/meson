@@ -1,0 +1,226 @@
+---
+short-description: "Elementary object: Dict"
+title: dict
+render-subpages: false
+...
+# Dict (`dict`)
+
+Stores a mapping of strings to other objects. See [dictionaries](Syntax.md#dictionaries).
+
+You can also iterate over dictionaries with the [`foreach`
+statement](Syntax.md#foreach-statements).
+
+*(since 0.48.0)*: Dictionaries can be added (e.g. `d1 = d2 + d3` and `d1 += d2`).
+Values from the second dictionary overrides values from the first.
+*(since 0.62.0)*: Dictionary order is guaranteed to be insertion order.
+
+
+
+
+
+
+## Dict methods
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### dict.get()
+
+returns the value for the key given as first
+argument if it is present in the dictionary, or the optional
+fallback value given as the second argument. If a single argument
+was given and the key was not found, causes a fatal error
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># returns the value for the key given as first
+[[#@any]] get(
+  [[#@str]]                                  <a href="#get_key"><b>key</b></a>,          # The key to query
+  [[#@any]]                                  [<a href="#get_fallback"><b>fallback</b></a>],   # Fallback value that is returned if the key is not in the [[@dict]].
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+  [Argument flattening](Syntax.md#argument-flattening) is **NOT SUPPORTED** by this function.
+
+  The method `dict.get()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_key">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">key</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The key to query.
+  </td>
+      </tr>
+      <tr id="get_fallback">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">fallback</code>
+  <br>{meson:optional}` `
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@any]]</span>
+  </td>
+        <td>
+  
+  Fallback value that is returned if the key is not in the [[@dict]].
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### dict.has_key()
+
+Returns `true` if the dictionary contains the key given as argument, `false` otherwise.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns `true` if the dictionary contains the key given as argument, `false` otherwise
+[[#@bool]] has_key(
+  [[#@str]]                                  <a href="#has_key_key"><b>key</b></a>,     # The key to query
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `dict.has_key()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_key_key">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">key</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The key to query.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### dict.keys()
+
+Returns an array of keys in the dictionary, sorted in ascending order.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@array]][[[#@str]]] keys()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### dict.values()
+
+Returns an array of values in the dictionary, sorted by the
+corresponding keys in ascending order.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`1.10.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@array]][[[#@any]]] values()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+

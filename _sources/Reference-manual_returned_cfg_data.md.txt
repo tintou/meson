@@ -1,0 +1,701 @@
+---
+short-description: "Returned object: Configuration data object"
+title: Configuration data object
+render-subpages: false
+...
+# Configuration data object (`cfg_data`)
+
+This object encapsulates
+configuration values to be used for generating configuration files. A
+more in-depth description can be found in the [the configuration wiki
+page](Configuration.md).
+
+
+## Returned by
+
+Configuration data object objects are returned by the following functions and methods:
+- [[configuration_data]]
+
+
+
+
+## Configuration data object methods
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### cfg_data.get()
+
+Returns the value of `varname`, if the
+value has not been set returns `default_value` if it is defined
+*(since 0.38.0)* and errors out if not
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.38.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns the value of `varname`, if the
+[[#@str]] | [[#@int]] | [[#@bool]] get(
+  [[#@str]]                                                                                                                 <a href="#get_varname"><b>varname</b></a>,           # The name of the variable to query
+  [[#@str]] | [[#@int]] | [[#@bool]]                                                                                                    [<a href="#get_default_value"><b>default_value</b></a>],   # The default value to return when `varname` does not exist
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `cfg_data.get()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_varname">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">varname</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The name of the variable to query
+  </td>
+      </tr>
+      <tr id="get_default_value">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">default_value</code>
+  <br>{meson:optional}` `
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span> | <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  The default value to return when `varname` does not exist
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### cfg_data.get_unquoted()
+
+Returns the value
+of `varname` but without surrounding double quotes (`"`). If the value has
+not been set returns `default_value` if it is defined and errors out if not.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.44.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns the value
+[[#@str]] | [[#@int]] | [[#@bool]] get_unquoted(
+  [[#@str]]                                                                                                                 <a href="#get_unquoted_varname"><b>varname</b></a>,           # The name of the variable to query
+  [[#@str]] | [[#@int]] | [[#@bool]]                                                                                                    [<a href="#get_unquoted_default_value"><b>default_value</b></a>],   # The default value to return when `varname` does not exist
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `cfg_data.get_unquoted()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_unquoted_varname">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">varname</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The name of the variable to query
+  </td>
+      </tr>
+      <tr id="get_unquoted_default_value">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">default_value</code>
+  <br>{meson:optional}` `
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span> | <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  The default value to return when `varname` does not exist
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### cfg_data.has()
+
+returns `true` if the specified variable is set
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># returns `true` if the specified variable is set
+[[#@bool]] has(
+  [[#@str]]                                  <a href="#has_varname"><b>varname</b></a>,     # The name of the variable to query
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `cfg_data.has()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_varname">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">varname</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The name of the variable to query
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### cfg_data.keys()
+
+Returns an array of keys of
+the configuration data object.
+
+You can iterate over this array with the [`foreach`
+statement](Syntax.md#foreach-statements).
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.57.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@array]][[[#@str]]] keys()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### cfg_data.merge_from()
+
+Takes as argument a different
+configuration data object and copies all entries from that object to
+the current.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.42.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Takes as argument a different
+[[#@void]] merge_from(
+  [[#@cfg_data]]                                  <a href="#merge_from_other"><b>other</b></a>,     # The other [[@cfg_data]] object to merge into this one.
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `cfg_data.merge_from()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="merge_from_other">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">other</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@cfg_data]]</span>
+  </td>
+        <td>
+  
+  The other [[@cfg_data]] object to merge into this one.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### cfg_data.set()
+
+Sets a variable to a given value
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Sets a variable to a given value
+[[#@void]] set(
+  [[#@str]]                                                                                                                 <a href="#set_varname"><b>varname</b></a>,     # The name of the variable to set
+  [[#@str]] | [[#@int]] | [[#@bool]]                                                                                                    <a href="#set_value"><b>value</b></a>,       # The value to set
+
+  # Keyword arguments:
+  <a href="#set_description"><b>description</b></a> : [[#@str]]                                   # Message / Comment that will be written in the
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `cfg_data.set()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="set_varname">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">varname</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The name of the variable to set
+  </td>
+      </tr>
+      <tr id="set_value">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">value</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span> | <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  The value to set
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `cfg_data.set()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="set_description">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">description</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Message / Comment that will be written in the
+result file. The replacement assumes a file with C syntax. If your
+generated file is source code in some other language, you probably
+don't want to add a description field because it most likely will
+cause a syntax error.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### cfg_data.set10()
+
+Is the same as [[cfg_data.set]] but the value
+is either `true` or `false` and will be written as 1 or 0,
+respectively
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Is the same as [[cfg_data.set]] but the value
+[[#@void]] set10(
+  [[#@str]]                                                                          <a href="#set10_varname"><b>varname</b></a>,     # The name of the variable to set
+  [[#@bool]] | [[#@int]]                                                                   <a href="#set10_value"><b>value</b></a>,       # The value to set as either `1` or `0`
+
+  # Keyword arguments:
+  <a href="#set10_description"><b>description</b></a> : [[#@str]]                                   # Message / Comment that will be written in the
+)</code></pre>
+
+
+
+```{warning}
+numeric values < 0 have the surprising behavior of being converted to `true`, values > 1 have the more expected but unintentional behavior of being interpreted as `true`.
+```
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `cfg_data.set10()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="set10_varname">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">varname</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The name of the variable to set
+  </td>
+      </tr>
+      <tr id="set10_value">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">value</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@int]]</span>
+  </td>
+        <td>
+  
+  The value to set as either `1` or `0`
+
+Passing numbers was never intended to work, and since 0.62 it has been
+deprecated. It will be removed in a future version of Meson. If you
+need to pass numbers use the `.set` method.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `cfg_data.set10()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="set10_description">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">description</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Message / Comment that will be written in the
+result file. The replacement assumes a file with C syntax. If your
+generated file is source code in some other language, you probably
+don't want to add a description field because it most likely will
+cause a syntax error.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### cfg_data.set_quoted()
+
+Is same as [[cfg_data.set]] but quotes the value in double quotes (`"`)
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Is same as [[cfg_data.set]] but quotes the value in double quotes (`"`)
+[[#@void]] set_quoted(
+  [[#@str]]                                                                                                                 <a href="#set_quoted_varname"><b>varname</b></a>,     # The name of the variable to set
+  [[#@str]] | [[#@int]] | [[#@bool]]                                                                                                    <a href="#set_quoted_value"><b>value</b></a>,       # The value to set
+
+  # Keyword arguments:
+  <a href="#set_quoted_description"><b>description</b></a> : [[#@str]]                                   # Message / Comment that will be written in the
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `cfg_data.set_quoted()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="set_quoted_varname">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">varname</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The name of the variable to set
+  </td>
+      </tr>
+      <tr id="set_quoted_value">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">value</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span> | <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  The value to set
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `cfg_data.set_quoted()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="set_quoted_description">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">description</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Message / Comment that will be written in the
+result file. The replacement assumes a file with C syntax. If your
+generated file is source code in some other language, you probably
+don't want to add a description field because it most likely will
+cause a syntax error.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+

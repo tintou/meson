@@ -1,0 +1,103 @@
+## add_project_arguments()
+
+Adds project specific arguments to the compiler command line.
+
+This function behaves in the same way as [[add_global_arguments]] except
+that the arguments are only used for the current project, they won't
+be used in any other subproject.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Adds project specific arguments to the compiler command line
+[[#@void]] add_project_arguments(
+  [[#@str]]                                  <b>Compiler argument</b>...,  # The compiler arguments to add
+
+  # Keyword arguments:
+  <a href="#add_project_arguments_language"><b>language</b></a> : [[#@array]][[[#@str]]]                                   <i>[required]</i>  # Specifies the language(s) that the arguments should be
+  <a href="#add_project_arguments_native"><b>native</b></a>   : [[#@bool]]                                                     # A boolean specifying whether the arguments should be
+)</code></pre>
+
+
+```{note}
+You must pass always arguments individually `arg1, arg2, ...` rather than as a string `'arg1 arg2', ...`
+```
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+
+  The
+  function accepts between `0` and `infinity` variadic
+  arguments (`Compiler argument...`) of type <code><span class="text-nowrap">[[@str]]</span></code>.
+
+  The compiler arguments to add
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  The function `add_project_arguments()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="add_project_arguments_language">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">language</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Specifies the language(s) that the arguments should be
+applied to. If an array of languages is given, the arguments are added
+to each of the corresponding compiler command lines. Note that there
+is no way to remove an argument set in this way. If you have an
+argument that is only used in a subset of targets, you have to specify
+it in per-target flags.
+
+  </td>
+      </tr>
+      <tr id="add_project_arguments_native">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">native</code>
+  <br>{meson:since}`0.48.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  A boolean specifying whether the arguments should be
+applied to the native or cross compilation. If `true` the arguments
+will only be used for native compilations. If `false` the arguments
+will only be used in cross compilations. If omitted, the flags are
+added to native compilations if compiling natively and cross
+compilations (only) when cross compiling.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,751 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>New features &#8212; Meson documentation 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d99633c1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Release-notes-for-0.40.0';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="New features" href="Release-notes-for-0.39.0.html" />
+    <link rel="prev" title="New features" href="Release-notes-for-0.41.0.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/meson_logo.png" class="logo__image only-light" alt="Meson documentation 1.0 documentation - Home"/>
+    <img src="_static/meson_logo.png" class="logo__image only-dark pst-js-only" alt="Meson documentation 1.0 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Additional.html">Additional documentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Comparisons.html">Comparing Meson with other build systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Conference-presentations.html">Conference presentations on Meson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Contact-information.html">Contact information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Continuous-Integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Design-rationale.html">This is the original design rationale for Meson. The syntax it
+describes does not match the released version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Donating.html">Donating to support Meson development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IndepthTutorial.html">An in-depth tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="In-the-press.html">In the press</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mixing-build-systems.html">Meson’s policy on mixing multiple build systems in one build directory</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Performance-comparison.html">Performance comparison</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="ARM-performance-test.html">Arm performance test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Simple-comparison.html">A simple comparison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="Pkg-config-files.html">Pkg config files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Porting-from-autotools.html">Porting from Autotools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-procedure.html">Release procedure</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Use-of-Python.html">Use of Python</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Users.html">Notable projects and organizations using Meson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-multiple-build-directories.html">Using multiple build directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Vs-External.html">Visual Studio’s external build projects</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Contributing.html">Contributing to Meson</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Yaml-RefMan.html">Reference Manual</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="MesonCI.html">Meson CI setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Releasing.html">Releasing a new Meson version</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">Meson Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Videos.html">Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legal.html">Legal information</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Release-notes.html">Release notes</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.11.0.html">1.11.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.10.0.html">1.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.9.0.html">1.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.8.0.html">1.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.7.0.html">1.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.6.0.html">1.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.5.0.html">1.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.4.0.html">1.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.3.0.html">1.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.2.0.html">1.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.1.0.html">1.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.0.0.html">1.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.64.0.html">0.64.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.63.0.html">0.63.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.62.0.html">0.62.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.61.0.html">0.61.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.60.0.html">0.60.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.59.0.html">0.59.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.58.0.html">0.58.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.57.0.html">0.57.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.56.0.html">0.56.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.55.0.html">0.55.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.54.0.html">0.54.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.53.0.html">0.53.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.52.0.html">0.52.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.51.0.html">0.51.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.50.0.html">0.50.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.49.0.html">0.49.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.48.0.html">0.48.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.47.0.html">0.47.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.46.0.html">0.46.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.45.0.html">0.45.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.44.0.html">0.44.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.43.0.html">Portability improvements to Boost Dependency</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.42.0.html">0.42.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.41.0.html">0.41.0</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">0.40.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.39.0.html">0.39.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.38.0.html">Uninstall target</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.37.0.html">0.37.0</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="About.html" class="nav-link">About</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="Release-notes.html" class="nav-link">Release notes</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">New features</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="new-features">
+<h1>New features<a class="headerlink" href="#new-features" title="Link to this heading">#</a></h1>
+<section id="outputs-of-generators-can-be-used-in-custom-targets-in-the-vs-backend">
+<h2>Outputs of generators can be used in custom targets in the VS backend<a class="headerlink" href="#outputs-of-generators-can-be-used-in-custom-targets-in-the-vs-backend" title="Link to this heading">#</a></h2>
+<p>This has been possible with the Ninja backend for a long time but now
+the Visual Studio backend works too.</p>
+</section>
+<section id="compute-int-method-in-the-compiler-objects">
+<h2><code class="docutils literal notranslate"><span class="pre">compute_int</span></code> method in the compiler objects<a class="headerlink" href="#compute-int-method-in-the-compiler-objects" title="Link to this heading">#</a></h2>
+<p>This method can be used to evaluate the value of an expression. As an
+example:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">cc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vm">meson</span><span class="p">.</span><span class="n">get_compiler</span><span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">two</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cc</span><span class="p">.</span><span class="n">compute_int</span><span class="p">(</span><span class="s">&#39;1 + 1&#39;</span><span class="p">)</span><span class="w"> </span><span class="c"># A very slow way of adding two numbers.</span>
+</pre></div>
+</div>
+</section>
+<section id="visual-studio-2017-support">
+<h2>Visual Studio 2017 support<a class="headerlink" href="#visual-studio-2017-support" title="Link to this heading">#</a></h2>
+<p>There is now a VS2017 backend (<code class="docutils literal notranslate"><span class="pre">--backend=vs2017</span></code>) as well as a
+generic VS backend (<code class="docutils literal notranslate"><span class="pre">--backend=vs</span></code>) that autodetects the currently
+active VS version.</p>
+</section>
+<section id="automatic-initialization-of-subprojects-that-are-git-submodules">
+<h2>Automatic initialization of subprojects that are git submodules<a class="headerlink" href="#automatic-initialization-of-subprojects-that-are-git-submodules" title="Link to this heading">#</a></h2>
+<p>If you have a directory inside your subprojects directory (usually
+<code class="docutils literal notranslate"><span class="pre">subprojects/</span></code>) that is a git submodule, Meson will automatically
+initialize it if your build files refer to it. This will be done
+without needing a wrap file since git contains all the information
+needed.</p>
+</section>
+<section id="no-download-mode-for-wraps">
+<h2>No download mode for wraps<a class="headerlink" href="#no-download-mode-for-wraps" title="Link to this heading">#</a></h2>
+<p>Added a new option <code class="docutils literal notranslate"><span class="pre">wrap-mode</span></code> that can be toggled to prevent Meson
+from downloading dependency projects. Attempting to do so will cause
+an error. This is useful for distro packagers and other cases where
+you must explicitly enforce that nothing is downloaded from the net
+during configuration or build.</p>
+</section>
+<section id="overriding-options-per-target">
+<h2>Overriding options per target<a class="headerlink" href="#overriding-options-per-target" title="Link to this heading">#</a></h2>
+<p>Build targets got a new keyword argument <code class="docutils literal notranslate"><span class="pre">override_options</span></code> that can
+be used to override system options. As an example if you have a target
+that you know can’t be built with <code class="docutils literal notranslate"><span class="pre">-Werror</span></code> enabled you can override
+the value of the option like this:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">executable</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;foo.c&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">override_options</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;werror=false&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Note that this does not affect project options, only those options
+that come from Meson (language standards, unity builds etc).</p>
+</section>
+<section id="compiler-object-get-define">
+<h2>Compiler object get define<a class="headerlink" href="#compiler-object-get-define" title="Link to this heading">#</a></h2>
+<p>Compiler objects got a new method <code class="docutils literal notranslate"><span class="pre">get_define()</span></code> that returns the
+given preprocessor symbol as a string.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">cc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vm">meson</span><span class="p">.</span><span class="n">get_compiler</span><span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">one</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cc</span><span class="p">.</span><span class="n">get_define</span><span class="p">(</span><span class="s">&#39;__linux__&#39;</span><span class="p">)</span><span class="w"> </span><span class="c"># returns &#39;1&#39; on Linux hosts</span>
+</pre></div>
+</div>
+</section>
+<section id="cygwin-support">
+<h2>Cygwin support<a class="headerlink" href="#cygwin-support" title="Link to this heading">#</a></h2>
+<p>Meson now works under Cygwin and we have added it to our CI test
+matrix.</p>
+</section>
+<section id="multiple-install-directories">
+<h2>Multiple install directories<a class="headerlink" href="#multiple-install-directories" title="Link to this heading">#</a></h2>
+<p>Custom targets can produce many output files. Previously it was only
+possible to install all of them in the same directory, but now you can
+install each output in its own directory like this:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">custom_target</span><span class="p">(</span><span class="s">&#39;two_out&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">output</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;diff.h&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;diff.sh&#39;</span><span class="p">],</span>
+<span class="w">  </span><span class="n">command</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">creator</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;@OUTDIR@&#39;</span><span class="p">],</span>
+<span class="w">  </span><span class="n">install</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="n">install_dir</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;dir1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;dir2&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>For backwards compatibility and for conciseness, if you only specify
+one directory all outputs will be installed into it.</p>
+<p>The same feature is also available for Vala build targets. For
+instance, to install a shared library built by valac, the generated
+header, and the generated VAPI (respectively) into the default
+locations, you can do:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">shared_library</span><span class="p">(</span><span class="s">&#39;valalib&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;mylib.vala&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">install</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="n">install_dir</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>To install any of the three in a custom directory, just pass it as a
+string instead of <code class="docutils literal notranslate"><span class="pre">true</span></code>. To not install it, pass <code class="docutils literal notranslate"><span class="pre">false</span></code>. You can
+also pass a single string (as before) and it will cause only the
+library to be installed, so this is a backwards-compatible change.</p>
+</section>
+<section id="can-specify-method-of-obtaining-dependencies">
+<h2>Can specify method of obtaining dependencies<a class="headerlink" href="#can-specify-method-of-obtaining-dependencies" title="Link to this heading">#</a></h2>
+<p>Some dependencies have many ways of being provided. As an example Qt
+can either be detected via <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> or <code class="docutils literal notranslate"><span class="pre">qmake</span></code>. Until now Meson
+has had a heuristic for selecting which method to choose but sometimes
+it does the wrong thing. This can now be overridden with the <code class="docutils literal notranslate"><span class="pre">method</span></code>
+keyword like this:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">qt5_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;qt5&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">modules</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;core&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;qmake&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="link-whole-contents-of-static-libraries">
+<h2>Link whole contents of static libraries<a class="headerlink" href="#link-whole-contents-of-static-libraries" title="Link to this heading">#</a></h2>
+<p>The default behavior of static libraries is to discard all symbols
+that are not directly referenced. This may lead to exported
+symbols being lost. Most compilers support “whole archive” linking
+that includes all symbols and code of a given static library. This is
+exposed with the <code class="docutils literal notranslate"><span class="pre">link_whole</span></code> keyword.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">shared_library</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;foo.c&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">link_whole</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">some_static_library</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that Visual Studio compilers only support this functionality on
+VS 2015 and newer.</p>
+</section>
+<section id="unity-builds-only-for-subprojects">
+<h2>Unity builds only for subprojects<a class="headerlink" href="#unity-builds-only-for-subprojects" title="Link to this heading">#</a></h2>
+<p>Up until now unity builds were either done for every target or none of
+them. Now unity builds can be specified to be enabled only for
+subprojects, which change seldom, and not for the master project,
+which changes a lot. This is enabled by setting the <code class="docutils literal notranslate"><span class="pre">unity</span></code> option to
+<code class="docutils literal notranslate"><span class="pre">subprojects</span></code>.</p>
+</section>
+<section id="running-mesonintrospect-from-scripts">
+<h2>Running <code class="docutils literal notranslate"><span class="pre">mesonintrospect</span></code> from scripts<a class="headerlink" href="#running-mesonintrospect-from-scripts" title="Link to this heading">#</a></h2>
+<p>Meson now sets the <code class="docutils literal notranslate"><span class="pre">MESONINTROSPECT</span></code> environment variable in addition
+to <code class="docutils literal notranslate"><span class="pre">MESON_SOURCE_ROOT</span></code> and other variables when running scripts. It is
+guaranteed to point to the correct <code class="docutils literal notranslate"><span class="pre">mesonintrospect</span></code> script, which is
+important when running Meson uninstalled from git or when your <code class="docutils literal notranslate"><span class="pre">PATH</span></code>s
+may not be set up correctly.</p>
+<p>Specifically, the following Meson functions will set it:
+<code class="docutils literal notranslate"><span class="pre">meson.add_install_script()</span></code>, <code class="docutils literal notranslate"><span class="pre">meson.add_postconf_script()</span></code>,
+<code class="docutils literal notranslate"><span class="pre">run_command()</span></code>, <code class="docutils literal notranslate"><span class="pre">run_target()</span></code>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Release-notes-for-0.41.0.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">New features</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Release-notes-for-0.39.0.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">New features</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs-of-generators-can-be-used-in-custom-targets-in-the-vs-backend">Outputs of generators can be used in custom targets in the VS backend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-int-method-in-the-compiler-objects"><code class="docutils literal notranslate"><span class="pre">compute_int</span></code> method in the compiler objects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-studio-2017-support">Visual Studio 2017 support</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-initialization-of-subprojects-that-are-git-submodules">Automatic initialization of subprojects that are git submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#no-download-mode-for-wraps">No download mode for wraps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overriding-options-per-target">Overriding options per target</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compiler-object-get-define">Compiler object get define</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cygwin-support">Cygwin support</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-install-directories">Multiple install directories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-specify-method-of-obtaining-dependencies">Can specify method of obtaining dependencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#link-whole-contents-of-static-libraries">Link whole contents of static libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-builds-only-for-subprojects">Unity builds only for subprojects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-mesonintrospect-from-scripts">Running <code class="docutils literal notranslate"><span class="pre">mesonintrospect</span></code> from scripts</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/mesonbuild/meson/edit/master/docs/markdown/Release-notes-for-0.40.0.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">Website licensing information are available on the <a href="legal.html">Legal</a> page.</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

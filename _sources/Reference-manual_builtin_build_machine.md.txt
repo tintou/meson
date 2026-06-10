@@ -1,0 +1,209 @@
+---
+short-description: "Builtin object: Build machine information"
+title: build_machine
+render-subpages: false
+...
+# Build machine information (`build_machine`)
+
+Provides information about the build machine -- the machine that is doing the actual compilation.
+See [Cross-compilation](Cross-compilation.md).
+
+Currently, these values are populated using
+[`platform.system()`](https://docs.python.org/3.10/library/platform.html#platform.system) and
+[`platform.machine()`](https://docs.python.org/3.10/library/platform.html#platform.machine).
+If you think the returned values for any of these are incorrect for
+your system or CPU, or if your OS is not in the linked table, please
+[file a bug](https://github.com/mesonbuild/meson/issues/new) report
+with details and we'll look into it.
+
+## Extended by
+
+Build machine information is extended by the following subtypes:
+- [[@host_machine]]
+- [[@target_machine]]
+
+
+
+
+
+## Build machine information methods
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### build_machine.cpu()
+
+Returns a more specific CPU name, such as `i686`, `armv8l`, etc.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] cpu()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### build_machine.cpu_family()
+
+Returns the CPU family name.
+[This table](Reference-tables.md#cpu-families) contains
+all known CPU families. These are guaranteed to continue working.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] cpu_family()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### build_machine.endian()
+
+Returns `'big'` on big-endian systems and `'little'` on little-endian systems.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] endian()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### build_machine.kernel()
+
+Returns the name of the operating system kernel, such as `linux`, `xnu`, and
+`nt`. [See here for a more complete
+list](Reference-tables.md#kernel-names-since-120). These are more specific
+than `system`. If this cannot be detected (for the build machine), or is not
+set in the cross file (for the host machine when cross compiling), calling
+this method is fatal.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`1.2.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] kernel()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### build_machine.subsystem()
+
+Returns the variant of the operating system, such as `ios` and `tvos`.  [See
+here for a more complete list](Reference-tables.md#subsystem-names-since-120).
+These are more specific than `system`. If this cannot be detected (for the
+build machine), or is not set in the cross file (for the host machine when
+cross compiling), calling this method is fatal.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`1.2.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] subsystem()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### build_machine.system()
+
+Returns the operating system name.
+[This table](Reference-tables.md#operating-system-names) lists
+all of the currently known operating system names. These are
+guaranteed to continue working.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] system()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+

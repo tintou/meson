@@ -1,0 +1,944 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Compiling Vala applications and libraries &#8212; Meson documentation 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d99633c1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Vala';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Compiling D applications" href="D.html" />
+    <link rel="prev" title="Compiling Java applications" href="Java.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/meson_logo.png" class="logo__image only-light" alt="Meson documentation 1.0 documentation - Home"/>
+    <img src="_static/meson_logo.png" class="logo__image only-dark pst-js-only" alt="Meson documentation 1.0 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Running-Meson.html">Running Meson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Commands.html">Command-line commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuring-a-build-directory.html">Configuring a build directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-options.html">Build options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-targets.html">Build targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dependencies.html">Dependencies</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Subprojects.html">Subprojects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuration.html">Configuration</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generating-sources.html">Generating sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Custom-build-targets.html">Custom build targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-arguments.html">Adding arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compiler-properties.html">Compiler properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Include-directories.html">Include directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feature-autodetection.html">Feature autodetection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Disabler.html">Disabling parts of the build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Precompiled-headers.html">Precompiled headers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity-builds.html">Unity builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Threads.html">Threads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="External-commands.html">External commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Code-formatting.html">clang-format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-tests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Run-targets.html">Run targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IDE-integration.html">IDE integration</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Build-system-converters.html">Build system converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cross-compilation.html">Cross compilation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Machine-files.html">Cross and Native File reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Native-environments.html">Persistent native environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Localisation.html">Localisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-releases.html">Creating releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-OSX-packages.html">Creating OSX packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-Linux-binaries.html">Creating Linux binaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Project-templates.html">Project templates</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Reproducible-builds.html">Reproducible builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtox.html">How do I do X in Meson?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Java.html">Compiling Java applications</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Compiling Vala applications and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D.html">Compiling D applications</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Cython.html">Cython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rust.html">Using Rust with Meson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Using-with-Visual-Studio.html">Using with Visual Studio</a></li>
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="Wrap-dependency-system-manual.html">Wrap dependency system manual</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Wrapdb-projects.html">Meson WrapDB packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-projects-to-wrapdb.html">Adding new projects to WrapDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-the-WrapDB.html">Using the WrapDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-wraptool.html">Using wraptool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wrap-best-practices-and-tips.html">Wrap best practices and tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shipping-prebuilt-binaries-as-wraps.html">Shipping prebuilt binaries as wraps</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="Guide.html" class="nav-link">Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Compiling Vala applications and libraries</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="compiling-vala-applications-and-libraries">
+<h1>Compiling Vala applications and libraries<a class="headerlink" href="#compiling-vala-applications-and-libraries" title="Link to this heading">#</a></h1>
+<p>Meson supports compiling applications and libraries written in
+<a class="reference external" href="https://vala-project.org/">Vala</a> and
+<a class="reference external" href="https://wiki.gnome.org/Projects/Genie">Genie</a> . A skeleton <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> file:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">project</span><span class="p">(</span><span class="s">&#39;vala app&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;vala&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+
+<span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;glib-2.0&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;gobject-2.0&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">sources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">files</span><span class="p">(</span><span class="s">&#39;app.vala&#39;</span><span class="p">)</span>
+
+<span class="nb">executable</span><span class="p">(</span><span class="s">&#39;app_name&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">,</span><span class="w"> </span><span class="n">dependencies</span><span class="p">:</span><span class="w"> </span><span class="n">dependencies</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You must always specify the <code class="docutils literal notranslate"><span class="pre">glib-2.0</span></code> and <code class="docutils literal notranslate"><span class="pre">gobject-2.0</span></code> libraries as
+dependencies, because all current Vala applications use them.
+<a class="reference external" href="https://developer.gnome.org/glib/stable/">GLib</a> is used for basic data types
+and <a class="reference external" href="https://developer.gnome.org/gobject/stable/">GObject</a> is used for the
+runtime type system.</p>
+<section id="using-libraries">
+<h2>Using libraries<a class="headerlink" href="#using-libraries" title="Link to this heading">#</a></h2>
+<p>Meson uses the <a href="Reference-manual_functions.html#dependency"><code>dependency()</code></a>
+function to find the relevant VAPI, C headers and linker flags when it
+encounters a Vala source file in a build target. Vala needs a VAPI
+file and a C header or headers to use a library. The VAPI file helps
+map Vala code to the library’s C programming interface. It is the
+<a class="reference external" href="https://www.freedesktop.org/wiki/Software/pkg-config/"><code class="docutils literal notranslate"><span class="pre">pkg-config</span></code></a>
+tool that makes finding these installed files all work seamlessly
+behind the scenes. When a <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> file doesn’t exist for the
+library then the <code class="docutils literal notranslate"><span class="pre">find_library()</span></code>
+method of the <a href="Reference-manual_returned_compiler.html"><code>compiler</code></a> object
+needs to be used. Examples are given later.</p>
+<p>Note Vala uses libraries that follow the C Application Binary Interface (C ABI).
+The library, however, could be written in C, Vala, Rust, Go, C++ or any other
+language that can generate a binary compatible with the C ABI and so provides C
+headers.</p>
+<section id="the-simplest-case">
+<h3>The simplest case<a class="headerlink" href="#the-simplest-case" title="Link to this heading">#</a></h3>
+<p>This first example is a simple addition to the <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> file because:</p>
+<ul class="simple">
+<li><p>the library has a <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> file, <code class="docutils literal notranslate"><span class="pre">gtk+-3.0.pc</span></code></p></li>
+<li><p>the VAPI is distributed with Vala and so installed with the Vala compiler</p></li>
+<li><p>the VAPI is installed in Vala’s standard search path</p></li>
+<li><p>the VAPI, <code class="docutils literal notranslate"><span class="pre">gtk+-3.0.vapi</span></code>, has the same name as the <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> file</p></li>
+</ul>
+<p>Everything works seamlessly in the background and only a single extra line is
+needed:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">project</span><span class="p">(</span><span class="s">&#39;vala app&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;vala&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+
+<span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;glib-2.0&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;gobject-2.0&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;gtk+-3.0&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">sources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">files</span><span class="p">(</span><span class="s">&#39;app.vala&#39;</span><span class="p">)</span>
+
+<span class="nb">executable</span><span class="p">(</span><span class="s">&#39;app_name&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">,</span><span class="w"> </span><span class="n">dependencies</span><span class="p">:</span><span class="w"> </span><span class="n">dependencies</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>GTK+ is the graphical toolkit used by GNOME, elementary OS and other
+desktop environments. The binding to the library, the VAPI file, is
+distributed with Vala.</p>
+<p>Other libraries may have a VAPI that is distributed with the library
+itself. Such libraries will have their VAPI file installed along with
+their other development files. The VAPI is installed in Vala’s
+standard search path and so works just as seamlessly using the
+<code class="docutils literal notranslate"><span class="pre">dependency()</span></code> function.</p>
+</section>
+<section id="targeting-a-version-of-glib">
+<h3>Targeting a version of GLib<a class="headerlink" href="#targeting-a-version-of-glib" title="Link to this heading">#</a></h3>
+<p>Meson’s <a href="Reference-manual_functions.html#dependency"><code>dependency()</code></a> function
+allows a version check of a library. This is often used to check a
+minimum version is installed. When setting a minimum version of GLib,
+Meson will also pass this to the Vala compiler using the
+<code class="docutils literal notranslate"><span class="pre">--target-glib</span></code> option.</p>
+<p>This is needed when using GTK+’s user interface definition files with
+Vala’s <code class="docutils literal notranslate"><span class="pre">[GtkTemplate]</span></code>, <code class="docutils literal notranslate"><span class="pre">[GtkChild]</span></code> and <code class="docutils literal notranslate"><span class="pre">[GtkCallback]</span></code> attributes.
+This requires <code class="docutils literal notranslate"><span class="pre">--target-glib</span> <span class="pre">2.38</span></code>, or a newer version, to be passed
+to Vala. With Meson this is simply done with:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">project</span><span class="p">(</span><span class="s">&#39;vala app&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;vala&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+
+<span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;glib-2.0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;=2.38&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;gobject-2.0&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;gtk+-3.0&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">sources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">files</span><span class="p">(</span><span class="s">&#39;app.vala&#39;</span><span class="p">)</span>
+
+<span class="nb">executable</span><span class="p">(</span><span class="s">&#39;app_name&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">,</span><span class="w"> </span><span class="n">dependencies</span><span class="p">:</span><span class="w"> </span><span class="n">dependencies</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">[GtkTemplate]</span></code> also requires the GTK+ user interface definition
+files to be built into the binary as GResources. For completeness,
+the next example shows this:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">project</span><span class="p">(</span><span class="s">&#39;vala app&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;vala&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+
+<span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;glib-2.0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;=2.38&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;gobject-2.0&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;gtk+-3.0&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">sources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">files</span><span class="p">(</span><span class="s">&#39;app.vala&#39;</span><span class="p">)</span>
+
+<span class="n">sources</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nn">import</span><span class="p">(</span><span class="w"> </span><span class="s">&#39;gnome&#39;</span><span class="w"> </span><span class="p">).</span><span class="n">compile_resources</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&#39;project-resources&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&#39;src/resources/resources.gresource.xml&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">source_dir</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;src/resources&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="nb">executable</span><span class="p">(</span><span class="s">&#39;app_name&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">,</span><span class="w"> </span><span class="n">dependencies</span><span class="p">:</span><span class="w"> </span><span class="n">dependencies</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-to-vala-s-search-path">
+<h3>Adding to Vala’s search path<a class="headerlink" href="#adding-to-vala-s-search-path" title="Link to this heading">#</a></h3>
+<p>So far we have covered the cases where the VAPI file is either
+distributed with Vala or the library. A VAPI can also be included in
+the source files of your project. The convention is to put it in the
+<code class="docutils literal notranslate"><span class="pre">vapi</span></code> directory of your project.</p>
+<p>This is needed when a library does not have a VAPI or your project
+needs to link to another component in the project that uses the C ABI.
+For example if part of the project is written in C.</p>
+<p>The Vala compiler’s <code class="docutils literal notranslate"><span class="pre">--vapidir</span></code> option is used to add the project
+directory to the VAPI search path. In Meson this is done with the
+<code class="docutils literal notranslate"><span class="pre">add_project_arguments()</span></code> function:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">project</span><span class="p">(</span><span class="s">&#39;vala app&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;vala&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+
+<span class="n">vapi_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vm">meson</span><span class="p">.</span><span class="n">current_source_dir</span><span class="p">()</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="s">&#39;vapi&#39;</span>
+
+<span class="nb">add_project_arguments</span><span class="p">([</span><span class="s">&#39;--vapidir&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">vapi_dir</span><span class="p">],</span><span class="w"> </span><span class="n">language</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;vala&#39;</span><span class="p">)</span>
+
+<span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;glib-2.0&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;gobject-2.0&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">),</span><span class="w"> </span><span class="c"># &#39;foo.vapi&#39; will be resolved as &#39;./vapi/foo.vapi&#39;</span>
+<span class="p">]</span>
+
+<span class="n">sources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">files</span><span class="p">(</span><span class="s">&#39;app.vala&#39;</span><span class="p">)</span>
+
+<span class="nb">executable</span><span class="p">(</span><span class="s">&#39;app_name&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">,</span><span class="w"> </span><span class="n">dependencies</span><span class="p">:</span><span class="w"> </span><span class="n">dependencies</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If the VAPI is for an external library then make sure that the VAPI
+name corresponds to the pkg-config file name.</p>
+<p>The <a class="reference external" href="https://gitlab.gnome.org/GNOME/vala-extra-vapis"><code class="docutils literal notranslate"><span class="pre">vala-extra-vapis</span></code>
+repository</a> is a
+community maintained repository of VAPIs that are not distributed.
+Developers use the repository to share early work on new bindings and
+improvements to existing bindings. So the VAPIs can frequently change.
+It is recommended VAPIs from this repository are copied into your
+project’s source files.</p>
+<p>This also works well for starting to write new bindings before they
+are shared with the <code class="docutils literal notranslate"><span class="pre">vala-extra-vapis</span></code> repository.</p>
+</section>
+<section id="libraries-without-pkg-config-files">
+<h3>Libraries without pkg-config files<a class="headerlink" href="#libraries-without-pkg-config-files" title="Link to this heading">#</a></h3>
+<p>A library that does not have a corresponding pkg-config file may mean
+<code class="docutils literal notranslate"><span class="pre">dependency()</span></code> is unsuitable for finding the C and Vala interface
+files. In this case it is necessary to use the <code class="docutils literal notranslate"><span class="pre">find_library()</span></code> method
+of the compiler object.</p>
+<p>The first example uses Vala’s POSIX binding. There is no pkg-config
+file because POSIX includes the standard C library on Unix systems.
+All that is needed is the VAPI file, <code class="docutils literal notranslate"><span class="pre">posix.vapi</span></code>. This is included
+with Vala and installed in Vala’s standard search path. Meson just
+needs to be told to only find the library for the Vala compiler:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">project</span><span class="p">(</span><span class="s">&#39;vala app&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;vala&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+
+<span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;glib-2.0&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;gobject-2.0&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="vm">meson</span><span class="p">.</span><span class="n">get_compiler</span><span class="p">(</span><span class="s">&#39;vala&#39;</span><span class="p">).</span><span class="n">find_library</span><span class="p">(</span><span class="s">&#39;posix&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">sources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">files</span><span class="p">(</span><span class="s">&#39;app.vala&#39;</span><span class="p">)</span>
+
+<span class="nb">executable</span><span class="p">(</span><span class="s">&#39;app_name&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">,</span><span class="w"> </span><span class="n">dependencies</span><span class="p">:</span><span class="w"> </span><span class="n">dependencies</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The next example shows how to link with a C library where no
+additional VAPI is needed. The standard maths functions are already
+bound in <code class="docutils literal notranslate"><span class="pre">glib-2.0.vapi</span></code>, but the GNU C library requires linking to
+the maths library separately. In this example Meson is told to find
+the library only for the C compiler:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">project</span><span class="p">(</span><span class="s">&#39;vala app&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;vala&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+
+<span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;glib-2.0&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;gobject-2.0&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="vm">meson</span><span class="p">.</span><span class="n">get_compiler</span><span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">).</span><span class="n">find_library</span><span class="p">(</span><span class="s">&#39;m&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">required</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">sources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">files</span><span class="p">(</span><span class="s">&#39;app.vala&#39;</span><span class="p">)</span>
+
+<span class="nb">executable</span><span class="p">(</span><span class="s">&#39;app_name&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">,</span><span class="w"> </span><span class="n">dependencies</span><span class="p">:</span><span class="w"> </span><span class="n">dependencies</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">required:</span> <span class="pre">false</span></code> means the build will continue when using another
+C library that does not separate the maths library. See <a class="reference internal" href="howtox.html#add-math-library-lm-portably"><span class="std std-ref">Add math
+library (-lm) portably</span></a>.</p>
+<p>The final example shows how to use a library that does not have a
+pkg-config file and the VAPI is in the <code class="docutils literal notranslate"><span class="pre">vapi</span></code> directory of your
+project source files:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">project</span><span class="p">(</span><span class="s">&#39;vala app&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;vala&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+
+<span class="n">vapi_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vm">meson</span><span class="p">.</span><span class="n">current_source_dir</span><span class="p">()</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="s">&#39;vapi&#39;</span>
+
+<span class="nb">add_project_arguments</span><span class="p">([</span><span class="s">&#39;--vapidir&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">vapi_dir</span><span class="p">],</span><span class="w"> </span><span class="n">language</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;vala&#39;</span><span class="p">)</span>
+
+<span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;glib-2.0&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;gobject-2.0&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="vm">meson</span><span class="p">.</span><span class="n">get_compiler</span><span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">).</span><span class="n">find_library</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">),</span>
+<span class="w">    </span><span class="vm">meson</span><span class="p">.</span><span class="n">get_compiler</span><span class="p">(</span><span class="s">&#39;vala&#39;</span><span class="p">).</span><span class="n">find_library</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">dirs</span><span class="p">:</span><span class="w"> </span><span class="n">vapi_dir</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">sources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">files</span><span class="p">(</span><span class="s">&#39;app.vala&#39;</span><span class="p">)</span>
+
+<span class="nb">executable</span><span class="p">(</span><span class="s">&#39;app_name&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">,</span><span class="w"> </span><span class="n">dependencies</span><span class="p">:</span><span class="w"> </span><span class="n">dependencies</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">find_library()</span></code> method of the C compiler object will try to find the C
+header files and the library to link with.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">find_library()</span></code> method of the Vala compiler object needs to have the <code class="docutils literal notranslate"><span class="pre">dir</span></code>
+keyword added to include the project VAPI directory. This is not added
+automatically by <code class="docutils literal notranslate"><span class="pre">add_project_arguments()</span></code>.</p>
+</section>
+<section id="working-with-the-vala-preprocessor">
+<h3>Working with the Vala Preprocessor<a class="headerlink" href="#working-with-the-vala-preprocessor" title="Link to this heading">#</a></h3>
+<p>Passing arguments to <a class="reference external" href="https://wiki.gnome.org/Projects/Vala/Manual/Preprocessor">Vala’s
+preprocessor</a>
+requires specifying the language as <code class="docutils literal notranslate"><span class="pre">vala</span></code>. For example, the following
+statement sets the preprocessor symbol <code class="docutils literal notranslate"><span class="pre">USE_FUSE</span></code>:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">add_project_arguments</span><span class="p">(</span><span class="s">&#39;-D&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;USE_FUSE&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">language</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;vala&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you need to pass an argument to the C pre-processor then specify
+the language as c. For example to set FUSE_USE_VERSION to 26 use:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">add_project_arguments</span><span class="p">(</span><span class="s">&#39;-DFUSE_USE_VERSION=26&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">language</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="building-libraries">
+<h2>Building libraries<a class="headerlink" href="#building-libraries" title="Link to this heading">#</a></h2>
+<section id="changing-c-header-and-vapi-names">
+<h3>Changing C header and VAPI names<a class="headerlink" href="#changing-c-header-and-vapi-names" title="Link to this heading">#</a></h3>
+<p>Meson’s <a href="Reference-manual_functions.html#library"><code>library()</code></a> target automatically
+outputs the C header and the VAPI. They can be renamed by setting the
+<code class="docutils literal notranslate"><span class="pre">vala_header</span></code> and <code class="docutils literal notranslate"><span class="pre">vala_vapi</span></code> arguments respectively:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">foo_lib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">shared_library</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;foo.vala&#39;</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">vala_header</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;foo.h&#39;</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">vala_vapi</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;foo-1.0.vapi&#39;</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">dependencies</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">glib_dep</span><span class="p">,</span><span class="w"> </span><span class="n">gobject_dep</span><span class="p">],</span>
+<span class="w">                  </span><span class="n">install</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">install_vala_header</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">install_vala_vapi</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><em>(Before Meson 1.11)</em> the <code class="docutils literal notranslate"><span class="pre">install_vala_*</span></code> keyword arguments did not exist,
+and setting additional outputs to install was done via passing an array to
+<code class="docutils literal notranslate"><span class="pre">install_dir</span></code>. This array was in the form <code class="docutils literal notranslate"><span class="pre">[build_target,</span> <span class="pre">vala_header,</span> <span class="pre">vala_vapi,</span> <span class="pre">vala_gir]</span></code>. Any elements not specified are treated as <code class="docutils literal notranslate"><span class="pre">false</span></code>.
+Whether using the array format or the keywords, the accepted values are: <code class="docutils literal notranslate"><span class="pre">true</span></code>,
+which means “install in default location”; <code class="docutils literal notranslate"><span class="pre">false</span></code>, which means “do not
+install”; and a string value, which means “install to this location”.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">foo_lib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">shared_library</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;foo.vala&#39;</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">vala_header</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;foo.h&#39;</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">vala_vapi</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;foo-1.0.vapi&#39;</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">dependencies</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">glib_dep</span><span class="p">,</span><span class="w"> </span><span class="n">gobject_dep</span><span class="p">],</span>
+<span class="w">                  </span><span class="n">install</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">install_dir</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>In this example, the second and third elements of the <code class="docutils literal notranslate"><span class="pre">install_dir</span></code>
+array indicate the destination with <code class="docutils literal notranslate"><span class="pre">true</span></code> to use default directories.
+(i.e. <code class="docutils literal notranslate"><span class="pre">include</span></code> and <code class="docutils literal notranslate"><span class="pre">share/vala/vapi</span></code>).</p>
+</section>
+<section id="depending-on-c-header">
+<h3>Depending on C header<a class="headerlink" href="#depending-on-c-header" title="Link to this heading">#</a></h3>
+<p><em>(since 1.10.0)</em></p>
+<p>Given the previous example,</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">foo_lib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">shared_library</span><span class="p">(...)</span>
+<span class="n">foo_h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">foo_lib</span><span class="p">.</span><span class="n">vala_header</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This header can now be used like any other generated header to create an
+order-only dependency.</p>
+</section>
+<section id="depending-on-vapi-header">
+<h3>Depending on VAPI header<a class="headerlink" href="#depending-on-vapi-header" title="Link to this heading">#</a></h3>
+<p><em>(since 1.10.0)</em></p>
+<p>Given the previous example,</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">foo_lib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">shared_library</span><span class="p">(...)</span>
+<span class="n">foo_vapi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">foo_lib</span><span class="p">.</span><span class="n">vala_vapi</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="depending-on-generated-gir">
+<h3>Depending on generated GIR<a class="headerlink" href="#depending-on-generated-gir" title="Link to this heading">#</a></h3>
+<p><em>(since 1.10.0)</em></p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">foo_lib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">shared_library</span><span class="p">(...,</span><span class="w"> </span><span class="n">vala_gir</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;foo.gir&#39;</span><span class="p">)</span>
+<span class="n">foo_gir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">foo_lib</span><span class="p">.</span><span class="n">vala_gir</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="gobject-introspection-and-language-bindings">
+<h3>GObject Introspection and language bindings<a class="headerlink" href="#gobject-introspection-and-language-bindings" title="Link to this heading">#</a></h3>
+<p>A ‘binding’ allows another programming language to use a library
+written in Vala. Because Vala uses the GObject type system as its
+runtime type system it is very easy to use introspection to generate a
+binding. A Meson build of a Vala library can generate the GObject
+introspection metadata. The metadata is then used in separate projects
+with <a class="reference external" href="https://wiki.gnome.org/Projects/Vala/LibraryWritingBindings">language specific
+tools</a> to
+generate a binding.</p>
+<p>The main form of metadata is a GObject Introspection Repository (GIR)
+XML file. GIRs are mostly used by languages that generate bindings at
+compile time. Languages that generate bindings at runtime mostly use a
+typelib file, which is generated from the GIR.</p>
+<p>Meson can generate a GIR as part of the build. For a Vala library the
+<code class="docutils literal notranslate"><span class="pre">vala_gir</span></code> option has to be set for the <code class="docutils literal notranslate"><span class="pre">library</span></code>:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">foo_lib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">shared_library</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;foo.vala&#39;</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">vala_gir</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Foo-1.0.gir&#39;</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">dependencies</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">glib_dep</span><span class="p">,</span><span class="w"> </span><span class="n">gobject_dep</span><span class="p">],</span>
+<span class="w">                  </span><span class="n">install</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">install_vala_header</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">install_vala_gir</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">install_vala_vapi</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The default install location for gir files is <code class="docutils literal notranslate"><span class="pre">share/gir-1.0</span></code>.</p>
+<p>To then generate a typelib file use a custom target with the
+<code class="docutils literal notranslate"><span class="pre">g-ir-compiler</span></code> program and a dependency on the library:</p>
+<p><em>Since Meson 1.10</em>, use the <code class="docutils literal notranslate"><span class="pre">.vala_gir()</span></code> method to get a handle to the generated <code class="docutils literal notranslate"><span class="pre">.gir</span></code> file:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">g_ir_compiler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">find_program</span><span class="p">(</span><span class="s">&#39;g-ir-compiler&#39;</span><span class="p">)</span>
+<span class="nb">custom_target</span><span class="p">(</span><span class="s">&#39;foo typelib&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">g_ir_compiler</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;--output&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;@OUTPUT@&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;@INPUT@&#39;</span><span class="p">],</span>
+<span class="w">              </span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="n">foo_lib</span><span class="p">.</span><span class="n">vala_gir</span><span class="p">(),</span>
+<span class="w">              </span><span class="n">output</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Foo-1.0.typelib&#39;</span><span class="p">,</span>
+<span class="w">              </span><span class="n">install</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">              </span><span class="n">install_dir</span><span class="p">:</span><span class="w"> </span><span class="nb">get_option</span><span class="p">(</span><span class="s">&#39;libdir&#39;</span><span class="p">)</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="s">&#39;girepository-1.0&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>Before Meson 1.10</em>, calculating the path to the input is required, as is adding a
+manual dependency to the vala target:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">g_ir_compiler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">find_program</span><span class="p">(</span><span class="s">&#39;g-ir-compiler&#39;</span><span class="p">)</span>
+<span class="nb">custom_target</span><span class="p">(</span><span class="s">&#39;foo typelib&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">g_ir_compiler</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;--output&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;@OUTPUT@&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;@INPUT@&#39;</span><span class="p">],</span>
+<span class="w">              </span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="vm">meson</span><span class="p">.</span><span class="n">current_build_dir</span><span class="p">()</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="s">&#39;Foo-1.0.gir&#39;</span><span class="p">,</span>
+<span class="w">              </span><span class="n">output</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Foo-1.0.typelib&#39;</span><span class="p">,</span>
+<span class="w">              </span><span class="n">depends</span><span class="p">:</span><span class="w"> </span><span class="n">foo_lib</span><span class="p">,</span>
+<span class="w">              </span><span class="n">install</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">              </span><span class="n">install_dir</span><span class="p">:</span><span class="w"> </span><span class="nb">get_option</span><span class="p">(</span><span class="s">&#39;libdir&#39;</span><span class="p">)</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="s">&#39;girepository-1.0&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Java.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Compiling Java applications</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="D.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Compiling D applications</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-libraries">Using libraries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-simplest-case">The simplest case</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#targeting-a-version-of-glib">Targeting a version of GLib</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-to-vala-s-search-path">Adding to Vala’s search path</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-without-pkg-config-files">Libraries without pkg-config files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-the-vala-preprocessor">Working with the Vala Preprocessor</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-libraries">Building libraries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-c-header-and-vapi-names">Changing C header and VAPI names</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#depending-on-c-header">Depending on C header</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#depending-on-vapi-header">Depending on VAPI header</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#depending-on-generated-gir">Depending on generated GIR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gobject-introspection-and-language-bindings">GObject Introspection and language bindings</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/mesonbuild/meson/edit/master/docs/markdown/Vala.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">Website licensing information are available on the <a href="legal.html">Legal</a> page.</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

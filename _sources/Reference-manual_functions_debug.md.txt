@@ -1,0 +1,67 @@
+## debug()
+
+Write the argument string to the meson build log.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.63.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Write the argument string to the meson build log
+[[#@void]] debug(
+  [[#@str]] | [[#@int]] | [[#@bool]] | [[#@array]][[[#@str]] | [[#@int]] | [[#@bool]]] | [[#@dict]][[[#@str]] | [[#@int]] | [[#@bool]]]                                                                                                                                                                                                                                                                                                          <a href="#debug_message"><b>message</b></a>,     # The message to print
+  [[#@str]] | [[#@int]] | [[#@bool]] | [[#@array]][[[#@str]] | [[#@int]] | [[#@bool]]] | [[#@dict]][[[#@str]] | [[#@int]] | [[#@bool]]]                                                                                                                                                                                                                                                                                                          <b>msg</b>...,      # Additional parameters will be separated by spaces
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+  The function `debug()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="debug_message">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">message</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span> | <span class="text-nowrap">[[@bool]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span> | <span class="text-nowrap">[[@bool]]</span>] | [[@dict]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span> | <span class="text-nowrap">[[@bool]]</span>]
+  </td>
+        <td>
+  
+  The message to print
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  Additionally, the
+  function accepts between `0` and `infinity` variadic
+  arguments (`msg...`) of type <code><span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span> | <span class="text-nowrap">[[@bool]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span> | <span class="text-nowrap">[[@bool]]</span>] | [[@dict]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span> | <span class="text-nowrap">[[@bool]]</span>]</code>.
+
+  Additional parameters will be separated by spaces
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+

@@ -1,0 +1,52 @@
+---
+short-description: "Returned object: Disabler"
+title: Disabler
+render-subpages: false
+...
+# Disabler (`disabler`)
+
+A disabler object is an object that behaves in much the same way as
+NaN numbers do in floating point math. That is when used in any
+statement (function call, logical op, etc) they will cause the
+statement evaluation to immediately short circuit to return a disabler
+object. A disabler object has one method:
+
+
+## Returned by
+
+Disabler objects are returned by the following functions and methods:
+- [[disabler]]
+
+
+
+
+## Disabler methods
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### disabler.found()
+
+Always returns `false`
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@bool]] found()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+

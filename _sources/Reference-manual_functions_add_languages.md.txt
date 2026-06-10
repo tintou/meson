@@ -1,0 +1,118 @@
+## add_languages()
+
+Add programming languages used by the project.
+
+This is equivalent to having
+them in the `project` declaration. This function is usually used to
+add languages that are only used under some conditions.
+
+Returns `true` if all languages specified were found and `false` otherwise.
+
+If `native` is omitted, the languages may be used for either build or host
+machine, but are never required for the build machine.  (i.e. it is equivalent
+to `add_languages(*langs*, native: false, required: *required*) and
+add_languages(*langs*, native: true, required: false)`. This default behaviour
+may change to `native: false` in a future Meson version.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Add programming languages used by the project
+[[#@bool]] add_languages(
+  [[#@str]]                                  <b>Language</b>...,  # The languages to add
+
+  # Keyword arguments:
+  <a href="#add_languages_native"><b>native</b></a>   : [[#@bool]]                                                                              # If set to `true`, the language will be used to compile for the build
+  <a href="#add_languages_required"><b>required</b></a> : [[#@bool]] | [[#@feature]]                                                                    # If set to `true`, Meson will halt if any of the languages
+)</code></pre>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Example
+
+```meson
+project('foobar', 'c')
+
+if compiling_for_osx
+  add_languages('objc')
+endif
+if add_languages('cpp', required : false)
+  executable('cpp-app', 'main.cpp')
+endif
+
+# More code...
+```
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+
+  The
+  function accepts between `0` and `infinity` variadic
+  arguments (`Language...`) of type <code><span class="text-nowrap">[[@str]]</span></code>.
+
+  The languages to add
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  The function `add_languages()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="add_languages_native">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">native</code>
+  <br>{meson:since}`0.54.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  If set to `true`, the language will be used to compile for the build
+machine, if `false`, for the host machine.
+
+  </td>
+      </tr>
+      <tr id="add_languages_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = true</code>
+  </td>
+        <td>
+  
+  If set to `true`, Meson will halt if any of the languages
+specified are not found. *(since 0.47.0)* The value of a
+[`feature`](Build-options.md#features) option can also be passed.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,19 @@
+---
+short-description: "Returned object: Run target"
+title: Run target
+render-subpages: false
+...
+# Run target (`run_tgt` extends [[@tgt]])
+
+Opaque object returned by [[run_target]].
+
+
+## Returned by
+
+Run target objects are returned by the following functions and methods:
+- [[run_target]]
+
+
+
+
+

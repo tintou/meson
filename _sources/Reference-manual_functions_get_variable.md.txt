@@ -1,0 +1,79 @@
+## get_variable()
+
+This function can be used to dynamically obtain a variable. `res =
+get_variable(varname, fallback)` takes the value of `varname` (which
+must be a string) and stores the variable of that name into `res`. If
+the variable does not exist, the variable `fallback` is stored to
+`res`instead. If a fallback is not specified, then attempting to read
+a non-existing variable will cause a fatal error.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># This function can be used to dynamically obtain a variable
+[[#@any]] get_variable(
+  [[#@str]]                                  <a href="#get_variable_variable_name"><b>variable_name</b></a>,     # Name of the variable to get
+  [[#@any]]                                  [<a href="#get_variable_default"><b>default</b></a>],         # Fallback value to return when the variable does not exist
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+  [Argument flattening](Syntax.md#argument-flattening) is **NOT SUPPORTED** by this function.
+
+  The function `get_variable()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_variable_variable_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">variable_name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Name of the variable to get
+  </td>
+      </tr>
+      <tr id="get_variable_default">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">default</code>
+  <br>{meson:optional}` `
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@any]]</span>
+  </td>
+        <td>
+  
+  Fallback value to return when the variable does not exist
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+

@@ -1,0 +1,20 @@
+---
+short-description: "Returned object: Extracted object file"
+title: Extracted object file
+render-subpages: false
+...
+# Extracted object file (`extracted_obj`)
+
+Opaque object representing extracted object files from build targets
+
+
+## Returned by
+
+Extracted object file objects are returned by the following functions and methods:
+- [[build_tgt.extract_all_objects]]
+- [[build_tgt.extract_objects]]
+
+
+
+
+

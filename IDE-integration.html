@@ -1,0 +1,1103 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>IDE integration &#8212; Meson documentation 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d99633c1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'IDE-integration';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Build system converters" href="Build-system-converters.html" />
+    <link rel="prev" title="Run targets" href="Run-targets.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/meson_logo.png" class="logo__image only-light" alt="Meson documentation 1.0 documentation - Home"/>
+    <img src="_static/meson_logo.png" class="logo__image only-dark pst-js-only" alt="Meson documentation 1.0 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Running-Meson.html">Running Meson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Commands.html">Command-line commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuring-a-build-directory.html">Configuring a build directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-options.html">Build options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-targets.html">Build targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dependencies.html">Dependencies</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Subprojects.html">Subprojects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuration.html">Configuration</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generating-sources.html">Generating sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Custom-build-targets.html">Custom build targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-arguments.html">Adding arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compiler-properties.html">Compiler properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Include-directories.html">Include directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feature-autodetection.html">Feature autodetection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Disabler.html">Disabling parts of the build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Precompiled-headers.html">Precompiled headers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity-builds.html">Unity builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Threads.html">Threads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="External-commands.html">External commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Code-formatting.html">clang-format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-tests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Run-targets.html">Run targets</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">IDE integration</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Build-system-converters.html">Build system converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cross-compilation.html">Cross compilation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Machine-files.html">Cross and Native File reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Native-environments.html">Persistent native environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Localisation.html">Localisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-releases.html">Creating releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-OSX-packages.html">Creating OSX packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-Linux-binaries.html">Creating Linux binaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Project-templates.html">Project templates</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Reproducible-builds.html">Reproducible builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtox.html">How do I do X in Meson?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Java.html">Compiling Java applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Vala.html">Compiling Vala applications and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D.html">Compiling D applications</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Cython.html">Cython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rust.html">Using Rust with Meson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Using-with-Visual-Studio.html">Using with Visual Studio</a></li>
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="Wrap-dependency-system-manual.html">Wrap dependency system manual</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Wrapdb-projects.html">Meson WrapDB packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-projects-to-wrapdb.html">Adding new projects to WrapDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-the-WrapDB.html">Using the WrapDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-wraptool.html">Using wraptool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wrap-best-practices-and-tips.html">Wrap best practices and tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shipping-prebuilt-binaries-as-wraps.html">Shipping prebuilt binaries as wraps</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="Guide.html" class="nav-link">Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">IDE integration</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="ide-integration">
+<h1>IDE integration<a class="headerlink" href="#ide-integration" title="Link to this heading">#</a></h1>
+<p>Meson has exporters for Visual Studio and XCode, but writing a custom
+backend for every IDE out there is not a scalable approach. To solve
+this problem, Meson provides an API that makes it easy for any IDE or
+build tools to integrate Meson builds and provide an experience
+comparable to a solution native to the IDE.</p>
+<p>All the resources required for such an IDE integration can be found in
+the <code class="docutils literal notranslate"><span class="pre">meson-info</span></code> directory in the build directory.</p>
+<p>The first thing to do when setting up a Meson project in an IDE is to
+select the source and build directories. For this example we assume
+that the source resides in an Eclipse-like directory called
+<code class="docutils literal notranslate"><span class="pre">workspace/project</span></code> and the build tree is nested inside it as
+<code class="docutils literal notranslate"><span class="pre">workspace/project/build</span></code>. First, we initialize Meson by running the
+following command in the source directory.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>meson setup builddir
+</pre></div>
+</div>
+<p>With this command Meson will configure the project and also generate
+introspection information that is stored in <code class="docutils literal notranslate"><span class="pre">intro-*.json</span></code> files in
+the <code class="docutils literal notranslate"><span class="pre">meson-info</span></code> directory. The introspection dump will be
+automatically updated when Meson is (re)configured, or the build
+options change. Thus, an IDE can watch for changes in this directory
+to know when something changed. Note that <code class="docutils literal notranslate"><span class="pre">meson-info.json</span></code> guaranteed
+to be the last file written.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">meson-info</span></code> directory should contain the following files:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">intro-benchmarks.json</span></code></p></td>
+<td><p>Lists all benchmarks</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">intro-buildoptions.json</span></code></p></td>
+<td><p>Contains a full list of Meson configuration options for the project</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">intro-buildsystem_files.json</span></code></p></td>
+<td><p>Full list of all Meson build files</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">intro-dependencies.json</span></code></p></td>
+<td><p>Lists all dependencies used in the project</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">intro-installed.json</span></code></p></td>
+<td><p>Contains mapping of files to their installed location</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">intro-install_plan.json</span></code></p></td>
+<td><p>Dictionary of data types with the source files and their installation details</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">intro-projectinfo.json</span></code></p></td>
+<td><p>Stores basic information about the project (name, version, etc.)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">intro-targets.json</span></code></p></td>
+<td><p>Full list of all build targets</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">intro-tests.json</span></code></p></td>
+<td><p>Lists all tests with instructions how to run them</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The content of the JSON files is further specified in the remainder of
+this document.</p>
+<section id="the-targets-section">
+<h2>The <code class="docutils literal notranslate"><span class="pre">targets</span></code> section<a class="headerlink" href="#the-targets-section" title="Link to this heading">#</a></h2>
+<p>The most important file for an IDE is probably <code class="docutils literal notranslate"><span class="pre">intro-targets.json</span></code>.
+Here each target with its sources and compiler parameters is
+specified. The JSON format for one target is defined as follows:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Name of the target&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The internal ID meson uses&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;TYPE&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;defined_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/Path/to/the/targets/meson.build&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;subproject&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;list&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;of&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;files&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;build_by_default&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;target_sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="nt">&quot;extra_files&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/path/to/file1.hpp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/path/to/file2.hpp&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;installed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If the key <code class="docutils literal notranslate"><span class="pre">installed</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, the key <code class="docutils literal notranslate"><span class="pre">install_filename</span></code>
+will also be present. It stores the installation location for each
+file in <code class="docutils literal notranslate"><span class="pre">filename</span></code>. If one file in <code class="docutils literal notranslate"><span class="pre">filename</span></code> is not installed, its
+corresponding install location is set to <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">subproject</span></code> key specifies the name of the subproject this target
+was defined in, or <code class="docutils literal notranslate"><span class="pre">null</span></code> if the target was defined in the top level
+project.</p>
+<p><em>(New in 0.56.0)</em> The <code class="docutils literal notranslate"><span class="pre">extra_files</span></code> key lists all files specified via
+the <code class="docutils literal notranslate"><span class="pre">extra_files</span></code> kwarg of a build target. See
+<a href="Reference-manual_functions.html#executable"><code>executable()</code></a>.</p>
+<p>A target usually generates only one file. However, it is possible for
+custom targets to have multiple outputs.</p>
+<section id="target-sources">
+<h3>Target sources<a class="headerlink" href="#target-sources" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">intro-targets.json</span></code> file also stores a list of all source objects
+of the target in the <code class="docutils literal notranslate"><span class="pre">target_sources</span></code>. With this information, an IDE
+can provide code completion for all source files.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;language ID&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;machine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;build&quot;</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="s2">&quot;host&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;compiler&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;The&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;compiler&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;command&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;list&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;of&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;compiler&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;parameters&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;list&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;of&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;all&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;source&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;files&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;for&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;this&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;language&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;generated_sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;list&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;of&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;all&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;source&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;files&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;that&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;where&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;generated&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;somewhere&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;else&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>(New in 1.7.0)</em> The <code class="docutils literal notranslate"><span class="pre">machine</span></code> and <code class="docutils literal notranslate"><span class="pre">language</span></code> keys make it possible to
+to access further information about the compiler in the <code class="docutils literal notranslate"><span class="pre">compilers</span></code>
+introspection information.  <code class="docutils literal notranslate"><span class="pre">machine</span></code> can be absent if <code class="docutils literal notranslate"><span class="pre">language</span></code> is
+<code class="docutils literal notranslate"><span class="pre">unknown</span></code>.  In this case, information about the compiler is not
+available; Meson is therefore unable to know if the output relates
+to either the build of the host machine.</p>
+<p>It should be noted that the compiler parameters stored in the
+<code class="docutils literal notranslate"><span class="pre">parameters</span></code> differ from the actual parameters used to compile the
+file. This is because the parameters are optimized for the usage in an
+IDE to provide autocompletion support, etc. It is thus not recommended
+to use this introspection information for actual compilation.</p>
+</section>
+<section id="possible-values-for-type">
+<h3>Possible values for <code class="docutils literal notranslate"><span class="pre">type</span></code><a class="headerlink" href="#possible-values-for-type" title="Link to this heading">#</a></h3>
+<p>The following table shows all valid types for a target.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>value of <code class="docutils literal notranslate"><span class="pre">type</span></code></p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">executable</span></code></p></td>
+<td><p>This target will generate an executable file</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">library</span></code></p></td>
+<td><p>Target for a static library</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">shared</span> <span class="pre">library</span></code></p></td>
+<td><p>Target for a shared library</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">shared</span> <span class="pre">module</span></code></p></td>
+<td><p>A shared library that is meant to be used with dlopen rather than linking into something else</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">custom</span></code></p></td>
+<td><p>A custom target</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">run</span></code></p></td>
+<td><p>A Meson run target</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">jar</span></code></p></td>
+<td><p>A Java JAR target</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="install-plan">
+<h3>Install plan<a class="headerlink" href="#install-plan" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">intro-install_plan.json</span></code> file contains a list of the files that are going
+to be installed on the system.</p>
+<p>The data contains a list of files grouped by data type. Each file maps to a
+dictionary containing the <code class="docutils literal notranslate"><span class="pre">destination</span></code> and <code class="docutils literal notranslate"><span class="pre">tag</span></code> keys, with the key being the
+file location at build time. <code class="docutils literal notranslate"><span class="pre">destination</span></code> is the destination path using
+placeholders for the base directories. New keys may be added in the future.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;targets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;/path/to/project/builddir/some_executable&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;destination&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{bindir}/some_executable&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;runtime&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;/path/to/project/builddir/libsomelib.so&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;destination&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{libdir_shared}/libsomelib.so&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;runtime&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;/path/to/project/some_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;destination&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{datadir}/some_data&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;/path/to/project/some_header.h&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;destination&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{includedir}/some_header.h&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;devel&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Additionally, the <code class="docutils literal notranslate"><span class="pre">intro-installed.json</span></code> file contains the mapping of the
+file path at build time to the absolute system location.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;/path/to/project/builddir/some_executable&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/bin/some_executable&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;/path/to/project/builddir/libsomelib.so&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/user/lib/libsomelib.so&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;/path/to/project/some_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/share/some_data&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;/path/to/project/some_header.h&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/include/some_header.h&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="using-targets-without-a-build-directory">
+<h3>Using <code class="docutils literal notranslate"><span class="pre">--targets</span></code> without a build directory<a class="headerlink" href="#using-targets-without-a-build-directory" title="Link to this heading">#</a></h3>
+<p>It is also possible to get most targets without a build directory.
+This can be done by running <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">introspect</span> <span class="pre">--targets</span> <span class="pre">/path/to/meson.build</span></code>.</p>
+<p>The generated output is similar to running the introspection with a
+build directory or reading the <code class="docutils literal notranslate"><span class="pre">intro-targets.json</span></code>. However, there
+are some key differences:</p>
+<ul class="simple">
+<li><p>The paths in <code class="docutils literal notranslate"><span class="pre">filename</span></code> now are <em>relative</em> to the future build directory</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">install_filename</span></code> key is completely missing</p></li>
+<li><p>There is only one entry in <code class="docutils literal notranslate"><span class="pre">target_sources</span></code>:</p>
+<ul>
+<li><p>With the language set to <code class="docutils literal notranslate"><span class="pre">unknown</span></code></p></li>
+<li><p>Empty lists for <code class="docutils literal notranslate"><span class="pre">compiler</span></code> and <code class="docutils literal notranslate"><span class="pre">parameters</span></code> and <code class="docutils literal notranslate"><span class="pre">generated_sources</span></code></p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">sources</span></code> list <em>should</em> contain all sources of the target</p></li>
+</ul>
+</li>
+</ul>
+<p>There is no guarantee that the sources list in <code class="docutils literal notranslate"><span class="pre">target_sources</span></code> is
+correct. There might be differences, due to internal limitations. It
+is also not guaranteed that all targets will be listed in the output.
+It might even be possible that targets are listed, which won’t exist
+when Meson is run normally. This can happen if a target is defined
+inside an if statement. Use this feature with care.</p>
+</section>
+</section>
+<section id="build-options">
+<h2>Build Options<a class="headerlink" href="#build-options" title="Link to this heading">#</a></h2>
+<p>The list of all build options (build type, warning level, etc.) is
+stored in the <code class="docutils literal notranslate"><span class="pre">intro-buildoptions.json</span></code> file. Here is the JSON format
+for each option.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;name of the option&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;the description&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;type ID&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value depends on type&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;section&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;section ID&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;machine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;machine ID&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The supported types are:</p>
+<ul class="simple">
+<li><p>string</p></li>
+<li><p>boolean</p></li>
+<li><p>combo</p></li>
+<li><p>integer</p></li>
+<li><p>array</p></li>
+</ul>
+<p>For the type <code class="docutils literal notranslate"><span class="pre">combo</span></code> the key <code class="docutils literal notranslate"><span class="pre">choices</span></code> is also present. Here all valid
+values for the option are stored.</p>
+<p>The possible values for <code class="docutils literal notranslate"><span class="pre">section</span></code> are:</p>
+<ul class="simple">
+<li><p>core</p></li>
+<li><p>backend</p></li>
+<li><p>base</p></li>
+<li><p>compiler</p></li>
+<li><p>directory</p></li>
+<li><p>user</p></li>
+<li><p>test</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">machine</span></code> key specifies the machine configuration for the option.
+Possible values are:</p>
+<ul class="simple">
+<li><p>any</p></li>
+<li><p>host</p></li>
+<li><p>build</p></li>
+</ul>
+<p>To set the options, use the <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">configure</span></code> command.</p>
+<p>Since Meson 0.50.0 it is also possible to get the default buildoptions
+without a build directory by providing the root <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> instead
+of a build directory to <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">introspect</span> <span class="pre">--buildoptions</span></code>.</p>
+<p>Running <code class="docutils literal notranslate"><span class="pre">--buildoptions</span></code> without a build directory produces the same
+output as running it with a freshly configured build directory.</p>
+<p>However, this behavior is not guaranteed if subprojects are present.
+Due to internal limitations all subprojects are processed even if they
+are never used in a real Meson run. Because of this options for the
+subprojects can differ.</p>
+</section>
+<section id="the-dependencies-section">
+<h2>The dependencies section<a class="headerlink" href="#the-dependencies-section" title="Link to this heading">#</a></h2>
+<p>The list of all <em>found</em> dependencies can be acquired from
+<code class="docutils literal notranslate"><span class="pre">intro-dependencies.json</span></code>. Here, the name, version, compiler and
+linker arguments for a dependency are listed.</p>
+<section id="scanning-for-dependencies-with-scan-dependencies">
+<h3>Scanning for dependencies with <code class="docutils literal notranslate"><span class="pre">--scan-dependencies</span></code><a class="headerlink" href="#scanning-for-dependencies-with-scan-dependencies" title="Link to this heading">#</a></h3>
+<p>It is also possible to get most dependencies used without a build
+directory. This can be done by running <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">introspect</span> <span class="pre">--scan-dependencies</span> <span class="pre">/path/to/meson.build</span></code>.</p>
+<p>The output format is as follows:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The name of the dependency&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&gt;=1.2.3&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;conditional&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;has_fallback&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">required</span></code> keyword specifies whether the dependency is marked as
+required in the <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> (all dependencies are required by
+default). The <code class="docutils literal notranslate"><span class="pre">conditional</span></code> key indicates whether the <code class="docutils literal notranslate"><span class="pre">dependency()</span></code>
+function was called inside a conditional block. In a real Meson run
+these dependencies might not be used, thus they <em>may</em> not be required,
+even if the <code class="docutils literal notranslate"><span class="pre">required</span></code> key is set. The <code class="docutils literal notranslate"><span class="pre">has_fallback</span></code> key just
+indicates whether a fallback was directly set in the <code class="docutils literal notranslate"><span class="pre">dependency()</span></code>
+function. The <code class="docutils literal notranslate"><span class="pre">version</span></code> key always contains a list of version
+requirements from the <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> and <strong>not</strong> the actual version of
+the dependency on disc. The version list is empty if no version was
+specified in the <code class="docutils literal notranslate"><span class="pre">meson.build</span></code>.</p>
+</section>
+</section>
+<section id="tests">
+<h2>Tests<a class="headerlink" href="#tests" title="Link to this heading">#</a></h2>
+<p>Compilation and unit tests are done as usual by running the <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">compile</span></code> and <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">test</span></code> commands. A JSON formatted result log can be
+found in <code class="docutils literal notranslate"><span class="pre">workspace/project/builddir/meson-logs/testlog.json</span></code>.</p>
+<p>When these tests fail, the user probably wants to run the failing test
+in a debugger. To make this as integrated as possible, extract the
+tests from the <code class="docutils literal notranslate"><span class="pre">intro-tests.json</span></code> and <code class="docutils literal notranslate"><span class="pre">intro-benchmarks.json</span></code> files.
+This provides you with all the information needed to run the test:
+what command to execute, command line arguments, environment variable
+settings and how to process the output.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;name of the test&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;workdir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;the working directory (can be null)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;the test timeout&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;suite&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;list&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;of&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;suites&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;is_parallel&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;protocol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;exitcode&quot;</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="s2">&quot;tap&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;cmd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;command&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;to&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;run&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;depends&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;target1-id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;target2-id&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;VARIABLE1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value 1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;VARIABLE2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value 2&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">depends</span></code> entry <em>(since 0.56.0)</em> contains target ids; they can be
+looked up in the targets introspection data. The executable pointed to
+by <code class="docutils literal notranslate"><span class="pre">cmd</span></code> is also included in the entry, as are any arguments to the
+test that are build products.</p>
+</section>
+<section id="build-system-files">
+<h2>Build system files<a class="headerlink" href="#build-system-files" title="Link to this heading">#</a></h2>
+<p>It is also possible to get Meson build files used in your current
+project. This can be done by running <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">introspect</span> <span class="pre">--buildsystem-files</span> <span class="pre">/path/to/builddir</span></code>.</p>
+<p>The output format is as follows:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;/Path/to/the/targets/meson.build&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;/Path/to/the/targets/meson.options&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;/Path/to/the/targets/subdir/meson.build&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="programmatic-interface">
+<h1>Programmatic interface<a class="headerlink" href="#programmatic-interface" title="Link to this heading">#</a></h1>
+<p>Meson also provides the <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">introspect</span></code> for project introspection
+via the command line. Use <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">introspect</span> <span class="pre">-h</span></code> to see all available
+options.</p>
+<p>This API can also work without a build directory for the
+<code class="docutils literal notranslate"><span class="pre">--projectinfo</span></code> command.</p>
+</section>
+<section id="ast-of-a-meson-build">
+<h1>AST of a <code class="docutils literal notranslate"><span class="pre">meson.build</span></code><a class="headerlink" href="#ast-of-a-meson-build" title="Link to this heading">#</a></h1>
+<p>Since Meson <em>0.55.0</em> it is possible to dump the AST of a <code class="docutils literal notranslate"><span class="pre">meson.build</span></code>
+as a JSON object. The interface for this is <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">introspect</span> <span class="pre">--ast</span> <span class="pre">/path/to/meson.build</span></code>.</p>
+<p>Each node of the AST has at least the following entries:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
+<td><p>Type of the node (see following table)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">lineno</span></code></p></td>
+<td><p>Line number of the node in the file</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">colno</span></code></p></td>
+<td><p>Column number of the node in the file</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">end_lineno</span></code></p></td>
+<td><p>Marks the end of the node (may be the same as <code class="docutils literal notranslate"><span class="pre">lineno</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">end_colno</span></code></p></td>
+<td><p>Marks the end of the node (may be the same as <code class="docutils literal notranslate"><span class="pre">colno</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Possible values for <code class="docutils literal notranslate"><span class="pre">node</span></code> with additional keys:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Node type</p></th>
+<th class="head"><p>Additional keys</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">BooleanNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">value</span></code>: bool</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">IdNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">value</span></code>: str</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NumberNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">value</span></code>: int</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">StringNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">value</span></code>: str</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ContinueNode</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">BreakNode</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ArgumentNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">positional</span></code>: node list; <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>: accept_kwargs</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ArrayNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">args</span></code>: node</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DictNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">args</span></code>: node</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EmptyNode</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OrNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">left</span></code>: node; <code class="docutils literal notranslate"><span class="pre">right</span></code>: node</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">AndNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">left</span></code>: node; <code class="docutils literal notranslate"><span class="pre">right</span></code>: node</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ComparisonNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">left</span></code>: node; <code class="docutils literal notranslate"><span class="pre">right</span></code>: node; <code class="docutils literal notranslate"><span class="pre">ctype</span></code>: str</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ArithmeticNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">left</span></code>: node; <code class="docutils literal notranslate"><span class="pre">right</span></code>: node; <code class="docutils literal notranslate"><span class="pre">op</span></code>: str</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NotNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">right</span></code>: node</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CodeBlockNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">lines</span></code>: node list</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IndexNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">object</span></code>: node; <code class="docutils literal notranslate"><span class="pre">index</span></code>: node</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MethodNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">object</span></code>: node; <code class="docutils literal notranslate"><span class="pre">args</span></code>: node; <code class="docutils literal notranslate"><span class="pre">name</span></code>: str</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FunctionNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">args</span></code>: node; <code class="docutils literal notranslate"><span class="pre">name</span></code>: str</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">AssignmentNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">value</span></code>: node; <code class="docutils literal notranslate"><span class="pre">var_name</span></code>: str</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PlusAssignmentNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">value</span></code>: node; <code class="docutils literal notranslate"><span class="pre">var_name</span></code>: str</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ForeachClauseNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">items</span></code>: node; <code class="docutils literal notranslate"><span class="pre">block</span></code>: node; <code class="docutils literal notranslate"><span class="pre">varnames</span></code>: list</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IfClauseNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ifs</span></code>: node list; <code class="docutils literal notranslate"><span class="pre">else</span></code>: node</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">IfNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">condition</span></code>: node; <code class="docutils literal notranslate"><span class="pre">block</span></code>: node</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">UMinusNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">right</span></code>: node</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TernaryNode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">condition</span></code>: node; <code class="docutils literal notranslate"><span class="pre">true</span></code>: node; <code class="docutils literal notranslate"><span class="pre">false</span></code>: node</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We do not guarantee the stability of this format since it is heavily
+linked to the internal Meson AST. However, breaking changes (removal
+of a node type or the removal of a key) are unlikely and will be
+announced in the release notes.</p>
+</section>
+<section id="json-reference-manual">
+<h1>JSON Reference manual<a class="headerlink" href="#json-reference-manual" title="Link to this heading">#</a></h1>
+<p>In additional to the online <a class="reference internal" href="Reference-manual.html"><span class="std std-doc">Reference manual</span></a>, Meson also
+offers the manual as JSON file. The content of this file is generated from the
+same source as the online documentation. The two versions are thus identical
+in content.</p>
+<p>This JSON document is attached to every Meson release since <em>0.60.0</em>. The JSON
+schema is defined by the class structure given in
+<a class="reference external" href="https://github.com/mesonbuild/meson/blob/master/docs/refman/jsonschema.py"><code class="docutils literal notranslate"><span class="pre">jsonschema.py</span></code></a></p>
+</section>
+<section id="existing-integrations">
+<h1>Existing integrations<a class="headerlink" href="#existing-integrations" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.jetbrains.com/clion/">CLion</a></p></li>
+<li><p><a class="reference external" href="https://www.eclipse.org/cdt/">Eclipse CDT</a></p></li>
+<li><p><a class="reference external" href="https://wiki.gnome.org/Apps/Builder">Gnome Builder</a></p></li>
+<li><p><a class="reference external" href="https://www.kdevelop.org">KDevelop</a></p></li>
+<li><p><a class="reference external" href="https://plugins.jetbrains.com/plugin/13269-meson-syntax-highlighter">Meson Syntax Highlighter</a> 3rd party plugin for JetBrains IDEs.</p></li>
+<li><p><a class="reference external" href="https://github.com/dreamer-coding-555/meson-ui">Meson-UI</a> (build GUI for Meson)</p></li>
+<li><p><a class="reference external" href="https://github.com/stephanlachnit/mmeson">mmeson</a> (ccmake clone for Meson)</p></li>
+<li><p><a class="reference external" href="https://doc.qt.io/qtcreator/creator-project-meson.html">Qt Creator</a></p></li>
+<li><p><a class="reference external" href="https://github.com/mesonbuild/vscode-meson">vscode-meson</a> extension for VS Code/Codium</p></li>
+</ul>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Run-targets.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Run targets</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Build-system-converters.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Build system converters</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">IDE integration</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-targets-section">The <code class="docutils literal notranslate"><span class="pre">targets</span></code> section</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#target-sources">Target sources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#possible-values-for-type">Possible values for <code class="docutils literal notranslate"><span class="pre">type</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-plan">Install plan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-targets-without-a-build-directory">Using <code class="docutils literal notranslate"><span class="pre">--targets</span></code> without a build directory</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-options">Build Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dependencies-section">The dependencies section</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scanning-for-dependencies-with-scan-dependencies">Scanning for dependencies with <code class="docutils literal notranslate"><span class="pre">--scan-dependencies</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-system-files">Build system files</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#programmatic-interface">Programmatic interface</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ast-of-a-meson-build">AST of a <code class="docutils literal notranslate"><span class="pre">meson.build</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#json-reference-manual">JSON Reference manual</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#existing-integrations">Existing integrations</a></li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/mesonbuild/meson/edit/master/docs/markdown/IDE-integration.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">Website licensing information are available on the <a href="legal.html">Legal</a> page.</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

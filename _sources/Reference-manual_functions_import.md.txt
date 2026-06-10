@@ -1,0 +1,118 @@
+## import()
+
+Imports the given extension module. Returns an object that can be used to call
+the methods of the module. Here's an example for a hypothetical `testmod`
+module.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Imports the given extension module
+[[#@module]] import(
+  [[#@str]]                                  <a href="#import_module_name"><b>module_name</b></a>,     # Name of the module to import
+
+  # Keyword arguments:
+  <a href="#import_disabler"><b>disabler</b></a> : [[#@bool]]                                                                              # Returns a [[@disabler]] object when not found.
+  <a href="#import_required"><b>required</b></a> : [[#@bool]] | [[#@feature]]                                                                    # When set to `false`, Meson will proceed with the build even if the module is not found
+)</code></pre>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Example
+
+```meson
+tmod = import('testmod')
+tmod.do_something()
+```
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+  The function `import()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="import_module_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">module_name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Name of the module to import.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `import()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="import_disabler">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">disabler</code>
+  <br>{meson:since}`0.59.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  Returns a [[@disabler]] object when not found.
+  </td>
+      </tr>
+      <tr id="import_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  <br>{meson:since}`0.59.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = true</code>
+  </td>
+        <td>
+  
+  When set to `false`, Meson will proceed with the build even if the module is not found.
+When set to a [`feature`](Build-options.md#features) option, the feature will control if it is searched and whether to fail if not found.
+  </td>
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,128 @@
+## install_symlink()
+
+Installs a symbolic link to `pointing_to` target under install_dir.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.61.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Installs a symbolic link to `pointing_to` target under install_dir
+[[#@void]] install_symlink(
+  [[#@str]]                                  <a href="#install_symlink_link_name"><b>link_name</b></a>,     # Name of the created link under `install_dir`
+
+  # Keyword arguments:
+  <a href="#install_symlink_install_dir"><b>install_dir</b></a> : [[#@str]]                                   <i>[required]</i>  # The absolute or relative path to the installation directory for the links
+  <a href="#install_symlink_install_tag"><b>install_tag</b></a> : [[#@str]]                                               # A string used by the `meson install --tags` command
+  <a href="#install_symlink_pointing_to"><b>pointing_to</b></a> : [[#@str]]                                   <i>[required]</i>  # Target to point the link to
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+  The function `install_symlink()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="install_symlink_link_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">link_name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Name of the created link under `install_dir`.
+It cannot contain path separators. Those should go in `install_dir`.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `install_symlink()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="install_symlink_install_dir">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">install_dir</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The absolute or relative path to the installation directory for the links.
+If this is a relative path, it is assumed to be relative to the prefix.
+
+  </td>
+      </tr>
+      <tr id="install_symlink_install_tag">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">install_tag</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  A string used by the `meson install --tags` command
+to install only a subset of the files. By default these files have no install
+tag which means they are not being installed when `--tags` argument is specified.
+
+  </td>
+      </tr>
+      <tr id="install_symlink_pointing_to">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">pointing_to</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Target to point the link to.
+Can be absolute or relative and that will be respected when creating the link.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>

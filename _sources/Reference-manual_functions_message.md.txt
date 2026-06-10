@@ -1,0 +1,68 @@
+## message()
+
+This function prints its argument to stdout.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># This function prints its argument to stdout
+[[#@void]] message(
+  [[#@str]] | [[#@int]] | [[#@bool]] | [[#@array]][[[#@str]] | [[#@int]] | [[#@bool]]] | [[#@dict]][[[#@str]] | [[#@int]] | [[#@bool]]]                                                                                                                                                                                                                                                                                                          <a href="#message_text"><b>text</b></a>,          # The message to print
+  [[#@str]] | [[#@int]] | [[#@bool]] | [[#@array]][[[#@str]] | [[#@int]] | [[#@bool]]] | [[#@dict]][[[#@str]] | [[#@int]] | [[#@bool]]]                                                                                                                                                                                                                                                                                                          <b>more_text</b>...,  # Additional text that will be printed separated by spaces
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+  [Argument flattening](Syntax.md#argument-flattening) is **NOT SUPPORTED** by this function.
+
+  The function `message()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="message_text">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">text</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span> | <span class="text-nowrap">[[@bool]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span> | <span class="text-nowrap">[[@bool]]</span>] | [[@dict]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span> | <span class="text-nowrap">[[@bool]]</span>]
+  </td>
+        <td>
+  
+  The message to print.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  Additionally, the
+  function accepts between `0` and `infinity` variadic
+  arguments (`more_text...`) of type <code><span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span> | <span class="text-nowrap">[[@bool]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span> | <span class="text-nowrap">[[@bool]]</span>] | [[@dict]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span> | <span class="text-nowrap">[[@bool]]</span>]</code>.
+
+  Additional text that will be printed separated by spaces.
+
+  {meson:since}`0.54.0`
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+

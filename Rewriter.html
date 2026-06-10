@@ -1,0 +1,900 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Meson file rewriter &#8212; Meson documentation 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d99633c1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Rewriter';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Style recommendations" href="Style-guide.html" />
+    <link rel="prev" title="Reference tables" href="Reference-tables.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/meson_logo.png" class="logo__image only-light" alt="Meson documentation 1.0 documentation - Home"/>
+    <img src="_static/meson_logo.png" class="logo__image only-dark pst-js-only" alt="Meson documentation 1.0 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Reference-manual.html">Reference manual</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Reference-manual_builtin.html">Builtin objects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_builtin_build_machine.html">Build machine information (<code class="docutils literal notranslate"><span class="pre">build_machine</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_builtin_host_machine.html">Host machine information (<code class="docutils literal notranslate"><span class="pre">host_machine</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_machine</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_builtin_meson.html">Meson object (<code class="docutils literal notranslate"><span class="pre">meson</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_builtin_target_machine.html">Target machine information (<code class="docutils literal notranslate"><span class="pre">target_machine</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_machine</span></code>)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Reference-manual_elementary.html">Elementary types</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_any.html">Any (<code class="docutils literal notranslate"><span class="pre">any</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_array.html">Array (<code class="docutils literal notranslate"><span class="pre">array</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_bool.html">Boolean (<code class="docutils literal notranslate"><span class="pre">bool</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_dict.html">Dict (<code class="docutils literal notranslate"><span class="pre">dict</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_int.html">Integer (<code class="docutils literal notranslate"><span class="pre">int</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_str.html">String (<code class="docutils literal notranslate"><span class="pre">str</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_void.html">void (<code class="docutils literal notranslate"><span class="pre">void</span></code>)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Reference-manual_functions.html">Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_global_arguments.html">add_global_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_global_link_arguments.html">add_global_link_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_languages.html">add_languages()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_project_arguments.html">add_project_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_project_dependencies.html">add_project_dependencies()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_project_link_arguments.html">add_project_link_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_test_setup.html">add_test_setup()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_alias_target.html">alias_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_assert.html">assert()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_benchmark.html">benchmark()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_both_libraries.html">both_libraries()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_build_target.html">build_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_configuration_data.html">configuration_data()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_configure_file.html">configure_file()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_custom_target.html">custom_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_debug.html">debug()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_declare_dependency.html">declare_dependency()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_dependency.html">dependency()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_disabler.html">disabler()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_environment.html">environment()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_error.html">error()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_executable.html">executable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_files.html">files()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_find_program.html">find_program()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_generator.html">generator()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_get_option.html">get_option()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_get_variable.html">get_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_import.html">import()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_include_directories.html">include_directories()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_data.html">install_data()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_emptydir.html">install_emptydir()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_headers.html">install_headers()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_man.html">install_man()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_subdir.html">install_subdir()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_symlink.html">install_symlink()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_is_disabler.html">is_disabler()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_is_variable.html">is_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_jar.html">jar()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_join_paths.html">join_paths()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_library.html">library()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_message.html">message()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_project.html">project()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_range.html">range()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_run_command.html">run_command()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_run_target.html">run_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_set_variable.html">set_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_shared_library.html">shared_library()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_shared_module.html">shared_module()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_static_library.html">static_library()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_structured_sources.html">structured_sources()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_subdir.html">subdir()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_subdir_done.html">subdir_done()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_subproject.html">subproject()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_summary.html">summary()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_test.html">test()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_unset_variable.html">unset_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_vcs_tag.html">vcs_tag()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_warning.html">warning()</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Reference-manual_returned.html">Returned objects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_alias_tgt.html">Alias target (<code class="docutils literal notranslate"><span class="pre">alias_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_both_libs.html">Both libraries object (<code class="docutils literal notranslate"><span class="pre">both_libs</span></code> extends <code class="docutils literal notranslate"><span class="pre">lib</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_build_tgt.html">Build target (<code class="docutils literal notranslate"><span class="pre">build_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_cfg_data.html">Configuration data object (<code class="docutils literal notranslate"><span class="pre">cfg_data</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_compiler.html">Compiler object (<code class="docutils literal notranslate"><span class="pre">compiler</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_custom_idx.html">Custom target index (<code class="docutils literal notranslate"><span class="pre">custom_idx</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_custom_tgt.html">Custom target (<code class="docutils literal notranslate"><span class="pre">custom_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_dep.html">Dependency object (<code class="docutils literal notranslate"><span class="pre">dep</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_disabler.html">Disabler (<code class="docutils literal notranslate"><span class="pre">disabler</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_env.html">Environment (<code class="docutils literal notranslate"><span class="pre">env</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_exe.html">Executable target (<code class="docutils literal notranslate"><span class="pre">exe</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_extracted_obj.html">Extracted object file (<code class="docutils literal notranslate"><span class="pre">extracted_obj</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_feature.html">Feature option object (<code class="docutils literal notranslate"><span class="pre">feature</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_file.html">File (<code class="docutils literal notranslate"><span class="pre">file</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_generated_list.html">Generated list object (<code class="docutils literal notranslate"><span class="pre">generated_list</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_generator.html">Generator object (<code class="docutils literal notranslate"><span class="pre">generator</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_inc.html">Include directories (<code class="docutils literal notranslate"><span class="pre">inc</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_jar.html">JAR build target (<code class="docutils literal notranslate"><span class="pre">jar</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_lib.html">Library target (<code class="docutils literal notranslate"><span class="pre">lib</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_module.html">Imported module object (<code class="docutils literal notranslate"><span class="pre">module</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_program.html">External program (<code class="docutils literal notranslate"><span class="pre">program</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_range.html">Range object (<code class="docutils literal notranslate"><span class="pre">range</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_run_tgt.html">Run target (<code class="docutils literal notranslate"><span class="pre">run_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_runresult.html">Run result object (<code class="docutils literal notranslate"><span class="pre">runresult</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_structured_src.html">Structured Source (<code class="docutils literal notranslate"><span class="pre">structured_src</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_subproject.html">Subproject object (<code class="docutils literal notranslate"><span class="pre">subproject</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_tgt.html">Meson Target (<code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Modules.html">Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="CMake-module.html">CMake module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Codegen-module.html">Codegen Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cuda-module.html">Unstable CUDA Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dlang-module.html">Dlang module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="External-Project-module.html">External Project module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Fs-module.html">FS (filesystem) module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Gnome-module.html">GNOME module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hotdoc-module.html">Hotdoc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Icestorm-module.html">Unstable IceStorm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Java-module.html">Java Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Keyval-module.html">keyval module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pkgconfig-module.html">Pkgconfig module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python-3-module.html">Python 3 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python-module.html">Python module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Qt4-module.html">Qt4 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Qt5-module.html">Qt5 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Qt6-module.html">Qt6 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rust-module.html">Rust module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Simd-module.html">Unstable SIMD module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Snippets-module.html">Snippets module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SourceSet-module.html">Source set module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Windows-module.html">Windows module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i18n-module.html">I18n module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wayland-module.html">Wayland Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="Syntax.html">Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Builtin-options.html">Built-in options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reference-tables.html">Reference tables</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Meson file rewriter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Style-guide.html">Style recommendations</a></li>
+
+
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="Reference.html" class="nav-link">Reference</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Meson file rewriter</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="meson-file-rewriter">
+<h1>Meson file rewriter<a class="headerlink" href="#meson-file-rewriter" title="Link to this heading">#</a></h1>
+<p>Since version 0.50.0, Meson has the functionality to perform some
+basic modification on the <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> files from the command line.
+The currently supported operations are:</p>
+<ul class="simple">
+<li><p>For build targets:</p>
+<ul>
+<li><p>Add/Remove source files</p></li>
+<li><p>Add/Remove targets</p></li>
+<li><p>Modify a select set of kwargs</p></li>
+<li><p>Print some JSON information</p></li>
+</ul>
+</li>
+<li><p>For dependencies:</p>
+<ul>
+<li><p>Modify a select set of kwargs</p></li>
+</ul>
+</li>
+<li><p>For the project function:</p>
+<ul>
+<li><p>Modify a select set of kwargs</p></li>
+<li><p>Modify the default options list</p></li>
+</ul>
+</li>
+</ul>
+<p>The rewriter has both, a normal command line interface and a “script
+mode”. The normal CLI is mostly designed for everyday use. The “script
+mode”, on the other hand, is meant to be used by external programs
+(IDEs, graphical frontends, etc.)</p>
+<p>The rewriter itself is considered stable, however the user interface
+and the “script mode” API might change in the future. These changes
+may also break backwards compatibility to older releases.</p>
+<p>We are also open to suggestions for API improvements.</p>
+<section id="using-the-rewriter">
+<h2>Using the rewriter<a class="headerlink" href="#using-the-rewriter" title="Link to this heading">#</a></h2>
+<p>All rewriter functions are accessed via <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">rewrite</span></code>. The Meson
+rewriter assumes that it is run inside the project root directory. If
+this isn’t the case, use <code class="docutils literal notranslate"><span class="pre">--sourcedir</span></code> to specify the actual project
+source directory.</p>
+<section id="adding-and-removing-sources">
+<h3>Adding and removing sources<a class="headerlink" href="#adding-and-removing-sources" title="Link to this heading">#</a></h3>
+<p>The most common operations will probably be the adding and removing of source
+files to a build target. This can be easily done with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>meson<span class="w"> </span>rewrite<span class="w"> </span>target<span class="w"> </span>&lt;target<span class="w"> </span>name/id&gt;<span class="w"> </span><span class="o">{</span>add/rm<span class="o">}</span><span class="w"> </span><span class="o">[</span>list<span class="w"> </span>of<span class="w"> </span>sources<span class="o">]</span>
+</pre></div>
+</div>
+<p>For instance, given the following example</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;main.cpp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;fileA.cpp&#39;</span><span class="p">]</span>
+
+<span class="n">exe1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">executable</span><span class="p">(</span><span class="s">&#39;testExe&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">src</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>the source <code class="docutils literal notranslate"><span class="pre">fileB.cpp</span></code> can be added with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>meson<span class="w"> </span>rewrite<span class="w"> </span>target<span class="w"> </span>testExe<span class="w"> </span>add<span class="w"> </span>fileB.cpp
+</pre></div>
+</div>
+<p>After executing this command, the new <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> will look like this:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;main.cpp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;fileA.cpp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;fileB.cpp&#39;</span><span class="p">]</span>
+
+<span class="n">exe1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">executable</span><span class="p">(</span><span class="s">&#39;testExe&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">src</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this case, <code class="docutils literal notranslate"><span class="pre">exe1</span></code> could also have been used for the target name.
+This is possible because the rewriter also searches for assignments
+and unique Meson IDs, which can be acquired with introspection. If
+there are multiple targets with the same name, Meson will do nothing
+and print an error message.</p>
+<p>For more information see the help output of the rewriter target
+command.</p>
+</section>
+<section id="adding-and-removing-extra-files">
+<h3>Adding and removing <code class="docutils literal notranslate"><span class="pre">extra_files</span></code><a class="headerlink" href="#adding-and-removing-extra-files" title="Link to this heading">#</a></h3>
+<p><em>Since 0.61.0</em></p>
+<p>In the same way you can add and remove source files from a target, you can modify a target’s
+<code class="docutils literal notranslate"><span class="pre">extra_files</span></code> list:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>meson<span class="w"> </span>rewrite<span class="w"> </span>target<span class="w"> </span>&lt;target<span class="w"> </span>name/id&gt;<span class="w"> </span><span class="o">{</span>add_extra_files/rm_extra_files<span class="o">}</span><span class="w"> </span><span class="o">[</span>list<span class="w"> </span>of<span class="w"> </span>extra<span class="w"> </span>files<span class="o">]</span>
+</pre></div>
+</div>
+</section>
+<section id="setting-the-project-version">
+<h3>Setting the project version<a class="headerlink" href="#setting-the-project-version" title="Link to this heading">#</a></h3>
+<p>It is also possible to set kwargs of specific functions with the
+rewriter. The general command for setting or removing kwargs is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>meson<span class="w"> </span>rewrite<span class="w"> </span>kwargs<span class="w"> </span><span class="nb">set</span><span class="w"> </span>&lt;<span class="k">function</span><span class="w"> </span>type&gt;<span class="w"> </span>&lt;<span class="k">function</span><span class="w"> </span>ID&gt;<span class="w"> </span>&lt;key1&gt;<span class="w"> </span>&lt;value1&gt;<span class="w"> </span>&lt;key2&gt;<span class="w"> </span>&lt;value2&gt;<span class="w"> </span>...
+meson<span class="w"> </span>rewrite<span class="w"> </span>kwargs<span class="w"> </span>delete<span class="w"> </span>&lt;<span class="k">function</span><span class="w"> </span>type&gt;<span class="w"> </span>&lt;<span class="k">function</span><span class="w"> </span>ID&gt;<span class="w"> </span>&lt;key1&gt;<span class="w"> </span>&lt;key2&gt;<span class="w"> </span>...
+</pre></div>
+</div>
+<p>For instance, setting the project version can be achieved with this command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>meson<span class="w"> </span>rewrite<span class="w"> </span>kwargs<span class="w"> </span><span class="nb">set</span><span class="w"> </span>project<span class="w"> </span>/<span class="w"> </span>version<span class="w"> </span><span class="m">1</span>.0.0
+</pre></div>
+</div>
+<p>Currently, only the following function types are supported:</p>
+<ul class="simple">
+<li><p>dependency</p></li>
+<li><p>target (any build target, the function ID is the target name/ID)</p></li>
+<li><p>project (the function ID must be <code class="docutils literal notranslate"><span class="pre">/</span></code> since project() can only be called once)</p></li>
+</ul>
+<p>For more information see the help output of the rewrite kwargs command.</p>
+<p>Note msys bash may expand <code class="docutils literal notranslate"><span class="pre">/</span></code> to a path. Passing <code class="docutils literal notranslate"><span class="pre">//</span></code> will be
+converted to <code class="docutils literal notranslate"><span class="pre">/</span></code> by msys bash but in order to keep usage
+shell-agnostic, the rewrite command also allows <code class="docutils literal notranslate"><span class="pre">//</span></code> as the function
+ID such that it will work in both msys bash and other shells.</p>
+<p><em>Before 1.10.0</em>, the <code class="docutils literal notranslate"><span class="pre">delete</span></code> command expected <code class="docutils literal notranslate"><span class="pre">&lt;key&gt;</span> <span class="pre">&lt;value&gt;</span></code> pairs as
+in <code class="docutils literal notranslate"><span class="pre">set</span></code>; the <code class="docutils literal notranslate"><span class="pre">&lt;value&gt;</span></code> was ignored.  For backward compatibility, Meson
+accepts this syntax with a warning if all <code class="docutils literal notranslate"><span class="pre">&lt;value&gt;</span></code>s are the empty string.</p>
+</section>
+<section id="setting-the-project-default-options">
+<h3>Setting the project default options<a class="headerlink" href="#setting-the-project-default-options" title="Link to this heading">#</a></h3>
+<p>For setting and deleting default options, use the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>meson<span class="w"> </span>rewrite<span class="w"> </span>default-options<span class="w"> </span><span class="nb">set</span><span class="w"> </span>&lt;opt1&gt;<span class="w"> </span>&lt;value1&gt;<span class="w"> </span>&lt;opt2&gt;<span class="w"> </span>&lt;value2&gt;<span class="w"> </span>...
+meson<span class="w"> </span>rewrite<span class="w"> </span>default-options<span class="w"> </span>delete<span class="w"> </span>&lt;opt1&gt;<span class="w"> </span>&lt;opt2&gt;<span class="w"> </span>...
+</pre></div>
+</div>
+<p><em>Before 1.10.0</em>, the <code class="docutils literal notranslate"><span class="pre">delete</span></code> command expected <code class="docutils literal notranslate"><span class="pre">&lt;opt&gt;</span> <span class="pre">&lt;value&gt;</span></code> pairs as
+in <code class="docutils literal notranslate"><span class="pre">set</span></code>; the <code class="docutils literal notranslate"><span class="pre">&lt;value&gt;</span></code> was ignored.  For backward compatibility, Meson
+accepts this syntax with a warning if all <code class="docutils literal notranslate"><span class="pre">&lt;value&gt;</span></code>s are the empty string.</p>
+</section>
+</section>
+<section id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading">#</a></h2>
+<p>Rewriting a Meson file is not guaranteed to keep the indentation of
+the modified functions. Additionally, comments inside a modified
+statement will be removed. Furthermore, all source files will be
+sorted alphabetically.</p>
+<p>For instance adding <code class="docutils literal notranslate"><span class="pre">e.c</span></code> to srcs in the following code</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="c"># Important comment</span>
+
+<span class="n">srcs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="s">&#39;a.c&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;c.c&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;f.c&#39;</span><span class="p">,</span>
+<span class="c"># something important about b</span>
+<span class="w">       </span><span class="s">&#39;b.c&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;d.c&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;g.c&#39;</span>
+<span class="p">]</span>
+
+<span class="c"># COMMENT</span>
+</pre></div>
+</div>
+<p>would result in the following code:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="c"># Important comment</span>
+
+<span class="n">srcs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s">&#39;a.c&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&#39;b.c&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&#39;c.c&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&#39;d.c&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&#39;e.c&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&#39;f.c&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&#39;g.c&#39;</span>
+<span class="p">]</span>
+
+<span class="c"># COMMENT</span>
+</pre></div>
+</div>
+</section>
+<section id="using-the-script-mode">
+<h2>Using the “script mode”<a class="headerlink" href="#using-the-script-mode" title="Link to this heading">#</a></h2>
+<p>The “script mode” should be the preferred API for third party
+programs, since it offers more flexibility and higher API stability.
+The “scripts” are stored in JSON format and executed with <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">rewrite</span> <span class="pre">command</span> <span class="pre">&lt;JSON</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">string&gt;</span></code>.</p>
+<p>The JSON format is defined as follows:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;function to execute&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;other function&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="err">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Each object in the main array must have a <code class="docutils literal notranslate"><span class="pre">type</span></code> entry which specifies which
+function should be executed.</p>
+<p>Currently, the following functions are supported:</p>
+<ul class="simple">
+<li><p>target</p></li>
+<li><p>kwargs</p></li>
+<li><p>default_options</p></li>
+</ul>
+<section id="target-modification-format">
+<h3>Target modification format<a class="headerlink" href="#target-modification-format" title="Link to this heading">#</a></h3>
+<p>The format for the type <code class="docutils literal notranslate"><span class="pre">target</span></code> is defined as follows:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;target&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;target ID/name/assignment variable&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;operation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;one of [&#39;src_add&#39;, &#39;src_rm&#39;, &#39;target_rm&#39;, &#39;target_add&#39;, &#39;extra_files_add&#39;, &#39;extra_files_rm&#39;, &#39;info&#39;]&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;list&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;of&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;source&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;files&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;to&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;add, remove&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;subdir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;subdir where the new target should be added (only has an effect for operation &#39;tgt_add&#39;)&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;target_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;function name of the new target -- same as in the CLI (only has an effect for operation &#39;tgt_add&#39;)&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The keys <code class="docutils literal notranslate"><span class="pre">sources</span></code>, <code class="docutils literal notranslate"><span class="pre">subdir</span></code> and <code class="docutils literal notranslate"><span class="pre">target_type</span></code> are optional.</p>
+</section>
+<section id="kwargs-modification-format">
+<h3>kwargs modification format<a class="headerlink" href="#kwargs-modification-format" title="Link to this heading">#</a></h3>
+<p>The format for the type <code class="docutils literal notranslate"><span class="pre">target</span></code> is defined as follows:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kwargs&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;function&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;one of [&#39;dependency&#39;, &#39;target&#39;, &#39;project&#39;]&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;function ID&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;operation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;one of [&#39;set&#39;, &#39;delete&#39;, &#39;add&#39;, &#39;remove&#39;, &#39;remove_regex&#39;, &#39;info&#39;]&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;kwargs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;key1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;key2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For operation <code class="docutils literal notranslate"><span class="pre">delete</span></code>, the values of the <code class="docutils literal notranslate"><span class="pre">options</span></code> can be anything
+(including <code class="docutils literal notranslate"><span class="pre">null</span></code>).</p>
+</section>
+<section id="default-options-modification-format">
+<h3>Default options modification format<a class="headerlink" href="#default-options-modification-format" title="Link to this heading">#</a></h3>
+<p>The format for the type <code class="docutils literal notranslate"><span class="pre">default_options</span></code> is defined as follows:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default_options&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;operation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;one of [&#39;set&#39;, &#39;delete&#39;]&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;options&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;opt1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;opt2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For operation <code class="docutils literal notranslate"><span class="pre">delete</span></code>, the values of the <code class="docutils literal notranslate"><span class="pre">options</span></code> can be anything
+(including <code class="docutils literal notranslate"><span class="pre">null</span></code>).</p>
+</section>
+</section>
+<section id="extracting-information">
+<h2>Extracting information<a class="headerlink" href="#extracting-information" title="Link to this heading">#</a></h2>
+<p>The rewriter also offers operation <code class="docutils literal notranslate"><span class="pre">info</span></code> for the types <code class="docutils literal notranslate"><span class="pre">target</span></code> and
+<code class="docutils literal notranslate"><span class="pre">kwargs</span></code>. When this operation is used, Meson will print a JSON dump to
+stderr, containing all available information to the rewriter about the
+build target / function kwargs in question.</p>
+<p>The output format is currently experimental and may change in the future.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Reference-tables.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Reference tables</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Style-guide.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Style recommendations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-rewriter">Using the rewriter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-and-removing-sources">Adding and removing sources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-and-removing-extra-files">Adding and removing <code class="docutils literal notranslate"><span class="pre">extra_files</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-project-version">Setting the project version</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-project-default-options">Setting the project default options</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-script-mode">Using the “script mode”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#target-modification-format">Target modification format</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kwargs-modification-format">kwargs modification format</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-options-modification-format">Default options modification format</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-information">Extracting information</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/mesonbuild/meson/edit/master/docs/markdown/Rewriter.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">Website licensing information are available on the <a href="legal.html">Legal</a> page.</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

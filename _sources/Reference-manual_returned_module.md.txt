@@ -1,0 +1,52 @@
+---
+short-description: "Returned object: Imported module object"
+title: Imported module object
+render-subpages: false
+...
+# Imported module object (`module`)
+
+Base type for all modules.
+
+Modules provide their own specific implementation methods, but all modules
+provide the following methods:
+
+
+## Returned by
+
+Imported module object objects are returned by the following functions and methods:
+- [[import]]
+
+
+
+
+## Imported module object methods
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### module.found()
+
+Returns `true` if the module was successfully imported, otherwise `false`.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.59.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@bool]] found()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+

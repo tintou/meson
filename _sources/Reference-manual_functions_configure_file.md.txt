@@ -1,0 +1,380 @@
+## configure_file()
+
+This function can run in three modes depending on the keyword arguments
+passed to it.
+
+When a [[@cfg_data]] object is passed
+to the `configuration:` keyword argument, it takes a template file as
+the `input:` (optional) and produces the `output:` (required) by
+substituting values from the configuration data as detailed in [the
+configuration file documentation](Configuration.md). *(since 0.49.0)*
+A dictionary can be passed instead of a
+[[@cfg_data]] object.
+
+When an array of strings is passed to the `command:` keyword argument,
+it takes any source or configured file as the `input:` and assumes
+that the `output:` is produced when the specified command is run.
+
+You can install the outputted file with the `install_dir:` kwarg, see below.
+
+*(since 0.47.0)* When the `copy:` keyword argument is set to `true`,
+this function will copy the file provided in `input:` to a file in the
+current build directory with the name provided in `output:`.
+The copy happens at configuration.  If the input file is subsequently
+modified, Meson will regenerate the build files.
+To perform the copy at build time (with the usual dependency on the source
+file) use `copyfile()` from the FS (filesystem) module.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># This function can run in three modes depending on the keyword arguments
+[[#@file]] configure_file(
+  <a href="#configure_file_build_subdir"><b>build_subdir</b></a>  : [[#@str]]                                                                                                                                                                    # Places the build results in a subdirectory of the given name rather than directly into the build directory
+  <a href="#configure_file_capture"><b>capture</b></a>       : [[#@bool]]                                                                                                                                                                   # When this argument is set to true,
+  <a href="#configure_file_command"><b>command</b></a>       : [[#@array]][[[#@str]] | [[#@file]]]                                                                                                                                                      # As explained above, if specified, Meson does not create
+  <a href="#configure_file_configuration"><b>configuration</b></a> : [[#@cfg_data]] | [[#@dict]][[[#@str]] | [[#@int]] | [[#@bool]]]                                                                                                                                      # As explained above, when passed this will provide the replacement
+  <a href="#configure_file_copy"><b>copy</b></a>          : [[#@bool]]                                                                                                                                                                   # As explained above, if specified Meson only
+  <a href="#configure_file_depfile"><b>depfile</b></a>       : [[#@str]]                                                                                                                                                                    # A dependency file that the command can write listing
+  <a href="#configure_file_encoding"><b>encoding</b></a>      : [[#@str]]                                                                                                                                                                    # Set the file encoding for the input and output file
+  <a href="#configure_file_format"><b>format</b></a>        : [[#@str]]                                                                                                                                                                    # The format of defines
+  <a href="#configure_file_input"><b>input</b></a>         : [[#@str]] | [[#@file]]                                                                                                                                                             # The input file name
+  <a href="#configure_file_install"><b>install</b></a>       : [[#@bool]]                                                                                                                                                                   # When true, this generated file is installed during
+  <a href="#configure_file_install_dir"><b>install_dir</b></a>   : [[#@str]]                                                                                                                                                                    # The subdirectory to install the generated file to
+  <a href="#configure_file_install_mode"><b>install_mode</b></a>  : [[#@array]][[[#@str]] | [[#@int]]]                                                                                                                                                       # Specify the file mode in symbolic format
+  <a href="#configure_file_install_tag"><b>install_tag</b></a>   : [[#@str]]                                                                                                                                                                    # A string used by the `meson install --tags` command
+  <a href="#configure_file_macro_name"><b>macro_name</b></a>    : [[#@str]]                                                                                                                                                                    # When specified, macro guards will be used instead of '#pragma once'
+  <a href="#configure_file_output"><b>output</b></a>        : [[#@str]]                                                                                                                                                                    # The output file name
+  <a href="#configure_file_output_format"><b>output_format</b></a> : [[#@str]]                                                                                                                                                                    # The format of the output to generate when no input
+)</code></pre>
+
+
+
+```{warning}
+the `install_mode` kwarg ignored integer values between 0.62 -- 1.1.0.
+```
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+
+
+  The function `configure_file()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="configure_file_build_subdir">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">build_subdir</code>
+  <br>{meson:since}`1.10.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Places the build results in a subdirectory of the given name rather than directly into the build directory. This does not affect the install directory, which uses install_dir.
+This allows inserting a directory name into the build path, either when needed to use the build result while building other targets or as a way to support multiple targets with the same basename by using unique build_subdir values for each one.
+To prevent collisions within the build directory, build_subdir is not allowed to match a file or directory in the source directory, nor contain '..' to refer to the parent of the build directory.
+  </td>
+      </tr>
+      <tr id="configure_file_capture">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">capture</code>
+  <br>{meson:since}`0.41.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When this argument is set to true,
+Meson captures `stdout` of the `command` and writes it to the target
+file specified as `output`.
+
+  </td>
+      </tr>
+      <tr id="configure_file_command">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">command</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span>]
+  </td>
+        <td>
+  
+  As explained above, if specified, Meson does not create
+the file itself but rather runs the specified command, which allows
+you to do fully custom file generation. *(since 0.52.0)* The command can contain
+file objects and more than one file can be passed to the `input` keyword
+argument, see [[custom_target]] for details about string
+substitutions.
+
+  </td>
+      </tr>
+      <tr id="configure_file_configuration">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">configuration</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@cfg_data]]</span> | [[@dict]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span> | <span class="text-nowrap">[[@bool]]</span>]
+  </td>
+        <td>
+  
+  As explained above, when passed this will provide the replacement
+data for the input file (if provided) or key value pairs to be
+written to the output.
+
+  </td>
+      </tr>
+      <tr id="configure_file_copy">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">copy</code>
+  <br>{meson:since}`0.47.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  As explained above, if specified Meson only
+copies the file from input to output.
+
+  </td>
+      </tr>
+      <tr id="configure_file_depfile">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">depfile</code>
+  <br>{meson:since}`0.52.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  A dependency file that the command can write listing
+all the additional files this target depends on. A change
+in any one of these files triggers a reconfiguration.
+
+  </td>
+      </tr>
+      <tr id="configure_file_encoding">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">encoding</code>
+  <br>{meson:since}`0.47.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  <br><code class="language-meson text-nowrap">default = 'utf-8'</code>
+  </td>
+        <td>
+  
+  Set the file encoding for the input and output file.
+The supported encodings are those of python3, see
+[standard-encodings](https://docs.python.org/3/library/codecs.html#standard-encodings).
+
+  </td>
+      </tr>
+      <tr id="configure_file_format">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">format</code>
+  <br>{meson:since}`0.46.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  <br><code class="language-meson text-nowrap">default = 'meson'</code>
+  </td>
+        <td>
+  
+  The format of defines. It defaults to `'meson'`, and so substitutes
+`#mesondefine` statements and variables surrounded by `@` characters, you can also use `'cmake'`
+to replace `#cmakedefine` statements and variables with the `${variable}` syntax. Finally you can use
+`'cmake@'` in which case substitutions will apply on `#cmakedefine` statements and variables with
+the `@variable@` syntax.
+
+  </td>
+      </tr>
+      <tr id="configure_file_input">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">input</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span>
+  </td>
+        <td>
+  
+  The input file name. If it's not specified in configuration
+mode, all the variables in the `configuration:` object (see above)
+are written to the `output:` file.
+
+  </td>
+      </tr>
+      <tr id="configure_file_install">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">install</code>
+  <br>{meson:since}`0.50.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When true, this generated file is installed during
+the install step, and `install_dir` must be set and not empty. When false, this
+generated file is not installed regardless of the value of `install_dir`.
+When omitted it defaults to true when `install_dir` is set and not empty,
+false otherwise.
+
+  </td>
+      </tr>
+      <tr id="configure_file_install_dir">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">install_dir</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The subdirectory to install the generated file to
+(e.g. `share/myproject`), if omitted or given the value of empty
+string, the file is not installed.
+
+  </td>
+      </tr>
+      <tr id="configure_file_install_mode">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">install_mode</code>
+  <br>{meson:since}`0.47.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span>]
+  </td>
+        <td>
+  
+  Specify the file mode in symbolic format
+and optionally the owner/uid and group/gid for the installed files.
+
+See the `install_mode` kwarg of [[install_data]] for more information.
+
+  </td>
+      </tr>
+      <tr id="configure_file_install_tag">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">install_tag</code>
+  <br>{meson:since}`0.60.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  A string used by the `meson install --tags` command
+to install only a subset of the files. By default the file has no install
+tag which means it is not being installed when `--tags` argument is specified.
+
+  </td>
+      </tr>
+      <tr id="configure_file_macro_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">macro_name</code>
+  <br>{meson:since}`1.3.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  When specified, macro guards will be used instead of '#pragma once'. The
+macro guard name will be the specified name.
+
+  </td>
+      </tr>
+      <tr id="configure_file_output">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">output</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The output file name. *(since 0.41.0)* may contain
+`@PLAINNAME@` or `@BASENAME@` substitutions, as well as *(since 1.5.0)*
+their indexed versions, like `@PLAINNAME0@` or `@BASENAME0@`.
+In configuration mode,
+the permissions of the input file (if it is specified) are copied to
+the output file.
+
+  </td>
+      </tr>
+      <tr id="configure_file_output_format">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">output_format</code>
+  <br>{meson:since}`0.47.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The format of the output to generate when no input
+was specified. It defaults to `c`, in which case preprocessor directives
+will be prefixed with `#`, you can also use `nasm`, in which case the
+prefix will be `%`. *(since 1.3.0)* `json` format can also be used.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>

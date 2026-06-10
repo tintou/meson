@@ -1,0 +1,104 @@
+## add_global_link_arguments()
+
+Adds global arguments to the linker command line.
+
+Like [[add_global_arguments]] but the arguments are passed to the linker.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Adds global arguments to the linker command line
+[[#@void]] add_global_link_arguments(
+  [[#@str]]                                  <b>Linker argument</b>...,  # The linker arguments to add
+
+  # Keyword arguments:
+  <a href="#add_global_link_arguments_language"><b>language</b></a> : [[#@array]][[[#@str]]]                                   <i>[required]</i>  # Specifies the language(s) that the arguments should be
+  <a href="#add_global_link_arguments_native"><b>native</b></a>   : [[#@bool]]                                                     # A boolean specifying whether the arguments should be
+)</code></pre>
+
+
+```{note}
+Usually you should use [[add_project_link_arguments]] instead, because that works even when you project is used as a subproject.
+```
+```{note}
+You must pass always arguments individually `arg1, arg2, ...` rather than as a string `'arg1 arg2', ...`
+```
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+
+  The
+  function accepts between `0` and `infinity` variadic
+  arguments (`Linker argument...`) of type <code><span class="text-nowrap">[[@str]]</span></code>.
+
+  The linker arguments to add
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  The function `add_global_link_arguments()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="add_global_link_arguments_language">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">language</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Specifies the language(s) that the arguments should be
+applied to. If an array of languages is given, the arguments are added
+to each of the corresponding compiler command lines. Note that there
+is no way to remove an argument set in this way. If you have an
+argument that is only used in a subset of targets, you have to specify
+it in per-target flags.
+
+  </td>
+      </tr>
+      <tr id="add_global_link_arguments_native">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">native</code>
+  <br>{meson:since}`0.48.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  A boolean specifying whether the arguments should be
+applied to the native or cross compilation. If `true` the arguments
+will only be used for native compilations. If `false` the arguments
+will only be used in cross compilations. If omitted, the flags are
+added to native compilations if compiling natively and cross
+compilations (only) when cross compiling.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>

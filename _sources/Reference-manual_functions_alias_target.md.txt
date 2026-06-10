@@ -1,0 +1,75 @@
+## alias_target()
+
+This function creates a new top-level target. Like all top-level
+targets, this integrates with the selected backend. For instance, with
+you can run it as `meson compile target_name`. This is a dummy target
+that does not execute any command, but ensures that all dependencies
+are built. Dependencies can be any build target. Since 0.60.0, this includes
+[[@run_tgt]].
+
+*Since 1.6.0* passing a [[@both_libs]] object builds both shared and
+static libraries.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.52.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># This function creates a new top-level target
+[[#@alias_tgt]] alias_target(
+  [[#@str]]                                  <a href="#alias_target_target_name"><b>target_name</b></a>,     # The name of the alias target
+  [[#@tgt]]                                  <b>Dep</b>...,          # The targets to depend on
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+  The function `alias_target()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="alias_target_target_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">target_name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The name of the alias target
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  Additionally, the
+  function accepts between `1` and `infinity` variadic
+  arguments (`Dep...`) of type <code><span class="text-nowrap">[[@tgt]]</span></code>.
+
+  The targets to depend on
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+

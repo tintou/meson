@@ -1,0 +1,221 @@
+## vcs_tag()
+
+This command detects revision control commit information at build time
+and places it in the specified output file. This file is guaranteed to
+be up to date on every build. Keywords are similar to [[custom_target]].
+
+Meson will read the contents of `input`, substitute the
+`replace_string` with the detected revision number, and write the
+result to `output`. This method returns a
+[[@custom_tgt]] object that (as usual) should be
+used to signal dependencies if other targets use the file outputted
+by this.
+
+For example, if you generate a header with this and want to use that
+in a build target, you must add the return value to the sources of
+that build target. Without that, Meson will not know the order in
+which to build the targets.
+
+If you desire more specific behavior than what this command provides,
+you should use [[custom_target]].
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># This command detects revision control commit information at build time
+[[#@custom_tgt]] vcs_tag(
+  <a href="#vcs_tag_command"><b>command</b></a>        : [[#@array]][[[#@exe]] | [[#@program]] | [[#@custom_tgt]] | [[#@file]] | [[#@str]]]                                                                                                                                                                                   # The command to execute, see [[custom_target]] for details
+  <a href="#vcs_tag_fallback"><b>fallback</b></a>       : [[#@str]]                                                                                                                                                                                                                              # Version number to use when no revision control information is present,
+  <a href="#vcs_tag_input"><b>input</b></a>          : [[#@str]]                                                                                                                                                                                                                  <i>[required]</i>  # File to modify (e
+  <a href="#vcs_tag_install"><b>install</b></a>        : [[#@bool]]                                                                                                                                                                                                                             # When true, this generated file is installed during
+  <a href="#vcs_tag_install_dir"><b>install_dir</b></a>    : [[#@str]]                                                                                                                                                                                                                              # The subdirectory to install the generated file to (e
+  <a href="#vcs_tag_install_mode"><b>install_mode</b></a>   : [[#@array]][[[#@str]] | [[#@int]]]                                                                                                                                                                                                                 # Specify the file mode in symbolic format
+  <a href="#vcs_tag_install_tag"><b>install_tag</b></a>    : [[#@str]]                                                                                                                                                                                                                              # A string used by the `meson install --tags` command
+  <a href="#vcs_tag_output"><b>output</b></a>         : [[#@str]]                                                                                                                                                                                                                  <i>[required]</i>  # File to write the results to (e
+  <a href="#vcs_tag_replace_string"><b>replace_string</b></a> : [[#@str]]                                                                                                                                                                                                                              # String in the input file to substitute with the commit information
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+
+
+  The function `vcs_tag()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="vcs_tag_command">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">command</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@exe]]</span> | <span class="text-nowrap">[[@program]]</span> | <span class="text-nowrap">[[@custom_tgt]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  The command to execute, see [[custom_target]] for details
+on how this command must be specified.
+
+This parameter is optional. If it is absent, Meson will try
+its best to find a suitable default command.
+
+*(since 0.62.0)* [[@file]] is accepted.
+
+*(since 0.63.0)* [[@custom_tgt]], [[@exe]], and [[@program]] are accepted.
+
+  </td>
+      </tr>
+      <tr id="vcs_tag_fallback">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">fallback</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  <br><code class="language-meson text-nowrap">default = [[meson.project_version]]</code>
+  </td>
+        <td>
+  
+  Version number to use when no revision control information is present,
+such as when building from a release tarball.
+
+  </td>
+      </tr>
+      <tr id="vcs_tag_input">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">input</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  File to modify (e.g. `version.c.in`).
+  </td>
+      </tr>
+      <tr id="vcs_tag_install">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">install</code>
+  <br>{meson:since}`1.7.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When true, this generated file is installed during
+the install step, and `install_dir` must be set and not empty.
+
+  </td>
+      </tr>
+      <tr id="vcs_tag_install_dir">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">install_dir</code>
+  <br>{meson:since}`1.7.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The subdirectory to install the generated file to (e.g. `share/myproject`).
+
+  </td>
+      </tr>
+      <tr id="vcs_tag_install_mode">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">install_mode</code>
+  <br>{meson:since}`1.7.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span>]
+  </td>
+        <td>
+  
+  Specify the file mode in symbolic format
+and optionally the owner/uid and group/gid for the installed files.
+
+See the `install_mode` kwarg of [[install_data]] for more information.
+
+  </td>
+      </tr>
+      <tr id="vcs_tag_install_tag">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">install_tag</code>
+  <br>{meson:since}`1.7.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  A string used by the `meson install --tags` command
+to install only a subset of the files. By default the file has no install
+tag which means it is not being installed when `--tags` argument is specified.
+
+  </td>
+      </tr>
+      <tr id="vcs_tag_output">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">output</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  File to write the results to (e.g. `version.c`).
+  </td>
+      </tr>
+      <tr id="vcs_tag_replace_string">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">replace_string</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  <br><code class="language-meson text-nowrap">default = '@VCS_TAG@'</code>
+  </td>
+        <td>
+  
+  String in the input file to substitute with the commit information.
+  </td>
+      </tr>
+    </tbody>
+  </table>

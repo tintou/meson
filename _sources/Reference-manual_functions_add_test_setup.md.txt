@@ -1,0 +1,186 @@
+## add_test_setup()
+
+Add a custom test setup. This setup can be used to run the tests with a
+custom setup, for example under Valgrind.
+
+To use the test setup, run `meson test --setup=*name*` inside the
+build dir.
+
+Note that all these options are also available while running the
+`meson test` script for running tests instead of `ninja test` or
+`msbuild RUN_TESTS.vcxproj`, etc depending on the backend.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Add a custom test setup
+[[#@void]] add_test_setup(
+  [[#@str]]                                  <a href="#add_test_setup_name"><b>name</b></a>,     # The name of the test setup
+
+  # Keyword arguments:
+  <a href="#add_test_setup_env"><b>env</b></a>                : [[#@env]] | [[#@array]][[[#@str]]] | [[#@dict]][[[#@str]]]                                                                                                     # environment variables to set
+  <a href="#add_test_setup_exclude_suites"><b>exclude_suites</b></a>     : [[#@array]][[[#@str]]]                                                                                                                       # An array of test suites that should be excluded when using this setup
+  <a href="#add_test_setup_exe_wrapper"><b>exe_wrapper</b></a>        : [[#@array]][[[#@str]] | [[#@program]]]                                                                                                             # The command or script followed by the arguments to it
+  <a href="#add_test_setup_gdb"><b>gdb</b></a>                : [[#@bool]]                                                                                                                             # If `true`, the tests are also run under `gdb`
+  <a href="#add_test_setup_is_default"><b>is_default</b></a>         : [[#@bool]]                                                                                                                             # Set whether this is the default test setup
+  <a href="#add_test_setup_timeout_multiplier"><b>timeout_multiplier</b></a> : [[#@int]]                                                                                                                              # A number to multiply the test timeout with
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+  The function `add_test_setup()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="add_test_setup_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The name of the test setup
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `add_test_setup()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="add_test_setup_env">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">env</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@env]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>] | [[@dict]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  environment variables to set
+, such as `['NAME1=value1', 'NAME2=value2']`,
+or an [[@env]] object which allows more sophisticated
+environment juggling. *(Since 0.52.0)* A dictionary is also accepted.
+
+  </td>
+      </tr>
+      <tr id="add_test_setup_exclude_suites">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">exclude_suites</code>
+  <br>{meson:since}`0.57.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  An array of test suites that should be excluded when using this setup. Suites specified in the `--suite` option to `meson test` will always run, overriding `add_test_setup` if necessary.
+  </td>
+      </tr>
+      <tr id="add_test_setup_exe_wrapper">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">exe_wrapper</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@program]]</span>]
+  </td>
+        <td>
+  
+  The command or script followed by the arguments to it
+  </td>
+      </tr>
+      <tr id="add_test_setup_gdb">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">gdb</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  If `true`, the tests are also run under `gdb`
+  </td>
+      </tr>
+      <tr id="add_test_setup_is_default">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">is_default</code>
+  <br>{meson:since}`0.49.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  Set whether this is the default test setup.
+If `true`, the setup will be used whenever `meson test` is run
+without the `--setup` option.
+
+  </td>
+      </tr>
+      <tr id="add_test_setup_timeout_multiplier">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">timeout_multiplier</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@int]]</span>
+  <br><code class="language-meson text-nowrap">default = 1</code>
+  </td>
+        <td>
+  
+  A number to multiply the test timeout with.
+*Since 0.57* if timeout_multiplier is `<= 0` the test has infinite duration,
+in previous versions of Meson the test would fail with a timeout immediately.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>

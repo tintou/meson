@@ -1,0 +1,60 @@
+---
+short-description: "Elementary object: void"
+title: void
+render-subpages: false
+...
+# void (`void`)
+
+Indicates that the function does not return anything.
+Similar to `void` in C and C++
+
+
+## Returned by
+
+void objects are returned by the following functions and methods:
+- [[add_global_arguments]]
+- [[add_global_link_arguments]]
+- [[add_project_arguments]]
+- [[add_project_dependencies]]
+- [[add_project_link_arguments]]
+- [[add_test_setup]]
+- [[assert]]
+- [[benchmark]]
+- [[debug]]
+- [[error]]
+- [[install_data]]
+- [[install_emptydir]]
+- [[install_headers]]
+- [[install_man]]
+- [[install_subdir]]
+- [[install_symlink]]
+- [[message]]
+- [[project]]
+- [[set_variable]]
+- [[subdir]]
+- [[subdir_done]]
+- [[summary]]
+- [[test]]
+- [[unset_variable]]
+- [[warning]]
+- [[cfg_data.merge_from]]
+- [[cfg_data.set]]
+- [[cfg_data.set10]]
+- [[cfg_data.set_quoted]]
+- [[cmake_options.add_cmake_defines]]
+- [[env.append]]
+- [[env.prepend]]
+- [[env.set]]
+- [[env.unset]]
+- [[meson.add_devenv]]
+- [[meson.add_dist_script]]
+- [[meson.add_install_script]]
+- [[meson.add_postconf_script]]
+- [[meson.install_dependency_manifest]]
+- [[meson.override_dependency]]
+- [[meson.override_find_program]]
+
+
+
+
+

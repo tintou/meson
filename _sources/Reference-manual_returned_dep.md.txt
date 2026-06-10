@@ -1,0 +1,951 @@
+---
+short-description: "Returned object: Dependency object"
+title: Dependency object
+render-subpages: false
+...
+# Dependency object (`dep`)
+
+Abstract representation of a dependency
+
+
+## Returned by
+
+Dependency object objects are returned by the following functions and methods:
+- [[declare_dependency]]
+- [[dependency]]
+- [[compiler.find_library]]
+- [[dep.as_link_whole]]
+- [[dep.as_shared]]
+- [[dep.as_static]]
+- [[dep.as_system]]
+- [[dep.partial_dependency]]
+
+
+
+
+## Dependency object methods
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### dep.as_link_whole()
+
+Only dependencies created with [[declare_dependency]],
+returns a copy of the dependency object with all
+link_with arguments changed to link_whole. This is useful for example for
+fallback dependency from a subproject built with `default_library=static`.
+Note that all `link_with` objects must be static libraries otherwise an error
+will be raised when trying to `link_whole` a shared library.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.56.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@dep]] as_link_whole()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### dep.as_shared()
+
+Only for dependencies created with [[declare_dependency]],
+returns a copy of the dependency object that prefer the `shared` version
+of [[both_libraries]].
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`1.6.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Only for dependencies created with [[declare_dependency]],
+[[#@dep]] as_shared(
+  <a href="#as_shared_recursive"><b>recursive</b></a> : [[#@bool]]                                   # If true, this is recursively applied to dependencies
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+
+
+  The method `dep.as_shared()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="as_shared_recursive">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">recursive</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  If true, this is recursively applied to dependencies
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### dep.as_static()
+
+Only for dependencies created with [[declare_dependency]],
+returns a copy of the dependency object that prefer the `static` version
+of [[both_libraries]].
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`1.6.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Only for dependencies created with [[declare_dependency]],
+[[#@dep]] as_static(
+  <a href="#as_static_recursive"><b>recursive</b></a> : [[#@bool]]                                   # If true, this is recursively applied to dependencies
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+
+
+  The method `dep.as_static()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="as_static_recursive">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">recursive</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  If true, this is recursively applied to dependencies
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### dep.as_system()
+
+Returns a copy of the dependency object, which has changed the value of `include_type`
+to `value`. The `value` argument is optional and
+defaults to `'preserve'`.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.52.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns a copy of the dependency object, which has changed the value of `include_type`
+[[#@dep]] as_system(
+  [[#@str]]                                  [<a href="#as_system_value"><b>value</b></a>],   # The new value. See [[dependency]] for supported values.
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `dep.as_system()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="as_system_value">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">value</code>
+  <br>{meson:optional}` `
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The new value. See [[dependency]] for supported values.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### dep.found()
+
+Returns whether the dependency was found.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@bool]] found()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### dep.get_configtool_variable()
+
+Gets the command line argument from the config tool (with `--` prepended), or,
+if invoked on a non config-tool dependency, error out.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.44.0`
+{meson:deprecated}`0.56.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Gets the command line argument from the config tool (with `--` prepended), or,
+[[#@str]] get_configtool_variable(
+  [[#@str]]                                  <a href="#get_configtool_variable_var_name"><b>var_name</b></a>,     # Name of the variable to query
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `dep.get_configtool_variable()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_configtool_variable_var_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">var_name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Name of the variable to query
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### dep.get_pkgconfig_variable()
+
+Gets the pkg-config variable specified,
+or, if invoked on a non pkg-config
+dependency, error out.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.36.0`
+{meson:deprecated}`0.56.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Gets the pkg-config variable specified,
+[[#@str]] get_pkgconfig_variable(
+  [[#@str]]                                  <a href="#get_pkgconfig_variable_var_name"><b>var_name</b></a>,     # Name of the variable to query
+
+  # Keyword arguments:
+  <a href="#get_pkgconfig_variable_default"><b>default</b></a>         : [[#@str]]                                          # The value to return if the variable was not found
+  <a href="#get_pkgconfig_variable_define_variable"><b>define_variable</b></a> : [[#@array]][[[#@str]]]                                   # You can also redefine a
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `dep.get_pkgconfig_variable()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_pkgconfig_variable_var_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">var_name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Name of the variable to query
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `dep.get_pkgconfig_variable()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_pkgconfig_variable_default">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">default</code>
+  <br>{meson:since}`0.45.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The value to return if the variable was not found.
+A warning is issued if the variable is not defined and this kwarg is not set.
+
+  </td>
+      </tr>
+      <tr id="get_pkgconfig_variable_define_variable">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">define_variable</code>
+  <br>{meson:since}`0.44.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  You can also redefine a
+variable by passing an array to this kwarg
+that can affect the retrieved variable: `['prefix', '/'])`.
+
+*(Since 1.3.0)* Multiple variables can be specified in pairs.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### dep.get_variable()
+
+A generic variable getter method, which replaces the
+`get_*type*_variable` methods. This allows one to get the variable
+from a dependency without knowing specifically how that dependency
+was found. If `default_value` is set and the value cannot be gotten
+from the object then `default_value` is returned, if it is not set
+then an error is raised.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.51.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># A generic variable getter method, which replaces the
+[[#@str]] get_variable(
+  [[#@str]]                                  [<a href="#get_variable_varname"><b>varname</b></a>],   # This argument is used as a default value
+
+  # Keyword arguments:
+  <a href="#get_variable_cmake"><b>cmake</b></a>            : [[#@str]]                                          # The CMake variable name
+  <a href="#get_variable_configtool"><b>configtool</b></a>       : [[#@str]]                                          # The configtool variable name
+  <a href="#get_variable_default_value"><b>default_value</b></a>    : [[#@str]]                                          # The default value to return when the variable does not exist
+  <a href="#get_variable_internal"><b>internal</b></a>         : [[#@str]]                                          # The internal variable name
+  <a href="#get_variable_pkgconfig"><b>pkgconfig</b></a>        : [[#@str]]                                          # The pkgconfig variable name
+  <a href="#get_variable_pkgconfig_define"><b>pkgconfig_define</b></a> : [[#@array]][[[#@str]]]                                   # See [[dep.get_pkgconfig_variable]]
+  <a href="#get_variable_system"><b>system</b></a>           : [[#@str]]                                          # The system variable name
+)</code></pre>
+
+
+
+```{warning}
+Before 1.3.0, specifying multiple pkgconfig_define pairs would silently malform the results. Only the first variable would be redefined, but its value would contain both the second variable name, as well as its value.
+```
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `dep.get_variable()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_variable_varname">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">varname</code>
+  <br>{meson:since}`0.58.0`
+  <br>{meson:optional}` `
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  This argument is used as a default value
+for `cmake`, `pkgconfig`, `configtool`, `internal` and `system` keyword
+arguments. It is useful in the common case where `pkgconfig` and `internal`
+use the same variable name, in which case it's easier to write `dep.get_variable('foo')`
+instead of `dep.get_variable(pkgconfig: 'foo', internal: 'foo')`.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `dep.get_variable()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_variable_cmake">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">cmake</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The CMake variable name
+  </td>
+      </tr>
+      <tr id="get_variable_configtool">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">configtool</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The configtool variable name
+  </td>
+      </tr>
+      <tr id="get_variable_default_value">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">default_value</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The default value to return when the variable does not exist
+  </td>
+      </tr>
+      <tr id="get_variable_internal">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">internal</code>
+  <br>{meson:since}`0.54.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The internal variable name
+  </td>
+      </tr>
+      <tr id="get_variable_pkgconfig">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">pkgconfig</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The pkgconfig variable name
+  </td>
+      </tr>
+      <tr id="get_variable_pkgconfig_define">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">pkgconfig_define</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  See [[dep.get_pkgconfig_variable]]
+  </td>
+      </tr>
+      <tr id="get_variable_system">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">system</code>
+  <br>{meson:since}`1.6.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The system variable name
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### dep.include_type()
+
+Returns the value set by the `include_type` kwarg.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.52.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] include_type()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### dep.name()
+
+Returns the name of the dependency that was searched.
+Returns `'internal'` for dependencies created with
+[[declare_dependency]].
+
+NOTE: This was not implemented for dep objects returned by
+[[compiler.find_library]] until Meson 1.5.0
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.48.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] name()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### dep.partial_dependency()
+
+Returns a new dependency object with the same name, version, found status,
+type name, and methods as the object that called it. This new
+object will only inherit other attributes from its parent as
+controlled by keyword arguments.
+
+If the parent has any dependencies, those will be applied to the new
+partial dependency with the same rules. So, given:
+
+```meson
+dep1 = declare_dependency(compile_args : '-Werror=foo', link_with : 'libfoo')
+dep2 = declare_dependency(compile_args : '-Werror=bar', dependencies : dep1)
+dep3 = dep2.partial_dependency(compile_args : true)
+```
+
+dep3 will add `['-Werror=foo', '-Werror=bar']` to the compiler args
+of any target it is added to, but libfoo will not be added to the
+link_args.
+
+The following arguments will add the following attributes:
+
+- compile_args: any arguments passed to the compiler
+- link_args: any arguments passed to the linker
+- links: anything passed via link_with or link_whole
+- includes: any include_directories
+- sources: any compiled or static sources the dependency has
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.46.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns a new dependency object with the same name, version, found status,
+[[#@dep]] partial_dependency(
+  <a href="#partial_dependency_compile_args"><b>compile_args</b></a> : [[#@bool]]                                   # Whether to include compile_args
+  <a href="#partial_dependency_includes"><b>includes</b></a>     : [[#@bool]]                                   # Whether to include includes
+  <a href="#partial_dependency_link_args"><b>link_args</b></a>    : [[#@bool]]                                   # Whether to include link_args
+  <a href="#partial_dependency_links"><b>links</b></a>        : [[#@bool]]                                   # Whether to include links
+  <a href="#partial_dependency_sources"><b>sources</b></a>      : [[#@bool]]                                   # Whether to include sources
+)</code></pre>
+
+
+
+```{warning}
+A bug present until 0.50.1 results in the above behavior not working correctly.
+```
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+
+
+  The method `dep.partial_dependency()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="partial_dependency_compile_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">compile_args</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  Whether to include compile_args
+  </td>
+      </tr>
+      <tr id="partial_dependency_includes">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">includes</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  Whether to include includes
+  </td>
+      </tr>
+      <tr id="partial_dependency_link_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">link_args</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  Whether to include link_args
+  </td>
+      </tr>
+      <tr id="partial_dependency_links">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">links</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  Whether to include links
+  </td>
+      </tr>
+      <tr id="partial_dependency_sources">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">sources</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  Whether to include sources
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### dep.type_name()
+
+Returns a string describing the type of the
+dependency, the most common values are `internal` for deps created
+with [[declare_dependency]] and `pkgconfig` for system dependencies
+obtained with Pkg-config.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] type_name()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### dep.version()
+
+the version number as a string,
+for example `1.2.8`.
+`unknown` if the dependency provider doesn't support determining the
+version.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] version()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+

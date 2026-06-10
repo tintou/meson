@@ -1,0 +1,1138 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Rust module &#8212; Meson documentation 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d99633c1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Rust-module';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unstable SIMD module" href="Simd-module.html" />
+    <link rel="prev" title="Qt6 module" href="Qt6-module.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/meson_logo.png" class="logo__image only-light" alt="Meson documentation 1.0 documentation - Home"/>
+    <img src="_static/meson_logo.png" class="logo__image only-dark pst-js-only" alt="Meson documentation 1.0 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Reference-manual.html">Reference manual</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Reference-manual_builtin.html">Builtin objects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_builtin_build_machine.html">Build machine information (<code class="docutils literal notranslate"><span class="pre">build_machine</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_builtin_host_machine.html">Host machine information (<code class="docutils literal notranslate"><span class="pre">host_machine</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_machine</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_builtin_meson.html">Meson object (<code class="docutils literal notranslate"><span class="pre">meson</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_builtin_target_machine.html">Target machine information (<code class="docutils literal notranslate"><span class="pre">target_machine</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_machine</span></code>)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Reference-manual_elementary.html">Elementary types</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_any.html">Any (<code class="docutils literal notranslate"><span class="pre">any</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_array.html">Array (<code class="docutils literal notranslate"><span class="pre">array</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_bool.html">Boolean (<code class="docutils literal notranslate"><span class="pre">bool</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_dict.html">Dict (<code class="docutils literal notranslate"><span class="pre">dict</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_int.html">Integer (<code class="docutils literal notranslate"><span class="pre">int</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_str.html">String (<code class="docutils literal notranslate"><span class="pre">str</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_void.html">void (<code class="docutils literal notranslate"><span class="pre">void</span></code>)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Reference-manual_functions.html">Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_global_arguments.html">add_global_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_global_link_arguments.html">add_global_link_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_languages.html">add_languages()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_project_arguments.html">add_project_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_project_dependencies.html">add_project_dependencies()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_project_link_arguments.html">add_project_link_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_test_setup.html">add_test_setup()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_alias_target.html">alias_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_assert.html">assert()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_benchmark.html">benchmark()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_both_libraries.html">both_libraries()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_build_target.html">build_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_configuration_data.html">configuration_data()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_configure_file.html">configure_file()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_custom_target.html">custom_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_debug.html">debug()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_declare_dependency.html">declare_dependency()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_dependency.html">dependency()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_disabler.html">disabler()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_environment.html">environment()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_error.html">error()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_executable.html">executable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_files.html">files()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_find_program.html">find_program()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_generator.html">generator()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_get_option.html">get_option()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_get_variable.html">get_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_import.html">import()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_include_directories.html">include_directories()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_data.html">install_data()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_emptydir.html">install_emptydir()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_headers.html">install_headers()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_man.html">install_man()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_subdir.html">install_subdir()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_symlink.html">install_symlink()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_is_disabler.html">is_disabler()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_is_variable.html">is_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_jar.html">jar()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_join_paths.html">join_paths()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_library.html">library()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_message.html">message()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_project.html">project()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_range.html">range()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_run_command.html">run_command()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_run_target.html">run_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_set_variable.html">set_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_shared_library.html">shared_library()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_shared_module.html">shared_module()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_static_library.html">static_library()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_structured_sources.html">structured_sources()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_subdir.html">subdir()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_subdir_done.html">subdir_done()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_subproject.html">subproject()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_summary.html">summary()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_test.html">test()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_unset_variable.html">unset_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_vcs_tag.html">vcs_tag()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_warning.html">warning()</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Reference-manual_returned.html">Returned objects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_alias_tgt.html">Alias target (<code class="docutils literal notranslate"><span class="pre">alias_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_both_libs.html">Both libraries object (<code class="docutils literal notranslate"><span class="pre">both_libs</span></code> extends <code class="docutils literal notranslate"><span class="pre">lib</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_build_tgt.html">Build target (<code class="docutils literal notranslate"><span class="pre">build_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_cfg_data.html">Configuration data object (<code class="docutils literal notranslate"><span class="pre">cfg_data</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_compiler.html">Compiler object (<code class="docutils literal notranslate"><span class="pre">compiler</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_custom_idx.html">Custom target index (<code class="docutils literal notranslate"><span class="pre">custom_idx</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_custom_tgt.html">Custom target (<code class="docutils literal notranslate"><span class="pre">custom_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_dep.html">Dependency object (<code class="docutils literal notranslate"><span class="pre">dep</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_disabler.html">Disabler (<code class="docutils literal notranslate"><span class="pre">disabler</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_env.html">Environment (<code class="docutils literal notranslate"><span class="pre">env</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_exe.html">Executable target (<code class="docutils literal notranslate"><span class="pre">exe</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_extracted_obj.html">Extracted object file (<code class="docutils literal notranslate"><span class="pre">extracted_obj</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_feature.html">Feature option object (<code class="docutils literal notranslate"><span class="pre">feature</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_file.html">File (<code class="docutils literal notranslate"><span class="pre">file</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_generated_list.html">Generated list object (<code class="docutils literal notranslate"><span class="pre">generated_list</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_generator.html">Generator object (<code class="docutils literal notranslate"><span class="pre">generator</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_inc.html">Include directories (<code class="docutils literal notranslate"><span class="pre">inc</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_jar.html">JAR build target (<code class="docutils literal notranslate"><span class="pre">jar</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_lib.html">Library target (<code class="docutils literal notranslate"><span class="pre">lib</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_module.html">Imported module object (<code class="docutils literal notranslate"><span class="pre">module</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_program.html">External program (<code class="docutils literal notranslate"><span class="pre">program</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_range.html">Range object (<code class="docutils literal notranslate"><span class="pre">range</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_run_tgt.html">Run target (<code class="docutils literal notranslate"><span class="pre">run_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_runresult.html">Run result object (<code class="docutils literal notranslate"><span class="pre">runresult</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_structured_src.html">Structured Source (<code class="docutils literal notranslate"><span class="pre">structured_src</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_subproject.html">Subproject object (<code class="docutils literal notranslate"><span class="pre">subproject</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_tgt.html">Meson Target (<code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Modules.html">Modules</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="CMake-module.html">CMake module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Codegen-module.html">Codegen Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cuda-module.html">Unstable CUDA Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dlang-module.html">Dlang module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="External-Project-module.html">External Project module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Fs-module.html">FS (filesystem) module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Gnome-module.html">GNOME module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hotdoc-module.html">Hotdoc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Icestorm-module.html">Unstable IceStorm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Java-module.html">Java Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Keyval-module.html">keyval module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pkgconfig-module.html">Pkgconfig module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python-3-module.html">Python 3 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python-module.html">Python module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Qt4-module.html">Qt4 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Qt5-module.html">Qt5 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Qt6-module.html">Qt6 module</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Rust module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Simd-module.html">Unstable SIMD module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Snippets-module.html">Snippets module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SourceSet-module.html">Source set module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Windows-module.html">Windows module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i18n-module.html">I18n module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wayland-module.html">Wayland Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="Syntax.html">Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Builtin-options.html">Built-in options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reference-tables.html">Reference tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rewriter.html">Meson file rewriter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Style-guide.html">Style recommendations</a></li>
+
+
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="Reference.html" class="nav-link">Reference</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="Modules.html" class="nav-link">Modules</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Rust module</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="rust-module">
+<h1>Rust module<a class="headerlink" href="#rust-module" title="Link to this heading">#</a></h1>
+<p><em>(new in 0.57.0)</em>
+<em>(Stable since 1.0.0)</em></p>
+<p>The rust module provides helper to integrate rust code into Meson. The
+goal is to make using rust in Meson more pleasant, while still
+remaining mesonic. Rust conventions are adopted in order to help the
+Meson user and Rust developer, rather than to make Meson work more like rust.</p>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
+<section id="test">
+<h3>test()<a class="headerlink" href="#test" title="Link to this heading">#</a></h3>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">rustmod</span><span class="p">.</span><span class="n">test</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+</pre></div>
+</div>
+<p>This function creates a new rust unittest target from an existing rust
+based target, which may be a library or executable. It does this by
+copying the sources and arguments passed to the original target and
+adding the <code class="docutils literal notranslate"><span class="pre">--test</span></code> argument to the compilation, then creates a new
+test target which calls that executable, using the rust test protocol.</p>
+<p>This function takes two positional arguments, the first is the name of the
+test and the second is the library or executable that is the rust based target.
+It also takes the following keyword arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dependencies</span></code>: a list of test-only Dependencies</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">link_with</span></code>: a list of additional build Targets to link with (<em>since 1.2.0</em>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">link_whole</span></code>: a list of additional build Targets to link with in their entirety (<em>since 1.8.0</em>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rust_args</span></code>: a list of extra arguments passed to the Rust compiler (<em>since 1.2.0</em>)</p></li>
+</ul>
+<p>This function  also accepts all of the keyword arguments accepted by the
+<a href="Reference-manual_functions.html#test"><code>test()</code></a> function except <code class="docutils literal notranslate"><span class="pre">protocol</span></code>, it will set that automatically.</p>
+</section>
+<section id="doctest">
+<h3>doctest()<a class="headerlink" href="#doctest" title="Link to this heading">#</a></h3>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">rustmod</span><span class="p">.</span><span class="n">doctest</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+</pre></div>
+</div>
+<p><em>Since 1.8.0</em></p>
+<p>This function creates a new <code class="docutils literal notranslate"><span class="pre">test()</span></code> target from an existing rust
+based library target. The test will use <code class="docutils literal notranslate"><span class="pre">rustdoc</span></code> to extract and run
+the doctests that are included in <code class="docutils literal notranslate"><span class="pre">target</span></code>’s sources.</p>
+<p>This function takes two positional arguments, the first is the name of the
+test and the second is the library or executable that is the rust based target.
+It also takes the following keyword arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dependencies</span></code>: a list of test-only Dependencies</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">link_with</span></code>: a list of additional build Targets to link with</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">link_whole</span></code>: a list of additional build Targets to link with in their entirety</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rust_args</span></code>: a list of extra arguments passed to the Rust compiler</p></li>
+</ul>
+<p>The target is linked automatically into the doctests.</p>
+<p>This function  also accepts all of the keyword arguments accepted by the
+<a href="Reference-manual_functions.html#test"><code>test()</code></a> function except <code class="docutils literal notranslate"><span class="pre">protocol</span></code>, it will set that automatically.
+However, arguments are limited to strings that do not contain spaces
+due to limitations of <code class="docutils literal notranslate"><span class="pre">rustdoc</span></code>.</p>
+</section>
+<section id="bindgen">
+<h3>bindgen()<a class="headerlink" href="#bindgen" title="Link to this heading">#</a></h3>
+<p>This function wraps bindgen to simplify creating rust bindings around C
+libraries. This has two advantages over invoking bindgen with a
+<code class="docutils literal notranslate"><span class="pre">generator</span></code> or <code class="docutils literal notranslate"><span class="pre">custom_target</span></code>:</p>
+<ul class="simple">
+<li><p>It handles <code class="docutils literal notranslate"><span class="pre">include_directories</span></code>, so one doesn’t have to manually convert them to <code class="docutils literal notranslate"><span class="pre">-I...</span></code></p></li>
+<li><p>It automatically sets up a depfile, making the results more reliable</p></li>
+<li><p>It automatically handles assertions, synchronizing Rust and C/C++ to have the same behavior</p></li>
+</ul>
+<p>It takes the following keyword arguments</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">input</span></code>: a list of Files, Strings, or CustomTargets. The first element is
+the header bindgen will parse, additional elements are dependencies.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output</span></code>: the name of the output rust file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_inline_wrapper</span></code>: the name of the optional output c file containing
+wrappers for static inline function. This requires <code class="docutils literal notranslate"><span class="pre">bindgen-0.65</span></code> or
+newer (<em>since 1.3.0</em>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">include_directories</span></code>: A list of <code class="docutils literal notranslate"><span class="pre">include_directories</span></code> or <code class="docutils literal notranslate"><span class="pre">string</span></code> objects,
+these are passed to clang as <code class="docutils literal notranslate"><span class="pre">-I</span></code> arguments <em>(string since 1.0.0)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c_args</span></code>: a list of string arguments to pass to clang untouched</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">args</span></code>: a list of string arguments to pass to <code class="docutils literal notranslate"><span class="pre">bindgen</span></code> untouched.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dependencies</span></code>: a list of <code class="docutils literal notranslate"><span class="pre">Dependency</span></code> objects to pass to the underlying clang call (<em>since 1.0.0</em>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">language</span></code>: A literal string value of <code class="docutils literal notranslate"><span class="pre">c</span></code> or <code class="docutils literal notranslate"><span class="pre">cpp</span></code>. When set this will force bindgen to treat a source as the given language. Defaults to checking based on the input file extension. <em>(since 1.4.0)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bindgen_version</span></code>: a list of string version values. When set the found bindgen binary must conform to these constraints. <em>(since 1.4.0)</em></p></li>
+</ul>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">rust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">import</span><span class="p">(</span><span class="s">&#39;unstable-rust&#39;</span><span class="p">)</span>
+
+<span class="n">inc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">include_directories</span><span class="p">(</span><span class="s">&#39;..&#39;</span><span class="err">¸</span><span class="w"> </span><span class="s">&#39;../../foo&#39;</span><span class="p">)</span>
+
+<span class="n">generated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rust</span><span class="p">.</span><span class="n">bindgen</span><span class="p">(</span>
+<span class="w">    </span><span class="n">input</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;myheader.h&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">output</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;generated.rs&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nb">include_directories</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">inc</span><span class="p">,</span><span class="w"> </span><span class="nb">include_directories</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">)],</span>
+<span class="w">    </span><span class="n">args</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;--no-rustfmt-bindings&#39;</span><span class="p">],</span>
+<span class="w">    </span><span class="n">c_args</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;-DFOO=1&#39;</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>If the header depends on generated headers, those headers must be passed to
+<code class="docutils literal notranslate"><span class="pre">bindgen</span></code> as well to ensure proper dependency ordering, static headers do not
+need to be passed, as a proper depfile is generated:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">h1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">custom_target</span><span class="p">(...)</span>
+<span class="n">h2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">custom_target</span><span class="p">(...)</span>
+
+<span class="n">r1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rust</span><span class="p">.</span><span class="n">bindgen</span><span class="p">(</span>
+<span class="w">  </span><span class="n">input</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">h1</span><span class="p">,</span><span class="w"> </span><span class="n">h2</span><span class="p">],</span><span class="w">  </span><span class="c"># h1 includes h2,</span>
+<span class="w">  </span><span class="n">output</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;out.rs&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><em>Since 1.1.0</em> Meson will synchronize assertions for Rust and C/C++  when the
+<code class="docutils literal notranslate"><span class="pre">b_ndebug</span></code> option is set (via <code class="docutils literal notranslate"><span class="pre">-DNDEBUG</span></code> for C/C++, and <code class="docutils literal notranslate"><span class="pre">-C</span> <span class="pre">debug-assertions=on</span></code> for Rust), and will pass <code class="docutils literal notranslate"><span class="pre">-DNDEBUG</span></code> as an extra argument
+to clang. This allows for reliable wrapping of <code class="docutils literal notranslate"><span class="pre">-DNDEBUG</span></code> controlled behavior
+with <code class="docutils literal notranslate"><span class="pre">#[cfg(debug_asserions)]</span></code> and or <code class="docutils literal notranslate"><span class="pre">cfg!()</span></code>. Before 1.1.0, assertions for Rust
+were never turned on by Meson.</p>
+<p><em>Since 1.2.0</em> Additional arguments to pass to clang may be specified in a
+*machine file in the properties section:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[properties]</span>
+<span class="na">bindgen_clang_arguments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[&#39;--target&#39;, &#39;x86_64-linux-gnu&#39;]</span>
+</pre></div>
+</div>
+</section>
+<section id="compiler-target">
+<h3>compiler_target()<a class="headerlink" href="#compiler-target" title="Link to this heading">#</a></h3>
+<p><em>Since 1.11.0</em></p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">rustmod</span><span class="p">.</span><span class="n">compiler_target</span><span class="p">()</span>
+<span class="n">rustmod</span><span class="p">.</span><span class="n">compiler_target</span><span class="p">(</span><span class="n">native</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns the Rust target triple (e.g. <code class="docutils literal notranslate"><span class="pre">x86_64-unknown-linux-gnu</span></code>) for the
+Rust compiler.  By default, or with <code class="docutils literal notranslate"><span class="pre">native:</span> <span class="pre">false</span></code>, this returns the
+target for the host machine.  If <code class="docutils literal notranslate"><span class="pre">native:</span> <span class="pre">true</span></code> is passed, it returns
+the target for the build machine instead.</p>
+<p>This is useful when converting build scripts to Meson, because it
+matches the value of Cargo’s <code class="docutils literal notranslate"><span class="pre">TARGET</span></code> and <code class="docutils literal notranslate"><span class="pre">HOST</span></code> environment variables.</p>
+</section>
+<section id="proc-macro">
+<h3>proc_macro()<a class="headerlink" href="#proc-macro" title="Link to this heading">#</a></h3>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">rustmod</span><span class="p">.</span><span class="n">proc_macro</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">sources</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+</pre></div>
+</div>
+<p><em>Since 1.3.0</em></p>
+<p>This function creates a Rust <code class="docutils literal notranslate"><span class="pre">proc-macro</span></code> crate, similar to:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="err">&lt;</span><span class="n">a</span><span class="w"> </span><span class="n">href</span><span class="o">=</span><span class="err">&quot;</span><span class="n">Reference</span><span class="o">-</span><span class="n">manual_functions</span><span class="p">.</span><span class="n">html</span><span class="c">#shared_library&quot;&gt;&lt;code&gt;shared_library()&lt;/code&gt;&lt;/a&gt;(name, sources,</span>
+<span class="w">  </span><span class="n">rust_crate_type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;proc-macro&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">native</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">proc-macro</span></code> targets can be passed to <code class="docutils literal notranslate"><span class="pre">link_with</span></code> keyword argument of other Rust
+targets.</p>
+<p>Only a subset of <a href="Reference-manual_functions.html#shared_library"><code>shared_library()</code></a> keyword arguments are allowed:</p>
+<ul class="simple">
+<li><p>rust_args</p></li>
+<li><p>rust_dependency_map</p></li>
+<li><p>sources</p></li>
+<li><p>dependencies</p></li>
+<li><p>extra_files</p></li>
+<li><p>link_args</p></li>
+<li><p>link_depends</p></li>
+<li><p>link_with</p></li>
+<li><p>override_options</p></li>
+</ul>
+</section>
+<section id="to-system-dependency">
+<h3>to_system_dependency()<a class="headerlink" href="#to-system-dependency" title="Link to this heading">#</a></h3>
+<p><em>Since 1.11.0</em></p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">rustmod</span><span class="p">.</span><span class="n">to_system_dependency</span><span class="p">(</span><span class="n">dep</span><span class="p">[,</span><span class="w"> </span><span class="n">name</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Create and return an internal dependency that wraps <code class="docutils literal notranslate"><span class="pre">dep</span></code> and
+defines <code class="docutils literal notranslate"><span class="pre">cfg(system_deps_have_NAME)</span></code>.  This is compatible with
+how the <code class="docutils literal notranslate"><span class="pre">system-deps</span></code> crate reports the availability of a system
+dependency to Rust code.</p>
+<p>If omitted, the name defaults to the name of the dependency.</p>
+</section>
+<section id="workspace">
+<h3>workspace()<a class="headerlink" href="#workspace" title="Link to this heading">#</a></h3>
+<p>Basic usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cargo_ws</span> <span class="o">=</span> <span class="n">rustmod</span><span class="o">.</span><span class="n">workspace</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>With custom features:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>feature_list = get_feature(&#39;f1&#39;) ? [&#39;feature1&#39;] : []
+feature_list += get_feature(&#39;f2&#39;) ? [&#39;feature2&#39;] : []
+cargo_ws = rustmod.workspace(features: feature_list)
+</pre></div>
+</div>
+<p><em>Since 1.11.0</em></p>
+<p>Create and return a <code class="docutils literal notranslate"><span class="pre">workspace</span></code> object for managing the project’s Cargo
+workspace.</p>
+<p>Keyword arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">default_features</span></code>: (<code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional) Whether to enable default features.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">features</span></code>: (<code class="docutils literal notranslate"><span class="pre">array[str]</span></code>, optional) List of additional features to enable globally.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extra_members</span></code>: (<code class="docutils literal notranslate"><span class="pre">array[str]</span></code>, optional) <em>Since 1.12.0</em> list of non-default
+workspace members to configure.</p></li>
+</ul>
+<p>A project that wishes to use Cargo subprojects should have <code class="docutils literal notranslate"><span class="pre">Cargo.lock</span></code> and <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code>
+files in the root source directory, and should call this function before using
+Cargo subprojects.</p>
+<p>The first invocation of <code class="docutils literal notranslate"><span class="pre">workspace()</span></code> establishes the <em>Cargo interpreter</em>
+that resolves dependencies and features for both the toplevel project (the one
+containing <code class="docutils literal notranslate"><span class="pre">Cargo.lock</span></code>) and all subprojects that are invoked with the <code class="docutils literal notranslate"><span class="pre">cargo</span></code> method,</p>
+<p>You can optionally customize the feature set, by providing <code class="docutils literal notranslate"><span class="pre">default_features</span></code>
+and <code class="docutils literal notranslate"><span class="pre">features</span></code> when the Cargo interpreter is established.  If any of these
+arguments is not specified, <code class="docutils literal notranslate"><span class="pre">default_features</span></code> is taken as <code class="docutils literal notranslate"><span class="pre">true</span></code> and
+<code class="docutils literal notranslate"><span class="pre">features</span></code> as the empty list.</p>
+<p>Once established, the Cargo interpreter’s configuration is locked. Later calls to
+<code class="docutils literal notranslate"><span class="pre">workspace()</span></code> must either omit all arguments (accepting the existing configuration)
+or provide the same set of features as the first call. Mismatched arguments will cause
+a build error.</p>
+<p>The recommendation is to not specify any keyword arguments in a subproject, so
+that they simply inherit the parent’s configuration.  Be careful about the
+difference between specifying arguments and not doing so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># always works regardless of parent configuration</span>
+<span class="n">cargo_ws</span> <span class="o">=</span> <span class="n">rustmod</span><span class="o">.</span><span class="n">workspace</span><span class="p">()</span>
+
+<span class="c1"># fails if parent configured different features</span>
+<span class="n">cargo_ws</span> <span class="o">=</span> <span class="n">rustmod</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">default_features</span><span class="p">:</span> <span class="n">true</span><span class="p">)</span>
+<span class="n">cargo_ws</span> <span class="o">=</span> <span class="n">rustmod</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">features</span><span class="p">:</span> <span class="p">[])</span>
+</pre></div>
+</div>
+<p>The first form says “use whatever features are configured,” while the latter forms
+say “require this specific configuration,” which may conflict with the parent project.</p>
+</section>
+</section>
+<section id="workspace-object">
+<h2>Workspace object<a class="headerlink" href="#workspace-object" title="Link to this heading">#</a></h2>
+<section id="workspace-packages">
+<h3>workspace.packages()<a class="headerlink" href="#workspace-packages" title="Link to this heading">#</a></h3>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">packages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ws</span><span class="p">.</span><span class="n">packages</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Returns a list of configured package names in the workspace.  Non-default
+workspace members are not included unless they were passed as <code class="docutils literal notranslate"><span class="pre">extra_members</span></code>
+when the workspace was created.</p>
+</section>
+<section id="workspace-package">
+<h3>workspace.package()<a class="headerlink" href="#workspace-package" title="Link to this heading">#</a></h3>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">pkg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ws</span><span class="p">.</span><span class="n">package</span><span class="p">([</span><span class="n">package_name</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Returns a package object for the given package member.  If empty, returns
+the object for the root package.</p>
+<p>Arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">package_name</span></code>: (str, optional) Name of the package; not needed for the
+root package of a workspace</p></li>
+</ul>
+<p>Example usage:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">rustmod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">import</span><span class="p">(</span><span class="s">&#39;rust&#39;</span><span class="p">)</span>
+<span class="n">cargo_ws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rustmod</span><span class="p">.</span><span class="n">workspace</span><span class="p">()</span>
+<span class="n">pkg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cargo_ws</span><span class="p">.</span><span class="n">package</span><span class="p">()</span>
+<span class="n">pkg</span><span class="p">.</span><span class="n">executable</span><span class="p">(</span><span class="n">install</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="workspace-subproject">
+<h3>workspace.subproject()<a class="headerlink" href="#workspace-subproject" title="Link to this heading">#</a></h3>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ws</span><span class="p">.</span><span class="n">subproject</span><span class="p">(</span><span class="n">package_name</span><span class="p">,</span><span class="w"> </span><span class="n">api</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns a <code class="docutils literal notranslate"><span class="pre">package</span></code> object for managing a specific package within the workspace.</p>
+<p>Positional arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">package_name</span></code>: (<code class="docutils literal notranslate"><span class="pre">str</span></code>) The name of the package to retrieve</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">api</span></code>: (<code class="docutils literal notranslate"><span class="pre">str</span></code>, optional) The version constraints for the package in Cargo format</p></li>
+</ul>
+</section>
+</section>
+<section id="package-object">
+<h2>Package object<a class="headerlink" href="#package-object" title="Link to this heading">#</a></h2>
+<p>The package object returned by <code class="docutils literal notranslate"><span class="pre">workspace.subproject()</span></code> provides methods
+for working with individual packages in a Cargo workspace.</p>
+<section id="package-name-subproject-name">
+<h3>package.name(), subproject.name()<a class="headerlink" href="#package-name-subproject-name" title="Link to this heading">#</a></h3>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pkg</span><span class="p">.</span><span class="n">name</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Returns the name of a package or subproject.</p>
+</section>
+<section id="package-version-subproject-version">
+<h3>package.version(), subproject.version()<a class="headerlink" href="#package-version-subproject-version" title="Link to this heading">#</a></h3>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pkg</span><span class="p">.</span><span class="n">version</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Returns the normalized version number of the subproject.</p>
+</section>
+<section id="package-api-subproject-api">
+<h3>package.api(), subproject.api()<a class="headerlink" href="#package-api-subproject-api" title="Link to this heading">#</a></h3>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pkg</span><span class="p">.</span><span class="n">api</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Returns the API version of the subproject, that is the version up to the first
+nonzero element.</p>
+</section>
+<section id="package-features-subproject-features">
+<h3>package.features(), subproject.features()<a class="headerlink" href="#package-features-subproject-features" title="Link to this heading">#</a></h3>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pkg</span><span class="p">.</span><span class="n">features</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Returns selected features for a specific package or subproject.</p>
+</section>
+<section id="package-all-features-subproject-all-features">
+<h3>package.all_features(), subproject.all_features()<a class="headerlink" href="#package-all-features-subproject-all-features" title="Link to this heading">#</a></h3>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">all_features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pkg</span><span class="p">.</span><span class="n">all_features</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Returns all defined features for a specific package or subproject.</p>
+</section>
+<section id="packages-only">
+<h3>Packages only<a class="headerlink" href="#packages-only" title="Link to this heading">#</a></h3>
+<p>Package objects are able to extract information from <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code> files,
+and provide methods to query how Cargo would build this package.  They
+also contain convenience wrappers for non-Rust-specific functions
+(<code class="docutils literal notranslate"><span class="pre">executable</span></code>, <code class="docutils literal notranslate"><span class="pre">library</span></code>, <code class="docutils literal notranslate"><span class="pre">meson.override_dependency</span></code>, etc.), that
+automatically add dependencies and compiler arguments from <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code>
+information.</p>
+<section id="package-rust-args">
+<h4>package.rust_args()<a class="headerlink" href="#package-rust-args" title="Link to this heading">#</a></h4>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pkg</span><span class="p">.</span><span class="n">rustc_args</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Returns rustc arguments for this package.</p>
+</section>
+<section id="package-env">
+<h4>package.env()<a class="headerlink" href="#package-env" title="Link to this heading">#</a></h4>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">env_vars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pkg</span><span class="p">.</span><span class="n">env</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Returns environment variables for this package.</p>
+</section>
+<section id="package-rust-dependency-map">
+<h4>package.rust_dependency_map()<a class="headerlink" href="#package-rust-dependency-map" title="Link to this heading">#</a></h4>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">dep_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pkg</span><span class="p">.</span><span class="n">rust_dependency_map</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Returns rust dependency mapping for this package.</p>
+</section>
+<section id="package-dependencies">
+<h4>package.dependencies()<a class="headerlink" href="#package-dependencies" title="Link to this heading">#</a></h4>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">deps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pkg</span><span class="p">.</span><span class="n">dependencies</span><span class="p">(...)</span>
+</pre></div>
+</div>
+<p>Returns a list of dependency objects for all the dependencies required by this
+Rust package, including both Rust crate dependencies and system dependencies.
+The returned dependencies can be used directly in build target declarations.</p>
+<p>Keyword arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dependencies</span></code>: (<code class="docutils literal notranslate"><span class="pre">bool</span></code>, default: true) Whether to include regular Rust crate dependencies</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dev_dependencies</span></code>: (<code class="docutils literal notranslate"><span class="pre">bool</span></code>, default: false) Whether to include development dependencies (not yet implemented)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">system_dependencies</span></code>: (<code class="docutils literal notranslate"><span class="pre">bool</span></code>, default: true) Whether to include system dependencies</p></li>
+</ul>
+</section>
+<section id="package-library">
+<h4>package.library()<a class="headerlink" href="#package-library" title="Link to this heading">#</a></h4>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">lib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pkg</span><span class="p">.</span><span class="n">library</span><span class="p">(...)</span>
+</pre></div>
+</div>
+<p>Builds library targets for a workspace package.  The method requires that
+the package’s <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code> file contains the <code class="docutils literal notranslate"><span class="pre">[lib]</span></code> section or that it
+is discovered from the contents of the file system.  Static vs. shared library is
+decided based on the crate types in <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code></p>
+<p>Positional arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">target_name</span></code>: (<code class="docutils literal notranslate"><span class="pre">str</span></code>, optional) Name of the binary target to build.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sources</span></code>: (<code class="docutils literal notranslate"><span class="pre">StructuredSources</span></code>, optional) Source files for the executable.  If omitted,
+uses the path specified in the <code class="docutils literal notranslate"><span class="pre">[lib]</span></code> section of <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code>.</p></li>
+</ul>
+<p>Accepts all keyword arguments from <a href="Reference-manual_functions.html#shared_library"><code>shared_library()</code></a> and <a href="Reference-manual_functions.html#static_library"><code>static_library()</code></a>.
+<code class="docutils literal notranslate"><span class="pre">rust_abi</span></code> must match the crate types and is mandatory if more than one
+ABI is exposed by the crate.</p>
+</section>
+<section id="package-shared-module">
+<h4>package.shared_module()<a class="headerlink" href="#package-shared-module" title="Link to this heading">#</a></h4>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">lib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pkg</span><span class="p">.</span><span class="n">shared_module</span><span class="p">(...)</span>
+</pre></div>
+</div>
+<p>Builds the <code class="docutils literal notranslate"><span class="pre">cdylib</span></code> for a workspace package as a shared module.</p>
+<p>Accepts all keyword arguments from <a href="Reference-manual_functions.html#shared_module"><code>shared_module()</code></a>.</p>
+</section>
+<section id="package-proc-macro">
+<h4>package.proc_macro()<a class="headerlink" href="#package-proc-macro" title="Link to this heading">#</a></h4>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">lib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pkg</span><span class="p">.</span><span class="n">proc_macro</span><span class="p">(...)</span>
+</pre></div>
+</div>
+<p>Builds a proc-macro crate for a workspace package.</p>
+<p>Accepts all keyword arguments from <a href="Reference-manual_functions.html#shared_library"><code>shared_library()</code></a>.</p>
+</section>
+<section id="package-override-dependency">
+<h4>package.override_dependency()<a class="headerlink" href="#package-override-dependency" title="Link to this heading">#</a></h4>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">pkg</span><span class="p">.</span><span class="n">override_dependency</span><span class="p">(</span><span class="n">dep</span><span class="p">[,</span><span class="w"> </span><span class="n">rust_abi</span><span class="p">:</span><span class="w"> </span><span class="n">abi</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Keyword arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rust_abi</span></code>: (<code class="docutils literal notranslate"><span class="pre">str</span></code>, optional) The ABI to use for the dependency. Valid values are
+<code class="docutils literal notranslate"><span class="pre">'rust'</span></code>, <code class="docutils literal notranslate"><span class="pre">'c'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'proc-macro'</span></code>; the value must match the crate types and is
+mandatory if more than one ABI is exposed by the crate.</p></li>
+</ul>
+<p>Make the crate available as a dependency to other crates.  This is the same
+as calling <code class="docutils literal notranslate"><span class="pre">meson.override_dependency</span></code>, but it computes the correct dependency
+name from <code class="docutils literal notranslate"><span class="pre">pkg</span></code>’s name, API version and ABI (Rust vs. C).</p>
+<p>It is typically used with <code class="docutils literal notranslate"><span class="pre">library()</span> <span class="pre">or</span> </code>proc_macro()`, for example:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">lib_pkg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cargo_ws</span><span class="p">.</span><span class="n">package</span><span class="p">(</span><span class="s">&#39;myproject-lib&#39;</span><span class="p">)</span>
+<span class="n">lib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lib_pkg</span><span class="p">.</span><span class="n">library</span><span class="p">(</span><span class="n">install</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="n">lib_pkg</span><span class="p">.</span><span class="n">override_dependency</span><span class="p">(</span><span class="nb">declare_dependency</span><span class="p">(</span><span class="n">link_with</span><span class="p">:</span><span class="w"> </span><span class="n">lib</span><span class="p">))</span>
+
+<span class="c"># Declares myproject-lib as a dependency in Cargo.toml</span>
+<span class="n">exe_pkg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cargo_ws</span><span class="p">.</span><span class="n">package</span><span class="p">()</span>
+<span class="n">exe_pkg</span><span class="p">.</span><span class="n">executable</span><span class="p">(</span><span class="n">install</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="package-executable">
+<h4>package.executable()<a class="headerlink" href="#package-executable" title="Link to this heading">#</a></h4>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">exe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pkg</span><span class="p">.</span><span class="n">executable</span><span class="p">([</span><span class="n">target_name</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="n">sources</span><span class="p">],</span><span class="w"> </span><span class="p">...)</span>
+</pre></div>
+</div>
+<p>Builds an executable target for a workspace package.  The method requires that the
+package has at least one <code class="docutils literal notranslate"><span class="pre">bin</span></code> section defined in its <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code> file,
+or one binary discovered from the contents of the file system.</p>
+<p>Positional arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">target_name</span></code>: (<code class="docutils literal notranslate"><span class="pre">str</span></code>, optional) Name of the binary target to build. If the package
+has multiple <code class="docutils literal notranslate"><span class="pre">bin</span></code> sections in <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code>, this argument is required and must
+match one of the binary names. If omitted and there’s only one binary, that binary
+will be built automatically.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sources</span></code>: (<code class="docutils literal notranslate"><span class="pre">StructuredSources</span></code>, optional) Source files for the executable.  If omitted,
+uses the path specified in the corresponding <code class="docutils literal notranslate"><span class="pre">bin</span></code> section of <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code>.</p></li>
+</ul>
+<p>Accepts all keyword arguments from <a href="Reference-manual_functions.html#executable"><code>executable()</code></a>.</p>
+</section>
+</section>
+<section id="subprojects-only">
+<h3>Subprojects only<a class="headerlink" href="#subprojects-only" title="Link to this heading">#</a></h3>
+<section id="subproject-dependency">
+<h4>subproject.dependency()<a class="headerlink" href="#subproject-dependency" title="Link to this heading">#</a></h4>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">subproject</span><span class="p">.</span><span class="n">dependency</span><span class="p">(...)</span>
+</pre></div>
+</div>
+<p>Returns a dependency object for the subproject that can be used with other Meson targets.</p>
+<p><em>Note</em>: right now, this method is implemented on top of the normal Meson function
+<a href="Reference-manual_functions.html#dependency"><code>dependency()</code></a>; this is subject to change in future releases.  It is recommended
+to always retrieve a Cargo subproject’s dependency object via this method.</p>
+<p>Keyword arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rust_abi</span></code>: (<code class="docutils literal notranslate"><span class="pre">str</span></code>, optional) The ABI to use for the dependency. Valid values are
+<code class="docutils literal notranslate"><span class="pre">'rust'</span></code>, <code class="docutils literal notranslate"><span class="pre">'c'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'proc-macro'</span></code>. The package must support the specified ABI.</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Qt6-module.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Qt6 module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Simd-module.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unstable SIMD module</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test">test()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#doctest">doctest()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bindgen">bindgen()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compiler-target">compiler_target()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proc-macro">proc_macro()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-system-dependency">to_system_dependency()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workspace">workspace()</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workspace-object">Workspace object</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workspace-packages">workspace.packages()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workspace-package">workspace.package()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workspace-subproject">workspace.subproject()</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-object">Package object</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#package-name-subproject-name">package.name(), subproject.name()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#package-version-subproject-version">package.version(), subproject.version()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#package-api-subproject-api">package.api(), subproject.api()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#package-features-subproject-features">package.features(), subproject.features()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#package-all-features-subproject-all-features">package.all_features(), subproject.all_features()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#packages-only">Packages only</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#package-rust-args">package.rust_args()</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#package-env">package.env()</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#package-rust-dependency-map">package.rust_dependency_map()</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#package-dependencies">package.dependencies()</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#package-library">package.library()</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#package-shared-module">package.shared_module()</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#package-proc-macro">package.proc_macro()</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#package-override-dependency">package.override_dependency()</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#package-executable">package.executable()</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subprojects-only">Subprojects only</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subproject-dependency">subproject.dependency()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/mesonbuild/meson/edit/master/docs/markdown/Rust-module.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">Website licensing information are available on the <a href="legal.html">Legal</a> page.</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

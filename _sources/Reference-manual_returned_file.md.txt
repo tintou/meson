@@ -1,0 +1,55 @@
+---
+short-description: "Returned object: File"
+title: File
+render-subpages: false
+...
+# File (`file`)
+
+Object that stores the path to an existing file
+
+
+## Returned by
+
+File objects are returned by the following functions and methods:
+- [[configure_file]]
+- [[build_tgt.vala_gir]]
+- [[build_tgt.vala_header]]
+- [[build_tgt.vala_vapi]]
+
+
+
+
+## File methods
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### file.full_path()
+
+Returns a full path pointing to the file. This is useful for printing the
+path with e.g [[message]] function for debugging purpose.
+**NOTE:** In most cases using the object itself will do the same job
+as this and will also allow Meson to setup dependencies correctly.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`1.4.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] full_path()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+

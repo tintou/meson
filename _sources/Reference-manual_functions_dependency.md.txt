@@ -1,0 +1,388 @@
+## dependency()
+
+Finds an external dependency (usually a library installed on your
+system) with the given name with `pkg-config` and [with
+CMake](Dependencies.md#cmake) if `pkg-config` fails. Additionally,
+frameworks (OSX only) and [library-specific fallback detection
+logic](Dependencies.md#dependencies-with-custom-lookup-functionality)
+are also supported.
+
+*Since 0.60.0* more than one name can be provided, they will be tried in order
+and the first name to be found will be used. The fallback subproject will be
+used only if none of the names are found on the system. Once one of the name has
+been found, all other names are added into the cache so subsequent calls for any
+of those name will return the same value. This is useful in case a dependency
+could have different names, such as `png` and `libpng`.
+
+* Since *0.64.0* a dependency fallback can be provided by WrapDB. Simply download
+the database locally using `meson wrap update-db` command and Meson will
+automatically fallback to subprojects provided by WrapDB if the dependency is
+not found on the system and the project does not ship their own `.wrap` file.
+
+Dependencies can also be resolved in two other ways:
+
+* if the same name was used in a `meson.override_dependency` prior to
+  the call to `dependency`, the overriding dependency will be returned
+  unconditionally; that is, the overriding dependency will be used
+  independent of whether an external dependency is installed in the system.
+  Typically, `meson.override_dependency` will have been used by a
+  subproject.
+
+* by a fallback subproject which, if needed, will be brought into the current
+  build specification as if [`subproject()`](#subproject) had been called.
+  The subproject can be specified with the `fallback` argument.  Alternatively,
+  if the `fallback` argument is absent, *since 0.55.0* Meson can
+  automatically identify a subproject as a fallback if a wrap file
+  [provides](Wrap-dependency-system-manual.md#provide-section) the
+  dependency, or if a subproject has the same name as the dependency.
+  In the latter case, the subproject must use `meson.override_dependency` to
+  specify the replacement, or Meson will report a hard error.  See the
+  [Wrap documentation](Wrap-dependency-system-manual.md#provide-section)
+  for more details.  This automatic search can be controlled using the
+  `allow_fallback` keyword argument.
+
+If `dependency_name` is `''`, the dependency is always not found. So
+with `required: false`, this always returns a dependency object for
+which the `found()` method returns `false`, and which can be passed
+like any other dependency to the `dependencies:` keyword argument of a
+`build_target`. This can be used to implement a dependency which is
+sometimes not required e.g. in some branches of a conditional, or with
+a `fallback:` kwarg, can be used to declare an optional dependency
+that only looks in the specified subproject, and only if that's
+allowed by `--wrap-mode`.
+
+The returned object [[@dep]] also has additional methods.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Finds an external dependency (usually a library installed on your
+[[#@dep]] dependency(
+  [[#@str]]                                  <b>names</b>...,  # The names of the dependency to look up
+
+  # Keyword arguments:
+  <a href="#dependency_allow_fallback"><b>allow_fallback</b></a>    : [[#@bool]]                                                                                                                                                                                                                 # Specifies whether Meson should automatically pick a fallback subproject
+  <a href="#dependency_default_options"><b>default_options</b></a>   : [[#@array]][[[#@str]]] | [[#@dict]][[[#@str]] | [[#@bool]] | [[#@int]] | [[#@array]][[[#@str]]]]                                                                                                                                                                       # An array of default option values
+  <a href="#dependency_disabler"><b>disabler</b></a>          : [[#@bool]]                                                                                                                                                                                                                 # Returns a [[disabler]] object instead of a not-found dependency
+  <a href="#dependency_fallback"><b>fallback</b></a>          : [[#@array]][[[#@str]]] | [[#@str]]                                                                                                                                                                                                     # Manually specifies a subproject fallback
+  <a href="#dependency_include_type"><b>include_type</b></a>      : [[#@str]]                                                                                                                                                                                                                  # An enum flag, marking how the dependency
+  <a href="#dependency_language"><b>language</b></a>          : [[#@str]]                                                                                                                                                                                                                  # Defines what language-specific dependency to find
+  <a href="#dependency_method"><b>method</b></a>            : [[#@str]]                                                                                                                                                                                                                  # Defines the way the dependency is detected, the default is
+  <a href="#dependency_native"><b>native</b></a>            : [[#@bool]]                                                                                                                                                                                                                 # If set to `true`, causes Meson to find the dependency on
+  <a href="#dependency_not_found_message"><b>not_found_message</b></a> : [[#@str]]                                                                                                                                                                                                                  # An optional string that will be printed as a [[message]] if the dependency was not found.
+  <a href="#dependency_required"><b>required</b></a>          : [[#@bool]] | [[#@feature]]                                                                                                                                                                                                       # When set to `false`, Meson will proceed with the build
+  <a href="#dependency_static"><b>static</b></a>            : [[#@bool]]                                                                                                                                                                                                                 # Tells the dependency provider to try to get static
+  <a href="#dependency_version"><b>version</b></a>           : [[#@array]][[[#@str]]] | [[#@str]]                                                                                                                                                                                                     # Specifies the required version,
+)</code></pre>
+
+
+```{note}
+This function supports additional [library-specific](Dependencies.md#dependencies-with-custom-lookup-functionality) keyword arguments that may also be accepted (e.g. `modules` specifies submodules to use for dependencies such as Qt or Boost. `components` allows the user to manually add CMake `COMPONENTS` for the `find_package` lookup)
+```
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+
+  The
+  function accepts between `1` and `infinity` variadic
+  arguments (`names...`) of type <code><span class="text-nowrap">[[@str]]</span></code>.
+
+  The names of the dependency to look up. The dependencies are looked up in
+the order they are provided here. The first found dependency will then be
+used. The fallback subproject will be used only if none of the names are
+found on the system. Once one of the name has been found, all other names
+are added into the cache so subsequent calls for any of those name will
+return the same value. This is useful in case a dependency could have
+different names, such as `png` and `libpng`.
+
+**NOTE:** Before *0.60.0* only a single dependency name was allowed.
+
+
+  {meson:since}`0.60.0`
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  The function `dependency()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="dependency_allow_fallback">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">allow_fallback</code>
+  <br>{meson:since}`0.56.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  Specifies whether Meson should automatically pick a fallback subproject
+in case the dependency
+is not found in the system.  If `true` and the dependency is not found
+on the system, Meson will fallback to a subproject that provides this
+dependency. If `false`, Meson will not fallback even if a subproject
+provides this dependency.  By default, Meson will do so if `required`
+is `true` or  [`enabled`](Build-options.md#features); see the [Wrap
+documentation](Wrap-dependency-system-manual.md#provide-section)
+for more details.
+
+  </td>
+      </tr>
+      <tr id="dependency_default_options">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">default_options</code>
+  <br>{meson:since}`0.38.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>] | [[@dict]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@int]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]]
+  </td>
+        <td>
+  
+  An array of default option values
+that override those set in the subproject's `meson.options`
+(like `default_options` in [[project]], they only have
+effect when Meson is run for the first time, and command line
+arguments override any default options in build files)
+*(since 1.2.0)*: A dictionary may now be passed.
+
+  </td>
+      </tr>
+      <tr id="dependency_disabler">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">disabler</code>
+  <br>{meson:since}`0.49.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  Returns a [[disabler]] object instead of a not-found dependency
+if this kwarg is set to `true` and the dependency couldn't be found.
+
+  </td>
+      </tr>
+      <tr id="dependency_fallback">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">fallback</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>] | <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Manually specifies a subproject fallback
+to use in case the dependency is not found in the system.
+This is useful if the automatic search is not applicable or if you
+want to support versions of Meson older than 0.55.0.  If the value is an
+array `['subproj_name', 'subproj_dep']`, the first value is the name
+of the subproject and the second is the variable name in that
+subproject that contains a dependency object such as the return
+value of [[declare_dependency]] or
+[[dependency]], etc. Note that this means the
+fallback dependency may be a not-found dependency, in which
+case the value of the `required:` kwarg will be obeyed.
+*Since 0.54.0* the value can be a single string, the subproject name;
+in this case the subproject must use
+`meson.override_dependency('dependency_name', subproj_dep)`
+to specify the dependency object used in the superproject.
+If the value is an empty array it has the same effect as
+`allow_fallback: false`.
+
+  </td>
+      </tr>
+      <tr id="dependency_include_type">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">include_type</code>
+  <br>{meson:since}`0.52.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  <br><code class="language-meson text-nowrap">default = 'preserve'</code>
+  </td>
+        <td>
+  
+  An enum flag, marking how the dependency
+flags should be converted. Supported values are `'preserve'`, `'system'` and
+`'non-system'`. System dependencies may be handled differently on some
+platforms, for instance, using `-isystem` instead of `-I`, where possible.
+If `include_type` is set to `'preserve'`, no additional conversion will be
+performed.
+
+  </td>
+      </tr>
+      <tr id="dependency_language">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">language</code>
+  <br>{meson:since}`0.42.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Defines what language-specific dependency to find
+if it's available for multiple languages.
+
+  </td>
+      </tr>
+      <tr id="dependency_method">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">method</code>
+  <br>{meson:since}`0.40.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  <br><code class="language-meson text-nowrap">default = 'auto'</code>
+  </td>
+        <td>
+  
+  Defines the way the dependency is detected, the default is
+`auto` but can be overridden to be e.g. `qmake` for Qt development,
+and [different dependencies support different values](
+Dependencies.md#dependencies-with-custom-lookup-functionality)
+for this (though `auto` will work on all of them)
+
+  </td>
+      </tr>
+      <tr id="dependency_native">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">native</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  If set to `true`, causes Meson to find the dependency on
+the build machine system rather than the host system (i.e. where the
+cross compiled binary will run on), usually only needed if you build
+a tool to be used during compilation.
+
+  </td>
+      </tr>
+      <tr id="dependency_not_found_message">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">not_found_message</code>
+  <br>{meson:since}`0.50.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  An optional string that will be printed as a [[message]] if the dependency was not found.
+  </td>
+      </tr>
+      <tr id="dependency_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = true</code>
+  </td>
+        <td>
+  
+  When set to `false`, Meson will proceed with the build
+even if the dependency is not found.
+
+When set to a [`feature`](Build-options.md#features) option, the feature
+will control if it is searched and whether to fail if not found.
+
+*(since 0.47.0)* The value of a `feature` option can also be passed.
+
+  </td>
+      </tr>
+      <tr id="dependency_static">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">static</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  Tells the dependency provider to try to get static
+libraries instead of dynamic ones (note that this is not supported
+by all dependency backends)
+
+Leaving this value unset will result in an implementation defined default
+value. For most dependencies this means the value of the `prefer_static`
+option, but some custom dependencies have their own method for determining
+the most useful default option.
+
+*Since 0.60.0* it also sets `default_library` option accordingly on the fallback
+subproject if it was not set explicitly in `default_options` keyword argument.
+
+*Since 0.63.0* when the `prefer_static` option is used to calculate the
+default value.
+
+  </td>
+      </tr>
+      <tr id="dependency_version">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">version</code>
+  <br>{meson:since}`0.37.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>] | <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Specifies the required version,
+a string containing a
+comparison operator followed by the version string, examples include
+`>1.0.0`, `<=2.3.5` or `3.1.4` for exact matching.
+You can also specify multiple restrictions by passing an array to this
+keyword argument, such as: `['>=3.14.0', '<=4.1.0']`.
+These requirements are never met if the version is unknown.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,913 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Cross and Native File reference &#8212; Meson documentation 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d99633c1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Machine-files';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Persistent native environments" href="Native-environments.html" />
+    <link rel="prev" title="Cross compilation" href="Cross-compilation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/meson_logo.png" class="logo__image only-light" alt="Meson documentation 1.0 documentation - Home"/>
+    <img src="_static/meson_logo.png" class="logo__image only-dark pst-js-only" alt="Meson documentation 1.0 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Running-Meson.html">Running Meson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Commands.html">Command-line commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuring-a-build-directory.html">Configuring a build directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-options.html">Build options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-targets.html">Build targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dependencies.html">Dependencies</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Subprojects.html">Subprojects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuration.html">Configuration</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generating-sources.html">Generating sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Custom-build-targets.html">Custom build targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-arguments.html">Adding arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compiler-properties.html">Compiler properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Include-directories.html">Include directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feature-autodetection.html">Feature autodetection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Disabler.html">Disabling parts of the build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Precompiled-headers.html">Precompiled headers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity-builds.html">Unity builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Threads.html">Threads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="External-commands.html">External commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Code-formatting.html">clang-format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-tests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Run-targets.html">Run targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IDE-integration.html">IDE integration</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Build-system-converters.html">Build system converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cross-compilation.html">Cross compilation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Cross and Native File reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Native-environments.html">Persistent native environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Localisation.html">Localisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-releases.html">Creating releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-OSX-packages.html">Creating OSX packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-Linux-binaries.html">Creating Linux binaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Project-templates.html">Project templates</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Reproducible-builds.html">Reproducible builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtox.html">How do I do X in Meson?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Java.html">Compiling Java applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Vala.html">Compiling Vala applications and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D.html">Compiling D applications</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Cython.html">Cython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rust.html">Using Rust with Meson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Using-with-Visual-Studio.html">Using with Visual Studio</a></li>
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="Wrap-dependency-system-manual.html">Wrap dependency system manual</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Wrapdb-projects.html">Meson WrapDB packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-projects-to-wrapdb.html">Adding new projects to WrapDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-the-WrapDB.html">Using the WrapDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-wraptool.html">Using wraptool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wrap-best-practices-and-tips.html">Wrap best practices and tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shipping-prebuilt-binaries-as-wraps.html">Shipping prebuilt binaries as wraps</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="Guide.html" class="nav-link">Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Cross and Native File reference</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="cross-and-native-file-reference">
+<h1>Cross and Native File reference<a class="headerlink" href="#cross-and-native-file-reference" title="Link to this heading">#</a></h1>
+<p>Cross and native files are nearly identical, but not completely. This
+is the documentation on the common values used by both, for the
+specific values of one or the other see the <a class="reference internal" href="Cross-compilation.html"><span class="std std-doc">cross
+compilation</span></a> and <a class="reference internal" href="Native-environments.html"><span class="std std-doc">native
+environments</span></a>.</p>
+<p><em>Changed in 0.56.0</em> Keys within sections are now case sensitive. This
+is required to make project options work correctly.</p>
+<section id="data-types">
+<h2>Data Types<a class="headerlink" href="#data-types" title="Link to this heading">#</a></h2>
+<p>There are four basic data types in a machine file:</p>
+<ul class="simple">
+<li><p>strings</p></li>
+<li><p>arrays</p></li>
+<li><p>booleans</p></li>
+<li><p>integers</p></li>
+</ul>
+<p>A string is specified single quoted:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[section]</span>
+<span class="na">option1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;false&#39;</span>
+<span class="na">option2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;2&#39;</span>
+</pre></div>
+</div>
+<p>An array is enclosed in square brackets, and must consist of strings or booleans</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[section]</span>
+<span class="na">option</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[&#39;value&#39;]</span>
+</pre></div>
+</div>
+<p>A boolean must be either <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code>, and unquoted.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">option</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
+</pre></div>
+</div>
+<p>An integer must be an unquoted numeric constant.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">option</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">42</span>
+</pre></div>
+</div>
+</section>
+<section id="sections">
+<h2>Sections<a class="headerlink" href="#sections" title="Link to this heading">#</a></h2>
+<p>The following sections are allowed:</p>
+<ul class="simple">
+<li><p>constants</p></li>
+<li><p>binaries</p></li>
+<li><p>paths</p></li>
+<li><p>properties</p></li>
+<li><p>cmake</p></li>
+<li><p>project options</p></li>
+<li><p>built-in options</p></li>
+</ul>
+<section id="constants">
+<h3>constants<a class="headerlink" href="#constants" title="Link to this heading">#</a></h3>
+<p><em>Since 0.56.0</em></p>
+<p>String and list concatenation is supported using the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator,
+joining paths is supported using the <code class="docutils literal notranslate"><span class="pre">/</span></code> operator. Entries defined in
+the <code class="docutils literal notranslate"><span class="pre">[constants]</span></code> section can be used in any other section (they are
+always parsed first), entries in any other section can be used only
+within that same section and only after it has been defined.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[constants]</span>
+<span class="na">toolchain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;/toolchain&#39;</span>
+<span class="na">common_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[&#39;--sysroot=&#39; + toolchain / &#39;sysroot&#39;]</span>
+
+<span class="k">[properties]</span>
+<span class="na">c_args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">common_flags + [&#39;-DSOMETHING&#39;]</span>
+<span class="na">cpp_args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">c_args + [&#39;-DSOMETHING_ELSE&#39;]</span>
+
+<span class="k">[binaries]</span>
+<span class="na">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">toolchain / &#39;gcc&#39;</span>
+</pre></div>
+</div>
+<p>This can be useful with cross file composition as well. A generic
+cross file could be composed with a platform specific file where
+constants are defined:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># aarch64.ini</span>
+<span class="k">[constants]</span>
+<span class="na">arch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;aarch64-linux-gnu&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># cross.ini</span>
+<span class="k">[binaries]</span>
+<span class="na">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">arch + &#39;-gcc&#39;</span>
+<span class="na">cpp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">arch + &#39;-g++&#39;</span>
+<span class="na">strip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">arch + &#39;-strip&#39;</span>
+<span class="na">pkg-config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">arch + &#39;-pkg-config&#39;</span>
+<span class="na">...</span>
+</pre></div>
+</div>
+<p>This can be used as <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">setup</span> <span class="pre">--cross-file</span> <span class="pre">aarch64.ini</span> <span class="pre">--cross-file</span> <span class="pre">cross.ini</span> <span class="pre">builddir</span></code>.</p>
+<p>Note that file composition happens before the parsing of values. The
+example below results in <code class="docutils literal notranslate"><span class="pre">b</span></code> being <code class="docutils literal notranslate"><span class="pre">'HelloWorld'</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># file1.ini:</span>
+<span class="k">[constants]</span>
+<span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;Foo&#39;</span>
+<span class="na">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">a + &#39;World&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">#file2.ini:</span>
+<span class="k">[constants]</span>
+<span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;Hello&#39;</span>
+</pre></div>
+</div>
+<p>The example below results in an error when file1.ini is included
+before file2.ini because <code class="docutils literal notranslate"><span class="pre">b</span></code> would be defined before <code class="docutils literal notranslate"><span class="pre">a</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># file1.ini:</span>
+<span class="k">[constants]</span>
+<span class="na">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">a + &#39;World&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">#file2.ini:</span>
+<span class="k">[constants]</span>
+<span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;Hello&#39;</span>
+</pre></div>
+</div>
+<p><em>Since 1.3.0</em> Some tokens are replaced in the machine file before parsing it:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;GLOBAL_SOURCE_ROOT&#64;</span></code>: the absolute path to the project’s source tree</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;DIRNAME&#64;</span></code>: the absolute path to the machine file’s parent directory.</p></li>
+</ul>
+<p>It can be used, for example, to have paths relative to the source directory, or
+relative to toolchain’s installation directory.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[binaries]</span>
+<span class="na">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;@DIRNAME@/toolchain/gcc&#39;</span>
+<span class="na">exe_wrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;@GLOBAL_SOURCE_ROOT@&#39; / &#39;build-aux&#39; / &#39;my-exe-wrapper.sh&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="binaries">
+<h3>Binaries<a class="headerlink" href="#binaries" title="Link to this heading">#</a></h3>
+<p>The binaries section contains a list of binaries. These can be used
+internally by Meson, or by the <code class="docutils literal notranslate"><span class="pre">find_program</span></code> function.</p>
+<p>These values must be either strings or an array of strings</p>
+<p>Compilers and linkers are defined here using <code class="docutils literal notranslate"><span class="pre">&lt;lang&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;lang&gt;_ld</span></code>.
+<code class="docutils literal notranslate"><span class="pre">&lt;lang&gt;_ld</span></code> is special because it is compiler specific. For compilers
+like gcc and clang which are used to invoke the linker this is a value
+to pass to their “choose the linker” argument (-fuse-ld= in this
+case). For compilers like MSVC and Clang-Cl, this is the path to a
+linker for Meson to invoke, such as <code class="docutils literal notranslate"><span class="pre">link.exe</span></code> or <code class="docutils literal notranslate"><span class="pre">lld-link.exe</span></code>.
+Support for <code class="docutils literal notranslate"><span class="pre">ld</span></code> is <em>new in 0.53.0</em></p>
+<p><em>changed in 0.53.1</em> the <code class="docutils literal notranslate"><span class="pre">ld</span></code> variable was replaced by <code class="docutils literal notranslate"><span class="pre">&lt;lang&gt;_ld</span></code>,
+because it regressed a large number of projects. in 0.53.0 the <code class="docutils literal notranslate"><span class="pre">ld</span></code>
+variable was used instead.</p>
+<p>Native example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;/usr/bin/clang&#39;</span>
+<span class="na">c_ld</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;lld&#39;</span>
+<span class="na">sed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;C:\\program files\\gnu\\sed.exe&#39;</span>
+<span class="na">llvm-config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;/usr/lib/llvm8/bin/llvm-config&#39;</span>
+</pre></div>
+</div>
+<p>Cross example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[&#39;ccache&#39;, &#39;/usr/bin/i586-mingw32msvc-gcc&#39;]</span>
+<span class="na">cpp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[&#39;ccache&#39;, &#39;/usr/bin/i586-mingw32msvc-g++&#39;]</span>
+<span class="na">c_ld</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;gold&#39;</span>
+<span class="na">cpp_ld</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;gold&#39;</span>
+<span class="na">ar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;/usr/i586-mingw32msvc/bin/ar&#39;</span>
+<span class="na">strip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;/usr/i586-mingw32msvc/bin/strip&#39;</span>
+<span class="na">pkg-config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;/usr/bin/i586-mingw32msvc-pkg-config&#39;</span>
+</pre></div>
+</div>
+<p>An incomplete list of internally used programs that can be overridden
+here is:</p>
+<ul class="simple">
+<li><p>cmake</p></li>
+<li><p>cups-config</p></li>
+<li><p>gnustep-config</p></li>
+<li><p>gpgme-config</p></li>
+<li><p>libgcrypt-config</p></li>
+<li><p>libwmf-config</p></li>
+<li><p>llvm-config</p></li>
+<li><p>pcap-config</p></li>
+<li><p>pkg-config</p></li>
+<li><p>sdl2-config</p></li>
+<li><p>wx-config (or wx-3.0-config or wx-config-gtk)</p></li>
+</ul>
+</section>
+<section id="paths-and-directories">
+<h3>Paths and Directories<a class="headerlink" href="#paths-and-directories" title="Link to this heading">#</a></h3>
+<p><em>Deprecated in 0.56.0</em> use the built-in section instead.</p>
+<p>As of 0.50.0 paths and directories such as libdir can be defined in
+the native and cross files in a paths section. These should be
+strings.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[paths]</span>
+<span class="na">libdir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;mylibdir&#39;</span>
+<span class="na">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;/my prefix&#39;</span>
+</pre></div>
+</div>
+<p>These values will only be loaded when not cross compiling. Any
+arguments on the command line will override any options in the native
+file. For example, passing <code class="docutils literal notranslate"><span class="pre">--libdir=otherlibdir</span></code> would result in a
+prefix of <code class="docutils literal notranslate"><span class="pre">/my</span> <span class="pre">prefix</span></code> and a libdir of <code class="docutils literal notranslate"><span class="pre">otherlibdir</span></code>.</p>
+</section>
+<section id="properties">
+<h3>Properties<a class="headerlink" href="#properties" title="Link to this heading">#</a></h3>
+<p><em>New in native files in 0.54.0</em>, always in cross files.</p>
+<p>In addition to special data that may be specified in cross files, this
+section may contain random key value pairs accessed using the
+<code class="docutils literal notranslate"><span class="pre">meson.get_external_property()</span></code>, or <code class="docutils literal notranslate"><span class="pre">meson.get_cross_property()</span></code>.</p>
+<p><em>Changed in 0.56.0</em> putting <code class="docutils literal notranslate"><span class="pre">&lt;lang&gt;_args</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;lang&gt;_link_args</span></code> in
+the properties section has been deprecated, and should be put in the
+built-in options section.</p>
+<section id="supported-properties">
+<h4>Supported properties<a class="headerlink" href="#supported-properties" title="Link to this heading">#</a></h4>
+<p>This is a non exhaustive list of supported variables in the <code class="docutils literal notranslate"><span class="pre">[properties]</span></code>
+section.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake_toolchain_file</span></code> specifies an absolute path to an already existing
+CMake toolchain file that will be loaded with <code class="docutils literal notranslate"><span class="pre">include()</span></code> as the last
+instruction of the automatically generated CMake toolchain file from Meson.
+(<em>new in 0.56.0</em>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake_defaults</span></code> is a boolean that specifies whether Meson should automatically
+generate default toolchain variables from other sections (<code class="docutils literal notranslate"><span class="pre">binaries</span></code>,
+<code class="docutils literal notranslate"><span class="pre">host_machine</span></code>, etc.) in the machine file. Defaults are always overwritten
+by variables set in the <code class="docutils literal notranslate"><span class="pre">[cmake]</span></code> section. The default is <code class="docutils literal notranslate"><span class="pre">true</span></code>. (<em>new in 0.56.0</em>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake_skip_compiler_test</span></code> is an enum that specifies when Meson should
+automatically generate toolchain variables to skip the CMake compiler
+sanity checks. This only has an effect if <code class="docutils literal notranslate"><span class="pre">cmake_defaults</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>.
+Supported values are <code class="docutils literal notranslate"><span class="pre">always</span></code>, <code class="docutils literal notranslate"><span class="pre">never</span></code>, <code class="docutils literal notranslate"><span class="pre">dep_only</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">dep_only</span></code>.
+(<em>new in 0.56.0</em>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake_use_exe_wrapper</span></code> is a boolean that controls whether to use the
+<code class="docutils literal notranslate"><span class="pre">exe_wrapper</span></code> specified in <code class="docutils literal notranslate"><span class="pre">[binaries]</span></code> to run generated executables in CMake
+subprojects. This setting has no effect if the <code class="docutils literal notranslate"><span class="pre">exe_wrapper</span></code> was not specified.
+The default value is <code class="docutils literal notranslate"><span class="pre">true</span></code>. (<em>new in 0.56.0</em>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">java_home</span></code> is an absolute path pointing to the root of a Java installation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bindgen_clang_arguments</span></code> an array of extra arguments to pass to clang when
+calling bindgen</p></li>
+</ul>
+</section>
+</section>
+<section id="cmake-variables">
+<h3>CMake variables<a class="headerlink" href="#cmake-variables" title="Link to this heading">#</a></h3>
+<p><em>New in 0.56.0</em></p>
+<p>All variables set in the <code class="docutils literal notranslate"><span class="pre">[cmake]</span></code> section will be added to the
+generate CMake toolchain file used for both CMake dependencies and
+CMake subprojects. The type of each entry must be either a string or a
+list of strings.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All occurrences of <code class="docutils literal notranslate"><span class="pre">\</span></code> in the value of all keys will be replaced with
+<code class="docutils literal notranslate"><span class="pre">/</span></code> since CMake has a lot of issues with correctly escaping <code class="docutils literal notranslate"><span class="pre">\</span></code> when
+dealing with variables (even in cases where a path in <code class="docutils literal notranslate"><span class="pre">CMAKE_C_COMPILER</span></code>
+is correctly escaped, CMake will still trip up internally for instance).</p>
+<p>A custom toolchain file should be used (via the <code class="docutils literal notranslate"><span class="pre">cmake_toolchain_file</span></code>
+property) if <code class="docutils literal notranslate"><span class="pre">\</span></code> support is required.</p>
+</div>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[cmake]</span>
+
+<span class="na">CMAKE_C_COMPILER</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;/usr/bin/gcc&#39;</span>
+<span class="na">CMAKE_CXX_COMPILER</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;C:\\usr\\bin\\g++&#39;</span>
+<span class="na">CMAKE_SOME_VARIABLE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[&#39;some&#39;, &#39;value with spaces&#39;]</span>
+</pre></div>
+</div>
+<p>For instance, the <code class="docutils literal notranslate"><span class="pre">[cmake]</span></code> section from above will generate the
+following code in the CMake toolchain file:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_C_COMPILER</span><span class="w">    </span><span class="s2">&quot;/usr/bin/gcc&quot;</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_COMPILER</span><span class="w">  </span><span class="s2">&quot;C:/usr/bin/g++&quot;</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_SOME_VARIABLE</span><span class="w"> </span><span class="s2">&quot;some&quot;</span><span class="w"> </span><span class="s2">&quot;value with spaces&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="project-specific-options">
+<h3>Project specific options<a class="headerlink" href="#project-specific-options" title="Link to this heading">#</a></h3>
+<p><em>New in 0.56.0</em></p>
+<p>Path options are not allowed, those must be set in the <code class="docutils literal notranslate"><span class="pre">[paths]</span></code>
+section.</p>
+<p>Being able to set project specific options in a cross or native file
+can be done using the <code class="docutils literal notranslate"><span class="pre">[project</span> <span class="pre">options]</span></code> section of the specific file
+(if doing a cross build the options from the native file will be
+ignored)</p>
+<p>For setting options in subprojects use the <code class="docutils literal notranslate"><span class="pre">[&lt;subproject&gt;:project</span> <span class="pre">options]</span></code> section instead.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[project options]</span>
+<span class="na">build-tests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+
+<span class="k">[zlib:project options]</span>
+<span class="na">build-tests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
+</pre></div>
+</div>
+</section>
+<section id="meson-built-in-options">
+<h3>Meson built-in options<a class="headerlink" href="#meson-built-in-options" title="Link to this heading">#</a></h3>
+<p><em>Before 0.56.0, <code class="docutils literal notranslate"><span class="pre">&lt;lang&gt;_args</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;lang&gt;_link_args</span></code> must be put in the <code class="docutils literal notranslate"><span class="pre">properties</span></code> section instead, else they will be ignored.</em></p>
+<p>Meson built-in options can be set the same way:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[built-in options]</span>
+<span class="na">c_std</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;c99&#39;</span>
+</pre></div>
+</div>
+<p>You can set some Meson built-in options on a per-subproject basis,
+such as <code class="docutils literal notranslate"><span class="pre">default_library</span></code> and <code class="docutils literal notranslate"><span class="pre">werror</span></code>. The order of precedence is:</p>
+<ol class="arabic simple">
+<li><p>Command line</p></li>
+<li><p>Machine file</p></li>
+<li><p>Build system definitions</p></li>
+</ol>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[zlib:built-in options]</span>
+<span class="na">default_library</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;static&#39;</span>
+<span class="na">werror</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
+</pre></div>
+</div>
+<p>Options set on a per-subproject basis will inherit the option from the
+parent if the parent has a setting but the subproject doesn’t, even
+when there is a default set Meson language.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[built-in options]</span>
+<span class="na">default_library</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;static&#39;</span>
+</pre></div>
+</div>
+<p>will make subprojects use default_library as static.</p>
+<p>Some options can be set on a per-machine basis (in other words, the
+value of the build machine can be different than the host machine in a
+cross compile). In these cases the values from both a cross file and a
+native file are used.</p>
+<p>An incomplete list of options is:</p>
+<ul class="simple">
+<li><p>pkg_config_path</p></li>
+<li><p>cmake_prefix_path</p></li>
+</ul>
+</section>
+</section>
+<section id="loading-multiple-machine-files">
+<h2>Loading multiple machine files<a class="headerlink" href="#loading-multiple-machine-files" title="Link to this heading">#</a></h2>
+<p>Native files allow layering (cross files can be layered since Meson
+0.52.0). More than one file can be loaded, with values from a previous
+file being overridden by the next. The intention of this is not
+overriding, but to allow composing files. This composition is done by
+passing the command line argument multiple times:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">meson setup builddir/ --cross-file first.ini --cross-file second.ini --cross-file third.ini</span>
+</pre></div>
+</div>
+<p>In this case <code class="docutils literal notranslate"><span class="pre">first.ini</span></code> will be loaded, then <code class="docutils literal notranslate"><span class="pre">second.ini</span></code>, with
+values from <code class="docutils literal notranslate"><span class="pre">second.ini</span></code> replacing <code class="docutils literal notranslate"><span class="pre">first.ini</span></code>, and so on.</p>
+<p>For example, if there is a project using C and C++, python 3.4-3.7,
+and LLVM 5-7, and it needs to build with clang 5, 6, and 7, and gcc
+5.x, 6.x, and 7.x; expressing all of these configurations in
+monolithic configurations would result in 81 different native files.
+By layering them, it can be expressed by just 12 native files.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Cross-compilation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Cross compilation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Native-environments.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Persistent native environments</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">Data Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sections">Sections</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constants">constants</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binaries">Binaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paths-and-directories">Paths and Directories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">Properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-properties">Supported properties</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cmake-variables">CMake variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-specific-options">Project specific options</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-built-in-options">Meson built-in options</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-multiple-machine-files">Loading multiple machine files</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/mesonbuild/meson/edit/master/docs/markdown/Machine-files.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">Website licensing information are available on the <a href="legal.html">Legal</a> page.</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

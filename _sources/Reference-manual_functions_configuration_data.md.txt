@@ -1,0 +1,64 @@
+## configuration_data()
+
+Creates an empty configuration object. You should add your
+configuration with the [[@cfg_data]] method calls and
+finally use it in a call to [[configure_file]].
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Creates an empty configuration object
+[[#@cfg_data]] configuration_data(
+  [[#@dict]][[[#@str]] | [[#@bool]] | [[#@int]]]                                                                                                    [<a href="#configuration_data_data"><b>data</b></a>],   # Optional dictionary to specify an initial data set
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+  The function `configuration_data()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="configuration_data_data">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">data</code>
+  <br>{meson:since}`0.49.0`
+  <br>{meson:optional}` `
+  </td>
+        <td class="text-center">
+  
+  [[@dict]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@int]]</span>]
+  </td>
+        <td>
+  
+  Optional dictionary to specify an initial data set. If
+provided, each key/value pair is added into the [[@cfg_data]] object
+as if the [[cfg_data.set]] method was called for each of them.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+

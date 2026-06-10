@@ -1,0 +1,392 @@
+---
+short-description: "Returned object: Environment"
+title: Environment
+render-subpages: false
+...
+# Environment (`env`)
+
+This object is returned by [[environment]] and stores
+detailed information about how environment variables should be set.
+It should be passed as the `env` keyword argument to tests and other functions.
+
+*Since 0.58.0* [[env.append]] and [[env.prepend]] can be called multiple times
+on the same `varname`. Earlier Meson versions would warn and only the last
+operation took effect.
+
+
+## Returned by
+
+Environment objects are returned by the following functions and methods:
+- [[environment]]
+
+## Example
+
+<pre><code class="language-meson">```meson
+env = environment()
+
+# MY_PATH will be '0:1:2:3'
+env.set('MY_PATH', '1')
+env.append('MY_PATH', '2')
+env.append('MY_PATH', '3')
+env.prepend('MY_PATH', '0')
+```
+</code></pre>
+
+
+
+## Environment methods
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### env.append()
+
+appends the given values to
+the old value of the environment variable, e.g.  `env.append('FOO',
+'BAR', 'BAZ', separator : ';')` produces `BOB;BAR;BAZ` if `FOO` had
+the value `BOB` and plain `BAR;BAZ` if the value was not defined.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># appends the given values to
+[[#@void]] append(
+  [[#@str]]                                  <a href="#append_variable"><b>variable</b></a>,     # The variable to modify
+  [[#@str]]                                  <b>Value</b>...,     # The values to append
+
+  # Keyword arguments:
+  <a href="#append_separator"><b>separator</b></a> : [[#@str]]                                   # The separator to use
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `env.append()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="append_variable">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">variable</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The variable to modify
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  Additionally, the
+  method accepts between `0` and `infinity` variadic
+  arguments (`Value...`) of type <code><span class="text-nowrap">[[@str]]</span></code>.
+
+  The values to append
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  Finally, `env.append()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="append_separator">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">separator</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The separator to use. If not explicitly specified, the default path
+separator for the host operating system will be used, i.e. ';' for
+Windows and ':' for UNIX/POSIX systems.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### env.prepend()
+
+Same as `append` except that it writes to the beginning of the variable.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Same as `append` except that it writes to the beginning of the variable
+[[#@void]] prepend(
+  [[#@str]]                                  <a href="#prepend_variable"><b>variable</b></a>,     # The variable to modify
+  [[#@str]]                                  <b>Value</b>...,     # The values to prepend
+
+  # Keyword arguments:
+  <a href="#prepend_separator"><b>separator</b></a> : [[#@str]]                                   # The separator to use
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `env.prepend()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="prepend_variable">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">variable</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The variable to modify
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  Additionally, the
+  method accepts between `0` and `infinity` variadic
+  arguments (`Value...`) of type <code><span class="text-nowrap">[[@str]]</span></code>.
+
+  The values to prepend
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  Finally, `env.prepend()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="prepend_separator">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">separator</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The separator to use. If not explicitly specified, the default path
+separator for the host operating system will be used, i.e. ';' for
+Windows and ':' for UNIX/POSIX systems.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### env.set()
+
+Sets the environment variable
+specified in the first argument to the values in the varargs
+joined by the separator. For instance, `env.set('FOO', 'BAR'),` sets envvar
+`FOO` to value `BAR`.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Sets the environment variable
+[[#@void]] set(
+  [[#@str]]                                  <a href="#set_variable"><b>variable</b></a>,     # The variable to modify
+  [[#@str]]                                  <b>Value</b>...,     # The values to set
+
+  # Keyword arguments:
+  <a href="#set_separator"><b>separator</b></a> : [[#@str]]                                   # The separator to use
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `env.set()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="set_variable">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">variable</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The variable to modify
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  Additionally, the
+  method accepts between `0` and `infinity` variadic
+  arguments (`Value...`) of type <code><span class="text-nowrap">[[@str]]</span></code>.
+
+  The values to set
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  Finally, `env.set()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="set_separator">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">separator</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The separator to use. If not explicitly specified, the default path
+separator for the host operating system will be used, i.e. ';' for
+Windows and ':' for UNIX/POSIX systems.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### env.unset()
+
+Unset the specified environment variable. If this variable does not exist,
+nothing happens.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`1.4.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@void]] unset()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+

@@ -1,0 +1,928 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Cross compilation &#8212; Meson documentation 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d99633c1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Cross-compilation';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Cross and Native File reference" href="Machine-files.html" />
+    <link rel="prev" title="Build system converters" href="Build-system-converters.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/meson_logo.png" class="logo__image only-light" alt="Meson documentation 1.0 documentation - Home"/>
+    <img src="_static/meson_logo.png" class="logo__image only-dark pst-js-only" alt="Meson documentation 1.0 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Running-Meson.html">Running Meson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Commands.html">Command-line commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuring-a-build-directory.html">Configuring a build directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-options.html">Build options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-targets.html">Build targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dependencies.html">Dependencies</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Subprojects.html">Subprojects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuration.html">Configuration</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generating-sources.html">Generating sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Custom-build-targets.html">Custom build targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-arguments.html">Adding arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compiler-properties.html">Compiler properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Include-directories.html">Include directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feature-autodetection.html">Feature autodetection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Disabler.html">Disabling parts of the build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Precompiled-headers.html">Precompiled headers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity-builds.html">Unity builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Threads.html">Threads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="External-commands.html">External commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Code-formatting.html">clang-format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-tests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Run-targets.html">Run targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IDE-integration.html">IDE integration</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Build-system-converters.html">Build system converters</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Cross compilation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Machine-files.html">Cross and Native File reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Native-environments.html">Persistent native environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Localisation.html">Localisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-releases.html">Creating releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-OSX-packages.html">Creating OSX packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-Linux-binaries.html">Creating Linux binaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Project-templates.html">Project templates</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Reproducible-builds.html">Reproducible builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtox.html">How do I do X in Meson?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Java.html">Compiling Java applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Vala.html">Compiling Vala applications and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D.html">Compiling D applications</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Cython.html">Cython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rust.html">Using Rust with Meson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Using-with-Visual-Studio.html">Using with Visual Studio</a></li>
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="Wrap-dependency-system-manual.html">Wrap dependency system manual</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Wrapdb-projects.html">Meson WrapDB packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-projects-to-wrapdb.html">Adding new projects to WrapDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-the-WrapDB.html">Using the WrapDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-wraptool.html">Using wraptool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wrap-best-practices-and-tips.html">Wrap best practices and tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shipping-prebuilt-binaries-as-wraps.html">Shipping prebuilt binaries as wraps</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="Guide.html" class="nav-link">Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Cross compilation</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="cross-compilation">
+<h1>Cross compilation<a class="headerlink" href="#cross-compilation" title="Link to this heading">#</a></h1>
+<p>Meson has full support for cross compilation through the use of
+a cross build definition file.  An minimal example of one such
+file <code class="docutils literal notranslate"><span class="pre">x86_64-w64-mingw32.txt</span></code> for a GCC/MinGW cross compiler
+targeting 64-bit Windows could be:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[binaries]</span>
+<span class="na">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;x86_64-w64-mingw32-gcc&#39;</span>
+<span class="na">cpp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;x86_64-w64-mingw32-g++&#39;</span>
+<span class="na">ar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;x86_64-w64-mingw32-ar&#39;</span>
+<span class="na">windres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;x86_64-w64-mingw32-windres&#39;</span>
+<span class="na">strip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;x86_64-w64-mingw32-strip&#39;</span>
+<span class="na">exe_wrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;wine64&#39;</span>
+
+<span class="k">[host_machine]</span>
+<span class="na">system</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;windows&#39;</span>
+<span class="na">cpu_family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;x86_64&#39;</span>
+<span class="na">cpu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;x86_64&#39;</span>
+<span class="na">endian</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;little&#39;</span>
+</pre></div>
+</div>
+<p>Which is then used during the <code class="docutils literal notranslate"><span class="pre">setup</span></code> phase.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>meson<span class="w"> </span>setup<span class="w"> </span>--cross-file<span class="w"> </span>x86_64-w64-mingw32.txt<span class="w"> </span>build-mingw
+meson<span class="w"> </span>compile<span class="w"> </span>-C<span class="w"> </span>build-mingw
+</pre></div>
+</div>
+<p>Since cross compiling is
+more complicated than native building, let’s first go over some
+nomenclature. The three most important definitions are traditionally
+called <em>build</em>, <em>host</em> and <em>target</em>. This is confusing because those
+terms are used for quite many different things. To simplify the issue,
+we are going to call these the <em>build machine</em>, <em>host machine</em> and
+<em>target machine</em>. Their definitions are the following:</p>
+<ul class="simple">
+<li><p><em>build machine</em> is the computer that is doing the actual compiling.</p></li>
+<li><p><em>host machine</em> is the machine on which the compiled binary will run.</p></li>
+<li><p><em>target machine</em> is the machine on which the compiled binary’s
+output will run, <em>only meaningful</em> if the program produces
+machine-specific output.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">tl/dr</span></code> summary is the following: if you are doing regular cross
+compilation, you only care about <a href="Reference-manual_builtin_build_machine.html"><code>build_machine</code></a> and
+<a href="Reference-manual_builtin_host_machine.html"><code>host_machine</code></a>. Just ignore <a href="Reference-manual_builtin_target_machine.html"><code>target_machine</code></a> altogether and you will
+be correct 99% of the time. Only compilers and similar tools care
+about the target machine. In fact, for so-called “multi-target” tools
+the target machine need not be fixed at build-time like the others but
+chosen at runtime, so <code class="docutils literal notranslate"><span class="pre">target_machine</span></code> <em>still</em> doesn’t matter. If your
+needs are more complex or you are interested in the actual details, do
+read on.</p>
+<p>This might be easier to understand through examples. Let’s start with
+the regular, not cross-compiling case. In these cases all of these
+three machines are the same. Simple so far.</p>
+<p>Let’s next look at the most common cross-compilation setup. Let’s
+suppose you are on a 64 bit OSX machine and you are cross compiling a
+binary that will run on a 32 bit ARM Linux board. In this case your
+<em>build machine</em> is 64 bit OSX, your <em>host machine</em> is 32 bit ARM Linux
+and your <em>target machine</em> is irrelevant (but defaults to the same
+value as the <em>host machine</em>). This should be quite understandable as
+well.</p>
+<p>The usual mistake in this case is to call the OSX system the <em>host</em>
+and the ARM Linux board the <em>target</em>. That’s because these were their
+actual names when the cross-compiler itself was compiled! Let’s assume
+the cross-compiler was created on OSX too. When that happened the
+<em>build</em> and <em>host machines</em> were the same OSX and different from the
+ARM Linux <em>target machine</em>.</p>
+<p>In a nutshell, the typical mistake assumes that the terms <em>build</em>,
+<em>host</em> and <em>target</em> refer to some fixed positions whereas they’re
+actually relative to where the current compiler is running. Think of
+<em>host</em> as a <em>child</em> of the current compiler and <em>target</em> as an
+optional <em>grand-child</em>. Compilers don’t change their terminology when
+they’re creating another compiler, that would at the very least make
+their user interface much more complex.</p>
+<p>The most complicated case is when you cross-compile a cross compiler.
+As an example you can, on a Linux machine, generate a cross compiler
+that runs on Windows but produces binaries for MIPS Linux. In this case
+<em>build machine</em> is x86 Linux, <em>host machine</em> is x86 Windows and
+<em>target machine</em> is MIPS Linux. This setup is known as the <a class="reference external" href="https://en.wikipedia.org/wiki/Cross_compiler#Canadian_Cross">Canadian
+Cross</a>.
+As a side note, be careful when reading cross compilation articles on
+Wikipedia or the net in general. It is very common for them to get
+build, host and target mixed up, even in consecutive sentences, which
+can leave you puzzled until you figure it out.</p>
+<p>Again note that when you cross-compile something, the 3 systems
+(<em>build</em>, <em>host</em>, and <em>target</em>) used when building the cross compiler
+don’t align with the ones used when building something with that
+newly-built cross compiler. To take our Canadian Cross scenario from
+above (for full generality), since its <em>host machine</em> is x86 Windows,
+the <em>build machine</em> of anything we build with it is <em>x86 Windows</em>. And
+since its <em>target machine</em> is MIPS Linux, the <em>host machine</em> of
+anything we build with it is <em>MIPS Linux</em>. Only the <em>target machine</em>
+of whatever we build with it can be freely chosen by us, say if we
+want to build another cross compiler that runs on MIPS Linux and
+targets Aarch64 iOS. As this example hopefully makes clear to you, the
+machine names are relative and shifted over to the left by one
+position.</p>
+<p>If you did not understand all of the details, don’t worry. For most
+people it takes a while to wrap their head around these concepts.
+Don’t panic, it might take a while to click, but you will get the hang
+of it eventually.</p>
+<section id="defining-the-environment">
+<h2>Defining the environment<a class="headerlink" href="#defining-the-environment" title="Link to this heading">#</a></h2>
+<p>Meson requires you to write a cross build definition file. It defines
+various properties of the cross build environment. The cross file
+consists of different sections.</p>
+<p>There are a number of options shared by cross and native files,
+<a class="reference internal" href="Machine-files.html"><span class="std std-doc">here</span></a>. It is assumed that you have read that
+section already, as this documentation will only call out options
+specific to cross files.</p>
+<section id="binaries">
+<h3>Binaries<a class="headerlink" href="#binaries" title="Link to this heading">#</a></h3>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[binaries]</span>
+<span class="na">exe_wrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;wine&#39;</span><span class="w"> </span><span class="c1"># A command used to run generated executables.</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">exe_wrapper</span></code> option defines a <em>wrapper command</em> that can be used
+to run executables for this host. In this case we can use Wine, which
+runs Windows applications on Linux. Other choices include running the
+application with qemu or a hardware simulator. If you have this kind
+of a wrapper, these lines are all you need to write. Meson will
+automatically use the given wrapper when it needs to run host
+binaries. This happens e.g. when running the project’s test suite.</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">exe_wrapper</span></code> in the cross file is handled separately
+from the <code class="docutils literal notranslate"><span class="pre">exe_wrapper</span></code> argument in
+<a class="reference internal" href="Reference-manual_functions.html#add_test_setup_exe_wrapper"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">add_test_setup</span></code></span></a>
+and <a class="reference internal" href="Unit-tests.html#other-test-options"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">test</span> <span class="pre">--wrapper</span></code></span></a>
+command line argument. Meson must have <code class="docutils literal notranslate"><span class="pre">exe_wrapper</span></code> specified in the
+cross file or else it will skip tests that attempt to run cross
+compiled binaries. Only the cross file <code class="docutils literal notranslate"><span class="pre">exe_wrapper</span></code> value will be
+stored in the <code class="docutils literal notranslate"><span class="pre">MESON_EXE_WRAPPER</span></code> environment variable. If another
+wrapper is given in the test setup with <code class="docutils literal notranslate"><span class="pre">exe_wrapper</span></code> or as a
+<code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">test</span> <span class="pre">--wrapper</span></code> command line argument, then meson will prepend
+the additional wrapper before the cross file wrapper like the
+following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">prepend_wrapper</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">cross_file_wrapper</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">exe_binary</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">args</span><span class="o">...&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="properties">
+<h3>Properties<a class="headerlink" href="#properties" title="Link to this heading">#</a></h3>
+<p>In addition to the properties allowed in <a class="reference internal" href="Machine-files.html#properties"><span class="std std-ref">all machine
+files</span></a>, the cross file may contain
+specific information about the cross compiler or the host machine. It
+looks like this:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[properties]</span>
+<span class="na">sizeof_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">4</span>
+<span class="na">sizeof_wchar_t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">4</span>
+<span class="na">sizeof_void*</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">4</span>
+
+<span class="na">alignment_char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
+<span class="na">alignment_void*</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">4</span>
+<span class="na">alignment_double</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">4</span>
+
+<span class="na">has_function_printf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+
+<span class="na">sys_root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;/some/path&#39;</span>
+<span class="na">pkg_config_libdir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;/some/path/lib/pkgconfig&#39;</span>
+</pre></div>
+</div>
+<p>In most cases you don’t need the size and alignment settings, Meson
+will detect all these by compiling and running some sample programs.
+If your build requires some piece of data that is not listed here,
+Meson will stop and write an error message describing how to fix the
+issue. If you need extra compiler arguments to be used during cross
+compilation you can set them with <code class="docutils literal notranslate"><span class="pre">[langname]_args</span> <span class="pre">=</span> <span class="pre">[args]</span></code>. Just
+remember to specify the args as an array and not as a single string
+(i.e. not as <code class="docutils literal notranslate"><span class="pre">'-DCROSS=1</span> <span class="pre">-DSOMETHING=3'</span></code>).</p>
+<p><em>Since 0.52.0</em> The <code class="docutils literal notranslate"><span class="pre">sys_root</span></code> property may point to the root of the
+host system path (the system that will run the compiled binaries).
+This is used internally by Meson to set the <code class="docutils literal notranslate"><span class="pre">PKG_CONFIG_SYSROOT_DIR</span></code>
+environment variable for pkg-config. If this is unset the host system
+is assumed to share a root with the build system.</p>
+<p><em>Since 0.54.0</em> The <code class="docutils literal notranslate"><span class="pre">pkg_config_libdir</span></code> property may point to a list of
+path used internally by Meson to set the <code class="docutils literal notranslate"><span class="pre">PKG_CONFIG_LIBDIR</span></code> environment
+variable for pkg-config. This prevents pkg-config from searching cross
+dependencies in system directories.</p>
+<p>One important thing to note, if you did not define an <code class="docutils literal notranslate"><span class="pre">exe_wrapper</span></code> in
+the previous section, is that Meson will make a best-effort guess at
+whether it can run the generated binaries on the build machine. It
+determines whether this is possible by looking at the <code class="docutils literal notranslate"><span class="pre">system</span></code> and
+<code class="docutils literal notranslate"><span class="pre">cpu_family</span></code> of build vs host. There will however be cases where they
+do match up, but the build machine is actually not compatible with the
+host machine. Typically this will happen if the libc used by the build
+and host machines are incompatible, or the code relies on kernel
+features not available on the build machine. One concrete example is a
+macOS build machine producing binaries for an iOS Simulator x86-64
+host. They’re both <code class="docutils literal notranslate"><span class="pre">darwin</span></code> and the same architecture, but their
+binaries are not actually compatible. In such cases you may use the
+<code class="docutils literal notranslate"><span class="pre">needs_exe_wrapper</span></code> property to override the auto-detection:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[properties]</span>
+<span class="na">needs_exe_wrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+</pre></div>
+</div>
+</section>
+<section id="machine-entries">
+<h3>Machine Entries<a class="headerlink" href="#machine-entries" title="Link to this heading">#</a></h3>
+<p>The next bit is the definition of host and target machines. Every
+cross build definition must have one or both of them. If it had
+neither, the build would not be a cross build but a native build. You
+do not need to define the build machine, as all necessary information
+about it is extracted automatically. The definitions for host and
+target machines look the same. Here is a sample for host machine.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[host_machine]</span>
+<span class="na">system</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;windows&#39;</span>
+<span class="na">subsystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;windows&#39;</span>
+<span class="na">kernel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;nt&#39;</span>
+<span class="na">cpu_family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;x86&#39;</span>
+<span class="na">cpu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;i686&#39;</span>
+<span class="na">endian</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;little&#39;</span>
+</pre></div>
+</div>
+<p>These values define the machines sufficiently for cross compilation
+purposes. The corresponding target definition would look the same but
+have <code class="docutils literal notranslate"><span class="pre">target_machine</span></code> in the header. These values are available in
+your Meson scripts. There are three predefined variables called,
+surprisingly, <a href="Reference-manual_builtin_build_machine.html"><code>build_machine</code></a>, <a href="Reference-manual_builtin_host_machine.html"><code>host_machine</code></a> and
+<a href="Reference-manual_builtin_target_machine.html"><code>target_machine</code></a>. Determining the operating system of your host
+machine is simply a matter of calling <code class="docutils literal notranslate"><span class="pre">host_machine.system()</span></code>.
+Starting from version 1.2.0 you can get more fine grained information
+using the <code class="docutils literal notranslate"><span class="pre">.subsystem()</span></code> and <code class="docutils literal notranslate"><span class="pre">.kernel()</span></code> methods. The return values of
+these functions are documented in <a class="reference internal" href="Reference-tables.html"><span class="std std-doc">the reference table
+page</span></a>.</p>
+<p>There are two different values for the CPU. The first one is
+<code class="docutils literal notranslate"><span class="pre">cpu_family</span></code>. It is a general type of the CPU. This should have a
+value from <a class="reference internal" href="Reference-tables.html#cpu-families"><span class="std std-ref">the CPU Family table</span></a>.
+<em>Note</em> that Meson does not add <code class="docutils literal notranslate"><span class="pre">el</span></code> to end cpu_family value for little
+endian systems. Big endian and little endian mips are both just
+<code class="docutils literal notranslate"><span class="pre">mips</span></code>, with the <code class="docutils literal notranslate"><span class="pre">endian</span></code> field set appropriately.</p>
+<p>The second value is <code class="docutils literal notranslate"><span class="pre">cpu</span></code> which is a more specific subtype for the
+CPU. Typical values for a <code class="docutils literal notranslate"><span class="pre">x86</span></code> CPU family might include <code class="docutils literal notranslate"><span class="pre">i386</span></code> or
+<code class="docutils literal notranslate"><span class="pre">i586</span></code> and for <code class="docutils literal notranslate"><span class="pre">arm</span></code> family <code class="docutils literal notranslate"><span class="pre">armv5</span></code> or <code class="docutils literal notranslate"><span class="pre">armv7hl</span></code>. Note that CPU type
+strings are very system dependent. You might get a different value if
+you check its value on the same machine but with different operating
+systems.</p>
+<p>If you do not define your host machine, it is assumed to be the build
+machine. Similarly if you do not specify target machine, it is assumed
+to be the host machine.</p>
+</section>
+</section>
+<section id="starting-a-cross-build">
+<h2>Starting a cross build<a class="headerlink" href="#starting-a-cross-build" title="Link to this heading">#</a></h2>
+<p>Once you have the cross file, starting a build is simple</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>meson<span class="w"> </span>setup<span class="w"> </span>builddir<span class="w"> </span>--cross-file<span class="w"> </span>cross_file.txt
+</pre></div>
+</div>
+<p>Once configuration is done, compilation is started by invoking <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">compile</span></code>
+in the usual way.</p>
+</section>
+<section id="introspection-and-system-checks">
+<h2>Introspection and system checks<a class="headerlink" href="#introspection-and-system-checks" title="Link to this heading">#</a></h2>
+<p>The main <em>meson</em> object provides two functions to determine cross
+compilation status.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="err">&lt;</span><span class="n">a</span><span class="w"> </span><span class="n">href</span><span class="o">=</span><span class="err">&quot;</span><span class="n">Reference</span><span class="o">-</span><span class="n">manual_builtin_meson</span><span class="p">.</span><span class="n">html</span><span class="c">#mesonis_cross_build&quot;&gt;meson.is_cross_build()&lt;/a&gt;        # returns true when cross compiling</span>
+<span class="err">&lt;</span><span class="n">a</span><span class="w"> </span><span class="n">href</span><span class="o">=</span><span class="err">&quot;</span><span class="n">Reference</span><span class="o">-</span><span class="n">manual_builtin_meson</span><span class="p">.</span><span class="n">html</span><span class="c">#mesoncan_run_host_binaries&quot;&gt;meson.can_run_host_binaries()&lt;/a&gt; # returns true if the host binaries can be run, either with a wrapper or natively</span>
+</pre></div>
+</div>
+<p>You can run system checks on both the system compiler or the cross
+compiler. You just have to specify which one to use.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">build_compiler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">&lt;</span><span class="n">a</span><span class="w"> </span><span class="n">href</span><span class="o">=</span><span class="err">&quot;</span><span class="n">Reference</span><span class="o">-</span><span class="n">manual_builtin_meson</span><span class="p">.</span><span class="n">html</span><span class="c">#mesonget_compiler&quot;&gt;meson.get_compiler&lt;/a&gt;(&#39;c&#39;, native : true)</span>
+<span class="n">host_compiler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">&lt;</span><span class="n">a</span><span class="w"> </span><span class="n">href</span><span class="o">=</span><span class="err">&quot;</span><span class="n">Reference</span><span class="o">-</span><span class="n">manual_builtin_meson</span><span class="p">.</span><span class="n">html</span><span class="c">#mesonget_compiler&quot;&gt;meson.get_compiler&lt;/a&gt;(&#39;c&#39;, native : false)</span>
+
+<span class="n">build_int_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_compiler</span><span class="p">.</span><span class="n">sizeof</span><span class="p">(</span><span class="s">&#39;int&#39;</span><span class="p">)</span>
+<span class="n">host_int_size</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">host_compiler</span><span class="p">.</span><span class="n">sizeof</span><span class="p">(</span><span class="s">&#39;int&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="mixing-host-and-build-targets">
+<h2>Mixing host and build targets<a class="headerlink" href="#mixing-host-and-build-targets" title="Link to this heading">#</a></h2>
+<p>Sometimes you need to build a tool which is used to generate source
+files. These are then compiled for the actual target. For this you
+would want to build some targets with the system’s native compiler.
+This requires only one extra keyword argument.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">native_exe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">executable</span><span class="p">(</span><span class="s">&#39;mygen&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;mygen.c&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">native</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can then take <code class="docutils literal notranslate"><span class="pre">native_exe</span></code> and use it as part of a generator rule or anything else you might want.</p>
+</section>
+<section id="using-a-custom-standard-library">
+<h2>Using a custom standard library<a class="headerlink" href="#using-a-custom-standard-library" title="Link to this heading">#</a></h2>
+<p>Sometimes in cross compilation you need to build your own standard
+library instead of using the one provided by the compiler. Meson has
+built-in support for switching standard libraries transparently. The
+invocation to use in your cross file is the following:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[properties]</span>
+<span class="na">c_stdlib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[&#39;mylibc&#39;, &#39;mylibc_dep&#39;]</span><span class="w"> </span><span class="c1"># Subproject name, variable name</span>
+</pre></div>
+</div>
+<p>This specifies that C standard library is provided in the Meson
+subproject <code class="docutils literal notranslate"><span class="pre">mylibc</span></code> in internal dependency variable <code class="docutils literal notranslate"><span class="pre">mylibc_dep</span></code>. It
+is used on every cross built C target in the entire source tree
+(including subprojects) and the standard library is disabled. The
+build definitions of these targets do not need any modification.</p>
+<p>Note that it is supported for any language, not only <code class="docutils literal notranslate"><span class="pre">c</span></code>, using <code class="docutils literal notranslate"><span class="pre">&lt;lang&gt;_stdlib</span></code>
+property.</p>
+<p>Since <em>0.56.0</em> the variable name parameter is no longer required as long as the
+subproject calls <code class="docutils literal notranslate"><span class="pre">meson.override_dependency('c_stdlib',</span> <span class="pre">mylibc_dep)</span></code>.
+The above example becomes:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[properties]</span>
+<span class="na">c_stdlib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;mylibc&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="changing-cross-file-settings">
+<h2>Changing cross file settings<a class="headerlink" href="#changing-cross-file-settings" title="Link to this heading">#</a></h2>
+<p>Cross file settings are only read when the build directory is set up
+the first time. Any changes to them after the fact will be ignored.
+This is the same as regular compiles where you can’t change the
+compiler once a build tree has been set up. If you need to edit your
+cross file, then you need to wipe your build tree and recreate it from
+scratch.</p>
+</section>
+<section id="custom-data">
+<h2>Custom data<a class="headerlink" href="#custom-data" title="Link to this heading">#</a></h2>
+<p>You can store arbitrary data in <code class="docutils literal notranslate"><span class="pre">properties</span></code> and access them from your
+Meson files. As an example if your cross file has this:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[properties]</span>
+<span class="na">somekey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;somevalue&#39;</span>
+</pre></div>
+</div>
+<p>then you can access that using the <code class="docutils literal notranslate"><span class="pre">meson</span></code> object like this:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">myvar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vm">meson</span><span class="p">.</span><span class="n">get_external_property</span><span class="p">(</span><span class="s">&#39;somekey&#39;</span><span class="p">)</span>
+<span class="c"># myvar now has the value &#39;somevalue&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="cross-file-locations">
+<h2>Cross file locations<a class="headerlink" href="#cross-file-locations" title="Link to this heading">#</a></h2>
+<p>As of version 0.44.0 Meson supports loading cross files from system
+locations (except on Windows). This will be
+<code class="docutils literal notranslate"><span class="pre">$XDG_DATA_DIRS/meson/cross</span></code>, or if <code class="docutils literal notranslate"><span class="pre">XDG_DATA_DIRS</span></code> is undefined, then
+/usr/local/share/meson/cross and /usr/share/meson/cross will be tried
+in that order, for system wide cross files. User local files can be
+put in $XDG_DATA_HOME/meson/cross, or ~/.local/share/meson/cross if
+that is undefined.</p>
+<p>The order of locations tried is as follows:</p>
+<ul class="simple">
+<li><p>A file relative to the local dir</p></li>
+<li><p>The user local location</p></li>
+<li><p>The system wide locations in order</p></li>
+</ul>
+<p>Distributions are encouraged to ship cross files either with their
+cross compiler toolchain packages or as a standalone package, and put
+them in one of the system paths referenced above.</p>
+<p>These files can be loaded automatically without adding a path to the
+cross file. For example, if a ~/.local/share/meson/cross contains a
+file called x86-linux, then the following command would start a cross
+build using that cross files:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>meson<span class="w"> </span>setup<span class="w"> </span>builddir/<span class="w"> </span>--cross-file<span class="w"> </span>x86-linux
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Build-system-converters.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Build system converters</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Machine-files.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Cross and Native File reference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-the-environment">Defining the environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binaries">Binaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-entries">Machine Entries</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-a-cross-build">Starting a cross build</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introspection-and-system-checks">Introspection and system checks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixing-host-and-build-targets">Mixing host and build targets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-custom-standard-library">Using a custom standard library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-cross-file-settings">Changing cross file settings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-data">Custom data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-file-locations">Cross file locations</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/mesonbuild/meson/edit/master/docs/markdown/Cross-compilation.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">Website licensing information are available on the <a href="legal.html">Legal</a> page.</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

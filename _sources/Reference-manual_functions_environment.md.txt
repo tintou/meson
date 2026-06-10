@@ -1,0 +1,121 @@
+## environment()
+
+Returns an empty [[@env]] object.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.35.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns an empty [[@env]] object.
+[[#@env]] environment(
+  [[#@str]] | [[#@array]][[[#@str]]] | [[#@dict]][[[#@str]]] | [[#@dict]][[[#@array]][[[#@str]]]]                                                                                                                                     [<a href="#environment_env"><b>env</b></a>],   # If provided, each key/value pair is added into the [[@env]] object
+
+  # Keyword arguments:
+  <a href="#environment_method"><b>method</b></a>    : [[#@str]]                                   # Must be one of 'set', 'prepend', or 'append'
+  <a href="#environment_separator"><b>separator</b></a> : [[#@str]]                                   # The separator to use for the initial values defined in
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+  [Argument flattening](Syntax.md#argument-flattening) is **NOT SUPPORTED** by this function.
+
+  The function `environment()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="environment_env">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">env</code>
+  <br>{meson:since}`0.52.0`
+  <br>{meson:optional}` `
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>] | [[@dict]][<span class="text-nowrap">[[@str]]</span>] | [[@dict]][[[@array]][<span class="text-nowrap">[[@str]]</span>]]
+  </td>
+        <td>
+  
+  If provided, each key/value pair is added into the [[@env]] object
+as if [[env.set]] method was called for each of them.
+Since *0.62.0* arrays of strings are allowed in dictionary values. In that
+case values are joined using the separator.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `environment()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="environment_method">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">method</code>
+  <br>{meson:since}`0.62.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Must be one of 'set', 'prepend', or 'append'
+(defaults to 'set'). Controls if initial values defined in the first
+positional argument are prepended, appended or replace the current value
+of the environment variable.
+
+  </td>
+      </tr>
+      <tr id="environment_separator">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">separator</code>
+  <br>{meson:since}`0.62.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The separator to use for the initial values defined in
+the first positional argument. If not explicitly specified, the default
+path separator for the host operating system will be used, i.e. ';' for
+Windows and ':' for UNIX/POSIX systems.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>

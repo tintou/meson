@@ -1,0 +1,19 @@
+---
+short-description: "Returned object: Range object"
+title: Range object
+render-subpages: false
+...
+# Range object (`range`)
+
+Opaque object that can be used in a loop and accessed via `[num]`.
+
+
+## Returned by
+
+Range object objects are returned by the following functions and methods:
+- [[range]]
+
+
+
+
+

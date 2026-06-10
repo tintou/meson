@@ -1,0 +1,192 @@
+---
+short-description: "Returned object: External program"
+title: External program
+render-subpages: false
+...
+# External program (`program`)
+
+Opaque object representing an external program
+
+
+## Returned by
+
+External program objects are returned by the following functions and methods:
+- [[find_program]]
+
+
+
+
+## External program methods
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### program.cmd_array()
+
+Returns an array containing the command(s) for the program.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`1.10.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@array]][[[#@str]]] cmd_array()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### program.found()
+
+Returns whether the executable was found.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@bool]] found()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### program.full_path()
+
+Returns a string pointing to the script or executable.
+
+**NOTE:** You should not usually need to use this method. Passing the
+object itself should work in most contexts where a program can appear,
+and allows Meson to setup inter-target dependencies correctly (for
+example in cases where a program might be overridden by a [[@build_tgt]]).
+Only use this if you specifically need a string, such as when embedding
+a program path into a header file, or storing it into an environment
+variable.
+
+For example:
+
+```meson
+run_command(find_program('foo'), 'arg1', 'arg2')
+```
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.55.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] full_path()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### program.path()
+
+*Deprecated:* Use [[program.full_path]] instead.
+
+Returns a string pointing to the script or executable.
+
+**NOTE:** You should not usually need to use this method. Passing the
+object itself should work in most contexts where a program can appear,
+and allows Meson to setup inter-target dependencies correctly (for
+example in cases where a program might be overridden by a [[@build_tgt]]).
+Only use this if you specifically need a string, such as when embedding
+a program path into a header file, or storing it into an environment
+variable.
+
+For example:
+
+```meson
+run_command(find_program('foo'), 'arg1', 'arg2')
+```
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:deprecated}`0.55.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] path()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### program.version()
+
+The version number as a string, for example `1.2.8`.
+
+`unknown` if the program cannot determine the version via a `--version` argument.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.62.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] version()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+

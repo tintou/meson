@@ -1,0 +1,1590 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Built-in options &#8212; Meson documentation 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d99633c1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Builtin-options';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Reference tables" href="Reference-tables.html" />
+    <link rel="prev" title="Syntax" href="Syntax.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/meson_logo.png" class="logo__image only-light" alt="Meson documentation 1.0 documentation - Home"/>
+    <img src="_static/meson_logo.png" class="logo__image only-dark pst-js-only" alt="Meson documentation 1.0 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Reference-manual.html">Reference manual</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Reference-manual_builtin.html">Builtin objects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_builtin_build_machine.html">Build machine information (<code class="docutils literal notranslate"><span class="pre">build_machine</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_builtin_host_machine.html">Host machine information (<code class="docutils literal notranslate"><span class="pre">host_machine</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_machine</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_builtin_meson.html">Meson object (<code class="docutils literal notranslate"><span class="pre">meson</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_builtin_target_machine.html">Target machine information (<code class="docutils literal notranslate"><span class="pre">target_machine</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_machine</span></code>)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Reference-manual_elementary.html">Elementary types</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_any.html">Any (<code class="docutils literal notranslate"><span class="pre">any</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_array.html">Array (<code class="docutils literal notranslate"><span class="pre">array</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_bool.html">Boolean (<code class="docutils literal notranslate"><span class="pre">bool</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_dict.html">Dict (<code class="docutils literal notranslate"><span class="pre">dict</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_int.html">Integer (<code class="docutils literal notranslate"><span class="pre">int</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_str.html">String (<code class="docutils literal notranslate"><span class="pre">str</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_void.html">void (<code class="docutils literal notranslate"><span class="pre">void</span></code>)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Reference-manual_functions.html">Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_global_arguments.html">add_global_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_global_link_arguments.html">add_global_link_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_languages.html">add_languages()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_project_arguments.html">add_project_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_project_dependencies.html">add_project_dependencies()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_project_link_arguments.html">add_project_link_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_test_setup.html">add_test_setup()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_alias_target.html">alias_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_assert.html">assert()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_benchmark.html">benchmark()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_both_libraries.html">both_libraries()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_build_target.html">build_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_configuration_data.html">configuration_data()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_configure_file.html">configure_file()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_custom_target.html">custom_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_debug.html">debug()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_declare_dependency.html">declare_dependency()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_dependency.html">dependency()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_disabler.html">disabler()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_environment.html">environment()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_error.html">error()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_executable.html">executable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_files.html">files()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_find_program.html">find_program()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_generator.html">generator()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_get_option.html">get_option()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_get_variable.html">get_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_import.html">import()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_include_directories.html">include_directories()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_data.html">install_data()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_emptydir.html">install_emptydir()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_headers.html">install_headers()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_man.html">install_man()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_subdir.html">install_subdir()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_symlink.html">install_symlink()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_is_disabler.html">is_disabler()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_is_variable.html">is_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_jar.html">jar()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_join_paths.html">join_paths()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_library.html">library()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_message.html">message()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_project.html">project()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_range.html">range()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_run_command.html">run_command()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_run_target.html">run_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_set_variable.html">set_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_shared_library.html">shared_library()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_shared_module.html">shared_module()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_static_library.html">static_library()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_structured_sources.html">structured_sources()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_subdir.html">subdir()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_subdir_done.html">subdir_done()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_subproject.html">subproject()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_summary.html">summary()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_test.html">test()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_unset_variable.html">unset_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_vcs_tag.html">vcs_tag()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_warning.html">warning()</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Reference-manual_returned.html">Returned objects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_alias_tgt.html">Alias target (<code class="docutils literal notranslate"><span class="pre">alias_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_both_libs.html">Both libraries object (<code class="docutils literal notranslate"><span class="pre">both_libs</span></code> extends <code class="docutils literal notranslate"><span class="pre">lib</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_build_tgt.html">Build target (<code class="docutils literal notranslate"><span class="pre">build_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_cfg_data.html">Configuration data object (<code class="docutils literal notranslate"><span class="pre">cfg_data</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_compiler.html">Compiler object (<code class="docutils literal notranslate"><span class="pre">compiler</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_custom_idx.html">Custom target index (<code class="docutils literal notranslate"><span class="pre">custom_idx</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_custom_tgt.html">Custom target (<code class="docutils literal notranslate"><span class="pre">custom_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_dep.html">Dependency object (<code class="docutils literal notranslate"><span class="pre">dep</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_disabler.html">Disabler (<code class="docutils literal notranslate"><span class="pre">disabler</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_env.html">Environment (<code class="docutils literal notranslate"><span class="pre">env</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_exe.html">Executable target (<code class="docutils literal notranslate"><span class="pre">exe</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_extracted_obj.html">Extracted object file (<code class="docutils literal notranslate"><span class="pre">extracted_obj</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_feature.html">Feature option object (<code class="docutils literal notranslate"><span class="pre">feature</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_file.html">File (<code class="docutils literal notranslate"><span class="pre">file</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_generated_list.html">Generated list object (<code class="docutils literal notranslate"><span class="pre">generated_list</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_generator.html">Generator object (<code class="docutils literal notranslate"><span class="pre">generator</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_inc.html">Include directories (<code class="docutils literal notranslate"><span class="pre">inc</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_jar.html">JAR build target (<code class="docutils literal notranslate"><span class="pre">jar</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_lib.html">Library target (<code class="docutils literal notranslate"><span class="pre">lib</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_module.html">Imported module object (<code class="docutils literal notranslate"><span class="pre">module</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_program.html">External program (<code class="docutils literal notranslate"><span class="pre">program</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_range.html">Range object (<code class="docutils literal notranslate"><span class="pre">range</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_run_tgt.html">Run target (<code class="docutils literal notranslate"><span class="pre">run_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_runresult.html">Run result object (<code class="docutils literal notranslate"><span class="pre">runresult</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_structured_src.html">Structured Source (<code class="docutils literal notranslate"><span class="pre">structured_src</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_subproject.html">Subproject object (<code class="docutils literal notranslate"><span class="pre">subproject</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_tgt.html">Meson Target (<code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Modules.html">Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="CMake-module.html">CMake module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Codegen-module.html">Codegen Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cuda-module.html">Unstable CUDA Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dlang-module.html">Dlang module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="External-Project-module.html">External Project module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Fs-module.html">FS (filesystem) module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Gnome-module.html">GNOME module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hotdoc-module.html">Hotdoc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Icestorm-module.html">Unstable IceStorm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Java-module.html">Java Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Keyval-module.html">keyval module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pkgconfig-module.html">Pkgconfig module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python-3-module.html">Python 3 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python-module.html">Python module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Qt4-module.html">Qt4 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Qt5-module.html">Qt5 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Qt6-module.html">Qt6 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rust-module.html">Rust module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Simd-module.html">Unstable SIMD module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Snippets-module.html">Snippets module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SourceSet-module.html">Source set module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Windows-module.html">Windows module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i18n-module.html">I18n module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wayland-module.html">Wayland Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="Syntax.html">Syntax</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Built-in options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reference-tables.html">Reference tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rewriter.html">Meson file rewriter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Style-guide.html">Style recommendations</a></li>
+
+
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="Reference.html" class="nav-link">Reference</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Built-in options</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="built-in-options">
+<h1>Built-in options<a class="headerlink" href="#built-in-options" title="Link to this heading">#</a></h1>
+<p>Meson provides two kinds of options: <a class="reference internal" href="Build-options.html"><span class="std std-doc">build options provided by the
+build files</span></a> and built-in options that are either
+universal options, base options, compiler options.</p>
+<section id="universal-options">
+<h2>Universal options<a class="headerlink" href="#universal-options" title="Link to this heading">#</a></h2>
+<p>All these can be set by passing <code class="docutils literal notranslate"><span class="pre">-Doption=value</span></code> to <code class="docutils literal notranslate"><span class="pre">meson</span></code> (aka <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">setup</span></code>), or by setting them inside <code class="docutils literal notranslate"><span class="pre">default_options</span></code> of <a href="Reference-manual_functions.html#project"><code>project()</code></a> in your
+<code class="docutils literal notranslate"><span class="pre">meson.build</span></code>. Some options can also be set by <code class="docutils literal notranslate"><span class="pre">--option=value</span></code>, or <code class="docutils literal notranslate"><span class="pre">--option</span> <span class="pre">value</span></code> – a list is shown by running <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">setup</span> <span class="pre">--help</span></code>.</p>
+<p>For legacy reasons <code class="docutils literal notranslate"><span class="pre">--warnlevel</span></code> is the cli argument for the
+<code class="docutils literal notranslate"><span class="pre">warning_level</span></code> option.</p>
+<p>They can also be edited after setup using <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">configure</span> <span class="pre">-Doption=value</span></code>.</p>
+<p>Installation options are usually relative to the prefix but it should
+not be relied on, since they can be absolute paths in the following cases:</p>
+<ul class="simple">
+<li><p>When the prefix is <code class="docutils literal notranslate"><span class="pre">/usr</span></code>: <code class="docutils literal notranslate"><span class="pre">sysconfdir</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">/etc</span></code>,
+<code class="docutils literal notranslate"><span class="pre">localstatedir</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">/var</span></code>, and <code class="docutils literal notranslate"><span class="pre">sharedstatedir</span></code> defaults to
+<code class="docutils literal notranslate"><span class="pre">/var/lib</span></code></p></li>
+<li><p>When the prefix is <code class="docutils literal notranslate"><span class="pre">/usr/local</span></code>: <code class="docutils literal notranslate"><span class="pre">localstatedir</span></code> defaults
+to <code class="docutils literal notranslate"><span class="pre">/var/local</span></code>, and <code class="docutils literal notranslate"><span class="pre">sharedstatedir</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">/var/local/lib</span></code></p></li>
+<li><p>When an absolute path outside of prefix is provided by the user/distributor.</p></li>
+</ul>
+<section id="directories">
+<h3>Directories<a class="headerlink" href="#directories" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Default value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>prefix</p></td>
+<td><p>see below</p></td>
+<td><p>Installation prefix</p></td>
+</tr>
+<tr class="row-odd"><td><p>bindir</p></td>
+<td><p>bin</p></td>
+<td><p>Executable directory</p></td>
+</tr>
+<tr class="row-even"><td><p>datadir</p></td>
+<td><p>share</p></td>
+<td><p>Data file directory</p></td>
+</tr>
+<tr class="row-odd"><td><p>includedir</p></td>
+<td><p>include</p></td>
+<td><p>Header file directory</p></td>
+</tr>
+<tr class="row-even"><td><p>infodir</p></td>
+<td><p>share/info</p></td>
+<td><p>Info page directory</p></td>
+</tr>
+<tr class="row-odd"><td><p>libdir</p></td>
+<td><p>see below</p></td>
+<td><p>Library directory</p></td>
+</tr>
+<tr class="row-even"><td><p>licensedir</p></td>
+<td><p>see below</p></td>
+<td><p>Licenses directory (since 1.1.0)</p></td>
+</tr>
+<tr class="row-odd"><td><p>libexecdir</p></td>
+<td><p>libexec</p></td>
+<td><p>Library executable directory</p></td>
+</tr>
+<tr class="row-even"><td><p>localedir</p></td>
+<td><p>share/locale</p></td>
+<td><p>Locale data directory</p></td>
+</tr>
+<tr class="row-odd"><td><p>localstatedir</p></td>
+<td><p>var</p></td>
+<td><p>Localstate data directory</p></td>
+</tr>
+<tr class="row-even"><td><p>mandir</p></td>
+<td><p>share/man</p></td>
+<td><p>Manual page directory</p></td>
+</tr>
+<tr class="row-odd"><td><p>sbindir</p></td>
+<td><p>sbin</p></td>
+<td><p>System executable directory</p></td>
+</tr>
+<tr class="row-even"><td><p>sharedstatedir</p></td>
+<td><p>com</p></td>
+<td><p>Architecture-independent data directory</p></td>
+</tr>
+<tr class="row-odd"><td><p>sysconfdir</p></td>
+<td><p>etc</p></td>
+<td><p>Sysconf data directory</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">prefix</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">C:/</span></code> on Windows, and <code class="docutils literal notranslate"><span class="pre">/usr/local</span></code> otherwise. You
+should always override this value.</p>
+<p><code class="docutils literal notranslate"><span class="pre">libdir</span></code> is automatically detected based on your platform, it should
+be correct when doing “native” (build machine == host machine)
+compilation. For cross compiles Meson will try to guess the correct
+libdir, but it may not be accurate, especially on Linux where
+different distributions have different defaults. Using a <a class="reference internal" href="Cross-compilation.html#defining-the-environment"><span class="std std-ref">cross
+file</span></a>, particularly the
+paths section may be necessary.</p>
+<p><code class="docutils literal notranslate"><span class="pre">licensedir</span></code> is empty by default. If set, it defines the default location
+to install a dependency manifest and project licenses. For more details,
+see <a href="Reference-manual_builtin_meson.html#mesoninstall_dependency_manifest"><code>meson.install_dependency_manifest()</code></a>.</p>
+</section>
+<section id="core-options">
+<h3>Core options<a class="headerlink" href="#core-options" title="Link to this heading">#</a></h3>
+<p>Options that are labeled “per machine” in the table are set per
+machine. See the <a class="reference internal" href="#specifying-options-per-machine">specifying options per
+machine</a> section for details.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Default value</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Is per machine</p></th>
+<th class="head"><p>Per subproject (since)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>auto_features {enabled, disabled, auto}</p></td>
+<td><p>auto</p></td>
+<td><p>Override value of all ‘auto’ features</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p>backend {ninja, vs,<br>vs2010, vs2012, vs2013, vs2015, vs2017, vs2019, vs2022, xcode, none}</p></td>
+<td><p>ninja</p></td>
+<td><p>Backend to use</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p>genvslite {vs2022}</p></td>
+<td><p>vs2022</p></td>
+<td><p>Setup multi-buildtype ninja build directories and Visual Studio solution</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p>buildtype {plain, debug,<br>debugoptimized, release, minsize, custom}</p></td>
+<td><p>debug</p></td>
+<td><p>Build type to use</p></td>
+<td><p>no</p></td>
+<td><p>1.8.0</p></td>
+</tr>
+<tr class="row-even"><td><p>debug</p></td>
+<td><p>true</p></td>
+<td><p>Enable debug symbols and other information</p></td>
+<td><p>no</p></td>
+<td><p>1.8.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>default_both_libraries {shared, static, auto}</p></td>
+<td><p>shared</p></td>
+<td><p>Default library type for both_libraries</p></td>
+<td><p>no</p></td>
+<td><p>1.8.0</p></td>
+</tr>
+<tr class="row-even"><td><p>default_library {shared, static, both}</p></td>
+<td><p>shared</p></td>
+<td><p>Default library type</p></td>
+<td><p>no</p></td>
+<td><p>0.54.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>errorlogs</p></td>
+<td><p>true</p></td>
+<td><p>Whether to print the logs from failing tests.</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p>install_umask {preserve, 0000-0777}</p></td>
+<td><p>022</p></td>
+<td><p>Default umask to apply on permissions of installed files</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p>layout {mirror,flat}</p></td>
+<td><p>mirror</p></td>
+<td><p>Build directory layout</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p>namingscheme {platform, classic}</p></td>
+<td><p>classic</p></td>
+<td><p>Library naming scheme to use</p></td>
+<td><p>no</p></td>
+<td><p>1.10.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>optimization {plain, 0, g, 1, 2, 3, s}</p></td>
+<td><p>0</p></td>
+<td><p>Optimization level</p></td>
+<td><p>no</p></td>
+<td><p>1.8.0</p></td>
+</tr>
+<tr class="row-even"><td><p>pkg_config_path {OS separated path}</p></td>
+<td><p>‘’</p></td>
+<td><p>Additional paths for pkg-config to search before builtin paths</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p>prefer_static</p></td>
+<td><p>false</p></td>
+<td><p>Whether to try static linking before shared linking</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p>cmake_prefix_path</p></td>
+<td><p>[]</p></td>
+<td><p>Additional prefixes for cmake to search before builtin paths</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p>stdsplit</p></td>
+<td><p>true</p></td>
+<td><p>Split stdout and stderr in test logs</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p>strip</p></td>
+<td><p>false</p></td>
+<td><p>Strip targets on install</p></td>
+<td><p>no</p></td>
+<td><p>1.8.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>unity {on, off, subprojects}</p></td>
+<td><p>off</p></td>
+<td><p>Unity build</p></td>
+<td><p>no</p></td>
+<td><p>1.8.0</p></td>
+</tr>
+<tr class="row-even"><td><p>unity_size {&gt;=2}</p></td>
+<td><p>4</p></td>
+<td><p>Unity file block size</p></td>
+<td><p>no</p></td>
+<td><p>1.8.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>warning_level {0, 1, 2, 3, everything}</p></td>
+<td><p>1</p></td>
+<td><p>Set the warning level. From 0 = compiler default to everything = highest</p></td>
+<td><p>no</p></td>
+<td><p>0.56.0</p></td>
+</tr>
+<tr class="row-even"><td><p>werror</p></td>
+<td><p>false</p></td>
+<td><p>Treat warnings as errors</p></td>
+<td><p>no</p></td>
+<td><p>0.54.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>wrap_mode {default, nofallback,<br>nodownload, forcefallback, nopromote}</p></td>
+<td><p>default</p></td>
+<td><p>Wrap mode to use</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p>force_fallback_for</p></td>
+<td><p>[]</p></td>
+<td><p>Force fallback for those dependencies</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p>vsenv</p></td>
+<td><p>false</p></td>
+<td><p>Activate Visual Studio environment</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p>os2_emxomf</p></td>
+<td><p>false</p></td>
+<td><p>Use OMF format on OS/2</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(For the Rust language only, <code class="docutils literal notranslate"><span class="pre">warning_level=0</span></code> disables all warnings).</p>
+<section id="details-for-backend">
+<h4>Details for <code class="docutils literal notranslate"><span class="pre">backend</span></code><a class="headerlink" href="#details-for-backend" title="Link to this heading">#</a></h4>
+<p>Several build file formats are supported as command runners to build the
+configured project. Meson prefers ninja by default, but platform-specific
+backends are also available for better IDE integration with native tooling:
+Visual Studio for Windows, and xcode for macOS. It is also possible to
+configure with no backend at all, which is an error if you have targets to
+build, but for projects that need configuration + testing + installation allows
+for a lighter automated build pipeline.</p>
+</section>
+<section id="details-for-genvslite">
+<h4>Details for <code class="docutils literal notranslate"><span class="pre">genvslite</span></code><a class="headerlink" href="#details-for-genvslite" title="Link to this heading">#</a></h4>
+<p>Setup multiple buildtype-suffixed, ninja-backend build directories (e.g.
+[builddir]_[debug/release/etc.]) and generate [builddir]_vs containing a Visual
+Studio solution with multiple configurations that invoke a meson compile of the
+setup build directories, as appropriate for the current configuration (buildtype).</p>
+<p>This has the effect of a simple setup macro of multiple ‘meson setup …’
+invocations with a set of different buildtype values.  E.g.
+<code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">setup</span> <span class="pre">...</span> <span class="pre">--genvslite</span> <span class="pre">vs2022</span> <span class="pre">somebuilddir</span></code> does the following -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="n">setup</span> <span class="o">...</span> <span class="o">--</span><span class="n">backend</span> <span class="n">ninja</span> <span class="o">--</span><span class="n">buildtype</span> <span class="n">debug</span> <span class="n">somebuilddir_debug</span>
+<span class="n">meson</span> <span class="n">setup</span> <span class="o">...</span> <span class="o">--</span><span class="n">backend</span> <span class="n">ninja</span> <span class="o">--</span><span class="n">buildtype</span> <span class="n">debugoptimized</span> <span class="n">somebuilddir_debugoptimized</span>
+<span class="n">meson</span> <span class="n">setup</span> <span class="o">...</span> <span class="o">--</span><span class="n">backend</span> <span class="n">ninja</span> <span class="o">--</span><span class="n">buildtype</span> <span class="n">release</span> <span class="n">somebuilddir_release</span>
+</pre></div>
+</div>
+<p>and additionally creates another ‘somebuilddir_vs’ directory that contains
+a generated multi-configuration visual studio solution and project(s) that are
+set to build/compile with the somebuilddir_[…] that’s appropriate for the
+solution’s selected buildtype configuration.</p>
+</section>
+<section id="details-for-buildtype">
+<h4>Details for <code class="docutils literal notranslate"><span class="pre">buildtype</span></code><a class="headerlink" href="#details-for-buildtype" title="Link to this heading">#</a></h4>
+<p><a name="build-type-options"></a> For setting optimization levels and
+toggling debug, you can either set the <code class="docutils literal notranslate"><span class="pre">buildtype</span></code> option, or you can
+set the <code class="docutils literal notranslate"><span class="pre">optimization</span></code> and <code class="docutils literal notranslate"><span class="pre">debug</span></code> options which give finer control
+over the same. Whichever you decide to use, the other will be deduced
+from it. For example, <code class="docutils literal notranslate"><span class="pre">-Dbuildtype=debugoptimized</span></code> is the same as
+<code class="docutils literal notranslate"><span class="pre">-Ddebug=true</span> <span class="pre">-Doptimization=2</span></code> and vice-versa. This table documents
+the two-way mapping:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>buildtype</p></th>
+<th class="head"><p>debug</p></th>
+<th class="head"><p>optimization</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>plain</p></td>
+<td><p>false</p></td>
+<td><p>plain</p></td>
+</tr>
+<tr class="row-odd"><td><p>debug</p></td>
+<td><p>true</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>debugoptimized</p></td>
+<td><p>true</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>release</p></td>
+<td><p>false</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>minsize</p></td>
+<td><p>true</p></td>
+<td><p>s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>All other combinations of <code class="docutils literal notranslate"><span class="pre">debug</span></code> and <code class="docutils literal notranslate"><span class="pre">optimization</span></code> set <code class="docutils literal notranslate"><span class="pre">buildtype</span></code> to <code class="docutils literal notranslate"><span class="pre">'custom'</span></code>.</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">-Ddebug=false</span></code> does not cause the compiler preprocessor macro
+<code class="docutils literal notranslate"><span class="pre">NDEBUG</span></code> to be defined.
+The macro can be defined using the base option <code class="docutils literal notranslate"><span class="pre">b_ndebug</span></code>, described below.</p>
+</section>
+<section id="details-for-warning-level">
+<h4>Details for <code class="docutils literal notranslate"><span class="pre">warning_level</span></code><a class="headerlink" href="#details-for-warning-level" title="Link to this heading">#</a></h4>
+<p>Exact flags per warning level is compiler specific, but there is an approximate
+table for most common compilers.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Warning level</p></th>
+<th class="head"><p>GCC/Clang</p></th>
+<th class="head"><p>MSVC</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>-Wall</p></td>
+<td><p>/W2</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>-Wall -Wextra</p></td>
+<td><p>/W3</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>-Wall -Wextra -Wpedantic</p></td>
+<td><p>/W4</p></td>
+</tr>
+<tr class="row-even"><td><p>everything</p></td>
+<td><p>-Weverything</p></td>
+<td><p>/Wall</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Clang’s <code class="docutils literal notranslate"><span class="pre">-Weverything</span></code> is emulated on GCC by passing all known warning flags.</p>
+</section>
+<section id="details-for-vsenv">
+<h4>Details for <code class="docutils literal notranslate"><span class="pre">vsenv</span></code><a class="headerlink" href="#details-for-vsenv" title="Link to this heading">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">--vsenv</span></code> argument is supported since <code class="docutils literal notranslate"><span class="pre">0.60.0</span></code>, <code class="docutils literal notranslate"><span class="pre">-Dvsenv=true</span></code> syntax is supported
+since <code class="docutils literal notranslate"><span class="pre">1.1.0</span></code>.</p>
+<p>Since <code class="docutils literal notranslate"><span class="pre">0.59.0</span></code>, meson automatically activates a Visual Studio environment on Windows
+for all its subcommands, but only if no other compilers (e.g. <code class="docutils literal notranslate"><span class="pre">gcc</span></code> or <code class="docutils literal notranslate"><span class="pre">clang</span></code>)
+are found, and silently continues if Visual Studio activation fails.</p>
+<p>Setting the <code class="docutils literal notranslate"><span class="pre">vsenv</span></code> option to <code class="docutils literal notranslate"><span class="pre">true</span></code> forces Visual Studio activation even when other
+compilers are found. It also make Meson abort with an error message when activation
+fails.</p>
+<p><code class="docutils literal notranslate"><span class="pre">vsenv</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code> by default when using the <code class="docutils literal notranslate"><span class="pre">vs</span></code> backend.</p>
+</section>
+<section id="details-for-default-both-libraries">
+<h4>Details for <code class="docutils literal notranslate"><span class="pre">default_both_libraries</span></code><a class="headerlink" href="#details-for-default-both-libraries" title="Link to this heading">#</a></h4>
+<p>Since <code class="docutils literal notranslate"><span class="pre">1.6.0</span></code>, you can specify the default type of library selected when using a
+<code class="docutils literal notranslate"><span class="pre">both_libraries</span></code> object with <code class="docutils literal notranslate"><span class="pre">default_both_libraries</span></code>. Note that, unlike
+<code class="docutils literal notranslate"><span class="pre">default_library</span></code>, this option does not affect how the library artifacts are
+built, but how they are internally linked to the dependent targets within the
+same project.</p>
+<p>The possible values of this option are ‘shared’ (default value, compatible with
+previous meson versions), ‘static’, and ‘auto’. With auto, the value from the
+<code class="docutils literal notranslate"><span class="pre">default_library</span></code> option is used, unless it is ‘both’, in which case ‘shared’ is
+used instead.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">default_both_libraries</span></code> is ‘auto’, passing a <a href="Reference-manual_returned_both_libs.html"><code>both_libs</code></a> dependency
+in <a href="Reference-manual_functions.html#both_libraries"><code>both_libraries()</code></a> will link the static dependency with the static lib,
+and the shared dependency with the shared lib.</p>
+</section>
+<section id="details-for-os2-emxomf">
+<h4>Details for <code class="docutils literal notranslate"><span class="pre">os2_emxomf</span></code><a class="headerlink" href="#details-for-os2-emxomf" title="Link to this heading">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">--os2-emxomf</span></code> argument is supported since <code class="docutils literal notranslate"><span class="pre">1.10.0</span></code>, <code class="docutils literal notranslate"><span class="pre">-Dos2_emxomf=true</span></code>
+syntax is supported since <code class="docutils literal notranslate"><span class="pre">1.10.0</span></code>.</p>
+<p>Setting the <code class="docutils literal notranslate"><span class="pre">os2_emxomf</span></code> option to <code class="docutils literal notranslate"><span class="pre">true</span></code> forces to use emxomf toolchains in
+order to generate OMF files instead of aout toolchains.</p>
+<p><code class="docutils literal notranslate"><span class="pre">os2_emxomf</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code> by default.</p>
+</section>
+</section>
+</section>
+<section id="base-options">
+<h2>Base options<a class="headerlink" href="#base-options" title="Link to this heading">#</a></h2>
+<p>These are set in the same way as universal options, either by
+<code class="docutils literal notranslate"><span class="pre">-Doption=value</span></code>, or by setting them inside <code class="docutils literal notranslate"><span class="pre">default_options</span></code> of
+<a href="Reference-manual_functions.html#project"><code>project()</code></a> in your <code class="docutils literal notranslate"><span class="pre">meson.build</span></code>. However, they cannot be shown in
+the output of <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">setup</span> <span class="pre">--help</span></code> because they depend on both the current
+platform and the compiler that will be selected. The only way to see
+them is to setup a builddir and then run <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">configure</span></code> on it with
+no options.</p>
+<p>The following options are available. Note that they may not be
+available on all platforms or with all compilers:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Default value</p></th>
+<th class="head"><p>Possible values</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>b_asneeded</p></td>
+<td><p>true</p></td>
+<td><p>true, false</p></td>
+<td><p>Use -Wl,–as-needed when linking</p></td>
+</tr>
+<tr class="row-odd"><td><p>b_bitcode</p></td>
+<td><p>false</p></td>
+<td><p>true, false</p></td>
+<td><p>Embed Apple bitcode, see below</p></td>
+</tr>
+<tr class="row-even"><td><p>b_colorout</p></td>
+<td><p>always</p></td>
+<td><p>auto, always, never</p></td>
+<td><p>Use colored output</p></td>
+</tr>
+<tr class="row-odd"><td><p>b_coverage</p></td>
+<td><p>false</p></td>
+<td><p>true, false</p></td>
+<td><p>Enable coverage tracking</p></td>
+</tr>
+<tr class="row-even"><td><p>b_lundef</p></td>
+<td><p>true</p></td>
+<td><p>true, false</p></td>
+<td><p>Don’t allow undefined symbols when linking</p></td>
+</tr>
+<tr class="row-odd"><td><p>b_lto</p></td>
+<td><p>false</p></td>
+<td><p>true, false</p></td>
+<td><p>Use link time optimization</p></td>
+</tr>
+<tr class="row-even"><td><p>b_lto_threads</p></td>
+<td><p>0</p></td>
+<td><p>Any integer*</p></td>
+<td><p>Use multiple threads for lto. <em>(Added in 0.57.0)</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>b_lto_mode</p></td>
+<td><p>default</p></td>
+<td><p>default, thin</p></td>
+<td><p>Select between lto modes, thin and default. <em>(Added in 0.57.0)</em></p></td>
+</tr>
+<tr class="row-even"><td><p>b_thinlto_cache</p></td>
+<td><p>false</p></td>
+<td><p>true, false</p></td>
+<td><p>Enable LLVM’s ThinLTO cache for faster incremental builds. <em>(Added in 0.64.0)</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>b_thinlto_cache_dir</p></td>
+<td><p>(Internal build dir)</p></td>
+<td><p>true, false</p></td>
+<td><p>Specify where to store ThinLTO cache objects. <em>(Added in 0.64.0)</em></p></td>
+</tr>
+<tr class="row-even"><td><p>b_ndebug</p></td>
+<td><p>false</p></td>
+<td><p>true, false, if-release</p></td>
+<td><p>Disable asserts</p></td>
+</tr>
+<tr class="row-odd"><td><p>b_pch</p></td>
+<td><p>true</p></td>
+<td><p>true, false</p></td>
+<td><p>Use precompiled headers</p></td>
+</tr>
+<tr class="row-even"><td><p>b_pgo</p></td>
+<td><p>off</p></td>
+<td><p>off, generate, use</p></td>
+<td><p>Use profile guided optimization</p></td>
+</tr>
+<tr class="row-odd"><td><p>b_sanitize</p></td>
+<td><p>none</p></td>
+<td><p>see below</p></td>
+<td><p>Code sanitizer to use</p></td>
+</tr>
+<tr class="row-even"><td><p>b_staticpic</p></td>
+<td><p>true</p></td>
+<td><p>true, false</p></td>
+<td><p>Build static libraries as position independent</p></td>
+</tr>
+<tr class="row-odd"><td><p>b_pie</p></td>
+<td><p>false</p></td>
+<td><p>true, false</p></td>
+<td><p>Build position-independent executables (since 0.49.0)</p></td>
+</tr>
+<tr class="row-even"><td><p>b_vscrt</p></td>
+<td><p>from_buildtype</p></td>
+<td><p>none, md, mdd, mt, mtd, from_buildtype, static_from_buildtype</p></td>
+<td><p>VS runtime library to use (since 0.48.0) (static_from_buildtype since 0.56.0)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The default and possible values of sanitizers changed in 1.8. Before 1.8 they
+were string values, and restricted to a specific subset of values: <code class="docutils literal notranslate"><span class="pre">none</span></code>,
+<code class="docutils literal notranslate"><span class="pre">address</span></code>, <code class="docutils literal notranslate"><span class="pre">thread</span></code>, <code class="docutils literal notranslate"><span class="pre">undefined</span></code>, <code class="docutils literal notranslate"><span class="pre">memory</span></code>, <code class="docutils literal notranslate"><span class="pre">leak</span></code>, or <code class="docutils literal notranslate"><span class="pre">address,undefined</span></code>. In
+1.8 it was changed to a free form array of sanitizers, which are checked by a
+compiler and linker check. For backwards compatibility reasons
+<code class="docutils literal notranslate"><span class="pre">get_option('b_sanitize')</span></code> continues to return a string with the array values
+separated by a comma. Furthermore:</p>
+<ul class="simple">
+<li><p>If the <code class="docutils literal notranslate"><span class="pre">b_sanitize</span></code> option is empty, the <code class="docutils literal notranslate"><span class="pre">'none'</span></code> string is returned.</p></li>
+<li><p>If it contains only the values <code class="docutils literal notranslate"><span class="pre">'address'</span></code> and <code class="docutils literal notranslate"><span class="pre">'undefined'</span></code>, they are
+always returned as the <code class="docutils literal notranslate"><span class="pre">'address,undefined'</span></code> string, in this order.</p></li>
+<li><p>Otherwise, the array elements are returned in undefined order.</p></li>
+</ul>
+<p>Be aware that <code class="docutils literal notranslate"><span class="pre">b_lundef</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code> by default, which is incompatible with the
+address sanitizer when building shared libraries with clang, as documented
+<a class="reference external" href="https://clang.llvm.org/docs/AddressSanitizer.html#usage">by clang</a>
+(<code class="docutils literal notranslate"><span class="pre">b_lundef</span></code> makes meson use <code class="docutils literal notranslate"><span class="pre">-Wl,--no-undefined</span></code>, which is an alias for <code class="docutils literal notranslate"><span class="pre">-Wl,-z,defs</span></code>).</p>
+<p>* &lt; 0 means disable, == 0 means automatic selection, &gt; 0 sets a specific number to use</p>
+<p>LLVM supports <code class="docutils literal notranslate"><span class="pre">thin</span></code> lto, for more discussion see <a class="reference external" href="https://clang.llvm.org/docs/ThinLTO.html">LLVM’s documentation</a></p>
+<p><a name="b_vscrt-from_buildtype"></a>
+The default value of <code class="docutils literal notranslate"><span class="pre">b_vscrt</span></code> is <code class="docutils literal notranslate"><span class="pre">from_buildtype</span></code>. The following table is
+used internally to pick the CRT compiler arguments for <code class="docutils literal notranslate"><span class="pre">from_buildtype</span></code> or
+<code class="docutils literal notranslate"><span class="pre">static_from_buildtype</span></code> <em>(since 0.56)</em> based on the value of the <code class="docutils literal notranslate"><span class="pre">buildtype</span></code>
+option:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>buildtype</p></th>
+<th class="head"><p>from_buildtype</p></th>
+<th class="head"><p>static_from_buildtype</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>debug</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/MDd</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/MTd</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>debugoptimized</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/MD</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/MT</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>release</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/MD</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/MT</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>minsize</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/MD</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/MT</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>custom</p></td>
+<td><p>error!</p></td>
+<td><p>error!</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="notes-about-apple-bitcode-support">
+<h3>Notes about Apple Bitcode support<a class="headerlink" href="#notes-about-apple-bitcode-support" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">b_bitcode</span></code> will pass <code class="docutils literal notranslate"><span class="pre">-fembed-bitcode</span></code> while compiling and will pass
+<code class="docutils literal notranslate"><span class="pre">-Wl,-bitcode_bundle</span></code> while linking. These options are incompatible
+with <code class="docutils literal notranslate"><span class="pre">b_asneeded</span></code>, so that option will be silently disabled.</p>
+<p><a href="Reference-manual_functions.html#shared_module"><code>shared_module()</code></a>s will not have
+bitcode embedded because <code class="docutils literal notranslate"><span class="pre">-Wl,-bitcode_bundle</span></code> is incompatible with
+<code class="docutils literal notranslate"><span class="pre">-Wl,-undefined,dynamic_lookup</span></code> which is necessary for shared modules to work.</p>
+</section>
+</section>
+<section id="compiler-options">
+<h2>Compiler options<a class="headerlink" href="#compiler-options" title="Link to this heading">#</a></h2>
+<p>Same caveats as base options above.</p>
+<p>The following options are available. They can be set by passing
+<code class="docutils literal notranslate"><span class="pre">-Doption=value</span></code> to <code class="docutils literal notranslate"><span class="pre">meson</span></code>. Note that both the options themselves and
+the possible values they can take will depend on the target platform
+or compiler being used:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Default value</p></th>
+<th class="head"><p>Possible values</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>c_args</p></td>
+<td><p></p></td>
+<td><p>free-form comma-separated list</p></td>
+<td><p>C compile arguments to use</p></td>
+</tr>
+<tr class="row-odd"><td><p>c_link_args</p></td>
+<td><p></p></td>
+<td><p>free-form comma-separated list</p></td>
+<td><p>C link arguments to use</p></td>
+</tr>
+<tr class="row-even"><td><p>c_std</p></td>
+<td><p>none</p></td>
+<td><p>none, c89, c99, c11, c17, c18, c2x, c23, c2y, gnu89, gnu99, gnu11, gnu17, gnu18, gnu2x, gnu23, gnu2y</p></td>
+<td><p>C language standard to use</p></td>
+</tr>
+<tr class="row-odd"><td><p>c_winlibs</p></td>
+<td><p>see below</p></td>
+<td><p>free-form comma-separated list</p></td>
+<td><p>Standard Windows libs to link against</p></td>
+</tr>
+<tr class="row-even"><td><p>c_thread_count</p></td>
+<td><p>4</p></td>
+<td><p>integer value ≥ 0</p></td>
+<td><p>Number of threads to use with emcc when using threads</p></td>
+</tr>
+<tr class="row-odd"><td><p>cpp_args</p></td>
+<td><p></p></td>
+<td><p>free-form comma-separated list</p></td>
+<td><p>C++ compile arguments to use</p></td>
+</tr>
+<tr class="row-even"><td><p>cpp_link_args</p></td>
+<td><p></p></td>
+<td><p>free-form comma-separated list</p></td>
+<td><p>C++ link arguments to use</p></td>
+</tr>
+<tr class="row-odd"><td><p>cpp_std</p></td>
+<td><p>none</p></td>
+<td><p>none, c++98, c++03, c++11, c++14, c++17, c++20 <br/>c++2a, c++1z, gnu++03, gnu++11, gnu++14, gnu++17, gnu++1z, <br/> gnu++2a, gnu++20, vc++14, vc++17, vc++20, vc++latest</p></td>
+<td><p>C++ language standard to use</p></td>
+</tr>
+<tr class="row-even"><td><p>cpp_debugstl</p></td>
+<td><p>false</p></td>
+<td><p>true, false</p></td>
+<td><p>C++ STL debug mode</p></td>
+</tr>
+<tr class="row-odd"><td><p>cpp_eh</p></td>
+<td><p>default</p></td>
+<td><p>none, default, a, s, sc</p></td>
+<td><p>C++ exception handling type</p></td>
+</tr>
+<tr class="row-even"><td><p>cpp_rtti</p></td>
+<td><p>true</p></td>
+<td><p>true, false</p></td>
+<td><p>Whether to enable RTTI (runtime type identification)</p></td>
+</tr>
+<tr class="row-odd"><td><p>cpp_thread_count</p></td>
+<td><p>4</p></td>
+<td><p>integer value ≥ 0</p></td>
+<td><p>Number of threads to use with emcc when using threads</p></td>
+</tr>
+<tr class="row-even"><td><p>cpp_winlibs</p></td>
+<td><p>see below</p></td>
+<td><p>free-form comma-separated list</p></td>
+<td><p>Standard Windows libs to link against</p></td>
+</tr>
+<tr class="row-odd"><td><p>cpp_importstd</p></td>
+<td><p>false</p></td>
+<td><p>true or false</p></td>
+<td><p>Whether to use <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">std</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>fortran_std</p></td>
+<td><p>none</p></td>
+<td><p>[none, legacy, f95, f2003, f2008, f2018]</p></td>
+<td><p>Fortran language standard to use</p></td>
+</tr>
+<tr class="row-odd"><td><p>rust_dynamic_std</p></td>
+<td><p>false</p></td>
+<td><p>true, false</p></td>
+<td><p>Whether to link dynamically to the Rust standard library <em>(Added in 1.9.0)</em></p></td>
+</tr>
+<tr class="row-even"><td><p>rust_nightly</p></td>
+<td><p>auto</p></td>
+<td><p>enabled, disabled, auto</p></td>
+<td><p>Nightly Rust compiler (enabled=required, disabled=don’t use nightly feature, auto=use nightly feature if available) <em>(Added in 1.10.0)</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>cuda_ccbindir</p></td>
+<td><p></p></td>
+<td><p>filesystem path</p></td>
+<td><p>CUDA non-default toolchain directory to use (-ccbin) <em>(Added in 0.57.1)</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The default values of <code class="docutils literal notranslate"><span class="pre">c_winlibs</span></code> and <code class="docutils literal notranslate"><span class="pre">cpp_winlibs</span></code> are in
+compiler-specific argument forms, but the libraries are: kernel32,
+user32, gdi32, winspool, shell32, ole32, oleaut32, uuid, comdlg32,
+advapi32.</p>
+<p>All these <code class="docutils literal notranslate"><span class="pre">&lt;lang&gt;_*</span></code> options are specified per machine. See below in
+the <a class="reference internal" href="#specifying-options-per-machine">specifying options per machine</a>
+section on how to do this in cross builds.</p>
+<p>When using MSVC, <code class="docutils literal notranslate"><span class="pre">cpp_eh=[value]</span></code> will result in <code class="docutils literal notranslate"><span class="pre">/EH[value]</span></code> being passed.
+The magic value <code class="docutils literal notranslate"><span class="pre">none</span></code> translates to <code class="docutils literal notranslate"><span class="pre">s-c-</span></code> to disable exceptions. <em>Since
+0.51.0</em> <code class="docutils literal notranslate"><span class="pre">default</span></code> translates to <code class="docutils literal notranslate"><span class="pre">sc</span></code>. When using gcc-style compilers, nothing
+is passed (allowing exceptions to work), while <code class="docutils literal notranslate"><span class="pre">cpp_eh=none</span></code> passes
+<code class="docutils literal notranslate"><span class="pre">-fno-exceptions</span></code>.</p>
+<p>Since <em>0.54.0</em> The <code class="docutils literal notranslate"><span class="pre">&lt;lang&gt;_thread_count</span></code> option can be used to control
+the value passed to <code class="docutils literal notranslate"><span class="pre">-s</span> <span class="pre">PTHREAD_POOL_SIZE</span></code> when using emcc. No other
+c/c++ compiler supports this option.</p>
+<p>Since <em>0.63.0</em> all compiler options can be set per subproject, see
+<a class="reference internal" href="#specifying-options-per-subproject">here</a> for details on how the default value
+is inherited from the main project. This is useful, for example, when the main
+project requires C++11, but a subproject requires C++14. The <code class="docutils literal notranslate"><span class="pre">cpp_std</span></code> value
+from the subproject’s <code class="docutils literal notranslate"><span class="pre">default_options</span></code> is now respected.</p>
+<p>Since <em>1.3.0</em> <code class="docutils literal notranslate"><span class="pre">c_std</span></code> and <code class="docutils literal notranslate"><span class="pre">cpp_std</span></code> options now accept a list of values.
+Projects that prefer GNU C, but can fallback to ISO C, can now set, for
+example, <code class="docutils literal notranslate"><span class="pre">default_options:</span> <span class="pre">'c_std=gnu11,c11'</span></code>, and it will use <code class="docutils literal notranslate"><span class="pre">gnu11</span></code> when
+available, but fallback to c11 otherwise. It is an error only if none of the
+values are supported by the current compiler.
+Likewise, a project that can take benefit of <code class="docutils literal notranslate"><span class="pre">c++17</span></code> but can still build with
+<code class="docutils literal notranslate"><span class="pre">c++11</span></code> can set <code class="docutils literal notranslate"><span class="pre">default_options:</span> <span class="pre">'cpp_std=c++17,c++11'</span></code>.
+This allows us to deprecate <code class="docutils literal notranslate"><span class="pre">gnuXX</span></code> values from the MSVC compiler. That means
+that <code class="docutils literal notranslate"><span class="pre">default_options:</span> <span class="pre">'c_std=gnu11'</span></code> will now print a warning with MSVC
+but fallback to <code class="docutils literal notranslate"><span class="pre">c11</span></code>. No warning is printed if at least one
+of the values is valid, i.e. <code class="docutils literal notranslate"><span class="pre">default_options:</span> <span class="pre">'c_std=gnu11,c11'</span></code>.
+In the future that deprecation warning will become an hard error because
+<code class="docutils literal notranslate"><span class="pre">c_std=gnu11</span></code> should mean GNU is required, for projects that cannot be
+built with MSVC for example.</p>
+</section>
+<section id="specifying-options-per-machine">
+<h2>Specifying options per machine<a class="headerlink" href="#specifying-options-per-machine" title="Link to this heading">#</a></h2>
+<p>Since <em>0.51.0</em>, some options are specified per machine rather than
+globally for all machine configurations. Prefixing the option with
+<code class="docutils literal notranslate"><span class="pre">build.</span></code> only affects the build machine configuration, while leaving it
+unprefixed only affects the host machine configuration.
+For example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">build.pkg_config_path</span></code> controls the paths pkg-config will search
+for <code class="docutils literal notranslate"><span class="pre">native:</span> <span class="pre">true</span></code> (build machine) dependencies.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pkg_config_path</span></code> controls the paths pkg-config will search for
+<code class="docutils literal notranslate"><span class="pre">native:</span> <span class="pre">false</span></code> (host machine) dependencies.</p></li>
+</ul>
+<p>This is useful for cross builds. In native builds, the build and host
+machines are the same, and the unprefixed option alone will suffice.</p>
+<p>Prior to <em>0.51.0</em>, these options only affected native builds when
+specified on the command line as there was no <code class="docutils literal notranslate"><span class="pre">build.</span></code> prefix.
+Similarly named fields in the <code class="docutils literal notranslate"><span class="pre">[properties]</span></code> section of the cross file
+would affect cross compilers, but the code paths were fairly different,
+allowing differences in behavior to crop out.</p>
+</section>
+<section id="specifying-options-per-subproject">
+<h2>Specifying options per subproject<a class="headerlink" href="#specifying-options-per-subproject" title="Link to this heading">#</a></h2>
+<p>Several built-in options and all compiler options can be defined per subproject.
+This is useful, for example, when building shared libraries in the main project
+and statically linking a subproject, or when the main project must build
+with no warnings but some subprojects cannot.</p>
+<p>Most of the time, this would be used either in the parent project by
+setting subproject’s default_options (e.g. <code class="docutils literal notranslate"><span class="pre">subproject('foo',</span> <span class="pre">default_options:</span> <span class="pre">'default_library=static')</span></code>), or by the user through the
+command line: <code class="docutils literal notranslate"><span class="pre">-Dfoo:default_library=static</span></code>.</p>
+<p>The value is overridden in this order:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">opt=value</span></code> from parent project’s <code class="docutils literal notranslate"><span class="pre">default_options</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">opt=value</span></code> from subproject’s <code class="docutils literal notranslate"><span class="pre">default_options</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">opt=value</span></code> from machine file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">opt=value</span></code> from command line</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">subp:opt=value</span></code> from parent project’s default options</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">opt=value</span></code> from <code class="docutils literal notranslate"><span class="pre">subproject()</span></code> <code class="docutils literal notranslate"><span class="pre">default_options</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">subp:opt=value</span></code> from machine file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">subp:opt=value</span></code> from command line</p></li>
+</ul>
+<section id="old-behavior">
+<h3>Old behavior<a class="headerlink" href="#old-behavior" title="Link to this heading">#</a></h3>
+<p>Between <em>0.54.0</em> and <em>1.7.x</em> only a few options could be defined per subproject:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">default_library</span></code> and <code class="docutils literal notranslate"><span class="pre">werror</span></code> since <em>0.54.0</em>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">warning_level</span></code> since <em>0.56.0</em>;</p></li>
+<li><p>compiler options since <em>0.63.0</em></p></li>
+</ul>
+<p>The value was overridden in this order:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">opt=value</span></code> from parent project’s <code class="docutils literal notranslate"><span class="pre">default_options</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">opt=value</span></code> from machine file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">opt=value</span></code> from command line</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">opt=value</span></code> from subproject’s <code class="docutils literal notranslate"><span class="pre">default_options</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">subp:opt=value</span></code> from parent project’s default options</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">opt=value</span></code> from <code class="docutils literal notranslate"><span class="pre">subproject()</span></code> <code class="docutils literal notranslate"><span class="pre">default_options</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">subp:opt=value</span></code> from machine file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">subp:opt=value</span></code> from command line</p></li>
+</ul>
+<p>In other word, the subproject’s <code class="docutils literal notranslate"><span class="pre">default_options</span></code> had a <em>higher</em> priority
+than <code class="docutils literal notranslate"><span class="pre">opt=value</span></code> from machine file or command line.</p>
+</section>
+</section>
+<section id="module-options">
+<h2>Module options<a class="headerlink" href="#module-options" title="Link to this heading">#</a></h2>
+<p>Some Meson modules have built-in options. They can be set by prefixing the
+option with the module’s name:
+<code class="docutils literal notranslate"><span class="pre">-D&lt;module&gt;.&lt;option&gt;=&lt;value&gt;</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">-Dpython.platlibdir=/foo</span></code>).</p>
+<section id="pkgconfig-module">
+<h3>Pkgconfig module<a class="headerlink" href="#pkgconfig-module" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Default value</p></th>
+<th class="head"><p>Possible values</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>relocatable</p></td>
+<td><p>false</p></td>
+<td><p>true, false</p></td>
+<td><p>Generate the pkgconfig files as relocatable (Since 0.63.0)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Since 0.63.0</em> The <code class="docutils literal notranslate"><span class="pre">pkgconfig.relocatable</span></code> option is used by the
+pkgconfig module–namely <a class="reference internal" href="Pkgconfig-module.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">pkg.generate()</span></code></span></a>–and
+affects how the <code class="docutils literal notranslate"><span class="pre">prefix</span></code> (not to be confused with the
+<a class="reference internal" href="#directories">install prefix</a>) in the generated pkgconfig file is set.
+When it is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the <code class="docutils literal notranslate"><span class="pre">prefix</span></code> will be relative to the <code class="docutils literal notranslate"><span class="pre">install_dir</span></code>-this
+allows the pkgconfig file to be moved around and still work, as long
+as the relative path is not broken. In general, this allows for the whole
+installed package to be placed anywhere on the system and still work as a
+dependency. When it is set to <code class="docutils literal notranslate"><span class="pre">false</span></code>, the <code class="docutils literal notranslate"><span class="pre">prefix</span></code> will be the same as
+the install prefix.</p>
+<p>An error will be raised if <code class="docutils literal notranslate"><span class="pre">pkgconfig.relocatable</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code> and the
+<code class="docutils literal notranslate"><span class="pre">install_dir</span></code> for a generated pkgconfig file points outside the
+install prefix. For example: if the install prefix is <code class="docutils literal notranslate"><span class="pre">/usr</span></code> and the
+<code class="docutils literal notranslate"><span class="pre">install_dir</span></code> for a pkgconfig file is <code class="docutils literal notranslate"><span class="pre">/var/lib/pkgconfig</span></code>.</p>
+</section>
+<section id="python-module">
+<h3>Python module<a class="headerlink" href="#python-module" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Default value</p></th>
+<th class="head"><p>Possible values</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>bytecompile</p></td>
+<td><p>0</p></td>
+<td><p>integer from -1 to 2</p></td>
+<td><p>What bytecode optimization level to use (Since 1.2.0)</p></td>
+</tr>
+<tr class="row-odd"><td><p>install_env</p></td>
+<td><p>prefix</p></td>
+<td><p>{auto,prefix,system,venv}</p></td>
+<td><p>Which python environment to install to (Since 0.62.0)</p></td>
+</tr>
+<tr class="row-even"><td><p>platlibdir</p></td>
+<td><p></p></td>
+<td><p>Directory path</p></td>
+<td><p>Directory for site-specific, platform-specific files (Since 0.60.0)</p></td>
+</tr>
+<tr class="row-odd"><td><p>purelibdir</p></td>
+<td><p></p></td>
+<td><p>Directory path</p></td>
+<td><p>Directory for site-specific, non-platform-specific files  (Since 0.60.0)</p></td>
+</tr>
+<tr class="row-even"><td><p>allow_limited_api</p></td>
+<td><p>true</p></td>
+<td><p>true, false</p></td>
+<td><p>Disables project-wide use of the Python Limited API (Since 1.3.0)</p></td>
+</tr>
+<tr class="row-odd"><td><p>build_config</p></td>
+<td><p></p></td>
+<td><p>File path</p></td>
+<td><p>Specifies the Python build configuration file (PEP 739) (Since 1.10.0)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Since 0.60.0</em> The <code class="docutils literal notranslate"><span class="pre">python.platlibdir</span></code> and <code class="docutils literal notranslate"><span class="pre">python.purelibdir</span></code> options are used
+by the python module methods <code class="docutils literal notranslate"><span class="pre">python.install_sources()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">python.get_install_dir()</span></code>; Meson tries to detect the correct installation paths
+and make them relative to the installation <code class="docutils literal notranslate"><span class="pre">prefix</span></code> by default which will often
+result in the interpreter not finding the installed python modules unless
+<code class="docutils literal notranslate"><span class="pre">prefix</span></code> is <code class="docutils literal notranslate"><span class="pre">/usr</span></code> on Linux, or, for instance, <code class="docutils literal notranslate"><span class="pre">C:\Python39</span></code> on Windows. These
+options can be absolute paths outside of <code class="docutils literal notranslate"><span class="pre">prefix</span></code>.</p>
+<p><em>Since 0.62.0</em> The <code class="docutils literal notranslate"><span class="pre">python.install_env</span></code> option is used to detect the correct
+installation path. Setting to <code class="docutils literal notranslate"><span class="pre">system</span></code> will avoid making the paths relative to
+<code class="docutils literal notranslate"><span class="pre">prefix</span></code> and instead use the global site-packages of the selected python
+interpreter directly, even if it is a venv. Setting to <code class="docutils literal notranslate"><span class="pre">venv</span></code> will instead use
+the paths for the virtualenv the python found installation comes from (or fail
+if it is not a virtualenv).  Setting to <code class="docutils literal notranslate"><span class="pre">auto</span></code> will check if the found
+installation is a virtualenv, and use <code class="docutils literal notranslate"><span class="pre">venv</span></code> or <code class="docutils literal notranslate"><span class="pre">system</span></code> as appropriate (but
+never <code class="docutils literal notranslate"><span class="pre">prefix</span></code>). Note that Conda environments are treated as <code class="docutils literal notranslate"><span class="pre">system</span></code>.
+This option is mutually exclusive with the <code class="docutils literal notranslate"><span class="pre">platlibdir</span></code>/<code class="docutils literal notranslate"><span class="pre">purelibdir</span></code>.</p>
+<p>For backwards compatibility purposes, the default <code class="docutils literal notranslate"><span class="pre">install_env</span></code> is <code class="docutils literal notranslate"><span class="pre">prefix</span></code>.</p>
+<p><em>Since 1.2.0</em> The <code class="docutils literal notranslate"><span class="pre">python.bytecompile</span></code> option can be used to enable compiling
+python bytecode. Bytecode has 3 optimization levels:</p>
+<ul class="simple">
+<li><p>0, bytecode without optimizations</p></li>
+<li><p>1, bytecode with some optimizations</p></li>
+<li><p>2, bytecode with some more optimizations</p></li>
+</ul>
+<p>To this, Meson adds level <code class="docutils literal notranslate"><span class="pre">-1</span></code>, which is to not attempt to compile bytecode at
+all.</p>
+<p><em>Since 1.3.0</em> The <code class="docutils literal notranslate"><span class="pre">python.allow_limited_api</span></code> option affects whether the
+<code class="docutils literal notranslate"><span class="pre">limited_api</span></code> keyword argument of the <code class="docutils literal notranslate"><span class="pre">extension_module</span></code> method is respected.
+If set to <code class="docutils literal notranslate"><span class="pre">false</span></code>, the effect of the <code class="docutils literal notranslate"><span class="pre">limited_api</span></code> argument is disabled.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Syntax.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Syntax</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Reference-tables.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Reference tables</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-options">Universal options</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directories">Directories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-options">Core options</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#details-for-backend">Details for <code class="docutils literal notranslate"><span class="pre">backend</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#details-for-genvslite">Details for <code class="docutils literal notranslate"><span class="pre">genvslite</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#details-for-buildtype">Details for <code class="docutils literal notranslate"><span class="pre">buildtype</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#details-for-warning-level">Details for <code class="docutils literal notranslate"><span class="pre">warning_level</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#details-for-vsenv">Details for <code class="docutils literal notranslate"><span class="pre">vsenv</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#details-for-default-both-libraries">Details for <code class="docutils literal notranslate"><span class="pre">default_both_libraries</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#details-for-os2-emxomf">Details for <code class="docutils literal notranslate"><span class="pre">os2_emxomf</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#base-options">Base options</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-about-apple-bitcode-support">Notes about Apple Bitcode support</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compiler-options">Compiler options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-options-per-machine">Specifying options per machine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-options-per-subproject">Specifying options per subproject</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#old-behavior">Old behavior</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-options">Module options</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pkgconfig-module">Pkgconfig module</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-module">Python module</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/mesonbuild/meson/edit/master/docs/markdown/Builtin-options.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">Website licensing information are available on the <a href="legal.html">Legal</a> page.</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

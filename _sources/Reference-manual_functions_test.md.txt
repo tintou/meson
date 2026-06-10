@@ -1,0 +1,391 @@
+## test()
+
+Defines a test to run with the test harness. Takes two positional
+arguments, the first is the name of the test and the second is the
+executable to run. The executable can be an [[@exe]] object returned by
+[[executable]] or an [[@program]] object] returned by
+[[find_program]].
+
+*(since 0.55.0)* When cross compiling, if an exe_wrapper is needed and
+defined the environment variable `MESON_EXE_WRAPPER` will be set to
+the string value of that wrapper (implementation detail: using
+`mesonlib.join_args`). Test scripts may use this to run cross built
+binaries. If your test needs `MESON_EXE_WRAPPER` in cross build
+situations it is your responsibility to return code 77 to tell the
+harness to report "skip".
+
+By default, environment variable
+[`MALLOC_PERTURB_`](http://man7.org/linux/man-pages/man3/mallopt.3.html)
+is automatically set by `meson test` to a random value between 1..255.
+This can help find memory leaks on configurations using glibc,
+including with non-GCC compilers. However, this can have a performance
+impact, and may fail a test due to external libraries whose internals
+are out of the user's control. To check if this feature is causing an
+expected runtime crash, disable the feature by temporarily setting
+environment variable `MALLOC_PERTURB_=0`. While it's preferable to
+only temporarily disable this check, if a project requires permanent
+disabling of this check in meson.build do like:
+
+```meson
+nomalloc = environment({'MALLOC_PERTURB_': '0'})
+
+test(..., env: nomalloc, ...)
+```
+
+By default, the environment variables `ASAN_OPTIONS`, `UBSAN_OPTIONS`,
+and `MSAN_OPTIONS` are set to enable aborting on detected violations and to
+give a backtrace. To suppress this, `ASAN_OPTIONS`, `UBSAN_OPTIONS`, or
+`MSAN_OPTIONS` can be set in the environment.
+
+In addition to running individual executables as test cases, `test()`
+can also be used to invoke an external test harness.  In this case,
+it is best to use `verbose: true` *(since 0.62.0)* and, if supported
+by the external harness, `protocol: 'tap'` *(since 0.50.0)*.  This will
+ensure that Meson logs each subtest as it runs, instead of including
+the whole log at the end of the run.
+
+Defined tests can be run in a backend-agnostic way by calling
+`meson test` inside the build dir, or by using backend-specific
+commands, such as `ninja test` or `msbuild RUN_TESTS.vcxproj`.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Defines a test to run with the test harness
+[[#@void]] test(
+  [[#@str]]                                                                                                                                                                                                                                                        <a href="#test_name"><b>name</b></a>,           # The *unique* test id
+  [[#@exe]] | [[#@jar]] | [[#@program]] | [[#@file]] | [[#@custom_tgt]] | [[#@custom_idx]]                                                                                                                                                                                                       <a href="#test_executable"><b>executable</b></a>,     # The program to execute
+
+  # Keyword arguments:
+  <a href="#test_args"><b>args</b></a>              : [[#@array]][[[#@str]] | [[#@file]] | [[#@tgt]] | [[#@program]]]                                                                                                                                                         # Arguments to pass to the executable
+  <a href="#test_depends"><b>depends</b></a>           : [[#@array]][[[#@build_tgt]] | [[#@custom_tgt]] | [[#@custom_idx]] | [[#@program]]]                                                                                                                                      # specifies that this test depends on the specified
+  <a href="#test_env"><b>env</b></a>               : [[#@env]] | [[#@array]][[[#@str]]] | [[#@dict]][[[#@str]]]                                                                                                                                                              # environment variables to set, such as `['NAME1=value1',
+  <a href="#test_expected_exitcode"><b>expected_exitcode</b></a> : [[#@int]]                                                                                                                                                                                       # the test is considered passed if the
+  <a href="#test_expected_fail"><b>expected_fail</b></a>     : [[#@bool]]                                                                                                                                                                                      # when true the test is considered passed if the
+  <a href="#test_is_parallel"><b>is_parallel</b></a>       : [[#@bool]]                                                                                                                                                                                      # when false, specifies that no other test must be
+  <a href="#test_priority"><b>priority</b></a>          : [[#@int]]                                                                                                                                                                                       # specifies the priority of a test
+  <a href="#test_protocol"><b>protocol</b></a>          : [[#@str]]                                                                                                                                                                                       # specifies how the test results are parsed and can
+  <a href="#test_should_fail"><b>should_fail</b></a>       : [[#@bool]]                                                                                                                                                                                      # when true the test is considered passed if the
+  <a href="#test_suite"><b>suite</b></a>             : [[#@str]] | [[#@array]][[[#@str]]]                                                                                                                                                                          # `'label'` (or array of labels `['label1', 'label2']`)
+  <a href="#test_timeout"><b>timeout</b></a>           : [[#@int]]                                                                                                                                                                                       # the amount of seconds the test is allowed to run, a test
+  <a href="#test_verbose"><b>verbose</b></a>           : [[#@bool]]                                                                                                                                                                                      # if true, forces the test results to be logged as if `--verbose` was passed
+  <a href="#test_workdir"><b>workdir</b></a>           : [[#@str]]                                                                                                                                                                                       # absolute path that will be used as the working directory
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+  The function `test()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="test_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The *unique* test id
+  </td>
+      </tr>
+      <tr id="test_executable">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">executable</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@exe]]</span> | <span class="text-nowrap">[[@jar]]</span> | <span class="text-nowrap">[[@program]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@custom_tgt]]</span> | <span class="text-nowrap">[[@custom_idx]]</span>
+  </td>
+        <td>
+  
+  The program to execute. *(Since 1.4.0)* A CustomTarget is also accepted.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `test()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="test_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@tgt]]</span> | <span class="text-nowrap">[[@program]]</span>]
+  </td>
+        <td>
+  
+  Arguments to pass to the executable
+  </td>
+      </tr>
+      <tr id="test_depends">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">depends</code>
+  <br>{meson:since}`0.46.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@build_tgt]]</span> | <span class="text-nowrap">[[@custom_tgt]]</span> | <span class="text-nowrap">[[@custom_idx]]</span> | <span class="text-nowrap">[[@program]]</span>]
+  </td>
+        <td>
+  
+  specifies that this test depends on the specified
+target(s), even though it does not take any of them as a command
+line argument. This is meant for cases where test finds those
+targets internally, e.g. plugins or globbing. Those targets are built
+before test is executed even if they have `build_by_default : false`.
+`program` is supported *since 1.11.2*.
+
+  </td>
+      </tr>
+      <tr id="test_env">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">env</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@env]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>] | [[@dict]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  environment variables to set, such as `['NAME1=value1',
+'NAME2=value2']`, or an [[@env]] object which allows more sophisticated
+environment juggling. *(Since 0.52.0)* A dictionary is also accepted.
+
+  </td>
+      </tr>
+      <tr id="test_expected_exitcode">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">expected_exitcode</code>
+  <br>{meson:since}`1.11.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@int]]</span>
+  <br><code class="language-meson text-nowrap">default = 0</code>
+  </td>
+        <td>
+  
+  the test is considered passed if the
+executable returns the specified returncode,
+only has effect when protocol is set to exitcode
+
+  </td>
+      </tr>
+      <tr id="test_expected_fail">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">expected_fail</code>
+  <br>{meson:since}`1.11.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  when true the test is considered passed if the
+executable returns a non-zero return value (i.e. reports an error)
+
+  </td>
+      </tr>
+      <tr id="test_is_parallel">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">is_parallel</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = true</code>
+  </td>
+        <td>
+  
+  when false, specifies that no other test must be
+running at the same time as this test
+
+  </td>
+      </tr>
+      <tr id="test_priority">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">priority</code>
+  <br>{meson:since}`0.52.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@int]]</span>
+  <br><code class="language-meson text-nowrap">default = 0</code>
+  </td>
+        <td>
+  
+  specifies the priority of a test. Tests with a
+higher priority are *started* before tests with a lower priority.
+The starting order of tests with identical priorities is
+implementation-defined. The default priority is 0, negative numbers are
+permitted.
+
+  </td>
+      </tr>
+      <tr id="test_protocol">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">protocol</code>
+  <br>{meson:since}`0.50.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  <br><code class="language-meson text-nowrap">default = 'exitcode'</code>
+  </td>
+        <td>
+  
+  specifies how the test results are parsed and can
+be one of `exitcode`, `tap`, or `gtest`. For more information about test
+harness protocol read [Unit Tests](Unit-tests.md). The following values are
+accepted:
+
+- `exitcode`: the executable's exit code is used by the test harness
+  to record the outcome of the test).
+- `tap`: [Test Anything Protocol](https://www.testanything.org/).
+- `gtest` *(since 0.55.0)*: for Google Tests.
+- `rust` *(since 0.56.0)*: for native rust tests
+
+  </td>
+      </tr>
+      <tr id="test_should_fail">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">should_fail</code>
+  <br>{meson:deprecated}`1.11.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  when true the test is considered passed if the
+executable returns a non-zero return value (i.e. reports an error)
+
+  </td>
+      </tr>
+      <tr id="test_suite">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">suite</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  `'label'` (or array of labels `['label1', 'label2']`)
+attached to this test. The suite name is qualified by a (sub)project
+name resulting in `(sub)project_name:label`. In the case of an array
+of strings, the suite names will be `(sub)project_name:label1`,
+`(sub)project_name:label2`, etc.
+
+  </td>
+      </tr>
+      <tr id="test_timeout">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">timeout</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@int]]</span>
+  <br><code class="language-meson text-nowrap">default = 30</code>
+  </td>
+        <td>
+  
+  the amount of seconds the test is allowed to run, a test
+that exceeds its time limit is always considered failed, defaults to
+30 seconds. *Since 0.57* if timeout is `<= 0` the test has infinite duration,
+in previous versions of Meson the test would fail with a timeout immediately.
+
+  </td>
+      </tr>
+      <tr id="test_verbose">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">verbose</code>
+  <br>{meson:since}`0.62.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  if true, forces the test results to be logged as if `--verbose` was passed
+to `meson test`.
+
+  </td>
+      </tr>
+      <tr id="test_workdir">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">workdir</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  absolute path that will be used as the working directory
+for the test
+
+  </td>
+      </tr>
+    </tbody>
+  </table>

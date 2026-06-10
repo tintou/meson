@@ -1,0 +1,379 @@
+---
+short-description: "Returned object: JAR build target"
+title: JAR build target
+render-subpages: false
+...
+# JAR build target (`jar` extends [[@build_tgt]])
+
+A Java JAR build target
+
+
+## Returned by
+
+JAR build target objects are returned by the following functions and methods:
+- [[jar]]
+
+
+
+
+
+## Inherited methods
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### build_tgt.extract_all_objects()
+
+Acts the same as `extract_objects`, but returns all object files generated
+by this target.
+
+By default only objects built for this target are returned to maintain
+backward compatibility with previous versions.  The default value for the
+`recursive` kwarg will eventually be changed to `true` in a future version.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Acts the same as `extract_objects`, but returns all object files generated
+[[#@extracted_obj]] extract_all_objects(
+  <a href="#extract_all_objects_recursive"><b>recursive</b></a> : [[#@bool]]                                   # Also return objects passed to the `objects` argument of this target
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+
+
+  The method `build_tgt.extract_all_objects()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="extract_all_objects_recursive">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">recursive</code>
+  <br>{meson:since}`0.46.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = true</code>
+  </td>
+        <td>
+  
+  Also return objects passed to the `objects` argument of this target.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### build_tgt.extract_objects()
+
+Returns an opaque value representing the object files generated for those
+source files. This is typically used to take single object files and link
+them to unit tests or to compile some source files with custom flags. To
+use the object file(s) in another build target, use the
+`objects:` keyword argument to a [[build_target]] or [[declare_dependency]],
+or include them in the command line of a [[custom_target]].
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns an opaque value representing the object files generated for those
+[[#@extracted_obj]] extract_objects(
+  [[#@str]] | [[#@file]]                                                                   <b>source</b>...,  # Source filenames for which the built objects should be extracted
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+
+  The
+  method accepts between `1` and `infinity` variadic
+  arguments (`source...`) of type <code><span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span></code>.
+
+  Source filenames for which the built objects should be extracted.
+
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### build_tgt.found()
+
+Always returns `true`. This function is meant to make executables
+objects feature compatible with [[@program]] objects. This
+simplifies use-cases where an executable is used instead of
+an [[@program]].
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.59.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@bool]] found()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### build_tgt.full_path()
+
+Returns a full path pointing to the result target file.
+**NOTE:** In most cases using the object itself will do the same job
+as this and will also allow Meson to setup inter-target dependencies
+correctly. Please file a bug if that doesn't work for you.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] full_path()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### build_tgt.name()
+
+Returns the name of the target.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.54.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] name()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### build_tgt.path()
+
+Does the exact same as [[build_tgt.full_path]]. **NOTE**: This
+function is solely kept for compatibility with [[@program]] objects.
+It will be removed once the, also deprecated, corresponding `path()`
+function in the [[@program]] object is removed.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.59.0`
+{meson:deprecated}`0.59.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] path()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### build_tgt.private_dir_include()
+
+Returns a value that works like [[include_directories]], but points to the
+private directory of this target. Usually only needed if an another target
+needs to access some generated internal headers of this target.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@inc]] private_dir_include()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### build_tgt.vala_gir()
+
+Returns a [[@file]] object pointing to a GIR file generated by the vala
+compiler, if this target does not generate a GIR file then it is an error
+to call this method.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`1.10.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@file]] vala_gir()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### build_tgt.vala_header()
+
+Returns a [[@file]] object pointing to a C compatible header generated by
+the vala compiler, if this target does not generate a vala header then it is
+an error to call this method.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`1.10.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@file]] vala_header()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### build_tgt.vala_vapi()
+
+Returns a [[@file]] object pointing to a VAPI header generated by the vala
+compiler, if this target does not generate a VAPI file then it is an error
+to call this method.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`1.10.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@file]] vala_vapi()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---

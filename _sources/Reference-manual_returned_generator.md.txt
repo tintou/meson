@@ -1,0 +1,159 @@
+---
+short-description: "Returned object: Generator object"
+title: Generator object
+render-subpages: false
+...
+# Generator object (`generator`)
+
+This object is returned by [[generator]] and contains a
+generator that is used to transform files from one type to another by
+an executable (e.g. `idl` files into source code and headers).
+
+
+## Returned by
+
+Generator object objects are returned by the following functions and methods:
+- [[generator]]
+
+
+
+
+## Generator object methods
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### generator.process()
+
+Takes an array of files, causes them to be processed and returns an object containing the result
+which can then, for example, be passed into a build target definition.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Takes an array of files, causes them to be processed and returns an object containing the result
+[[#@generated_list]] process(
+  [[#@str]] | [[#@file]] | [[#@custom_tgt]] | [[#@custom_idx]] | [[#@generated_list]]                                                                                                                                                                      <b>source</b>...,  # sources to process
+
+  # Keyword arguments:
+  <a href="#process_depends"><b>depends</b></a>            : [[#@array]][[[#@build_tgt]] | [[#@custom_tgt]] | [[#@custom_idx]] | [[#@program]]]                                                                                                                                      # An array of build targets that must be built before attempting to run this
+  <a href="#process_env"><b>env</b></a>                : [[#@env]] | [[#@array]][[[#@str]]] | [[#@dict]][[[#@str]]]                                                                                                                                                              # environment variables to set, such as
+  <a href="#process_extra_args"><b>extra_args</b></a>         : [[#@array]][[[#@str]]]                                                                                                                                                                                # If present, will be used to replace an entry `@EXTRA_ARGS@` in the argument array
+  <a href="#process_preserve_path_from"><b>preserve_path_from</b></a> : [[#@str]]                                                                                                                                                                                       # If given, specifies that the output files need to maintain their directory structure
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+
+  The
+  method accepts between `1` and `infinity` variadic
+  arguments (`source...`) of type <code><span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@custom_tgt]]</span> | <span class="text-nowrap">[[@custom_idx]]</span> | <span class="text-nowrap">[[@generated_list]]</span></code>.
+
+  sources to process.
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  The method `generator.process()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="process_depends">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">depends</code>
+  <br>{meson:since}`1.12.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@build_tgt]]</span> | <span class="text-nowrap">[[@custom_tgt]]</span> | <span class="text-nowrap">[[@custom_idx]]</span> | <span class="text-nowrap">[[@program]]</span>]
+  </td>
+        <td>
+  
+  An array of build targets that must be built before attempting to run this
+generator against the source files. This extends the `depends` value of the
+generator to be run.
+
+  </td>
+      </tr>
+      <tr id="process_env">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">env</code>
+  <br>{meson:since}`1.3.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@env]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>] | [[@dict]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  environment variables to set, such as
+`{'NAME1': 'value1', 'NAME2': 'value2'}` or `['NAME1=value1', 'NAME2=value2']`,
+or an [[@env]] object which allows more
+sophisticated environment juggling.
+
+  </td>
+      </tr>
+      <tr id="process_extra_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">extra_args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  If present, will be used to replace an entry `@EXTRA_ARGS@` in the argument array.
+
+  </td>
+      </tr>
+      <tr id="process_preserve_path_from">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">preserve_path_from</code>
+  <br>{meson:since}`0.45.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  If given, specifies that the output files need to maintain their directory structure
+inside the target temporary directory. The most common value for this is
+`meson.current_source_dir()`. With this value when a file called
+`subdir/one.input` is processed it generates a file `{target private
+directory}/subdir/one.out` as opposed to `{target private
+directory}/one.out`.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+

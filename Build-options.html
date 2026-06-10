@@ -1,0 +1,831 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Build options &#8212; Meson documentation 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d99633c1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Build-options';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Build targets" href="Build-targets.html" />
+    <link rel="prev" title="Configuring a build directory" href="Configuring-a-build-directory.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/meson_logo.png" class="logo__image only-light" alt="Meson documentation 1.0 documentation - Home"/>
+    <img src="_static/meson_logo.png" class="logo__image only-dark pst-js-only" alt="Meson documentation 1.0 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Running-Meson.html">Running Meson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Commands.html">Command-line commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuring-a-build-directory.html">Configuring a build directory</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Build options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-targets.html">Build targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dependencies.html">Dependencies</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Subprojects.html">Subprojects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuration.html">Configuration</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generating-sources.html">Generating sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Custom-build-targets.html">Custom build targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-arguments.html">Adding arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compiler-properties.html">Compiler properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Include-directories.html">Include directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feature-autodetection.html">Feature autodetection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Disabler.html">Disabling parts of the build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Precompiled-headers.html">Precompiled headers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity-builds.html">Unity builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Threads.html">Threads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="External-commands.html">External commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Code-formatting.html">clang-format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-tests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Run-targets.html">Run targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IDE-integration.html">IDE integration</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Build-system-converters.html">Build system converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cross-compilation.html">Cross compilation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Machine-files.html">Cross and Native File reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Native-environments.html">Persistent native environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Localisation.html">Localisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-releases.html">Creating releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-OSX-packages.html">Creating OSX packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-Linux-binaries.html">Creating Linux binaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Project-templates.html">Project templates</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Reproducible-builds.html">Reproducible builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtox.html">How do I do X in Meson?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Java.html">Compiling Java applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Vala.html">Compiling Vala applications and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D.html">Compiling D applications</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Cython.html">Cython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rust.html">Using Rust with Meson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Using-with-Visual-Studio.html">Using with Visual Studio</a></li>
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="Wrap-dependency-system-manual.html">Wrap dependency system manual</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Wrapdb-projects.html">Meson WrapDB packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-projects-to-wrapdb.html">Adding new projects to WrapDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-the-WrapDB.html">Using the WrapDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-wraptool.html">Using wraptool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wrap-best-practices-and-tips.html">Wrap best practices and tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shipping-prebuilt-binaries-as-wraps.html">Shipping prebuilt binaries as wraps</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="Guide.html" class="nav-link">Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Build options</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="build-options">
+<h1>Build options<a class="headerlink" href="#build-options" title="Link to this heading">#</a></h1>
+<p>Most non-trivial builds require user-settable options. As an example a
+program may have two different data backends that are selectable at
+build time. Meson provides for this by having an option definition
+file. Its name is <code class="docutils literal notranslate"><span class="pre">meson.options</span></code> and it is placed at the root of
+your source tree. For versions of meson before 1.1, this file was called
+<code class="docutils literal notranslate"><span class="pre">meson_options.txt</span></code>.</p>
+<p>Here is a simple option file.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">(</span><span class="s">&#39;someoption&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;string&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;optval&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">description</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;An option&#39;</span><span class="p">)</span>
+<span class="n">option</span><span class="p">(</span><span class="s">&#39;other_one&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;boolean&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="n">option</span><span class="p">(</span><span class="s">&#39;combo_opt&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;combo&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">choices</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;one&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;two&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;three&#39;</span><span class="p">],</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;three&#39;</span><span class="p">)</span>
+<span class="n">option</span><span class="p">(</span><span class="s">&#39;integer_opt&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;integer&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">min</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">0</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c"># Since 0.45.0</span>
+<span class="n">option</span><span class="p">(</span><span class="s">&#39;free_array_opt&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;array&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;one&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;two&#39;</span><span class="p">])</span><span class="w">  </span><span class="c"># Since 0.44.0</span>
+<span class="n">option</span><span class="p">(</span><span class="s">&#39;array_opt&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;array&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">choices</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;one&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;two&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;three&#39;</span><span class="p">],</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;one&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;two&#39;</span><span class="p">])</span>
+<span class="n">option</span><span class="p">(</span><span class="s">&#39;some_feature&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;feature&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;enabled&#39;</span><span class="p">)</span><span class="w">  </span><span class="c"># Since 0.47.0</span>
+<span class="n">option</span><span class="p">(</span><span class="s">&#39;long_desc&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;string&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;optval&#39;</span><span class="p">,</span>
+<span class="w">       </span><span class="n">description</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;An option with a very long description&#39;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                     </span><span class="s">&#39;that does something in a specific context&#39;</span><span class="p">)</span><span class="w"> </span><span class="c"># Since 0.55.0</span>
+</pre></div>
+</div>
+<p>For built-in options, see <a class="reference external" href="https://mesonbuild.com/Builtin-options.html">Built-in options</a>.</p>
+<section id="build-option-types">
+<h2>Build option types<a class="headerlink" href="#build-option-types" title="Link to this heading">#</a></h2>
+<p>All types allow a <code class="docutils literal notranslate"><span class="pre">description</span></code> value to be set describing the option,
+if no description is set then the name of the option will be used instead.</p>
+<section id="strings">
+<h3>Strings<a class="headerlink" href="#strings" title="Link to this heading">#</a></h3>
+<p>The string type is a free form string. If the default value is not set
+then an empty string will be used as the default.</p>
+</section>
+<section id="booleans">
+<h3>Booleans<a class="headerlink" href="#booleans" title="Link to this heading">#</a></h3>
+<p>Booleans may have values of either <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code>. If no default
+value is supplied then <code class="docutils literal notranslate"><span class="pre">true</span></code> will be used as the default.</p>
+</section>
+<section id="combos">
+<h3>Combos<a class="headerlink" href="#combos" title="Link to this heading">#</a></h3>
+<p>A combo allows any one of the values in the <code class="docutils literal notranslate"><span class="pre">choices</span></code> parameter to be
+selected. If no default value is set then the first value will be the
+default.</p>
+</section>
+<section id="integers">
+<h3>Integers<a class="headerlink" href="#integers" title="Link to this heading">#</a></h3>
+<p>An integer option contains a single integer with optional upper and
+lower values that are specified with the <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code> keyword
+arguments.</p>
+<p>This type is available since Meson version 0.45.0.</p>
+</section>
+<section id="arrays">
+<h3>Arrays<a class="headerlink" href="#arrays" title="Link to this heading">#</a></h3>
+<p>Arrays represent an array of strings. By default the array can contain
+arbitrary strings. To limit the possible values that can be used set the
+<code class="docutils literal notranslate"><span class="pre">choices</span></code> parameter. Meson will then only allow the value array to
+contain strings that are in the given list. The array may be
+empty. The <code class="docutils literal notranslate"><span class="pre">value</span></code> parameter specifies the default value of the option
+and if it is unset then the values of <code class="docutils literal notranslate"><span class="pre">choices</span></code> will be used as the
+default.</p>
+<p>As of 0.47.0 -Dopt= and -Dopt=[] both pass an empty list, before this
+-Dopt= would pass a list with an empty string.</p>
+<p>This type is available since version 0.44.0</p>
+</section>
+<section id="features">
+<h3>Features<a class="headerlink" href="#features" title="Link to this heading">#</a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">feature</span></code> option has three states: <code class="docutils literal notranslate"><span class="pre">enabled</span></code>, <code class="docutils literal notranslate"><span class="pre">disabled</span></code> or <code class="docutils literal notranslate"><span class="pre">auto</span></code>.
+It is intended to be passed as a value for the <code class="docutils literal notranslate"><span class="pre">required</span></code> keyword
+argument of most functions. Currently supported in
+<a href="Reference-manual_functions.html#add_languages"><code>add_languages()</code></a>,
+<a href="Reference-manual_returned_compiler.html#compilerfind_library"><code>compiler.find_library()</code></a>,
+<a href="Reference-manual_returned_compiler.html#compilerhas_header"><code>compiler.has_header()</code></a>,
+<a href="Reference-manual_functions.html#dependency"><code>dependency()</code></a>,
+<a href="Reference-manual_functions.html#find_program"><code>find_program()</code></a>,
+<a href="Reference-manual_functions.html#import"><code>import()</code></a> and
+<a href="Reference-manual_functions.html#subproject"><code>subproject()</code></a>
+functions.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">enabled</span></code> is the same as passing <code class="docutils literal notranslate"><span class="pre">required</span> <span class="pre">:</span> <span class="pre">true</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">auto</span></code> is the same as passing <code class="docutils literal notranslate"><span class="pre">required</span> <span class="pre">:</span> <span class="pre">false</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">disabled</span></code> do not look for the dependency and always return ‘not-found’.</p></li>
+</ul>
+<p>When getting the value of this type of option using <a href="Reference-manual_functions.html#get_option"><code>get_option()</code></a>, a
+special <a href="Reference-manual_returned_feature.html"><code>feature</code></a> object is returned instead
+of the string representation of the option’s value. This object can be
+passed to <code class="docutils literal notranslate"><span class="pre">required</span></code>:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nb">get_option</span><span class="p">(</span><span class="s">&#39;myfeature&#39;</span><span class="p">))</span>
+<span class="k">if</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">found</span><span class="p">()</span>
+<span class="w">  </span><span class="n">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">executable</span><span class="p">(</span><span class="s">&#39;myapp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;main.c&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">dependencies</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">d</span><span class="p">])</span>
+<span class="k">endif</span>
+</pre></div>
+</div>
+<p>To check the value of the feature, the object has three methods
+returning a boolean and taking no argument:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.enabled()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.disabled()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.auto()</span></code></p></li>
+</ul>
+<p>This is useful for custom code depending on the feature:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="nb">get_option</span><span class="p">(</span><span class="s">&#39;myfeature&#39;</span><span class="p">).</span><span class="n">enabled</span><span class="p">()</span>
+<span class="w">  </span><span class="c"># ...</span>
+<span class="k">endif</span>
+</pre></div>
+</div>
+<p>If the value of a <code class="docutils literal notranslate"><span class="pre">feature</span></code> option is set to <code class="docutils literal notranslate"><span class="pre">auto</span></code>, that value is
+overridden by the global <code class="docutils literal notranslate"><span class="pre">auto_features</span></code> option (which defaults to
+<code class="docutils literal notranslate"><span class="pre">auto</span></code>). This is intended to be used by packagers who want to have
+full control on which dependencies are required and which are
+disabled, and not rely on build-deps being installed (at the right
+version) to get a feature enabled. They could set
+<code class="docutils literal notranslate"><span class="pre">auto_features=enabled</span></code> to enable all features and disable explicitly
+only the few they don’t want, if any.</p>
+<p>This type is available since version 0.47.0</p>
+</section>
+</section>
+<section id="deprecated-options">
+<h2>Deprecated options<a class="headerlink" href="#deprecated-options" title="Link to this heading">#</a></h2>
+<p>Since <em>0.60.0</em></p>
+<p>Project options can be marked as deprecated and Meson will warn when user sets a
+value to it. It is also possible to deprecate only some of the choices, and map
+deprecated values to a new value.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="c"># Option fully deprecated, it warns when any value is set.</span>
+<span class="n">option</span><span class="p">(</span><span class="s">&#39;o1&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;boolean&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">deprecated</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+
+<span class="c"># One of the choices is deprecated, it warns only when &#39;a&#39; is in the list of values.</span>
+<span class="n">option</span><span class="p">(</span><span class="s">&#39;o2&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;array&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">choices</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;b&#39;</span><span class="p">],</span><span class="w"> </span><span class="n">deprecated</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">])</span>
+
+<span class="c"># One of the choices is deprecated, it warns only when &#39;a&#39; is in the list of values</span>
+<span class="c"># and replace it by &#39;c&#39;.</span>
+<span class="n">option</span><span class="p">(</span><span class="s">&#39;o3&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;array&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">choices</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="p">],</span><span class="w"> </span><span class="n">deprecated</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s">&#39;a&#39;</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="p">})</span>
+
+<span class="c"># A boolean option has been replaced by a feature, old true/false values are remapped.</span>
+<span class="n">option</span><span class="p">(</span><span class="s">&#39;o4&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;feature&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">deprecated</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s">&#39;true&#39;</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;enabled&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;false&#39;</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;disabled&#39;</span><span class="p">})</span>
+
+<span class="c"># A feature option has been replaced by a boolean, enabled/disabled/auto values are remapped.</span>
+<span class="n">option</span><span class="p">(</span><span class="s">&#39;o5&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;boolean&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">deprecated</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s">&#39;enabled&#39;</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;disabled&#39;</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;false&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;auto&#39;</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;false&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Since <em>0.63.0</em> the <code class="docutils literal notranslate"><span class="pre">deprecated</span></code> keyword argument can take the name of a new option
+that replaces this option. In that case, setting a value on the deprecated option
+will set the value on both the old and new names, assuming they accept the same
+values.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="c"># A boolean option has been replaced by a feature with another name, old true/false values</span>
+<span class="c"># are accepted by the new option for backward compatibility.</span>
+<span class="n">option</span><span class="p">(</span><span class="s">&#39;o6&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;boolean&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">deprecated</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;o7&#39;</span><span class="p">)</span>
+<span class="n">option</span><span class="p">(</span><span class="s">&#39;o7&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;feature&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;enabled&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">deprecated</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s">&#39;true&#39;</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;enabled&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;false&#39;</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;disabled&#39;</span><span class="p">})</span>
+
+<span class="c"># A project option is replaced by a module option</span>
+<span class="n">option</span><span class="p">(</span><span class="s">&#39;o8&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;string&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">deprecated</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;python.platlibdir&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="using-build-options">
+<h2>Using build options<a class="headerlink" href="#using-build-options" title="Link to this heading">#</a></h2>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">optval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">get_option</span><span class="p">(</span><span class="s">&#39;opt_name&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This function also allows you to query the value of Meson’s built-in
+project options. For example, to get the installation prefix you would
+issue the following command:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">get_option</span><span class="p">(</span><span class="s">&#39;prefix&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It should be noted that you cannot set option values in your Meson
+scripts. They have to be set externally with the <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">configure</span></code>
+command line tool. Running <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">configure</span></code> without arguments in a
+build dir shows you all options you can set.</p>
+<p>To change their values use the <code class="docutils literal notranslate"><span class="pre">-D</span></code>
+option:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>meson<span class="w"> </span>configure<span class="w"> </span>-Doption<span class="o">=</span>newvalue
+</pre></div>
+</div>
+<p>Setting the value of arrays is a bit special. If you only pass a
+single string, then it is considered to have all values separated by
+commas. Thus invoking the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>meson<span class="w"> </span>configure<span class="w"> </span>-Darray_opt<span class="o">=</span>foo,bar
+</pre></div>
+</div>
+<p>would set the value to an array of two elements, <code class="docutils literal notranslate"><span class="pre">foo</span></code> and <code class="docutils literal notranslate"><span class="pre">bar</span></code>.</p>
+<p>If you need to have commas in your string values, then you need to
+pass the value with proper shell quoting like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>meson<span class="w"> </span>configure<span class="w"> </span><span class="s2">&quot;-Doption=[&#39;a,b&#39;, &#39;c,d&#39;]&quot;</span>
+</pre></div>
+</div>
+<p>The inner values must always be single quotes and the outer ones
+double quotes.</p>
+<p>To change values in subprojects prepend the name of the subproject and
+a colon:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>meson<span class="w"> </span>configure<span class="w"> </span>-Dsubproject:option<span class="o">=</span>newvalue
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you cannot call <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">configure</span></code> you likely have an old
+version of Meson. In that case you can call <code class="docutils literal notranslate"><span class="pre">mesonconf</span></code> instead, but
+that is deprecated in newer versions</p>
+</div>
+</section>
+<section id="yielding-to-superproject-option">
+<h2>Yielding to superproject option<a class="headerlink" href="#yielding-to-superproject-option" title="Link to this heading">#</a></h2>
+<p>Suppose you have a master project and a subproject. In some cases it
+might be useful to have an option that has the same value in both of
+them. This can be achieved with the <code class="docutils literal notranslate"><span class="pre">yield</span></code> keyword. Suppose you have
+an option definition like this:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="p">(</span><span class="s">&#39;some_option&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;string&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;value&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">yield</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you build this project on its own, this option behaves like
+usual. However if you build this project as a subproject of another
+project which also has an option called <code class="docutils literal notranslate"><span class="pre">some_option</span></code>, then calling
+<code class="docutils literal notranslate"><span class="pre">get_option</span></code> returns the value of the superproject. If the value of
+<code class="docutils literal notranslate"><span class="pre">yield</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, <code class="docutils literal notranslate"><span class="pre">get_option</span></code> returns the value of the subproject’s
+option.</p>
+<p><em>Since 1.8.0</em> <code class="docutils literal notranslate"><span class="pre">-Dsub:some_option=anothervalue</span></code>, when used with a
+yielding option, sets the value separately from the option
+it yields to.</p>
+</section>
+<section id="built-in-build-options">
+<h2>Built-in build options<a class="headerlink" href="#built-in-build-options" title="Link to this heading">#</a></h2>
+<p>There are a number of <a class="reference external" href="https://mesonbuild.com/Builtin-options.html">built-in options</a>. To get the
+current list execute <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">configure</span></code> in the build directory.</p>
+<section id="visual-studio">
+<h3>Visual Studio<a class="headerlink" href="#visual-studio" title="Link to this heading">#</a></h3>
+<section id="startup-project">
+<h4>Startup project<a class="headerlink" href="#startup-project" title="Link to this heading">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">backend_startup_project</span></code> option can be set to define the default
+project that will be executed with the “Start debugging F5” action in
+visual studio. It should be the same name as an executable target
+name.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">project</span><span class="p">(</span><span class="s">&#39;my_project&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">default_options</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;backend_startup_project=my_exe&#39;</span><span class="p">])</span>
+<span class="nb">executable</span><span class="p">(</span><span class="s">&#39;my_exe&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ninja">
+<h3>Ninja<a class="headerlink" href="#ninja" title="Link to this heading">#</a></h3>
+<section id="max-links">
+<h4>Max links<a class="headerlink" href="#max-links" title="Link to this heading">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">backend_max_links</span></code> can be set to limit the number of processes
+that ninja will use to link.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Configuring-a-build-directory.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Configuring a build directory</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Build-targets.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Build targets</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-option-types">Build option types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">Strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#booleans">Booleans</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combos">Combos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integers">Integers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays">Arrays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecated-options">Deprecated options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-build-options">Using build options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yielding-to-superproject-option">Yielding to superproject option</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-build-options">Built-in build options</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-studio">Visual Studio</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#startup-project">Startup project</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ninja">Ninja</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#max-links">Max links</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/mesonbuild/meson/edit/master/docs/markdown/Build-options.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">Website licensing information are available on the <a href="legal.html">Legal</a> page.</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

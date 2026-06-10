@@ -1,0 +1,1399 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Dependencies &#8212; Meson documentation 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d99633c1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Dependencies';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Subprojects" href="Subprojects.html" />
+    <link rel="prev" title="Build targets" href="Build-targets.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/meson_logo.png" class="logo__image only-light" alt="Meson documentation 1.0 documentation - Home"/>
+    <img src="_static/meson_logo.png" class="logo__image only-dark pst-js-only" alt="Meson documentation 1.0 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Running-Meson.html">Running Meson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Commands.html">Command-line commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuring-a-build-directory.html">Configuring a build directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-options.html">Build options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-targets.html">Build targets</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Dependencies</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Subprojects.html">Subprojects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuration.html">Configuration</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generating-sources.html">Generating sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Custom-build-targets.html">Custom build targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-arguments.html">Adding arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compiler-properties.html">Compiler properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Include-directories.html">Include directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feature-autodetection.html">Feature autodetection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Disabler.html">Disabling parts of the build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Precompiled-headers.html">Precompiled headers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity-builds.html">Unity builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Threads.html">Threads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="External-commands.html">External commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Code-formatting.html">clang-format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-tests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Run-targets.html">Run targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IDE-integration.html">IDE integration</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Build-system-converters.html">Build system converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cross-compilation.html">Cross compilation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Machine-files.html">Cross and Native File reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Native-environments.html">Persistent native environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Localisation.html">Localisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-releases.html">Creating releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-OSX-packages.html">Creating OSX packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-Linux-binaries.html">Creating Linux binaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Project-templates.html">Project templates</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Reproducible-builds.html">Reproducible builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtox.html">How do I do X in Meson?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Java.html">Compiling Java applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Vala.html">Compiling Vala applications and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D.html">Compiling D applications</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Cython.html">Cython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rust.html">Using Rust with Meson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Using-with-Visual-Studio.html">Using with Visual Studio</a></li>
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="Wrap-dependency-system-manual.html">Wrap dependency system manual</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Wrapdb-projects.html">Meson WrapDB packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-projects-to-wrapdb.html">Adding new projects to WrapDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-the-WrapDB.html">Using the WrapDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-wraptool.html">Using wraptool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wrap-best-practices-and-tips.html">Wrap best practices and tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shipping-prebuilt-binaries-as-wraps.html">Shipping prebuilt binaries as wraps</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="Guide.html" class="nav-link">Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Dependencies</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="dependencies">
+<h1>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading">#</a></h1>
+<p>Very few applications are fully self-contained, but rather they use
+external libraries and frameworks to do their work. Meson makes it
+very easy to find and use external dependencies. Here is how one would
+use the zlib compression library.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">zdep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;zlib&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;=1.2.8&#39;</span><span class="p">)</span>
+<span class="n">exe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">executable</span><span class="p">(</span><span class="s">&#39;zlibprog&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;prog.c&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">dependencies</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">zdep</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>First Meson is told to find the external library <code class="docutils literal notranslate"><span class="pre">zlib</span></code> and error out
+if it is not found. The <code class="docutils literal notranslate"><span class="pre">version</span></code> keyword is optional and specifies a
+version requirement for the dependency. Then an executable is built
+using the specified dependency. Note how the user does not need to
+manually handle compiler or linker flags or deal with any other
+minutiae.</p>
+<p>If you have multiple dependencies, pass them as an array:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="nb">executable</span><span class="p">(</span><span class="s">&#39;manydeps&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;file.c&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">dependencies</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">dep1</span><span class="p">,</span><span class="w"> </span><span class="n">dep2</span><span class="p">,</span><span class="w"> </span><span class="n">dep3</span><span class="p">,</span><span class="w"> </span><span class="n">dep4</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>If the dependency is optional, you can tell Meson not to error out if
+the dependency is not found and then do further configuration.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">opt_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;somedep&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="k">if</span><span class="w"> </span><span class="n">opt_dep</span><span class="p">.</span><span class="n">found</span><span class="p">()</span>
+<span class="w">  </span><span class="c"># Do something.</span>
+<span class="k">else</span>
+<span class="w">  </span><span class="c"># Do something else.</span>
+<span class="k">endif</span>
+</pre></div>
+</div>
+<p>You can pass the <code class="docutils literal notranslate"><span class="pre">opt_dep</span></code> variable to target construction functions
+whether the actual dependency was found or not. Meson will ignore
+non-found dependencies.</p>
+<p>Meson also allows one to get variables that are defined in a
+<code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> file. This can be done by using the
+<a href="Reference-manual_returned_dep.html#depget_pkgconfig_variable"><code>dep.get_pkgconfig_variable()</code></a> function.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">zdep_prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zdep</span><span class="p">.</span><span class="n">get_pkgconfig_variable</span><span class="p">(</span><span class="s">&#39;prefix&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These variables can also be redefined by passing the <code class="docutils literal notranslate"><span class="pre">define_variable</span></code>
+parameter, which might be useful in certain situations:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">zdep_prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zdep</span><span class="p">.</span><span class="n">get_pkgconfig_variable</span><span class="p">(</span><span class="s">&#39;libdir&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">define_variable</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;prefix&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;/tmp&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The dependency detector works with all libraries that provide a
+<code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> file. Unfortunately several packages don’t provide
+pkg-config files. Meson has autodetection support for some of these,
+and they are described <a class="reference internal" href="#dependencies-with-custom-lookup-functionality">later in this
+page</a>.</p>
+</section>
+<section id="arbitrary-variables-from-dependencies-that-can-be-found-multiple-ways">
+<h1>Arbitrary variables from dependencies that can be found multiple ways<a class="headerlink" href="#arbitrary-variables-from-dependencies-that-can-be-found-multiple-ways" title="Link to this heading">#</a></h1>
+<p><em>Note</em> new in 0.51.0
+<em>new in 0.54.0, the <code class="docutils literal notranslate"><span class="pre">internal</span></code> keyword</em></p>
+<p>When you need to get an arbitrary variable from a dependency that can
+be found multiple ways and you don’t want to constrain the type, you
+can use the generic <code class="docutils literal notranslate"><span class="pre">get_variable</span></code> method. This currently supports
+cmake, pkg-config, and config-tool based variables.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">foo_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">)</span>
+<span class="n">var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">foo_dep</span><span class="p">.</span><span class="n">get_variable</span><span class="p">(</span><span class="n">cmake</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;CMAKE_VAR&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">pkgconfig</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;pkg-config-var&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">configtool</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;get-var&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">default_value</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;default&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It accepts the keywords ‘cmake’, ‘pkgconfig’, ‘pkgconfig_define’,
+‘configtool’, ‘internal’, ‘system’, and ‘default_value’.
+‘pkgconfig_define’ works just like the ‘define_variable’ argument to
+<code class="docutils literal notranslate"><span class="pre">get_pkgconfig_variable</span></code>. When this method is invoked the keyword
+corresponding to the underlying type of the dependency will be used to
+look for a variable. If that variable cannot be found or if the caller
+does not provide an argument for the type of dependency, one of the
+following will happen: If ‘default_value’ was provided that value will
+be returned, if ‘default_value’ was not provided then an error will be
+raised.</p>
+<section id="dependencies-that-provide-resource-files">
+<h2>Dependencies that provide resource files<a class="headerlink" href="#dependencies-that-provide-resource-files" title="Link to this heading">#</a></h2>
+<p>Sometimes a dependency provides installable files which other projects then
+need to use. For example, wayland-protocols XML files.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">foo_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">)</span>
+<span class="n">foo_datadir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">foo_dep</span><span class="p">.</span><span class="n">get_variable</span><span class="p">(</span><span class="s">&#39;pkgdatadir&#39;</span><span class="p">)</span>
+<span class="nb">custom_target</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&#39;foo-generated.c&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="n">foo_datadir</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="s">&#39;prototype.xml&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">output</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;foo-generated.c&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="nb">generator</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;@INPUT@&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;@OUTPUT@&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><em>Since 0.63.0</em> these actually work as expected, even when they come from a
+(well-formed) internal dependency. This only works when treating the files to
+be obtained as interchangeable with a system dependency – e.g. only public
+files may be used, and leaving the directory pointed to by the dependency is
+not allowed.</p>
+</section>
+</section>
+<section id="declaring-your-own">
+<h1>Declaring your own<a class="headerlink" href="#declaring-your-own" title="Link to this heading">#</a></h1>
+<p>You can declare your own dependency objects that can be used
+interchangeably with dependency objects obtained from the system. The
+syntax is straightforward:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">my_inc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">include_directories</span><span class="p">(...)</span>
+<span class="n">my_lib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">static_library</span><span class="p">(...)</span>
+<span class="n">my_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">declare_dependency</span><span class="p">(</span><span class="n">link_with</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">my_lib</span><span class="p">,</span>
+<span class="w">  </span><span class="nb">include_directories</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">my_inc</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This declares a dependency that adds the given include directories and
+static library to any target you use it in.</p>
+</section>
+<section id="building-dependencies-as-subprojects">
+<h1>Building dependencies as subprojects<a class="headerlink" href="#building-dependencies-as-subprojects" title="Link to this heading">#</a></h1>
+<p>Many platforms do not provide a system package manager. On these
+systems dependencies must be compiled from source. Meson’s subprojects
+make it simple to use system dependencies when they are available and
+to build dependencies manually when they are not.</p>
+<p>To make this work, the dependency must have Meson build definitions
+and it must declare its own dependency like this:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="n">foo_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">declare_dependency</span><span class="p">(...)</span>
+</pre></div>
+</div>
+<p>Then any project that wants to use it can write out the following
+declaration in their main <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> file.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="n">foo_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">fallback</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;foo&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;foo_dep&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>What this declaration means is that first Meson tries to look up the
+dependency from the system (such as by using pkg-config). If it is not
+available, then it builds subproject named <code class="docutils literal notranslate"><span class="pre">foo</span></code> and from that
+extracts a variable <code class="docutils literal notranslate"><span class="pre">foo_dep</span></code>. That means that the return value of
+this function is either an external or an internal dependency object.
+Since they can be used interchangeably, the rest of the build
+definitions do not need to care which one it is. Meson will take care
+of all the work behind the scenes to make this work.</p>
+</section>
+<section id="dependency-detection-method">
+<h1>Dependency detection method<a class="headerlink" href="#dependency-detection-method" title="Link to this heading">#</a></h1>
+<p>You can use the keyword <code class="docutils literal notranslate"><span class="pre">method</span></code> to let Meson know what method to use
+when searching for the dependency. The default value is <code class="docutils literal notranslate"><span class="pre">auto</span></code>.
+Additional methods are <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>, <code class="docutils literal notranslate"><span class="pre">config-tool</span></code>, <code class="docutils literal notranslate"><span class="pre">cmake</span></code>,
+<code class="docutils literal notranslate"><span class="pre">builtin</span></code>, <code class="docutils literal notranslate"><span class="pre">system</span></code>, <code class="docutils literal notranslate"><span class="pre">sysconfig</span></code>, <code class="docutils literal notranslate"><span class="pre">qmake</span></code>, <code class="docutils literal notranslate"><span class="pre">extraframework</span></code> and <code class="docutils literal notranslate"><span class="pre">dub</span></code>.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">cups_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;cups&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;pkg-config&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For dependencies without <a class="reference internal" href="#dependencies-with-custom-lookup-functionality">specific detection
+logic</a>, the dependency method
+order for <code class="docutils literal notranslate"><span class="pre">auto</span></code> is:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pkg-config</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extraframework</span></code> (OSX only)</p></li>
+</ol>
+<section id="system">
+<h2>System<a class="headerlink" href="#system" title="Link to this heading">#</a></h2>
+<p>Some dependencies provide no valid methods for discovery, or do so only in
+some cases. Some examples of this are Zlib, which provides both pkg-config
+and cmake, except when it is part of the base OS image (such as in FreeBSD
+and macOS); OpenGL which has pkg-config on Unices from glvnd or mesa, but has
+no pkg-config on macOS and Windows.</p>
+<p>In these cases Meson provides convenience wrappers in the form of <code class="docutils literal notranslate"><span class="pre">system</span></code>
+dependencies. Internally these dependencies do exactly what a user would do
+in the build system DSL or with a script, likely calling
+<a href="Reference-manual_returned_compiler.html#compilerfind_library"><code>compiler.find_library()</code></a>, setting <code class="docutils literal notranslate"><span class="pre">link_with</span></code> and <code class="docutils literal notranslate"><span class="pre">include_directories</span></code>. By
+putting these in Meson upstream the barrier of using them is lowered, as
+projects using Meson don’t have to re-implement the logic.</p>
+</section>
+<section id="builtin">
+<h2>Builtin<a class="headerlink" href="#builtin" title="Link to this heading">#</a></h2>
+<p>Some dependencies provide no valid methods for discovery on some systems,
+because they are provided internally by the language. One example of this is
+intl, which is built into GNU or musl libc but otherwise comes as a <code class="docutils literal notranslate"><span class="pre">system</span></code>
+dependency.</p>
+<p>In these cases Meson provides convenience wrappers for the <code class="docutils literal notranslate"><span class="pre">system</span></code> dependency,
+but first checks if the functionality is usable by default.</p>
+</section>
+<section id="cmake">
+<h2>CMake<a class="headerlink" href="#cmake" title="Link to this heading">#</a></h2>
+<p>Meson can use the CMake <code class="docutils literal notranslate"><span class="pre">find_package()</span></code> function to detect
+dependencies with the builtin <code class="docutils literal notranslate"><span class="pre">Find&lt;NAME&gt;.cmake</span></code> modules and exported
+project configurations (usually in <code class="docutils literal notranslate"><span class="pre">/usr/lib/cmake</span></code>). Meson is able to
+use both the old-style <code class="docutils literal notranslate"><span class="pre">&lt;NAME&gt;_LIBRARIES</span></code> variables as well as
+imported targets.</p>
+<p>It is possible to manually specify a list of CMake targets that should
+be used with the <code class="docutils literal notranslate"><span class="pre">modules</span></code> property. However, this step is optional
+since Meson tries to automatically guess the correct target based on
+the name of the dependency.</p>
+<p>Depending on the dependency it may be necessary to explicitly specify
+a CMake target with the <code class="docutils literal notranslate"><span class="pre">modules</span></code> property if Meson is unable to guess
+it automatically.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="n">cmake_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;ZLIB&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;cmake&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">modules</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;ZLIB::ZLIB&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Support for adding additional <code class="docutils literal notranslate"><span class="pre">COMPONENTS</span></code> for the CMake
+<code class="docutils literal notranslate"><span class="pre">find_package</span></code> lookup is provided with the <code class="docutils literal notranslate"><span class="pre">components</span></code> kwarg
+(<em>introduced in 0.54.0</em>). All specified components will be passed
+directly to <code class="docutils literal notranslate"><span class="pre">find_package(COMPONENTS)</span></code>.</p>
+<p>Support for packages which require a specified version for CMake
+<code class="docutils literal notranslate"><span class="pre">find_package</span></code> to succeed is provided with the <code class="docutils literal notranslate"><span class="pre">cmake_package_version</span></code>
+kwarg (<em>introduced in 0.57.0</em>). The specified <code class="docutils literal notranslate"><span class="pre">cmake_package_version</span></code>
+will be passed directly as the second parameter to <code class="docutils literal notranslate"><span class="pre">find_package</span></code>.</p>
+<p>It is also possible to reuse existing <code class="docutils literal notranslate"><span class="pre">Find&lt;name&gt;.cmake</span></code> files with the
+<code class="docutils literal notranslate"><span class="pre">cmake_module_path</span></code> property (<em>since 0.50.0</em>). Using this property is
+equivalent to setting the <code class="docutils literal notranslate"><span class="pre">CMAKE_MODULE_PATH</span></code> variable in CMake. The
+path(s) given to <code class="docutils literal notranslate"><span class="pre">cmake_module_path</span></code> should all be relative to the
+project source directory. Absolute paths should only be used if the
+CMake files are not stored in the project itself.</p>
+<p>Additional CMake parameters can be specified with the <code class="docutils literal notranslate"><span class="pre">cmake_args</span></code>
+property (<em>since 0.50.0</em>).</p>
+</section>
+<section id="dub">
+<h2>Dub<a class="headerlink" href="#dub" title="Link to this heading">#</a></h2>
+<p>Please understand that Meson is only able to find dependencies that
+exist in the local Dub repository. You need to manually fetch and
+build the target dependencies.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">urld</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dub</span> <span class="n">fetch</span> <span class="n">urld</span>
+<span class="n">dub</span> <span class="n">build</span> <span class="n">urld</span>
+</pre></div>
+</div>
+<p>Other thing you need to keep in mind is that both Meson and Dub need
+to be using the same compiler. This can be achieved using Dub’s
+<code class="docutils literal notranslate"><span class="pre">-compiler</span></code> argument and/or manually setting the <code class="docutils literal notranslate"><span class="pre">DC</span></code> environment
+variable when running Meson.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dub</span> <span class="n">build</span> <span class="n">urld</span> <span class="o">--</span><span class="n">compiler</span><span class="o">=</span><span class="n">dmd</span>
+<span class="n">DC</span><span class="o">=</span><span class="s2">&quot;dmd&quot;</span> <span class="n">meson</span> <span class="n">setup</span> <span class="n">builddir</span>
+</pre></div>
+</div>
+</section>
+<section id="config-tool">
+<h2>Config tool<a class="headerlink" href="#config-tool" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="#cups">CUPS</a>, <a class="reference internal" href="#llvm">LLVM</a>, <a class="reference internal" href="#objfw">ObjFW</a>, <a class="reference internal" href="#pcap">pcap</a>,
+<a class="reference internal" href="#wxwidgets">WxWidgets</a>, <a class="reference internal" href="#libwmf">libwmf</a>, <a class="reference internal" href="#libgcrypt">GCrypt</a>,
+<a class="reference internal" href="#gpgme">GPGME</a>, and GnuStep either do not provide pkg-config modules or
+additionally can be detected via a config tool (cups-config, llvm-config,
+libgcrypt-config, etc). Meson has native support for these tools, and they can
+be found like other dependencies:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">pcap_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;pcap&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;=1.0&#39;</span><span class="p">)</span>
+<span class="n">cups_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;cups&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;=1.4&#39;</span><span class="p">)</span>
+<span class="n">llvm_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;llvm&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;=4.0&#39;</span><span class="p">)</span>
+<span class="n">libgcrypt_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;libgcrypt&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;= 1.8&#39;</span><span class="p">)</span>
+<span class="n">gpgme_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;gpgme&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;= 1.0&#39;</span><span class="p">)</span>
+<span class="n">objfw_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;objfw&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;= 1.0&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>Since 0.55.0</em> Meson won’t search $PATH any more for a config tool
+binary when cross compiling if the config tool did not have an entry
+in the cross file.</p>
+</section>
+</section>
+<section id="dependencies-with-custom-lookup-functionality">
+<h1>Dependencies with custom lookup functionality<a class="headerlink" href="#dependencies-with-custom-lookup-functionality" title="Link to this heading">#</a></h1>
+<p>Some dependencies have specific detection logic.</p>
+<p>Generic dependency names are case-sensitive<sup><a class="reference internal" href="#footnote1"><span class="xref myst">1</span></a></sup>,
+but these dependency names are matched case-insensitively. The
+recommended style is to write them in all lower-case.</p>
+<p>In some cases, more than one detection method exists, and the <code class="docutils literal notranslate"><span class="pre">method</span></code>
+keyword may be used to select a detection method to use. The <code class="docutils literal notranslate"><span class="pre">auto</span></code>
+method uses any checking mechanisms in whatever order Meson thinks is
+best.</p>
+<p>e.g. libwmf and CUPS provide both pkg-config and config-tool support.
+You can force one or another via the <code class="docutils literal notranslate"><span class="pre">method</span></code> keyword:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">cups_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;cups&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;pkg-config&#39;</span><span class="p">)</span>
+<span class="n">wmf_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;libwmf&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;config-tool&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="appleframeworks">
+<h2>AppleFrameworks<a class="headerlink" href="#appleframeworks" title="Link to this heading">#</a></h2>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">modules</span></code> keyword to list frameworks required, e.g.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;appleframeworks&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">modules</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;foundation&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These dependencies can never be found for non-OSX hosts.</p>
+</section>
+<section id="atomic-stdatomic">
+<h2>atomic (stdatomic)<a class="headerlink" href="#atomic-stdatomic" title="Link to this heading">#</a></h2>
+<p><em>(added 1.7.0)</em></p>
+<p>Provides access to the atomic operations library. This first attempts
+to look for a valid atomic external library before trying to fallback
+to what is provided by the C runtime libraries.</p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">builtin</span></code> or <code class="docutils literal notranslate"><span class="pre">system</span></code>.</p>
+</section>
+<section id="blocks">
+<h2>Blocks<a class="headerlink" href="#blocks" title="Link to this heading">#</a></h2>
+<p>Enable support for Clang’s blocks extension.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;blocks&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>(added 0.52.0)</em></p>
+</section>
+<section id="boost">
+<h2>Boost<a class="headerlink" href="#boost" title="Link to this heading">#</a></h2>
+<p>Boost is not a single dependency but rather a group of different
+libraries. To use Boost headers-only libraries, simply add Boost as a
+dependency.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">boost_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;boost&#39;</span><span class="p">)</span>
+<span class="n">exe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">executable</span><span class="p">(</span><span class="s">&#39;myprog&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;file.cc&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">dependencies</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">boost_dep</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To link against boost with Meson, simply list which libraries you
+would like to use.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">boost_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;boost&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">modules</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;thread&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;utility&#39;</span><span class="p">])</span>
+<span class="n">exe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">executable</span><span class="p">(</span><span class="s">&#39;myprog&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;file.cc&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">dependencies</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">boost_dep</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can call <a href="Reference-manual_functions.html#dependency"><code>dependency()</code></a> multiple times with different modules and
+use those to link against your targets.</p>
+<p>If your boost headers or libraries are in non-standard locations you
+can set the <code class="docutils literal notranslate"><span class="pre">BOOST_ROOT</span></code>, or the <code class="docutils literal notranslate"><span class="pre">BOOST_INCLUDEDIR</span></code> and
+<code class="docutils literal notranslate"><span class="pre">BOOST_LIBRARYDIR</span></code> environment variables. <em>(added in 0.56.0)</em> You can
+also set these parameters as <code class="docutils literal notranslate"><span class="pre">boost_root</span></code>, <code class="docutils literal notranslate"><span class="pre">boost_includedir</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">boost_librarydir</span></code> in your native or cross machine file. Note that
+machine file variables are preferred to environment variables, and
+that specifying any of these disables system-wide search for boost.</p>
+<p>You can set the argument <code class="docutils literal notranslate"><span class="pre">threading</span></code> to <code class="docutils literal notranslate"><span class="pre">single</span></code> to use boost
+libraries that have been compiled for single-threaded use instead.</p>
+</section>
+<section id="cuda">
+<h2>CUDA<a class="headerlink" href="#cuda" title="Link to this heading">#</a></h2>
+<p><em>(added 0.53.0)</em></p>
+<p>Enables compiling and linking against the CUDA Toolkit. The <code class="docutils literal notranslate"><span class="pre">version</span></code>
+and <code class="docutils literal notranslate"><span class="pre">modules</span></code> keywords may be passed to request the use of a specific
+CUDA Toolkit version and/or additional CUDA libraries, correspondingly:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;cuda&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;=10&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">modules</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;cublas&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Note that explicitly adding this dependency is only necessary if you are
+using CUDA Toolkit from a C/C++ file or project, or if you are utilizing
+additional toolkit libraries that need to be explicitly linked to. If the
+CUDA Toolkit cannot be found in the default paths on your system, you can
+set the path using <code class="docutils literal notranslate"><span class="pre">CUDA_PATH</span></code> explicitly.</p>
+<p>Cuda does not honor the <code class="docutils literal notranslate"><span class="pre">prefer_static</span></code> option, and will link statically unless
+the <code class="docutils literal notranslate"><span class="pre">static</span></code> keyword argument is set to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+</section>
+<section id="cups">
+<h2>CUPS<a class="headerlink" href="#cups" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">config-tool</span></code>, <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>, <code class="docutils literal notranslate"><span class="pre">cmake</span></code> or <code class="docutils literal notranslate"><span class="pre">extraframework</span></code>.</p>
+</section>
+<section id="curses">
+<h2>Curses<a class="headerlink" href="#curses" title="Link to this heading">#</a></h2>
+<p><em>(Since 0.54.0)</em></p>
+<p>Curses (and ncurses) are a cross platform pain in the butt. Meson
+wraps up these dependencies in the <code class="docutils literal notranslate"><span class="pre">curses</span></code> dependency. This covers
+both <code class="docutils literal notranslate"><span class="pre">ncurses</span></code> (preferred) and other curses implementations.</p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>, <code class="docutils literal notranslate"><span class="pre">config-tool</span></code>, or <code class="docutils literal notranslate"><span class="pre">system</span></code>.</p>
+<p><em>New in 0.56.0</em> The <code class="docutils literal notranslate"><span class="pre">config-tool</span></code> and <code class="docutils literal notranslate"><span class="pre">system</span></code> methods.</p>
+<p>To define some of the preprocessor symbols mentioned in the
+<a class="reference external" href="http://git.savannah.gnu.org/gitweb/?p=autoconf-archive.git;a=blob_plain;f=m4/ax_with_curses.m4">curses autoconf documentation</a>:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">conf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">configuration_data</span><span class="p">()</span>
+<span class="n">check_headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">[</span><span class="s">&#39;ncursesw/menu.h&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;HAVE_NCURSESW_MENU_H&#39;</span><span class="p">],</span>
+<span class="w">  </span><span class="p">[</span><span class="s">&#39;ncurses/menu.h&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;HAVE_NCURSES_MENU_H&#39;</span><span class="p">],</span>
+<span class="w">  </span><span class="p">[</span><span class="s">&#39;menu.h&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;HAVE_MENU_H&#39;</span><span class="p">],</span>
+<span class="w">  </span><span class="p">[</span><span class="s">&#39;ncursesw/curses.h&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;HAVE_NCURSESW_CURSES_H&#39;</span><span class="p">],</span>
+<span class="w">  </span><span class="p">[</span><span class="s">&#39;ncursesw.h&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;HAVE_NCURSESW_H&#39;</span><span class="p">],</span>
+<span class="w">  </span><span class="p">[</span><span class="s">&#39;ncurses/curses.h&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;HAVE_NCURSES_CURSES_H&#39;</span><span class="p">],</span>
+<span class="w">  </span><span class="p">[</span><span class="s">&#39;ncurses.h&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;HAVE_NCURSES_H&#39;</span><span class="p">],</span>
+<span class="w">  </span><span class="p">[</span><span class="s">&#39;curses.h&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;HAVE_CURSES_H&#39;</span><span class="p">],</span>
+<span class="p">]</span>
+
+<span class="k">foreach</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">check_headers</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">compiler</span><span class="p">.</span><span class="n">has_header</span><span class="p">(</span><span class="n">h</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="err">0</span><span class="p">))</span>
+<span class="w">    </span><span class="n">conf</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="n">h</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">  </span><span class="k">endif</span>
+<span class="k">endforeach</span>
+</pre></div>
+</div>
+</section>
+<section id="dia-sdk">
+<h2>DIA SDK<a class="headerlink" href="#dia-sdk" title="Link to this heading">#</a></h2>
+<p><em>(added 1.6.0)</em></p>
+<p>Microsoft’s Debug Interface Access SDK (DIA SDK) is available only on Windows,
+when using msvc, clang-cl or clang compiler from Microsoft Visual Studio.</p>
+<p>The DIA SDK runtime is not statically linked to target. The default usage
+method requires the runtime DLL (msdiaXXX.dll) to be manually registered in the
+OS with <code class="docutils literal notranslate"><span class="pre">regsrv32.exe</span></code> command, so it can be loaded using <code class="docutils literal notranslate"><span class="pre">CoCreateInstance</span></code>
+Windows function.</p>
+<p>Alternatively, you can use meson to copy the DIA runtime DLL to your build
+directory, and load it dynamically using <code class="docutils literal notranslate"><span class="pre">NoRegCoCreate</span></code> function provided by
+the DIA SDK. To facilitate this, you can read DLL path from dependency’s
+variable ‘dll’ and use fs module to copy it. Example:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">dia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;diasdk&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">required</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<span class="n">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">import</span><span class="p">(</span><span class="s">&#39;fs&#39;</span><span class="p">)</span>
+<span class="n">fs</span><span class="p">.</span><span class="n">copyfile</span><span class="p">(</span><span class="n">dia</span><span class="p">.</span><span class="n">get_variable</span><span class="p">(</span><span class="s">&#39;dll&#39;</span><span class="p">))</span>
+
+<span class="n">conf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">configuration_data</span><span class="p">()</span>
+<span class="n">conf</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="s">&#39;msdia_dll_name&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">fs</span><span class="p">.</span><span class="n">name</span><span class="p">(</span><span class="n">dia_dll_name</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Only the major version is available (eg. version is <code class="docutils literal notranslate"><span class="pre">14</span></code> for msdia140.dll).</p>
+</section>
+<section id="dl-libdl">
+<h2>dl (libdl)<a class="headerlink" href="#dl-libdl" title="Link to this heading">#</a></h2>
+<p><em>(added 0.62.0)</em></p>
+<p>Provides access to the dynamic link interface (functions: dlopen,
+dlclose, dlsym and others). On systems where this is not built
+into libc (mostly glibc &lt; 2.34), tries to find an external library
+providing them instead.</p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">builtin</span></code> or <code class="docutils literal notranslate"><span class="pre">system</span></code>.</p>
+</section>
+<section id="fortran-coarrays">
+<h2>Fortran Coarrays<a class="headerlink" href="#fortran-coarrays" title="Link to this heading">#</a></h2>
+<p><em>(added 0.50.0)</em></p>
+<p>Coarrays are a Fortran language intrinsic feature, enabled by
+<code class="docutils literal notranslate"><span class="pre">dependency('coarray')</span></code>.</p>
+<p>GCC will use OpenCoarrays if present to implement coarrays, while Intel and NAG
+use internal coarray support.</p>
+</section>
+<section id="gl">
+<h2>GL<a class="headerlink" href="#gl" title="Link to this heading">#</a></h2>
+<p>This finds the OpenGL library in a way appropriate to the platform.</p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> or <code class="docutils literal notranslate"><span class="pre">system</span></code>.</p>
+</section>
+<section id="gpgme">
+<h2>GPGME<a class="headerlink" href="#gpgme" title="Link to this heading">#</a></h2>
+<p><em>(added 0.51.0)</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">config-tool</span></code> or <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>.</p>
+</section>
+<section id="gtest-and-gmock">
+<h2>GTest and GMock<a class="headerlink" href="#gtest-and-gmock" title="Link to this heading">#</a></h2>
+<p>GTest and GMock come as sources that must be compiled as part of your
+project. With Meson you don’t have to care about the details, just
+pass <code class="docutils literal notranslate"><span class="pre">gtest</span></code> or <code class="docutils literal notranslate"><span class="pre">gmock</span></code> to <code class="docutils literal notranslate"><span class="pre">dependency</span></code> and it will do everything for
+you. If you want to use GMock, it is recommended to use GTest as well,
+as getting it to work standalone is tricky.</p>
+<p>You can set the <code class="docutils literal notranslate"><span class="pre">main</span></code> keyword argument to <code class="docutils literal notranslate"><span class="pre">true</span></code> to use the <code class="docutils literal notranslate"><span class="pre">main()</span></code>
+function provided by GTest:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">gtest_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;gtest&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">executable</span><span class="p">(</span><span class="s">&#39;testprog&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;test.cc&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">dependencies</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">gtest_dep</span><span class="p">)</span>
+<span class="nb">test</span><span class="p">(</span><span class="s">&#39;gtest test&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="hdf5">
+<h2>HDF5<a class="headerlink" href="#hdf5" title="Link to this heading">#</a></h2>
+<p><em>(added 0.50.0)</em></p>
+<p>HDF5 is supported for C, C++ and Fortran. Because dependencies are
+language-specific, you must specify the requested language using the
+<code class="docutils literal notranslate"><span class="pre">language</span></code> keyword argument, i.e.,</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dependency('hdf5',</span> <span class="pre">language:</span> <span class="pre">'c')</span></code> for the C HDF5 headers and libraries</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dependency('hdf5',</span> <span class="pre">language:</span> <span class="pre">'cpp')</span></code> for the C++ HDF5 headers and libraries</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dependency('hdf5',</span> <span class="pre">language:</span> <span class="pre">'fortran')</span></code> for the Fortran HDF5 headers and libraries</p></li>
+</ul>
+<p>The standard low-level HDF5 function and the <code class="docutils literal notranslate"><span class="pre">HL</span></code> high-level HDF5
+functions are linked for each language.</p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">config-tool</span></code> or <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>.</p>
+<p><em>New in 0.56.0</em> the <code class="docutils literal notranslate"><span class="pre">config-tool</span></code> method.
+<em>New in 0.56.0</em> the dependencies now return proper dependency types
+and <code class="docutils literal notranslate"><span class="pre">get_variable</span></code> and similar methods should work as expected.</p>
+</section>
+<section id="iconv">
+<h2>iconv<a class="headerlink" href="#iconv" title="Link to this heading">#</a></h2>
+<p><em>(added 0.60.0)</em></p>
+<p>Provides access to the <code class="docutils literal notranslate"><span class="pre">iconv</span></code> family of C functions. On systems where this is
+not built into libc, tries to find an external library providing them instead.</p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">builtin</span></code> or <code class="docutils literal notranslate"><span class="pre">system</span></code>.</p>
+</section>
+<section id="intl">
+<h2>intl<a class="headerlink" href="#intl" title="Link to this heading">#</a></h2>
+<p><em>(added 0.59.0)</em></p>
+<p>Provides access to the <code class="docutils literal notranslate"><span class="pre">*gettext</span></code> family of C functions. On systems where this
+is not built into libc, tries to find an external library providing them
+instead.</p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">builtin</span></code> or <code class="docutils literal notranslate"><span class="pre">system</span></code>.</p>
+</section>
+<section id="jdk">
+<h2>JDK<a class="headerlink" href="#jdk" title="Link to this heading">#</a></h2>
+<p><em>(added 0.58.0)</em>
+<em>(deprecated 0.62.0)</em></p>
+<p>Deprecated name for JNI. <code class="docutils literal notranslate"><span class="pre">dependency('jdk')</span></code> instead of <code class="docutils literal notranslate"><span class="pre">dependency('jni')</span></code>.</p>
+</section>
+<section id="jni">
+<h2>JNI<a class="headerlink" href="#jni" title="Link to this heading">#</a></h2>
+<p><em>(added 0.62.0)</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">modules</span></code> is an optional list of strings containing any of <code class="docutils literal notranslate"><span class="pre">jvm</span></code> and <code class="docutils literal notranslate"><span class="pre">awt</span></code>.</p>
+<p>Provides access to compiling with the Java Native Interface (JNI). The lookup
+will first check if <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code> is set in the environment, and if not will use
+the resolved path of <code class="docutils literal notranslate"><span class="pre">javac</span></code>. Systems will usually link your preferred JDK to
+well known paths like <code class="docutils literal notranslate"><span class="pre">/usr/bin/javac</span></code> on Linux for instance. Using the path
+from <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code> or the resolved <code class="docutils literal notranslate"><span class="pre">javac</span></code>, this dependency will place the JDK
+installation’s <code class="docutils literal notranslate"><span class="pre">include</span></code> directory and its platform-dependent subdirectory on
+the compiler’s include path. If <code class="docutils literal notranslate"><span class="pre">modules</span></code> is non-empty, then the proper linker
+arguments will also be added.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;jni&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;= 1.8.0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">modules</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;jvm&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to usage of a resolved path, upgrading the JDK may cause the
+various paths to not be found. In that case, please reconfigure the build
+directory. One workaround is to explicitly set <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code> instead of relying on
+the fallback <code class="docutils literal notranslate"><span class="pre">javac</span></code> resolved path behavior.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Include paths might be broken on platforms other than <code class="docutils literal notranslate"><span class="pre">linux</span></code>,
+<code class="docutils literal notranslate"><span class="pre">windows</span></code>, <code class="docutils literal notranslate"><span class="pre">darwin</span></code>, and <code class="docutils literal notranslate"><span class="pre">sunos</span></code>. Please submit a PR or open an issue in this
+case.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use of the <code class="docutils literal notranslate"><span class="pre">modules</span></code> argument on a JDK <code class="docutils literal notranslate"><span class="pre">&lt;=</span> <span class="pre">1.8</span></code> may be broken if your
+system is anything other than <code class="docutils literal notranslate"><span class="pre">x86_64</span></code>. Please submit a PR or open an issue in
+this case.</p>
+</div>
+</section>
+<section id="libgcrypt">
+<h2>libgcrypt<a class="headerlink" href="#libgcrypt" title="Link to this heading">#</a></h2>
+<p><em>(added 0.49.0)</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">config-tool</span></code> or <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>.</p>
+</section>
+<section id="libwmf">
+<h2>libwmf<a class="headerlink" href="#libwmf" title="Link to this heading">#</a></h2>
+<p><em>(added 0.44.0)</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">config-tool</span></code> or <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>.</p>
+</section>
+<section id="llvm">
+<h2>LLVM<a class="headerlink" href="#llvm" title="Link to this heading">#</a></h2>
+<p>Meson has native support for LLVM going back to version LLVM version
+3.5. It supports a few additional features compared to other
+config-tool based dependencies.</p>
+<p>As of 0.44.0 Meson supports the <code class="docutils literal notranslate"><span class="pre">static</span></code> keyword argument for LLVM.
+Before this LLVM &gt;= 3.9 would always dynamically link, while older
+versions would statically link, due to a quirk in <code class="docutils literal notranslate"><span class="pre">llvm-config</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">config-tool</span></code>, or <code class="docutils literal notranslate"><span class="pre">cmake</span></code>.</p>
+<section id="modules-a-k-a-components">
+<h3>Modules, a.k.a. Components<a class="headerlink" href="#modules-a-k-a-components" title="Link to this heading">#</a></h3>
+<p>Meson wraps LLVM’s concept of components in its own modules concept.
+When you need specific components you add them as modules as Meson
+will do the right thing:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">llvm_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;llvm&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;= 4.0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">modules</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;amdgpu&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>As of 0.44.0 it can also take optional modules (these will affect the arguments
+generated for a static link):</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">llvm_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span>
+<span class="w">  </span><span class="s">&#39;llvm&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;= 4.0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">modules</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;amdgpu&#39;</span><span class="p">],</span><span class="w"> </span><span class="n">optional_modules</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;inteljitevents&#39;</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="using-llvm-tools">
+<h3>Using LLVM tools<a class="headerlink" href="#using-llvm-tools" title="Link to this heading">#</a></h3>
+<p>When using LLVM as library but also needing its tools, it is often
+beneficial to use the same version. This can partially be achieved
+with the <code class="docutils literal notranslate"><span class="pre">version</span></code> argument of <code class="docutils literal notranslate"><span class="pre">find_program()</span></code>. However,
+distributions tend to package different LLVM versions in rather
+different ways. Therefore, it is often better to use the llvm
+dependency directly to retrieve the tools:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">llvm_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;llvm&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;&gt;= 8&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;&lt; 9&#39;</span><span class="p">])</span>
+<span class="n">llvm_link</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">find_program</span><span class="p">(</span><span class="n">llvm_dep</span><span class="p">.</span><span class="n">get_variable</span><span class="p">(</span><span class="n">configtool</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;bindir&#39;</span><span class="p">)</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="s">&#39;llvm-link&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="mpi">
+<h2>MPI<a class="headerlink" href="#mpi" title="Link to this heading">#</a></h2>
+<p><em>(added 0.42.0)</em></p>
+<p>MPI is supported for C, C++ and Fortran. Because dependencies are
+language-specific, you must specify the requested language using the
+<code class="docutils literal notranslate"><span class="pre">language</span></code> keyword argument, i.e.,</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dependency('mpi',</span> <span class="pre">language:</span> <span class="pre">'c')</span></code> for the C MPI headers and libraries</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dependency('mpi',</span> <span class="pre">language:</span> <span class="pre">'cpp')</span></code> for the C++ MPI headers and libraries</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dependency('mpi',</span> <span class="pre">language:</span> <span class="pre">'fortran')</span></code> for the Fortran MPI headers and libraries</p></li>
+</ul>
+<p>Meson prefers pkg-config for MPI, but if your MPI implementation does
+not provide them, it will search for the standard wrapper executables,
+<code class="docutils literal notranslate"><span class="pre">mpic</span></code>, <code class="docutils literal notranslate"><span class="pre">mpicxx</span></code>, <code class="docutils literal notranslate"><span class="pre">mpic++</span></code>, <code class="docutils literal notranslate"><span class="pre">mpifort</span></code>, <code class="docutils literal notranslate"><span class="pre">mpif90</span></code>, <code class="docutils literal notranslate"><span class="pre">mpif77</span></code>. If these
+are not in your path, they can be specified by setting the standard
+environment variables <code class="docutils literal notranslate"><span class="pre">MPICC</span></code>, <code class="docutils literal notranslate"><span class="pre">MPICXX</span></code>, <code class="docutils literal notranslate"><span class="pre">MPIFC</span></code>, <code class="docutils literal notranslate"><span class="pre">MPIF90</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">MPIF77</span></code>, during configuration. On Windows, Meson uses the <code class="docutils literal notranslate"><span class="pre">system</span></code> method and
+searches for Microsoft MPI. <em>Since 1.11.0</em> Intel MPI is also supported.</p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">config-tool</span></code>, <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> or <code class="docutils literal notranslate"><span class="pre">system</span></code>.</p>
+<p><em>New in 0.54.0</em> The <code class="docutils literal notranslate"><span class="pre">config-tool</span></code> and <code class="docutils literal notranslate"><span class="pre">system</span></code> method values. Previous
+versions would always try <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>, then <code class="docutils literal notranslate"><span class="pre">config-tool</span></code>, then <code class="docutils literal notranslate"><span class="pre">system</span></code>.</p>
+</section>
+<section id="netcdf">
+<h2>NetCDF<a class="headerlink" href="#netcdf" title="Link to this heading">#</a></h2>
+<p><em>(added 0.50.0)</em></p>
+<p>NetCDF is supported for C, C++ and Fortran. Because NetCDF dependencies are
+language-specific, you must specify the requested language using the
+<code class="docutils literal notranslate"><span class="pre">language</span></code> keyword argument, i.e.,</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dependency('netcdf',</span> <span class="pre">language:</span> <span class="pre">'c')</span></code> for the C NetCDF headers and libraries</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dependency('netcdf',</span> <span class="pre">language:</span> <span class="pre">'cpp')</span></code> for the C++ NetCDF headers and libraries</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dependency('netcdf',</span> <span class="pre">language:</span> <span class="pre">'fortran')</span></code> for the Fortran NetCDF headers and libraries</p></li>
+</ul>
+<p>Meson uses pkg-config to find NetCDF.</p>
+</section>
+<section id="numpy">
+<h2>NumPy<a class="headerlink" href="#numpy" title="Link to this heading">#</a></h2>
+<p><em>(added 1.4.0)</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>, or <code class="docutils literal notranslate"><span class="pre">config-tool</span></code>.
+<code class="docutils literal notranslate"><span class="pre">dependency('numpy')</span></code> supports regular use of the NumPy C API, for
+<code class="docutils literal notranslate"><span class="pre">numpy&gt;=2.0</span></code>. Use of <code class="docutils literal notranslate"><span class="pre">numpy.f2py</span></code> for binding Fortran code isn’t yet supported.</p>
+</section>
+<section id="objfw">
+<h2>ObjFW<a class="headerlink" href="#objfw" title="Link to this heading">#</a></h2>
+<p><em>(added 1.5.0)</em></p>
+<p>Meson has native support for ObjFW, including support for ObjFW packages.</p>
+<p>In order to use ObjFW, simply create the dependency:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">objfw_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;objfw&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In order to also use ObjFW packages, simply specify them as modules:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">objfw_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;objfw&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">modules</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;SomePackage&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>If you need a dependency with and without packages, e.g. because your tests
+want to use ObjFWTest, but you don’t want to link your application against the
+tests, simply get two dependencies and use them as appropriate:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">objfw_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;objfw&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">modules</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;SomePackage&#39;</span><span class="p">])</span>
+<span class="n">objfwtest_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;objfw&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">modules</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;ObjFWTest&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Then use <code class="docutils literal notranslate"><span class="pre">objfw_dep</span></code> for your library and only <code class="docutils literal notranslate"><span class="pre">objfwtest_dep</span></code> (not both) for
+your tests.</p>
+</section>
+<section id="openmp">
+<h2>OpenMP<a class="headerlink" href="#openmp" title="Link to this heading">#</a></h2>
+<p><em>(added 0.46.0)</em></p>
+<p>This dependency selects the appropriate compiler flags and/or libraries to use
+for OpenMP support.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">language</span></code> keyword may used.</p>
+</section>
+<section id="openssl">
+<h2>OpenSSL<a class="headerlink" href="#openssl" title="Link to this heading">#</a></h2>
+<p><em>(added 0.62.0)</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>, <code class="docutils literal notranslate"><span class="pre">system</span></code> or <code class="docutils literal notranslate"><span class="pre">cmake</span></code>.</p>
+</section>
+<section id="pcap">
+<h2>pcap<a class="headerlink" href="#pcap" title="Link to this heading">#</a></h2>
+<p><em>(added 0.42.0)</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">config-tool</span></code> or <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>.</p>
+</section>
+<section id="pybind11">
+<h2>Pybind11<a class="headerlink" href="#pybind11" title="Link to this heading">#</a></h2>
+<p><em>(added 1.1.0)</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>, <code class="docutils literal notranslate"><span class="pre">config-tool</span></code>, or <code class="docutils literal notranslate"><span class="pre">cmake</span></code>.</p>
+</section>
+<section id="python3">
+<h2>Python3<a class="headerlink" href="#python3" title="Link to this heading">#</a></h2>
+<p>Python3 is handled specially by Meson:</p>
+<ol class="arabic simple">
+<li><p>Meson tries to use <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> fails Meson uses a fallback:</p>
+<ul class="simple">
+<li><p>On Windows the fallback is the current <code class="docutils literal notranslate"><span class="pre">python3</span></code> interpreter.</p></li>
+<li><p>On OSX the fallback is a framework dependency from <code class="docutils literal notranslate"><span class="pre">/Library/Frameworks</span></code>.</p></li>
+</ul>
+</li>
+</ol>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">python3</span></code> found by this dependency might differ from the one
+used in <code class="docutils literal notranslate"><span class="pre">python3</span></code> module because modules uses the current interpreter,
+but dependency tries <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> first.</p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">extraframework</span></code>, <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> or <code class="docutils literal notranslate"><span class="pre">sysconfig</span></code></p>
+</section>
+<section id="qt">
+<h2>Qt<a class="headerlink" href="#qt" title="Link to this heading">#</a></h2>
+<p>Meson has native support for Qt</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">qt6_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;qt6&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">modules</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;Core&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Gui&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Widgets&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>An optional <code class="docutils literal notranslate"><span class="pre">method</span></code> keyword argument can be set: <code class="docutils literal notranslate"><span class="pre">auto</span></code> (default), <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>, <code class="docutils literal notranslate"><span class="pre">config-tool</span></code> or <code class="docutils literal notranslate"><span class="pre">qmake</span></code> (<em>deprecated
+since 0.58.0</em>; use <code class="docutils literal notranslate"><span class="pre">config-tool</span></code> instead).</p>
+<p>An optional <code class="docutils literal notranslate"><span class="pre">main</span></code> boolean keyword argument can be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> to add a link
+dependency on <code class="docutils literal notranslate"><span class="pre">Qt6EntryPoint</span></code> on Windows, which is in most cases necessary to
+be able to compile <code class="docutils literal notranslate"><span class="pre">win_subsystem:</span> <span class="pre">'windows'</span></code> executables.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">modules</span></code> keyword receives an array of Qt module names that will be required
+and linked against.</p>
+<p>Obtaining the list of possible is not straightforward, here is a
+non exhaustive list of possible Qt6 modules:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Core</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Gui</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Widgets</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Network</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Svg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Quick</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Qml</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QuickWidgets</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QmlIntegration</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>In Qt’s documentation, the module names are referenced with an extra <code class="docutils literal notranslate"><span class="pre">Qt</span></code> prefix,
+e.g. <code class="docutils literal notranslate"><span class="pre">QtCore</span></code> or <code class="docutils literal notranslate"><span class="pre">QtQmlIntegration</span></code>.</p></li>
+<li><p>For more information on how to build a Qt application with meson, see the <a class="reference internal" href="Qt6-module.html"><span class="std std-doc">Qt6 module</span></a></p></li>
+</ul>
+</div>
+</section>
+<section id="sdl2">
+<h2>SDL2<a class="headerlink" href="#sdl2" title="Link to this heading">#</a></h2>
+<p>SDL2 can be located using <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>, the <code class="docutils literal notranslate"><span class="pre">sdl2-config</span></code> config tool,
+as an OSX framework, or <code class="docutils literal notranslate"><span class="pre">cmake</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">config-tool</span></code>, <code class="docutils literal notranslate"><span class="pre">extraframework</span></code>,
+<code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> or <code class="docutils literal notranslate"><span class="pre">cmake</span></code>.</p>
+</section>
+<section id="shaderc">
+<h2>Shaderc<a class="headerlink" href="#shaderc" title="Link to this heading">#</a></h2>
+<p><em>(added 0.51.0)</em></p>
+<p>Meson will first attempt to find shaderc using <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>. Upstream
+currently ships three different <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> files and by default will
+check them in this order: <code class="docutils literal notranslate"><span class="pre">shaderc</span></code>, <code class="docutils literal notranslate"><span class="pre">shaderc_combined</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">shaderc_static</span></code>. If the <code class="docutils literal notranslate"><span class="pre">static</span></code> keyword argument is <code class="docutils literal notranslate"><span class="pre">true</span></code>, then
+Meson instead checks in this order: <code class="docutils literal notranslate"><span class="pre">shaderc_combined</span></code>, <code class="docutils literal notranslate"><span class="pre">shaderc_static</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">shaderc</span></code>.</p>
+<p>If no <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> file is found, then Meson will try to detect the
+library manually. In this case, it will try to link against either
+<code class="docutils literal notranslate"><span class="pre">-lshaderc_shared</span></code> or <code class="docutils literal notranslate"><span class="pre">-lshaderc_combined</span></code>, preferring the latter
+if the static keyword argument is true. Note that it is not possible
+to obtain the shaderc version using this method.</p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> or <code class="docutils literal notranslate"><span class="pre">system</span></code>.</p>
+</section>
+<section id="threads">
+<h2>Threads<a class="headerlink" href="#threads" title="Link to this heading">#</a></h2>
+<p>This dependency selects the appropriate compiler flags and/or
+libraries to use for thread support.</p>
+<p>See <a class="reference internal" href="Threads.html"><span class="std std-doc">threads</span></a>.</p>
+</section>
+<section id="valgrind">
+<h2>Valgrind<a class="headerlink" href="#valgrind" title="Link to this heading">#</a></h2>
+<p>Meson will find valgrind using <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>, but only uses the
+compilation flags and avoids trying to link with its non-PIC static
+libs.</p>
+</section>
+<section id="vulkan">
+<h2>Vulkan<a class="headerlink" href="#vulkan" title="Link to this heading">#</a></h2>
+<p><em>(added 0.42.0)</em></p>
+<p>Vulkan can be located using <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>, or the <code class="docutils literal notranslate"><span class="pre">VULKAN_SDK</span></code>
+environment variable.</p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> or <code class="docutils literal notranslate"><span class="pre">system</span></code>.</p>
+</section>
+<section id="wxwidgets">
+<h2>WxWidgets<a class="headerlink" href="#wxwidgets" title="Link to this heading">#</a></h2>
+<p>Similar to <a class="reference internal" href="#boost">Boost</a>, WxWidgets is not a single library but rather
+a collection of modules. WxWidgets is supported via <code class="docutils literal notranslate"><span class="pre">wx-config</span></code>.
+Meson substitutes <code class="docutils literal notranslate"><span class="pre">modules</span></code> to <code class="docutils literal notranslate"><span class="pre">wx-config</span></code> invocation, it generates</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">compile_args</span></code> using <code class="docutils literal notranslate"><span class="pre">wx-config</span> <span class="pre">--cxxflags</span> <span class="pre">$modules...</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">link_args</span></code> using <code class="docutils literal notranslate"><span class="pre">wx-config</span> <span class="pre">--libs</span> <span class="pre">$modules...</span></code></p></li>
+</ul>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">wx_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span>
+<span class="w">  </span><span class="s">&#39;wxwidgets&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;=3.0.0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">modules</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;std&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;stc&#39;</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># compile_args:</span>
+$<span class="w"> </span>wx-config<span class="w"> </span>--cxxflags<span class="w"> </span>std<span class="w"> </span>stc
+
+<span class="c1"># link_args:</span>
+$<span class="w"> </span>wx-config<span class="w"> </span>--libs<span class="w"> </span>std<span class="w"> </span>stc
+</pre></div>
+</div>
+</section>
+</section>
+<section id="zlib">
+<h2>Zlib<a class="headerlink" href="#zlib" title="Link to this heading">#</a></h2>
+<p>Zlib ships with pkg-config and cmake support, but on some operating
+systems (Windows, macOS, FreeBSD, DragonFly BSD, Android), it is provided as
+part of the base operating system without pkg-config support. The new
+System finder can be used on these OSes to link with the bundled
+version.</p>
+<p><code class="docutils literal notranslate"><span class="pre">method</span></code> may be <code class="docutils literal notranslate"><span class="pre">auto</span></code>, <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>, <code class="docutils literal notranslate"><span class="pre">cmake</span></code>, or <code class="docutils literal notranslate"><span class="pre">system</span></code>.</p>
+<p><em>New in 0.54.0</em> the <code class="docutils literal notranslate"><span class="pre">system</span></code> method.</p>
+<hr>
+<a name="footnote1">1</a>: They may appear to be case-insensitive, if the
+    underlying file system happens to be case-insensitive.
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Build-targets.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Build targets</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Subprojects.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Subprojects</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Dependencies</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#arbitrary-variables-from-dependencies-that-can-be-found-multiple-ways">Arbitrary variables from dependencies that can be found multiple ways</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependencies-that-provide-resource-files">Dependencies that provide resource files</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#declaring-your-own">Declaring your own</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#building-dependencies-as-subprojects">Building dependencies as subprojects</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dependency-detection-method">Dependency detection method</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system">System</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#builtin">Builtin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmake">CMake</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dub">Dub</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config-tool">Config tool</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dependencies-with-custom-lookup-functionality">Dependencies with custom lookup functionality</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appleframeworks">AppleFrameworks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atomic-stdatomic">atomic (stdatomic)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#blocks">Blocks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boost">Boost</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cuda">CUDA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cups">CUPS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curses">Curses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dia-sdk">DIA SDK</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dl-libdl">dl (libdl)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fortran-coarrays">Fortran Coarrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gl">GL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gpgme">GPGME</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gtest-and-gmock">GTest and GMock</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hdf5">HDF5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iconv">iconv</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intl">intl</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jdk">JDK</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jni">JNI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libgcrypt">libgcrypt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libwmf">libwmf</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#llvm">LLVM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-a-k-a-components">Modules, a.k.a. Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-llvm-tools">Using LLVM tools</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mpi">MPI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#netcdf">NetCDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">NumPy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objfw">ObjFW</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#openmp">OpenMP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#openssl">OpenSSL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pcap">pcap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybind11">Pybind11</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python3">Python3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qt">Qt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sdl2">SDL2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shaderc">Shaderc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threads">Threads</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#valgrind">Valgrind</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vulkan">Vulkan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wxwidgets">WxWidgets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zlib">Zlib</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/mesonbuild/meson/edit/master/docs/markdown/Dependencies.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">Website licensing information are available on the <a href="legal.html">Legal</a> page.</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,120 @@
+## range()
+
+Return an opaque object that can be only be used in `foreach` statements.
+
+<pre><code class="language-meson">[[@range]] range([[@int]] <b>stop</b>)
+[[@range]] range([[@int]] <b>start</b>, [[@int]] <b>stop</b>[, [[@int]] <b>step</b>])</code></pre>
+
+- `start` must be integer greater or equal to 0. Defaults to 0.
+- `stop` must be integer greater or equal to `start`.
+- `step` must be integer greater or equal to 1. Defaults to 1.
+
+It cause the `foreach` loop to be called with the value from `start` included
+to `stop` excluded with an increment of `step` after each loop.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.58.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Return an opaque object that can be only be used in `foreach` statements
+[[#@range]] range(
+  [[#@int]]                                  [<a href="#range_start"><b>start</b></a>],   # The start of the range
+  [[#@int]]                                  [<a href="#range_stop"><b>stop</b></a>],    # The end of the range
+  [[#@int]]                                  [<a href="#range_step"><b>step</b></a>],    # The loop increment
+)</code></pre>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Example
+
+```meson
+# Loop 15 times with i from 0 to 14 included.
+foreach i : range(15)
+  ...
+endforeach
+```
+
+The range object can also be assigned to a variable and indexed.
+```meson
+r = range(5, 10, 2)
+assert(r[2] == 9)
+```
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+  The function `range()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="range_start">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">start</code>
+  <br>{meson:optional}` `
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@int]]</span>
+  <br><code class="language-meson text-nowrap">default = 0</code>
+  </td>
+        <td>
+  
+  The start of the range
+  </td>
+      </tr>
+      <tr id="range_stop">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">stop</code>
+  <br>{meson:optional}` `
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@int]]</span>
+  </td>
+        <td>
+  
+  The end of the range
+  </td>
+      </tr>
+      <tr id="range_step">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">step</code>
+  <br>{meson:optional}` `
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@int]]</span>
+  <br><code class="language-meson text-nowrap">default = 1</code>
+  </td>
+        <td>
+  
+  The loop increment
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+

@@ -1,0 +1,25 @@
+---
+short-description: "Elementary object: Any"
+title: any
+render-subpages: false
+...
+# Any (`any`)
+
+A placeholder representing all types.
+This includes builtin, as well as returned objects.
+
+
+## Returned by
+
+Any objects are returned by the following functions and methods:
+- [[get_variable]]
+- [[array.get]]
+- [[dict.get]]
+- [[meson.get_cross_property]]
+- [[meson.get_external_property]]
+- [[subproject.get_variable]]
+
+
+
+
+

@@ -1,0 +1,52 @@
+## join_paths()
+
+Joins the given strings into a file system path segment. For example
+`join_paths('foo', 'bar')` results in `foo/bar`. If any one of the
+individual segments is an absolute path, all segments before it are
+dropped. That means that `join_paths('foo', '/bar')` returns `/bar`.
+
+*(since 0.49.0)* Using the `/` operator on strings is equivalent to calling
+[[join_paths]].
+
+```meson
+# res1 and res2 will have identical values
+res1 = join_paths(foo, bar)
+res2 = foo / bar
+```
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.36.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Joins the given strings into a file system path segment
+[[#@str]] join_paths(
+  [[#@str]]                                  <b>part</b>...,  # The path parts to join
+)</code></pre>
+
+
+
+```{warning}
+Don't use [[join_paths]] for sources in [[library]] and [[executable]]. You should use [[files]] instead.
+```
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+
+  The
+  function accepts between `1` and `infinity` variadic
+  arguments (`part...`) of type <code><span class="text-nowrap">[[@str]]</span></code>.
+
+  The path parts to join.
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+

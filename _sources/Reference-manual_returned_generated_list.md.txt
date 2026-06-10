@@ -1,0 +1,19 @@
+---
+short-description: "Returned object: Generated list object"
+title: Generated list object
+render-subpages: false
+...
+# Generated list object (`generated_list`)
+
+Opaque object representing the result of a [[generator.process]] call.
+
+
+## Returned by
+
+Generated list object objects are returned by the following functions and methods:
+- [[generator.process]]
+
+
+
+
+

@@ -1,0 +1,647 @@
+---
+short-description: "Returned object: Feature option object"
+title: Feature option object
+render-subpages: false
+...
+# Feature option object (`feature`)
+
+Meson object representing a [`feature` options](Build-options.md#features)
+
+
+## Returned by
+
+Feature option object objects are returned by the following functions and methods:
+- [[get_option]]
+- [[feature.disable_auto_if]]
+- [[feature.disable_if]]
+- [[feature.enable_auto_if]]
+- [[feature.enable_if]]
+- [[feature.require]]
+
+
+
+
+## Feature option object methods
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### feature.allowed()
+
+Returns whether the feature was set to `'enabled'` or `'auto'`
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.59.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@bool]] allowed()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### feature.auto()
+
+Returns whether the feature was set to `'auto'`
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@bool]] auto()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### feature.disable_auto_if()
+
+Returns the feature, with `'auto'` converted to `'disabled'` if value is true.
+
+| Feature  | `value = true` | `value = false` |
+| -------- | -------------- | --------------- |
+| Auto     | Disabled       | Auto            |
+| Enabled  | Enabled        | Enabled         |
+| Disabled | Disabled       | Disabled        |
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.59.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns the feature, with `'auto'` converted to `'disabled'` if value is true
+[[#@feature]] disable_auto_if(
+  [[#@bool]]                                  <a href="#disable_auto_if_value"><b>value</b></a>,     # See the table above
+)</code></pre>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Example
+
+`disable_auto_if` is useful to give precedence to mutually exclusive dependencies
+(that provide the same API) if either or both are available:
+
+```
+# '-Dfoo=auto -Dbar=enabled' will not pick foo even if installed.
+use_bar = get_option('bar')
+use_foo = get_option('foo').disable_auto_if(use_bar.enabled())
+dep_foo = dependency('foo', required: use_foo)
+if not dep_foo.found()
+  dep_foo = dependency('bar', required: use_bar)
+endif
+```
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `feature.disable_auto_if()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="disable_auto_if_value">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">value</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  See the table above
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### feature.disable_if()
+
+Returns the object itself if the value is false; an error if the object is
+`'enabled'` and the value is true; a disabled feature if the object
+is `'auto'` or `'disabled'` and the value is true.
+
+| Feature  | `value = true` | `value = false` |
+| -------- | -------------- | --------------- |
+| Auto     | Disabled       | Auto            |
+| Enabled  | Error          | Enabled         |
+| Disabled | Disabled       | Disabled        |
+
+This is equivalent to `feature_opt.require(not condition)`, but may make
+code easier to reason about, especially when mixed with `enable_if`
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`1.1.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns the object itself if the value is false; an error if the object is
+[[#@feature]] disable_if(
+  [[#@bool]]                                  <a href="#disable_if_value"><b>value</b></a>,     # The value to check
+
+  # Keyword arguments:
+  <a href="#disable_if_error_message"><b>error_message</b></a> : [[#@str]]                                   # The error message to print if the check fails
+)</code></pre>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Example
+
+`disable_if` is useful to restrict the applicability of `'auto'` features,
+particularly when passing them to [[dependency]]:
+
+```
+use_os_feature = get_option('foo') \
+  .disable_if(host_machine.system() == 'darwin', error_message : 'os feature not supported on MacOS')
+dep_os_feature = dependency('os_feature', required: use_os_feature)
+```
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `feature.disable_if()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="disable_if_value">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">value</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  The value to check
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `feature.disable_if()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="disable_if_error_message">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">error_message</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  <br><code class="language-meson text-nowrap">default = ''</code>
+  </td>
+        <td>
+  
+  The error message to print if the check fails
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### feature.disabled()
+
+Returns whether the feature was set to `'disabled'`
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@bool]] disabled()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### feature.enable_auto_if()
+
+Returns the feature, with `'auto'` converted to `'enabled'` if value is true.
+
+| Feature  | `value = true` | `value = false` |
+| -------- | -------------- | --------------- |
+| Auto     | Enabled        | Auto            |
+| Enabled  | Enabled        | Enabled         |
+| Disabled | Disabled       | Disabled        |
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`1.1.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns the feature, with `'auto'` converted to `'enabled'` if value is true
+[[#@feature]] enable_auto_if(
+  [[#@bool]]                                  <a href="#enable_auto_if_value"><b>value</b></a>,     # See the table above
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `feature.enable_auto_if()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="enable_auto_if_value">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">value</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  See the table above
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### feature.enable_if()
+
+Returns the object itself if the value is false; an error if the object is
+`'disabled'` and the value is true; an enabled feature if the object
+is `'auto'` or `'enabled'` and the value is true.
+
+| Feature  | `value = true` | `value = false` |
+| -------- | -------------- | --------------- |
+| Auto     | Enabled        | Auto            |
+| Enabled  | Enabled        | Enabled         |
+| Disabled | Error          | Disabled        |
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`1.1.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns the object itself if the value is false; an error if the object is
+[[#@feature]] enable_if(
+  [[#@bool]]                                  <a href="#enable_if_value"><b>value</b></a>,     # The value to check
+
+  # Keyword arguments:
+  <a href="#enable_if_error_message"><b>error_message</b></a> : [[#@str]]                                   # The error message to print if the check fails
+)</code></pre>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Example
+
+`enable_if` is useful to restrict the applicability of `'auto'` features,
+particularly when passing them to [[dependency]]:
+
+```
+use_llvm = get_option('llvm').enable_if(with_clang).enable_if(with_llvm_libs)
+dep_llvm = dependency('llvm', required: use_llvm)
+```
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `feature.enable_if()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="enable_if_value">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">value</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  The value to check
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `feature.enable_if()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="enable_if_error_message">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">error_message</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  <br><code class="language-meson text-nowrap">default = ''</code>
+  </td>
+        <td>
+  
+  The error message to print if the check fails
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### feature.enabled()
+
+Returns whether the feature was set to `'enabled'`
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@bool]] enabled()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### feature.require()
+
+Returns the object itself if the value is true; an error if the object is
+`'enabled'` and the value is false; a disabled feature if the object
+is `'auto'` or `'disabled'` and the value is false.
+
+| Feature  | `value = true` | `value = false` |
+| -------- | -------------- | --------------- |
+| Auto     | Auto           | Disabled        |
+| Enabled  | Enabled        | Error           |
+| Disabled | Disabled       | Disabled        |
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.59.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns the object itself if the value is true; an error if the object is
+[[#@feature]] require(
+  [[#@bool]]                                  <a href="#require_value"><b>value</b></a>,     # The value to check
+
+  # Keyword arguments:
+  <a href="#require_error_message"><b>error_message</b></a> : [[#@str]]                                   # The error message to print if the check fails
+)</code></pre>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Example
+
+`require` is useful to restrict the applicability of `'auto'` features,
+for example based on other features or on properties of the host machine:
+
+```
+if get_option('directx').require(host_machine.system() == 'windows',
+      error_message: 'DirectX only available on Windows').allowed()
+  src += ['directx.c']
+  config.set10('HAVE_DIRECTX', true)
+endif
+```
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `feature.require()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="require_value">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">value</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  The value to check
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `feature.require()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="require_error_message">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">error_message</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  <br><code class="language-meson text-nowrap">default = ''</code>
+  </td>
+        <td>
+  
+  The error message to print if the check fails
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+

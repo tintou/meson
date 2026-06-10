@@ -1,0 +1,19 @@
+---
+short-description: "Returned object: Structured Source"
+title: Structured Source
+render-subpages: false
+...
+# Structured Source (`structured_src`)
+
+Opaque object returned by [[structured_sources]].
+
+
+## Returned by
+
+Structured Source objects are returned by the following functions and methods:
+- [[structured_sources]]
+
+
+
+
+

@@ -1,0 +1,20 @@
+---
+short-description: "Returned object: Include directories"
+title: Include directories
+render-subpages: false
+...
+# Include directories (`inc`)
+
+Opaque wrapper for storing include directories
+
+
+## Returned by
+
+Include directories objects are returned by the following functions and methods:
+- [[include_directories]]
+- [[build_tgt.private_dir_include]]
+
+
+
+
+

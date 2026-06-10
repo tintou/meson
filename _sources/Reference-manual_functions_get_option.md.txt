@@ -1,0 +1,79 @@
+## get_option()
+
+Obtains the value of the [project build option](Build-options.md)
+specified in the positional argument.
+
+Note that the value returned for built-in options that end in `dir`
+such as `bindir` and `libdir` is usually a path relative to (and
+inside) the `prefix` but you should not rely on that, as it can also
+be an absolute path [in some cases](Builtin-options.md#universal-options).
+[`install_dir` arguments](Installing.md) handle that as expected
+but if you need an absolute path, e.g. to use in a define etc.,
+you should use the path concatenation operator like this:
+`get_option('prefix') / get_option('localstatedir')`.
+Never manually join paths as if they were strings.
+
+For options of type `feature` a
+[[@feature]] option object
+is returned instead of a string.
+See [`feature` options](Build-options.md#features)
+documentation for more details.
+
+For options that are [specified
+per-machine](Builtin-options.md#specifying-options-per-machine)
+`get_option()` retrieves the value of the option for the
+build machine if the argument starts with `build.`.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Obtains the value of the [project build option](Build-options
+[[#@str]] | [[#@int]] | [[#@bool]] | [[#@feature]] | [[#@array]][[[#@str]] | [[#@int]] | [[#@bool]]] get_option(
+  [[#@str]]                                  <a href="#get_option_option_name"><b>option_name</b></a>,     # Name of the option to query
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+  The function `get_option()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_option_option_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">option_name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Name of the option to query
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+

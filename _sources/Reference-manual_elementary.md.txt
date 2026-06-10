@@ -1,0 +1,8 @@
+---
+short-description: Elementary types
+render-subpages: true
+...
+# Elementary types
+
+See the [root manual document](Reference-manual.md) for
+a general overview.

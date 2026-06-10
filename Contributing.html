@@ -1,0 +1,1301 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Contributing to Meson &#8212; Meson documentation 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d99633c1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Contributing';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Reference Manual" href="Yaml-RefMan.html" />
+    <link rel="prev" title="Visual Studio’s external build projects" href="Vs-External.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/meson_logo.png" class="logo__image only-light" alt="Meson documentation 1.0 documentation - Home"/>
+    <img src="_static/meson_logo.png" class="logo__image only-dark pst-js-only" alt="Meson documentation 1.0 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Additional.html">Additional documentation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Comparisons.html">Comparing Meson with other build systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Conference-presentations.html">Conference presentations on Meson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Contact-information.html">Contact information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Continuous-Integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Design-rationale.html">This is the original design rationale for Meson. The syntax it
+describes does not match the released version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Donating.html">Donating to support Meson development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IndepthTutorial.html">An in-depth tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="In-the-press.html">In the press</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Mixing-build-systems.html">Meson’s policy on mixing multiple build systems in one build directory</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Performance-comparison.html">Performance comparison</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="ARM-performance-test.html">Arm performance test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Simple-comparison.html">A simple comparison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="Pkg-config-files.html">Pkg config files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Porting-from-autotools.html">Porting from Autotools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-procedure.html">Release procedure</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Use-of-Python.html">Use of Python</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Users.html">Notable projects and organizations using Meson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-multiple-build-directories.html">Using multiple build directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Vs-External.html">Visual Studio’s external build projects</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Contributing to Meson</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Yaml-RefMan.html">Reference Manual</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="MesonCI.html">Meson CI setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Releasing.html">Releasing a new Meson version</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">Meson Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Videos.html">Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legal.html">Legal information</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Release-notes.html">Release notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.11.0.html">1.11.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.10.0.html">1.10.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.9.0.html">1.9.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.8.0.html">1.8.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.7.0.html">1.7.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.6.0.html">1.6.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.5.0.html">1.5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.4.0.html">1.4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.3.0.html">1.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.2.0.html">1.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.1.0.html">1.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-1.0.0.html">1.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.64.0.html">0.64.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.63.0.html">0.63.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.62.0.html">0.62.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.61.0.html">0.61.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.60.0.html">0.60.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.59.0.html">0.59.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.58.0.html">0.58.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.57.0.html">0.57.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.56.0.html">0.56.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.55.0.html">0.55.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.54.0.html">0.54.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.53.0.html">0.53.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.52.0.html">0.52.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.51.0.html">0.51.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.50.0.html">0.50.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.49.0.html">0.49.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.48.0.html">0.48.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.47.0.html">0.47.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.46.0.html">0.46.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.45.0.html">0.45.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.44.0.html">0.44.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.43.0.html">Portability improvements to Boost Dependency</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.42.0.html">0.42.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.41.0.html">0.41.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.40.0.html">0.40.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.39.0.html">0.39.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.38.0.html">Uninstall target</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Release-notes-for-0.37.0.html">0.37.0</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="About.html" class="nav-link">About</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Contributing to Meson</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="contributing-to-meson">
+<h1>Contributing to Meson<a class="headerlink" href="#contributing-to-meson" title="Link to this heading">#</a></h1>
+<p>A large fraction of Meson is contributed by people outside the core
+team. This documentation explains some of the design rationales of
+Meson as well as how to create and submit your patches for inclusion
+to Meson.</p>
+<p>Thank you for your interest in participating to the development.</p>
+<section id="submitting-patches">
+<h2>Submitting patches<a class="headerlink" href="#submitting-patches" title="Link to this heading">#</a></h2>
+<p>All changes must be submitted as <a class="reference external" href="https://github.com/mesonbuild/meson/pulls">pull requests to
+GitHub</a>. This causes them
+to be run through the CI system. All submissions must pass a full CI
+test run before they are even considered for submission.</p>
+</section>
+<section id="keeping-pull-requests-up-to-date">
+<h2>Keeping pull requests up to date<a class="headerlink" href="#keeping-pull-requests-up-to-date" title="Link to this heading">#</a></h2>
+<p>It is possible that while your pull request is being reviewed, other
+changes are committed to master that cause merge conflicts that must
+be resolved. The basic rule for this is very simple: keep your pull
+request up to date using rebase <em>only</em>.</p>
+<p>Do not merge head back to your branch. Any merge commits in your pull
+request make it not acceptable for merging into master and you must
+remove them.</p>
+</section>
+<section id="special-procedure-for-new-features">
+<h2>Special procedure for new features<a class="headerlink" href="#special-procedure-for-new-features" title="Link to this heading">#</a></h2>
+<p>Every new feature requires some extra steps, namely:</p>
+<ul class="simple">
+<li><p>Must include a project test under <code class="docutils literal notranslate"><span class="pre">test</span> <span class="pre">cases/</span></code>, or if that’s not
+possible or if the test requires a special environment, it must go
+into <code class="docutils literal notranslate"><span class="pre">run_unittests.py</span></code>.</p></li>
+<li><p>Must be registered with the <a class="reference internal" href="Release-notes-for-0.47.0.html#feature-detection-based-on-meson-version-in-project"><span class="std std-ref">FeatureChecks
+framework</span></a>
+that will warn the user if they try to use a new feature while
+targeting an older Meson version.</p></li>
+<li><p>Needs a release note snippet inside <code class="docutils literal notranslate"><span class="pre">docs/markdown/snippets/</span></code> with
+a heading and a brief paragraph explaining what the feature does
+with an example.</p></li>
+</ul>
+</section>
+<section id="acceptance-and-merging">
+<h2>Acceptance and merging<a class="headerlink" href="#acceptance-and-merging" title="Link to this heading">#</a></h2>
+<p>The kind of review and acceptance any merge proposal gets depends on
+the changes it contains. All pull requests must be reviewed and
+accepted by someone with commit rights who is not the original
+submitter. Merge requests can be roughly split into three different
+categories.</p>
+<p>The first one consists of MRs that only change the markdown
+documentation under <code class="docutils literal notranslate"><span class="pre">docs/markdown</span></code>. Anyone with access rights can
+push changes to these directly to master. For major changes it is
+still recommended to create a MR so other people can comment on it.</p>
+<p>The second group consists of merges that don’t change any
+functionality, fixes to the CI system and bug fixes that have added
+regression tests (see below) and don’t change existing
+functionality. Once successfully reviewed anyone with merge rights can
+merge these to master.</p>
+<p>The final kind of merges are those that add new functionality or
+change existing functionality in a backwards incompatible way. These
+require the approval of the project lead.</p>
+<p>In a simplified list form the split would look like the following:</p>
+<ul class="simple">
+<li><p>members with commit access can do:</p>
+<ul>
+<li><p>documentation changes (directly to master if warranted)</p></li>
+<li><p>bug fixes that don’t change functionality</p></li>
+<li><p>refactorings</p></li>
+<li><p>new dependency types</p></li>
+<li><p>new tool support (e.g. a new Doxygen-kind of tool)</p></li>
+<li><p>support for new compilers to existing languages</p></li>
+</ul>
+</li>
+<li><p>project leader decision is needed for:</p>
+<ul>
+<li><p>new modules</p></li>
+<li><p>new functions in the Meson language</p></li>
+<li><p>syntax changes for Meson files</p></li>
+<li><p>changes breaking backwards compatibility</p></li>
+<li><p>support for new languages</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="a-green-ci-run-is-mandatory-for-merging">
+<h2>A green CI run is mandatory for merging<a class="headerlink" href="#a-green-ci-run-is-mandatory-for-merging" title="Link to this heading">#</a></h2>
+<p>No merge request may be merged until it has a fully green CI run. It
+does not matter why CI fails, it is a hard blocker. Even if the MR
+could possibly not have anything to do with the failure and clearly
+should be permitted, it may not be merged. Only MRs that fix the CI
+issue are allowed to land in trunk.</p>
+<p>There is one, and only one, exception to this. At the time of writing
+the Apple CI is unreliable and sometimes fails with clock skew errors.</p>
+<p>If a merge causes CI failure any developer can revert it out of
+master. It is then the responsibility of the original submitter to
+resubmit a fixed version.</p>
+</section>
+<section id="strategy-for-merging-pull-requests-to-trunk">
+<h2>Strategy for merging pull requests to trunk<a class="headerlink" href="#strategy-for-merging-pull-requests-to-trunk" title="Link to this heading">#</a></h2>
+<p>Meson’s merge strategy should fulfill the following guidelines:</p>
+<ul class="simple">
+<li><p>preserve as much history as possible</p></li>
+<li><p>have as little junk in the repo as possible</p></li>
+<li><p>everything in the “master lineage” should always pass all tests</p></li>
+</ul>
+<p>These goals are slightly contradictory so the correct thing to do
+often requires some judgement on part of the person doing the
+merge. GitHub provides three different merge options, The rules of
+thumb for choosing between them goes like this:</p>
+<ul class="simple">
+<li><p>single commit pull requests should always be rebased</p></li>
+<li><p>a pull request with one commit and one “fixup” commit (such as
+testing something to see if it passes CI) should be squashed</p></li>
+<li><p>large branches with many commits should be merged with a merge
+commit, especially if one of the commits does not pass all tests
+(which happens in e.g. large and difficult refactorings)</p></li>
+</ul>
+<p>If in doubt, ask for guidance on IRC.</p>
+</section>
+<section id="tests">
+<h2>Tests<a class="headerlink" href="#tests" title="Link to this heading">#</a></h2>
+<p>All new features must come with automatic tests that thoroughly prove
+that the feature is working as expected. Similarly bug fixes must come
+with a unit test that demonstrates the bug, proves that it has been
+fixed and prevents the feature from breaking in the future.</p>
+<p>Sometimes it is difficult to create a unit test for a given bug. If
+this is the case, note this in your pull request. We may permit bug
+fix merge requests in these cases. This is done on a case by case
+basis. Sometimes it may be easier to write the test than convince the
+maintainers that one is not needed. Exercise judgment and ask for help
+in problematic cases.</p>
+<p>The tests are split into two different parts: unit tests and full
+project tests. To run all tests, execute <code class="docutils literal notranslate"><span class="pre">./run_tests.py</span></code>. Unit tests
+can be run with <code class="docutils literal notranslate"><span class="pre">./run_unittests.py</span></code> and project tests with
+<code class="docutils literal notranslate"><span class="pre">./run_project_tests.py</span></code>.</p>
+<section id="project-tests">
+<h3>Project tests<a class="headerlink" href="#project-tests" title="Link to this heading">#</a></h3>
+<p>Subsets of project tests can be selected with
+<code class="docutils literal notranslate"><span class="pre">./run_project_tests.py</span> <span class="pre">--only</span></code> option. This can save a great deal of
+time when only a certain part of Meson is being tested.
+For example, a useful and easy contribution to Meson is making
+sure the full set of compilers is supported. One could for example test
+various Fortran compilers by setting <code class="docutils literal notranslate"><span class="pre">FC=ifort</span></code>, <code class="docutils literal notranslate"><span class="pre">FC=flang</span></code> or
+<code class="docutils literal notranslate"><span class="pre">FC=flang-new</span></code> or similar with <code class="docutils literal notranslate"><span class="pre">./run_project_test.py</span> <span class="pre">--only</span> <span class="pre">fortran</span></code>.
+Some families of tests require a particular backend to run.
+For example, all the CUDA project tests run and pass on Windows via
+<code class="docutils literal notranslate"><span class="pre">./run_project_tests.py</span> <span class="pre">--only</span> <span class="pre">cuda</span> <span class="pre">--backend</span> <span class="pre">ninja</span></code></p>
+<p>Each project test is a standalone project that can be compiled on its
+own. They are all in the <code class="docutils literal notranslate"><span class="pre">test</span> <span class="pre">cases</span></code> subdirectory. The simplest way to
+run a single project test is to do something like <code class="docutils literal notranslate"><span class="pre">./meson.py</span> <span class="pre">test\</span> <span class="pre">cases/common/1\</span> <span class="pre">trivial</span> <span class="pre">builddir</span></code>. The one exception to this is <code class="docutils literal notranslate"><span class="pre">test</span> <span class="pre">cases/unit</span></code> directory discussed below.</p>
+<p>The test cases in the <code class="docutils literal notranslate"><span class="pre">common</span></code> subdirectory are meant to be run always
+for all backends. They should only depend on C and C++, without any
+external dependencies such as libraries. Tests that require those are
+in the <code class="docutils literal notranslate"><span class="pre">test</span> <span class="pre">cases/frameworks</span></code> directory. If there is a need for an
+external program in the common directory, such as a code generator, it
+should be implemented as a Python script. The goal of test projects is
+also to provide sample projects that end users can use as a base for
+their own projects.</p>
+<p>All project tests follow the same pattern: they are configured,
+compiled, tests are run and finally install is run. Passing means that
+configuring, building and tests succeed and that installed files match
+those expected.</p>
+<p>Any tests that require more thorough analysis, such as checking that
+certain compiler arguments can be found in the command line or that
+the generated pkg-config files actually work should be done with a
+unit test.</p>
+<p>Additionally:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">crossfile.ini</span></code> and <code class="docutils literal notranslate"><span class="pre">nativefile.ini</span></code> are passed to the configure step with
+<code class="docutils literal notranslate"><span class="pre">--cross-file</span></code> and <code class="docutils literal notranslate"><span class="pre">--native-file</span></code> options, respectively.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mlog.cmd_ci_include()</span></code> can be called from anywhere inside Meson to
+capture the contents of an additional file into the CI log on failure.</p></li>
+</ul>
+<p>Projects needed by unit tests are in the <code class="docutils literal notranslate"><span class="pre">test</span> <span class="pre">cases/unit</span></code>
+subdirectory. They are not run as part of <code class="docutils literal notranslate"><span class="pre">./run_project_tests.py</span></code>.</p>
+</section>
+<section id="configuring-project-tests">
+<h3>Configuring project tests<a class="headerlink" href="#configuring-project-tests" title="Link to this heading">#</a></h3>
+<p>The (optional) <code class="docutils literal notranslate"><span class="pre">test.json</span></code> file, in the root of a test case, is used
+for configuring the test. All of the following root entries in the <code class="docutils literal notranslate"><span class="pre">test.json</span></code>
+are independent of each other and can be combined as needed.</p>
+<p>Example <code class="docutils literal notranslate"><span class="pre">test.json</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;VAR&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VAL&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;installed&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;exe&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;usr/bin/testexe&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pdb&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;usr/bin/testexe&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shared_lib&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;usr/lib/z&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.2.3&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;matrix&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;options&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;opt1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;val&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;abc&quot;</span><span class="w">   </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;val&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qwert&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;val&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bad&quot;</span><span class="w">   </span><span class="p">}</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;opt2&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;val&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">    </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;val&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="w">  </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;val&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;exclude&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;opt1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qwert&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;opt2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;opt1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bad&quot;</span><span class="w">                    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;cmake&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;=3.11&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="env">
+<h4>env<a class="headerlink" href="#env" title="Link to this heading">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">env</span></code> key contains a dictionary which specifies additional
+environment variables to be set during the configure step of the test.</p>
+<p>There is some basic support for configuring the string with the <code class="docutils literal notranslate"><span class="pre">&#64;&lt;VAR&gt;&#64;</span></code> syntax:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;ROOT&#64;</span></code>: absolute path of the source directory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;PATH&#64;</span></code>: current value of the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> env variable</p></li>
+</ul>
+</section>
+<section id="installed">
+<h4>installed<a class="headerlink" href="#installed" title="Link to this heading">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">installed</span></code> dict contains a list of dicts, describing which files are expected
+to be installed. Each dict contains the following keys:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">file</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">platform</span></code> (optional)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">version</span></code> (optional)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">language</span></code> (optional)</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">file</span></code> entry contains the relative path (from the install root) to the
+actually installed file.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">type</span></code> entry specifies how the <code class="docutils literal notranslate"><span class="pre">file</span></code> path should be interpreted based on the
+current platform. The following values are currently supported:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">file</span></code></p></td>
+<td><p>No postprocessing, just use the provided path</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">python_file</span></code></p></td>
+<td><p>Use the provided path while replacing the python directory.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dir</span></code></p></td>
+<td><p>To include all files inside the directory (for generated docs, etc). The path must be a valid directory</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">exe</span></code></p></td>
+<td><p>For executables. On Windows the <code class="docutils literal notranslate"><span class="pre">.exe</span></code> suffix is added to the path in <code class="docutils literal notranslate"><span class="pre">file</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">shared_lib</span></code></p></td>
+<td><p>For shared libraries, always written as <code class="docutils literal notranslate"><span class="pre">name</span></code>. The appropriate suffix and prefix are added by platform</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">python_lib</span></code></p></td>
+<td><p>For python libraries, while replacing the python directory. The appropriate suffix is added by platform</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pdb</span></code></p></td>
+<td><p>For Windows PDB files. PDB entries are ignored on non Windows platforms</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">implib</span></code></p></td>
+<td><p>For Windows import libraries. These entries are ignored on non Windows platforms</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">py_implib</span></code></p></td>
+<td><p>For Windows import libraries. These entries are ignored on non Windows platforms</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">implibempty</span></code></p></td>
+<td><p>Like <code class="docutils literal notranslate"><span class="pre">implib</span></code>, but no symbols are exported in the library</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">expr</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">file</span></code> is an expression. This type should be avoided and removed if possible</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Except for the <code class="docutils literal notranslate"><span class="pre">file</span></code>, <code class="docutils literal notranslate"><span class="pre">python_file</span></code> and <code class="docutils literal notranslate"><span class="pre">expr</span></code> types, all paths should be provided <em>without</em> a suffix.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Argument</p></th>
+<th class="head"><p>Applies to</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">version</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">shared_lib</span></code>, <code class="docutils literal notranslate"><span class="pre">pdb</span></code></p></td>
+<td><p>Sets the version to look for appropriately per-platform</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">language</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pdb</span></code></p></td>
+<td><p>Determines which compiler/linker determines the existence of this file</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">shared_lib</span></code> and <code class="docutils literal notranslate"><span class="pre">pdb</span></code> types takes an optional additional
+parameter, <code class="docutils literal notranslate"><span class="pre">version</span></code>, this is us a string in <code class="docutils literal notranslate"><span class="pre">X.Y.Z</span></code> format that will
+be applied to the library. Each version to be tested must have a
+single version. The harness will apply this correctly per platform:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">python_file</span></code>, <code class="docutils literal notranslate"><span class="pre">python_lib</span></code>, and <code class="docutils literal notranslate"><span class="pre">py_implib</span></code> types have basic support for configuring the string with the <code class="docutils literal notranslate"><span class="pre">&#64;&lt;VAR&gt;&#64;</span></code> syntax:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;PYTHON_PLATLIB&#64;</span></code>: python <code class="docutils literal notranslate"><span class="pre">get_install_dir</span></code> directory relative to prefix</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;PYTHON_PURELIB&#64;</span></code>: python <code class="docutils literal notranslate"><span class="pre">get_install_dir(pure:</span> <span class="pre">true)</span></code> directory relative to prefix</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">pdb</span></code> takes an optional <code class="docutils literal notranslate"><span class="pre">language</span></code> argument. This determines which
+compiler/linker should generate the pdb file. Because it’s possible to
+mix compilers that do and don’t generate pdb files (dmd’s optlink
+doesn’t). Currently this is only needed when mixing D and C code.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shared_lib&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;usr/lib/lib&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shared_lib&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;usr/lib/lib&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shared_lib&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;usr/lib/lib&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.2.3.&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This will be applied appropriately per platform. On windows this
+expects <code class="docutils literal notranslate"><span class="pre">lib.dll</span></code> and <code class="docutils literal notranslate"><span class="pre">lib-1.dll</span></code>. on MacOS it expects <code class="docutils literal notranslate"><span class="pre">liblib.dylib</span></code>
+and <code class="docutils literal notranslate"><span class="pre">liblib.1.dylib</span></code>. On other Unices it expects <code class="docutils literal notranslate"><span class="pre">liblib.so</span></code>,
+<code class="docutils literal notranslate"><span class="pre">liblib.so.1</span></code>, and <code class="docutils literal notranslate"><span class="pre">liblib.so.1.2.3</span></code>.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">platform</span></code> key is present, the installed file entry is only
+considered if the platform matches. The following values for
+<code class="docutils literal notranslate"><span class="pre">platform</span></code> are currently supported:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>platform</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">msvc</span></code></p></td>
+<td><p>Matches when a msvc like compiler is used (<code class="docutils literal notranslate"><span class="pre">msvc</span></code>, <code class="docutils literal notranslate"><span class="pre">clang-cl</span></code>, etc.)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gcc</span></code></p></td>
+<td><p>Not <code class="docutils literal notranslate"><span class="pre">msvc</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cygwin</span></code></p></td>
+<td><p>Matches when the platform is cygwin</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">!cygwin</span></code></p></td>
+<td><p>Not <code class="docutils literal notranslate"><span class="pre">cygwin</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">windows</span></code></p></td>
+<td><p>Matches when the platform is windows or cygwin</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">!windows</span></code></p></td>
+<td><p>Not <code class="docutils literal notranslate"><span class="pre">windows</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="matrix">
+<h4>matrix<a class="headerlink" href="#matrix" title="Link to this heading">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">matrix</span></code> section can be used to define a test matrix to run
+project tests with different Meson options.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">options</span></code> dict, all possible options and their values are
+specified. Each key in the <code class="docutils literal notranslate"><span class="pre">options</span></code> dict is a Meson option. It stores
+a list of all potential values in a dict format.</p>
+<p>Each value must contain the <code class="docutils literal notranslate"><span class="pre">val</span></code> key for the value of the option.
+<code class="docutils literal notranslate"><span class="pre">null</span></code> can be used for adding matrix entries without the current
+option.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">skip_on_env</span></code> key (as described below) may be used in the value to skip that
+matrix entry, based on the current environment.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">expect_skip_on_jobname</span></code> and <code class="docutils literal notranslate"><span class="pre">expect_skip_on_os</span></code> keys (as described below)
+may be used to expect that the test will be skipped, based on the current environment.</p>
+<p>Similarly, the <code class="docutils literal notranslate"><span class="pre">compilers</span></code> key can be used to define a mapping of
+compilers to languages that are required for this value.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;compilers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;c&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gcc&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;cpp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gcc&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;d&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gdc&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Specific option combinations can be excluded with the <code class="docutils literal notranslate"><span class="pre">exclude</span></code>
+section. It should be noted that <code class="docutils literal notranslate"><span class="pre">exclude</span></code> does not require exact
+matches. Instead, any matrix entry containing all option value
+combinations in <code class="docutils literal notranslate"><span class="pre">exclude</span></code> will be excluded. Thus an empty dict (<code class="docutils literal notranslate"><span class="pre">{}</span></code>)
+to will match <strong>all</strong> elements in the test matrix.</p>
+<p>The above example will produce the following matrix entries:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">opt1=abc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">opt1=abc</span> <span class="pre">opt2=true</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">opt1=abc</span> <span class="pre">opt2=false</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">opt1=qwert</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">opt1=qwert</span> <span class="pre">opt2=true</span></code></p></li>
+</ul>
+</section>
+<section id="do-not-set-opts">
+<h4>do_not_set_opts<a class="headerlink" href="#do-not-set-opts" title="Link to this heading">#</a></h4>
+<p>Currently supported values are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">prefix</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libdir</span></code></p></li>
+</ul>
+</section>
+<section id="tools">
+<h4>tools<a class="headerlink" href="#tools" title="Link to this heading">#</a></h4>
+<p>This section specifies a dict of tool requirements in a simple
+key-value format. If a tool is specified, it has to be present in the
+environment, and the version requirement must be fulfilled. Otherwise,
+the entire test is skipped (including every element in the test
+matrix).</p>
+</section>
+<section id="stdout">
+<h4>stdout<a class="headerlink" href="#stdout" title="Link to this heading">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">stdout</span></code> key contains a list of dicts, describing the expected
+stdout.</p>
+<p>Each dict contains the following keys:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">line</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">match</span></code> (optional)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">count</span></code> (optional)</p></li>
+</ul>
+<p>Each item in the list is matched, in order, against the remaining
+actual stdout lines, after any previous matches. If the actual stdout
+is exhausted before every item in the list is matched, the expected
+output has not been seen, and the test has failed.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">match</span></code> element of the dict determines how the <code class="docutils literal notranslate"><span class="pre">line</span></code> element is
+matched:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">literal</span></code></p></td>
+<td><p>Literal match (default)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">re</span></code></p></td>
+<td><p>regex match</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">count</span></code> element determines how many times the line is expected, and allowed,
+to be in the output. If unspecified, it must appear “any number of times, but at
+least once”.</p>
+</section>
+<section id="skip-on-env">
+<h4>skip_on_env<a class="headerlink" href="#skip-on-env" title="Link to this heading">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">skip_on_env</span></code> key can be used to specify a list of environment variables. If
+at least one environment variable in the <code class="docutils literal notranslate"><span class="pre">skip_on_env</span></code> list is present, the test
+is skipped.</p>
+</section>
+<section id="expect-skip-on-jobname">
+<h4>expect_skip_on_jobname<a class="headerlink" href="#expect-skip-on-jobname" title="Link to this heading">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">expect_skip_on_jobname</span></code> key contains a list of strings. If the <code class="docutils literal notranslate"><span class="pre">MESON_CI_JOBNAME</span></code>
+environment variable is set, and any of them are a sub-string of it, the test is
+expected to be skipped (that is, it is expected that the test will output
+<code class="docutils literal notranslate"><span class="pre">MESON_SKIP_TEST</span></code>, because the CI environment is not one in which it can run,
+for whatever reason).</p>
+<p>The test is failed if it either skips unexpectedly or runs unexpectedly.</p>
+</section>
+<section id="expect-skip-on-os">
+<h4>expect_skip_on_os<a class="headerlink" href="#expect-skip-on-os" title="Link to this heading">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">expect_skip_on_os</span></code> key can be used to specify a list of OS names (or their
+negations, prefixed with a <code class="docutils literal notranslate"><span class="pre">!</span></code>).  If at least one item in the <code class="docutils literal notranslate"><span class="pre">expect_skip_on_os</span></code> list
+is matched, the test is expected to be skipped.</p>
+<p>The test is failed if it either skips unexpectedly or runs unexpectedly.</p>
+</section>
+</section>
+<section id="skipping-integration-tests">
+<h3>Skipping integration tests<a class="headerlink" href="#skipping-integration-tests" title="Link to this heading">#</a></h3>
+<p>Meson uses several continuous integration testing systems that have
+slightly different interfaces for indicating a commit should be
+skipped.</p>
+<p>Continuous integration systems currently used:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/devops/pipelines/scripts/git-commands?view=vsts&amp;tabs=yaml#how-do-i-avoid-triggering-a-ci-build-when-the-script-pushes">Azure Pipelines</a>
+allows <code class="docutils literal notranslate"><span class="pre">***NO_CI***</span></code> in the commit message.</p></li>
+<li><p><a class="reference external" href="https://sider.review">Sider</a>
+runs Flake8 (<a class="reference internal" href="#python-coding-style">see below</a>)</p></li>
+</ul>
+<p>To promote consistent naming policy, use:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[skip</span> <span class="pre">ci]</span></code> in the commit title if you want to disable all
+integration tests</p></li>
+</ul>
+</section>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">docs</span></code> directory contains the full documentation that will be used
+to generate <a class="reference external" href="https://mesonbuild.com">the Meson web site</a>. Line length
+in most cases should not exceed 70 characters (lines containing links
+or examples are usually exempt). Every change in functionality must
+change the documentation pages. In most cases this means updating the
+reference documentation page but bigger changes might need changes in
+other documentation, too.</p>
+<p>All new functionality needs to have a mention in the release
+notes. These features should be written in standalone files in the
+<code class="docutils literal notranslate"><span class="pre">docs/markdown/snippets</span></code> directory. The release manager will combine
+them into one page when doing the release.</p>
+</section>
+<section id="python-coding-style">
+<h2>Python Coding style<a class="headerlink" href="#python-coding-style" title="Link to this heading">#</a></h2>
+<p>Meson follows the basic Python coding style. Additional rules are the
+following:</p>
+<ul class="simple">
+<li><p>indent 4 spaces, no tabs ever</p></li>
+<li><p>indent meson.build files with two spaces</p></li>
+<li><p>try to keep the code as simple as possible</p></li>
+<li><p>contact the mailing list before embarking on large scale projects
+to avoid wasted effort</p></li>
+</ul>
+<p>Meson uses Flake8 for style guide enforcement. The Flake8 options for
+the project are contained in .flake8.</p>
+<p>To run Flake8 on your local clone of Meson:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>flake8
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>meson
+<span class="gp">$ </span>flake8
+</pre></div>
+</div>
+<p>To run it automatically before committing:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>flake8<span class="w"> </span>--install-hook<span class="o">=</span>git
+<span class="gp">$ </span>git<span class="w"> </span>config<span class="w"> </span>--bool<span class="w"> </span>flake8.strict<span class="w"> </span><span class="nb">true</span>
+</pre></div>
+</div>
+</section>
+<section id="c-c-coding-style">
+<h2>C/C++ coding style<a class="headerlink" href="#c-c-coding-style" title="Link to this heading">#</a></h2>
+<p>Meson has a bunch of test code in several languages. The rules for
+those are simple.</p>
+<ul class="simple">
+<li><p>indent 4 spaces, no tabs ever</p></li>
+<li><p>brace always on the same line as if/for/else/function definition</p></li>
+</ul>
+</section>
+<section id="dependency-support-policy">
+<h2>Dependency support policy<a class="headerlink" href="#dependency-support-policy" title="Link to this heading">#</a></h2>
+<p>The goal of Meson is to be as easily usable as possible. The user
+experience should be “get Python3 and Ninja, run”, even on
+Windows.</p>
+<p>Additionally, Meson is popularly used in many core infrastructure packages in a
+Unix (and particularly, Linux) userland. This includes:</p>
+<ul class="simple">
+<li><p>package managers, such as pacman (Arch Linux) and portage (Gentoo)</p></li>
+<li><p>init systems (systemd, openrc, dinit)</p></li>
+<li><p>graphics stacks (xorg, wayland, libdrm, Mesa, gtk)</p></li>
+</ul>
+<p>As such it needs to be able to run early on when bootstrapping a system from
+scratch.</p>
+<section id="python">
+<h3>Python<a class="headerlink" href="#python" title="Link to this heading">#</a></h3>
+<p>We will always support all non EOL versions of CPython. Yes, there are people
+out there using and depending on every old version of python. In fact, there
+are people using and depending on systems that had a brand new python at the
+time of release, but with a much longer support cycle than Python itself. We
+need to balance the tradeoff between supporting those systems and being able to
+improve our own codebase and code quality.</p>
+<p>Meson will also be <em>honest</em> about what versions of python it supports. When a
+version of CPython becomes EOL, it becomes eligible to be removed from our
+support policy. We cannot guarantee continued support forever for software that
+is not supported by its own developers, even if some deprecated LTS systems out
+there still ship it. However, that doesn’t mean we will drop support for those
+versions simply because they are old. If we are not using new functionality
+from new python versions, we will continue to mark Meson as compatible with the
+older version – and test it in CI!</p>
+<p>(Note that contrary to popular belief, it is actually easier to test support
+for very old versions of python than it is to drop support for it. We already
+have the CI setup necessary for testing. Upgrading the CI to use newer versions
+of python, on the other hand, represents mildly painful administrative work
+that has to be done.)</p>
+<p>So, in order to start requiring a newer version of python, one should check a
+few factors:</p>
+<ul class="simple">
+<li><p>are the older versions being dropped, already EOL? <a class="reference external" href="https://endoflife.date/python">Python EOL chart</a></p></li>
+<li><p>document the new minimum version of corresponding OSes</p></li>
+<li><p>rationalize the benefit of the change in terms of improvements to development
+and maintenance of Meson. What new language features will be unlocked by the
+upgrade, that Meson will be able to make good use of? Not every version has
+new features requiring an upgrade, and not every new feature is so great we
+need to drop everything to use it</p></li>
+</ul>
+</section>
+<section id="external-dependencies">
+<h3>External dependencies<a class="headerlink" href="#external-dependencies" title="Link to this heading">#</a></h3>
+<p>Unfortunately this also means that we can’t have dependencies on
+projects outside of Python’s standard library. This applies only to
+core functionality, though. For additional helper programs etc the use
+of external dependencies may be ok. If you feel that you are dealing
+with this kind of case, please contact the developers first with your
+use case.</p>
+</section>
+</section>
+<section id="turing-completeness">
+<h2>Turing completeness<a class="headerlink" href="#turing-completeness" title="Link to this heading">#</a></h2>
+<p>The main design principle of Meson is that the definition language is
+not Turing complete. Any change that would make Meson Turing complete
+is automatically rejected. In practice this means that defining your
+own functions inside <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> files and generalised loops will
+not be added to the language.</p>
+</section>
+<section id="do-i-need-to-sign-a-cla-in-order-to-contribute">
+<h2>Do I need to sign a CLA in order to contribute?<a class="headerlink" href="#do-i-need-to-sign-a-cla-in-order-to-contribute" title="Link to this heading">#</a></h2>
+<p>No you don’t. All contributions are welcome.</p>
+</section>
+<section id="no-lingering-state">
+<h2>No lingering state<a class="headerlink" href="#no-lingering-state" title="Link to this heading">#</a></h2>
+<p>Meson operates in much the same way as functional programming
+languages. It has inputs, which include <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> files, values of
+options, compilers and so on. These are passed to a function, which
+generates output build definition. This function is pure, which means that:</p>
+<ul class="simple">
+<li><p>for any given input the output is always the same</p></li>
+<li><p>running Meson twice in a row <em>always</em> produce the same output in both runs</p></li>
+</ul>
+<p>The latter one is important, because it enforces that there is no way
+for “secret state” to pass between consecutive invocations of
+Meson. This is the reason why, for example, there is no <code class="docutils literal notranslate"><span class="pre">set_option</span></code>
+function even though there is a <code class="docutils literal notranslate"><span class="pre">get_option</span></code> one.</p>
+<p>If this were not the case, we could never know if the build output is
+“stable”. For example suppose there were a <code class="docutils literal notranslate"><span class="pre">set_option</span></code> function and a
+boolean variable <code class="docutils literal notranslate"><span class="pre">flipflop</span></code>. Then you could do this:</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">set_option</span><span class="p">(</span><span class="s">&#39;flipflop&#39;</span><span class="p">,</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="nb">get_option</span><span class="p">(</span><span class="s">&#39;flipflop&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This piece of code would never converge. Every Meson run would change
+the value of the option and thus the output you get out of this build
+definition would be random.</p>
+<p>Meson does not permit this by forbidding these sorts of covert
+channels.</p>
+<p>There is one exception to this rule. Users can call into external
+commands with <code class="docutils literal notranslate"><span class="pre">run_command</span></code>. If the output of that command does not
+behave like a pure function, this problem arises. Meson does not try
+to guard against this case, it is the responsibility of the user to
+make sure the commands they run behave like pure functions.</p>
+</section>
+<section id="environment-variables">
+<h2>Environment variables<a class="headerlink" href="#environment-variables" title="Link to this heading">#</a></h2>
+<p>Environment variables are like global variables, except that they are
+also hidden by default. Envvars should be avoided whenever possible,
+all functionality should be exposed in better ways such as command
+line switches.</p>
+</section>
+<section id="random-design-points-that-fit-nowhere-else">
+<h2>Random design points that fit nowhere else<a class="headerlink" href="#random-design-points-that-fit-nowhere-else" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>All features should follow the 90/9/1 rule. 90% of all use cases
+should be easy, 9% should be possible and it is totally fine to not
+support the final 1% if it would make things too complicated.</p></li>
+<li><p>Any build directory will have at most two toolchains: one native and
+one cross.</p></li>
+<li><p>Prefer specific solutions to generic frameworks. Solve the end
+user’s problems rather than providing them tools to do it
+themselves.</p></li>
+<li><p>Never use features of the Unix shell (or Windows shell for that
+matter). Doing things like forwarding output with <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> or invoking
+multiple commands with <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> are not permitted. Whenever these sorts
+of requirements show up, write an internal Python script with the
+desired functionality and use that instead.</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Vs-External.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Visual Studio’s external build projects</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Yaml-RefMan.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Reference Manual</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submitting-patches">Submitting patches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keeping-pull-requests-up-to-date">Keeping pull requests up to date</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-procedure-for-new-features">Special procedure for new features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acceptance-and-merging">Acceptance and merging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-green-ci-run-is-mandatory-for-merging">A green CI run is mandatory for merging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strategy-for-merging-pull-requests-to-trunk">Strategy for merging pull requests to trunk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">Tests</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-tests">Project tests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-project-tests">Configuring project tests</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#env">env</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installed">installed</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix">matrix</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#do-not-set-opts">do_not_set_opts</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tools">tools</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stdout">stdout</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#skip-on-env">skip_on_env</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#expect-skip-on-jobname">expect_skip_on_jobname</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#expect-skip-on-os">expect_skip_on_os</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skipping-integration-tests">Skipping integration tests</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-coding-style">Python Coding style</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-c-coding-style">C/C++ coding style</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependency-support-policy">Dependency support policy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#external-dependencies">External dependencies</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turing-completeness">Turing completeness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#do-i-need-to-sign-a-cla-in-order-to-contribute">Do I need to sign a CLA in order to contribute?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#no-lingering-state">No lingering state</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-variables">Environment variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-design-points-that-fit-nowhere-else">Random design points that fit nowhere else</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/mesonbuild/meson/edit/master/docs/markdown/Contributing.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">Website licensing information are available on the <a href="legal.html">Legal</a> page.</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

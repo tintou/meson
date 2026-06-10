@@ -1,0 +1,259 @@
+## project()
+
+The first function called in each project, to initialize Meson.
+
+The first argument to this function must be a string defining the name
+of this project.
+
+The project name can be any string you want, it's not used for
+anything except descriptive purposes. However since it is written to
+e.g. the dependency manifest it usually makes sense to have it be the
+same as the project tarball or pkg-config name. So for example you
+would probably want to use the name _libfoobar_ instead of _The Foobar
+Library_.
+
+It may be followed by the array of programming languages that the project uses.
+
+*(since 0.40.0)* The array of languages is optional.
+
+These languages may be used both for `native: false` (the default)
+(host machine) targets and for `native: true` (build machine) targets.
+*(since 0.56.0)* The build machine compilers for the specified
+languages are not required.
+
+Supported values for languages are `c`, `cpp` (for `C++`), `cuda`,
+`cython`, `d`, `objc`, `objcpp`, `fortran`, `java`, `cs` (for `C#`),
+`swift`, `nasm`, `masm`, `linearasm`, `vala` and `rust`.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># The first function called in each project, to initialize Meson
+[[#@void]] project(
+  [[#@str]]                                  <a href="#project_project_name"><b>project_name</b></a>,     # The name of the project
+  [[#@str]]                                  <b>language</b>...,      # The languages that Meson should initialize
+
+  # Keyword arguments:
+  <a href="#project_default_options"><b>default_options</b></a> : [[#@array]][[[#@str]]] | [[#@dict]][[[#@str]] | [[#@bool]] | [[#@int]] | [[#@array]][[[#@str]]]]                                                                                                                                                                       # Accepts strings in the form `key=value`
+  <a href="#project_license"><b>license</b></a>         : [[#@str]] | [[#@array]][[[#@str]]]                                                                                                                                                                                                     # Takes a string or array of strings describing the license(s) the code is under
+  <a href="#project_license_files"><b>license_files</b></a>   : [[#@str]] | [[#@array]][[[#@str]]]                                                                                                                                                                                                     # Takes a string or array of strings with the paths to the license file(s)
+  <a href="#project_meson_version"><b>meson_version</b></a>   : [[#@str]]                                                                                                                                                                                                                  # Takes a string describing which Meson version the project requires
+  <a href="#project_subproject_dir"><b>subproject_dir</b></a>  : [[#@str]]                                                                                                                                                                                                                  # Specifies the top level directory name that holds Meson subprojects
+  <a href="#project_version"><b>version</b></a>         : [[#@str]] | [[#@file]]                                                                                                                                                                                                           # A free form string describing the version of this project
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+  The function `project()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="project_project_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">project_name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The name of the project.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  Additionally, the
+  function accepts between `0` and `infinity` variadic
+  arguments (`language...`) of type <code><span class="text-nowrap">[[@str]]</span></code>.
+
+  The languages that Meson should initialize.
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  Finally, `project()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="project_default_options">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">default_options</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>] | [[@dict]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@int]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]]
+  </td>
+        <td>
+  
+  Accepts strings in the form `key=value`
+which have the same format as options to `meson configure`.
+For example to set the default project type you would
+set this: `default_options : ['buildtype=debugoptimized']`. Note
+that these settings are only used when running Meson for the first
+time.
+
+Note that some options can override the default behavior;
+for example, using `c_args` here means that the `CFLAGS`
+environment variable is not used. Consider using
+[[add_project_arguments()]] instead.
+
+Also note that not all options are taken into account when
+building as a subproject, and the exact set of options
+that are per-subproject has increased over time; for more
+information, see [core options](Builtin-options.md#core-options)
+and [compiler options](Builtin-options.md#compiler-options).
+
+*(since 1.2.0)*: A dictionary may now be passed.
+
+  </td>
+      </tr>
+      <tr id="project_license">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">license</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Takes a string or array of strings describing the license(s) the code is under.
+
+This *should* be an [SPDX license expression](https://spdx.dev/ids/),
+using the standardized license identifier from the [SPDX license
+list](https://spdx.org/licenses/).  Usually this would be something like
+`license : 'GPL-2.0-or-later'`. If there are multiple licenses you can use the
+`AND` and `OR` operators to join them: `license : 'Apache-2.0 OR GPL-2.0'`.
+
+For backwards compatibility reasons you can also pass an array of
+licenses here. This is not recommended, as it is ambiguous: `license :
+['Apache-2.0', 'GPL-2.0-only']` instead use an SPDX expression: `license
+: 'Apache-2.0 OR GPL-2.0-only'`, which makes it clear that the license
+mean OR, not AND.
+
+Note that the text is informal and is only written to the dependency
+manifest. Meson does not do any license validation, you are responsible
+for verifying that you abide by all licensing terms. You can access the
+value in your Meson build files with `meson.project_license()`.
+
+  </td>
+      </tr>
+      <tr id="project_license_files">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">license_files</code>
+  <br>{meson:since}`1.1.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Takes a string or array of strings with the paths to the license file(s)
+the code is under.
+
+This enhances the value of the `license` kwarg by allowing to specify both
+the short license name and the full license text. Usually this would be
+something like `license_files: ['COPYING']`.
+
+Note that the files are informal and are only installed with the dependency
+manifest. Meson does not do any license validation, you are responsible
+for verifying that you abide by all licensing terms. You can access the
+value in your Meson build files with [[meson.project_license_files]].
+
+  </td>
+      </tr>
+      <tr id="project_meson_version">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">meson_version</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Takes a string describing which Meson version the project requires.
+Usually something like `>=0.28.0`.
+
+  </td>
+      </tr>
+      <tr id="project_subproject_dir">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">subproject_dir</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  <br><code class="language-meson text-nowrap">default = 'subprojects'</code>
+  </td>
+        <td>
+  
+  Specifies the top level directory name that holds Meson subprojects.
+This is only meant as a compatibility option
+for existing code bases that house their embedded source code in a
+custom directory. All new projects should not set this but instead
+use the default value. It should be noted that this keyword
+argument is ignored inside subprojects. There can be only one
+subproject dir and it is set in the top level Meson file.
+
+  </td>
+      </tr>
+      <tr id="project_version">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">version</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span>
+  </td>
+        <td>
+  
+  A free form string describing the version of this project.
+You can access the value in your Meson build files
+with [[meson.project_version]]. *(Since 0.57.0)* this can also be a
+[[@file]] object pointing to a file that contains exactly one line of
+text.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>

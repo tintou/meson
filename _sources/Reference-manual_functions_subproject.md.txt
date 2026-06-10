@@ -1,0 +1,163 @@
+## subproject()
+
+Takes the project specified in the positional argument and brings that
+in the current build specification by returning a [[@subproject]] object.
+Subprojects must always be placed inside
+the `subprojects` directory at the top source directory. So for
+example a subproject called `foo` must be located in
+`${MESON_SOURCE_ROOT}/subprojects/foo`.
+
+- `default_options` *(since 0.37.0)*: an array of default option values
+  that override those set in the subproject's `meson.options`
+  (like `default_options` in `project`, they only have effect when
+  Meson is run for the first time, and command line arguments override
+  any default options in build files).
+  *(since 0.54.0)*: `default_library` built-in option can also be overridden.
+  *(since 1.2.0)*: A dictionary may be passed instead of array.
+- `version`: works just like the same as in `dependency`.
+  It specifies what version the subproject should be, as an example `>=1.0.1`
+- `required` *(since 0.48.0)*: By default, `required` is `true` and
+  Meson will abort if the subproject could not be setup. You can set
+  this to `false` and then use the `.found()` method on the [[@subproject]]
+  object. You may also pass the value of a
+  [`feature`](Build-options.md#features) option, same as
+  [[dependency]].
+
+Note that you can use the returned [[@subproject]] object
+to access any variable in the
+subproject. However, if you want to use a dependency object from
+inside a subproject, an easier way is to use the `fallback:` keyword
+argument to [[dependency]].
+
+[See additional documentation](Subprojects.md).
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Takes the project specified in the positional argument and brings that
+[[#@subproject]] subproject(
+  [[#@str]]                                  <a href="#subproject_subproject_name"><b>subproject_name</b></a>,     # Name of the subproject
+
+  # Keyword arguments:
+  <a href="#subproject_default_options"><b>default_options</b></a> : [[#@array]][[[#@str]]] | [[#@dict]][[[#@str]] | [[#@bool]] | [[#@int]] | [[#@array]][[[#@str]]]]                                                                                                                                                                       # An array of default option values
+  <a href="#subproject_required"><b>required</b></a>        : [[#@bool]] | [[#@feature]]                                                                                                                                                                                                       # Works just the same as in [[dependency]].
+  <a href="#subproject_version"><b>version</b></a>         : [[#@str]]                                                                                                                                                                                                                  # Works just like the same as in [[dependency]].
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+  The function `subproject()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="subproject_subproject_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">subproject_name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Name of the subproject. The subproject must exist in the `subprojects`
+directory (or the directory specified in the `subproject_dir` of
+[[project]]) as a directory or wrap file.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `subproject()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="subproject_default_options">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">default_options</code>
+  <br>{meson:since}`0.37.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>] | [[@dict]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@int]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]]
+  </td>
+        <td>
+  
+  An array of default option values
+that override those set in the subproject's `meson.options`
+(like `default_options` in [[project]], they only have effect when
+Meson is run for the first time, and command line arguments override
+any default options in build files).
+*(since 0.54.0)*: `default_library` built-in option can also be overridden.
+*(since 1.2.0)*: A dictionary may now be passed.
+
+  </td>
+      </tr>
+      <tr id="subproject_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  <br>{meson:since}`0.48.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = true</code>
+  </td>
+        <td>
+  
+  Works just the same as in [[dependency]].
+
+  </td>
+      </tr>
+      <tr id="subproject_version">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">version</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Works just like the same as in [[dependency]].
+It specifies what version the subproject should be, as an example `>=1.0.1`.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,22 @@
+## disabler()
+
+Returns a [[@disabler]] object.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.44.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@disabler]] disabler()</code></pre>
+
+
+
+
+
+
+

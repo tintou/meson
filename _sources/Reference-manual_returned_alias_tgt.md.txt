@@ -1,0 +1,19 @@
+---
+short-description: "Returned object: Alias target"
+title: Alias target
+render-subpages: false
+...
+# Alias target (`alias_tgt` extends [[@tgt]])
+
+Opaque object returned by [[alias_target]].
+
+
+## Returned by
+
+Alias target objects are returned by the following functions and methods:
+- [[alias_target]]
+
+
+
+
+

@@ -1,0 +1,76 @@
+## set_variable()
+
+Assigns a value to the given variable name. Calling
+`set_variable('foo', bar)` is equivalent to `foo = bar`.
+
+*(since 0.46.1)* The `value` parameter can be an array type.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Assigns a value to the given variable name
+[[#@void]] set_variable(
+  [[#@str]]                                  <a href="#set_variable_variable_name"><b>variable_name</b></a>,     # The name of the variable to set
+  [[#@any]]                                  <a href="#set_variable_value"><b>value</b></a>,             # The value to set the variable to
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+  [Argument flattening](Syntax.md#argument-flattening) is **NOT SUPPORTED** by this function.
+
+  The function `set_variable()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="set_variable_variable_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">variable_name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The name of the variable to set
+  </td>
+      </tr>
+      <tr id="set_variable_value">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">value</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@any]]</span>
+  </td>
+        <td>
+  
+  The value to set the variable to
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+

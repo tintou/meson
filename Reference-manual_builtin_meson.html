@@ -1,0 +1,2040 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Meson object (meson) &#8212; Meson documentation 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d99633c1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Reference-manual_builtin_meson';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Target machine information (target_machine extends build_machine)" href="Reference-manual_builtin_target_machine.html" />
+    <link rel="prev" title="Host machine information (host_machine extends build_machine)" href="Reference-manual_builtin_host_machine.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/meson_logo.png" class="logo__image only-light" alt="Meson documentation 1.0 documentation - Home"/>
+    <img src="_static/meson_logo.png" class="logo__image only-dark pst-js-only" alt="Meson documentation 1.0 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Reference-manual.html">Reference manual</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="Reference-manual_builtin.html">Builtin objects</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_builtin_build_machine.html">Build machine information (<code class="docutils literal notranslate"><span class="pre">build_machine</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_builtin_host_machine.html">Host machine information (<code class="docutils literal notranslate"><span class="pre">host_machine</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_machine</span></code>)</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Meson object (<code class="docutils literal notranslate"><span class="pre">meson</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_builtin_target_machine.html">Target machine information (<code class="docutils literal notranslate"><span class="pre">target_machine</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_machine</span></code>)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Reference-manual_elementary.html">Elementary types</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_any.html">Any (<code class="docutils literal notranslate"><span class="pre">any</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_array.html">Array (<code class="docutils literal notranslate"><span class="pre">array</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_bool.html">Boolean (<code class="docutils literal notranslate"><span class="pre">bool</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_dict.html">Dict (<code class="docutils literal notranslate"><span class="pre">dict</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_int.html">Integer (<code class="docutils literal notranslate"><span class="pre">int</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_str.html">String (<code class="docutils literal notranslate"><span class="pre">str</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_elementary_void.html">void (<code class="docutils literal notranslate"><span class="pre">void</span></code>)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Reference-manual_functions.html">Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_global_arguments.html">add_global_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_global_link_arguments.html">add_global_link_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_languages.html">add_languages()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_project_arguments.html">add_project_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_project_dependencies.html">add_project_dependencies()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_project_link_arguments.html">add_project_link_arguments()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_add_test_setup.html">add_test_setup()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_alias_target.html">alias_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_assert.html">assert()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_benchmark.html">benchmark()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_both_libraries.html">both_libraries()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_build_target.html">build_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_configuration_data.html">configuration_data()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_configure_file.html">configure_file()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_custom_target.html">custom_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_debug.html">debug()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_declare_dependency.html">declare_dependency()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_dependency.html">dependency()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_disabler.html">disabler()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_environment.html">environment()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_error.html">error()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_executable.html">executable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_files.html">files()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_find_program.html">find_program()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_generator.html">generator()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_get_option.html">get_option()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_get_variable.html">get_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_import.html">import()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_include_directories.html">include_directories()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_data.html">install_data()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_emptydir.html">install_emptydir()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_headers.html">install_headers()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_man.html">install_man()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_subdir.html">install_subdir()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_install_symlink.html">install_symlink()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_is_disabler.html">is_disabler()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_is_variable.html">is_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_jar.html">jar()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_join_paths.html">join_paths()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_library.html">library()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_message.html">message()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_project.html">project()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_range.html">range()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_run_command.html">run_command()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_run_target.html">run_target()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_set_variable.html">set_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_shared_library.html">shared_library()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_shared_module.html">shared_module()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_static_library.html">static_library()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_structured_sources.html">structured_sources()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_subdir.html">subdir()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_subdir_done.html">subdir_done()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_subproject.html">subproject()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_summary.html">summary()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_test.html">test()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_unset_variable.html">unset_variable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_vcs_tag.html">vcs_tag()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_functions_warning.html">warning()</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="Reference-manual_returned.html">Returned objects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_alias_tgt.html">Alias target (<code class="docutils literal notranslate"><span class="pre">alias_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_both_libs.html">Both libraries object (<code class="docutils literal notranslate"><span class="pre">both_libs</span></code> extends <code class="docutils literal notranslate"><span class="pre">lib</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_build_tgt.html">Build target (<code class="docutils literal notranslate"><span class="pre">build_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_cfg_data.html">Configuration data object (<code class="docutils literal notranslate"><span class="pre">cfg_data</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_compiler.html">Compiler object (<code class="docutils literal notranslate"><span class="pre">compiler</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_custom_idx.html">Custom target index (<code class="docutils literal notranslate"><span class="pre">custom_idx</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_custom_tgt.html">Custom target (<code class="docutils literal notranslate"><span class="pre">custom_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_dep.html">Dependency object (<code class="docutils literal notranslate"><span class="pre">dep</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_disabler.html">Disabler (<code class="docutils literal notranslate"><span class="pre">disabler</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_env.html">Environment (<code class="docutils literal notranslate"><span class="pre">env</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_exe.html">Executable target (<code class="docutils literal notranslate"><span class="pre">exe</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_extracted_obj.html">Extracted object file (<code class="docutils literal notranslate"><span class="pre">extracted_obj</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_feature.html">Feature option object (<code class="docutils literal notranslate"><span class="pre">feature</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_file.html">File (<code class="docutils literal notranslate"><span class="pre">file</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_generated_list.html">Generated list object (<code class="docutils literal notranslate"><span class="pre">generated_list</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_generator.html">Generator object (<code class="docutils literal notranslate"><span class="pre">generator</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_inc.html">Include directories (<code class="docutils literal notranslate"><span class="pre">inc</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_jar.html">JAR build target (<code class="docutils literal notranslate"><span class="pre">jar</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_lib.html">Library target (<code class="docutils literal notranslate"><span class="pre">lib</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_module.html">Imported module object (<code class="docutils literal notranslate"><span class="pre">module</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_program.html">External program (<code class="docutils literal notranslate"><span class="pre">program</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_range.html">Range object (<code class="docutils literal notranslate"><span class="pre">range</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_run_tgt.html">Run target (<code class="docutils literal notranslate"><span class="pre">run_tgt</span></code> extends <code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_runresult.html">Run result object (<code class="docutils literal notranslate"><span class="pre">runresult</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_structured_src.html">Structured Source (<code class="docutils literal notranslate"><span class="pre">structured_src</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_subproject.html">Subproject object (<code class="docutils literal notranslate"><span class="pre">subproject</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reference-manual_returned_tgt.html">Meson Target (<code class="docutils literal notranslate"><span class="pre">tgt</span></code>)</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Modules.html">Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="CMake-module.html">CMake module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Codegen-module.html">Codegen Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cuda-module.html">Unstable CUDA Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Dlang-module.html">Dlang module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="External-Project-module.html">External Project module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Fs-module.html">FS (filesystem) module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Gnome-module.html">GNOME module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hotdoc-module.html">Hotdoc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Icestorm-module.html">Unstable IceStorm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Java-module.html">Java Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Keyval-module.html">keyval module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pkgconfig-module.html">Pkgconfig module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python-3-module.html">Python 3 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Python-module.html">Python module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Qt4-module.html">Qt4 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Qt5-module.html">Qt5 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Qt6-module.html">Qt6 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Rust-module.html">Rust module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Simd-module.html">Unstable SIMD module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Snippets-module.html">Snippets module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SourceSet-module.html">Source set module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Windows-module.html">Windows module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i18n-module.html">I18n module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wayland-module.html">Wayland Module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="Syntax.html">Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Builtin-options.html">Built-in options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reference-tables.html">Reference tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rewriter.html">Meson file rewriter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Style-guide.html">Style recommendations</a></li>
+
+
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="Reference.html" class="nav-link">Reference</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="Reference-manual.html" class="nav-link">Reference manual</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="Reference-manual_builtin.html" class="nav-link">Builtin objects</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Meson object (<code class="docutils literal notranslate"><span class="pre">meson</span></code>)</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="meson-object-meson">
+<h1>Meson object (<code class="docutils literal notranslate"><span class="pre">meson</span></code>)<a class="headerlink" href="#meson-object-meson" title="Link to this heading">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">meson</span></code> object allows you to introspect various properties of the
+system. This object is always mapped in the <code class="docutils literal notranslate"><span class="pre">meson</span></code> variable.</p>
+<section id="meson-object-methods">
+<h2>Meson object methods<a class="headerlink" href="#meson-object-methods" title="Link to this heading">#</a></h2>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<section id="meson-add-devenv">
+<h3>meson.add_devenv()<a class="headerlink" href="#meson-add-devenv" title="Link to this heading">#</a></h3>
+<p>add an <a href="Reference-manual_returned_env.html"><code>env</code></a> object (returned by <a href="Reference-manual_functions.html#environment"><code>environment()</code></a>)
+to the list of environments that will be applied when using <a class="reference internal" href="Commands.html#devenv"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">devenv</span></code></span></a>
+command line.</p>
+<p>This is useful for developers who wish to use the project without
+installing it, it is often needed to set for example the path to plugins
+directory, etc. Alternatively, a list or dictionary can be passed as first
+argument.</p>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="n">devenv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">environment</span><span class="p">()</span>
+<span class="n">devenv</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="s">&#39;PLUGINS_PATH&#39;</span><span class="p">,</span><span class="w"> </span><span class="vm">meson</span><span class="p">.</span><span class="n">current_build_dir</span><span class="p">())</span>
+<span class="p">...</span>
+<span class="vm">meson</span><span class="p">.</span><span class="n">add_devenv</span><span class="p">(</span><span class="n">devenv</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After configuring and compiling that project, a terminal can be opened with
+the environment set:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>meson<span class="w"> </span>devenv<span class="w"> </span>-C<span class="w"> </span>&lt;builddir&gt;
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$PLUGINS_PATH</span>
+/path/to/source/subdir
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="Commands.html#devenv"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">devenv</span></code></span></a> command documentation for a list of
+environment variables that are set by default by Meson.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.58.0</span></p>
+</div>
+</div>
+<pre><code class="language-meson"># add an <a href="Reference-manual_returned_env.html"><code>env</code></a> object (returned by <a href="Reference-manual_functions.html#environment"><code>environment()</code></a>)
+<a href="Reference-manual_elementary_void.html">void</a> add_devenv(
+  <a href="Reference-manual_returned_env.html">env</a> | <a href="Reference-manual_elementary_str.html">str</a> | <a href="Reference-manual_elementary_array.html">array</a>[<a href="Reference-manual_elementary_str.html">str</a>] | <a href="Reference-manual_elementary_dict.html">dict</a>[<a href="Reference-manual_elementary_str.html">str</a>] | <a href="Reference-manual_elementary_dict.html">dict</a>[<a href="Reference-manual_elementary_array.html">array</a>[<a href="Reference-manual_elementary_str.html">str</a>]]                                                                                                                                                                      <a href="#add_devenv_env"><b>env</b></a>,     # The <a href="Reference-manual_returned_env.html"><code>env</code></a> object to add.
+
+  # Keyword arguments:
+  <a href="#add_devenv_method"><b>method</b></a>    : <a href="Reference-manual_elementary_str.html">str</a>                                   # Must be one of 'set', 'prepend', or 'append'
+  <a href="#add_devenv_separator"><b>separator</b></a> : <a href="Reference-manual_elementary_str.html">str</a>                                   # The separator to use for the initial values defined in
+)</code></pre>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+<section id="arguments">
+<h4>Arguments<a class="headerlink" href="#arguments" title="Link to this heading">#</a></h4>
+<p>The method <code class="docutils literal notranslate"><span class="pre">meson.add_devenv()</span></code> accepts the following positional arguments:</p>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="add_devenv_env">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">env</code></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_returned_env.html"><code>env</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span> | <a href="Reference-manual_elementary_array.html"><code>array</code></a>[<span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span>] | <a href="Reference-manual_elementary_dict.html"><code>dict</code></a>[<span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span>] | <a href="Reference-manual_elementary_dict.html"><code>dict</code></a>[<a href="Reference-manual_elementary_array.html"><code>array</code></a>[<span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span>]]</p>
+  </td>
+        <td>
+<p>The <a href="Reference-manual_returned_env.html"><code>env</code></a> object to add.
+Since <em>0.62.0</em> array of strings is allowed in dictionary values. In that
+case values are joined using the separator.</p>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+<p>Finally, <code class="docutils literal notranslate"><span class="pre">meson.add_devenv()</span></code>
+accepts the following keyword arguments:</p>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="add_devenv_method">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">method</code>
+<br><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.62.0</span></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span></p>
+  </td>
+        <td>
+<p>Must be one of ‘set’, ‘prepend’, or ‘append’
+(defaults to ‘set’). Controls if initial values defined in the first
+positional argument are prepended, appended or replace the current value
+of the environment variable.</p>
+  </td>
+      </tr>
+      <tr id="add_devenv_separator">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">separator</code>
+<br><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.62.0</span></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span></p>
+  </td>
+        <td>
+<p>The separator to use for the initial values defined in
+the first positional argument. If not explicitly specified, the default
+path separator for the host operating system will be used, i.e. ‘;’ for
+Windows and ‘:’ for UNIX/POSIX systems.</p>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+</section>
+<section id="meson-add-dist-script">
+<h3>meson.add_dist_script()<a class="headerlink" href="#meson-add-dist-script" title="Link to this heading">#</a></h3>
+<p>Causes the script given as argument to run during <code class="docutils literal notranslate"><span class="pre">dist</span></code>
+operation after the
+distribution source has been generated but before it is
+archived. Note that this runs the script file that is in the
+<em>staging</em> directory, not the one in the source directory. If the
+script file cannot be found in the staging directory, it is a hard
+error. The <code class="docutils literal notranslate"><span class="pre">MESON_DIST_ROOT</span></code> environment variables is set when dist scripts is
+run.</p>
+<p><em>(since 0.54.0)</em> The <code class="docutils literal notranslate"><span class="pre">MESON_SOURCE_ROOT</span></code> and <code class="docutils literal notranslate"><span class="pre">MESON_BUILD_ROOT</span></code>
+environment variables are set when dist scripts are run. They are path to the
+root source and build directory of the main project, even when the script
+comes from a subproject.</p>
+<p><em>(since 0.58.0)</em> This command can be invoked from a subproject, it was a hard
+error in earlier versions. Subproject dist scripts will only be executed
+when running <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">dist</span> <span class="pre">--include-subprojects</span></code>. <code class="docutils literal notranslate"><span class="pre">MESON_PROJECT_SOURCE_ROOT</span></code>,
+<code class="docutils literal notranslate"><span class="pre">MESON_PROJECT_BUILD_ROOT</span></code> and <code class="docutils literal notranslate"><span class="pre">MESON_PROJECT_DIST_ROOT</span></code> environment
+variables are set when dist scripts are run. They are identical to
+<code class="docutils literal notranslate"><span class="pre">MESON_SOURCE_ROOT</span></code>, <code class="docutils literal notranslate"><span class="pre">MESON_BUILD_ROOT</span></code> and <code class="docutils literal notranslate"><span class="pre">MESON_DIST_ROOT</span></code> for main project
+scripts, but for subproject scripts they have the path to the root of the
+subproject appended, usually <code class="docutils literal notranslate"><span class="pre">subprojects/&lt;subproject-name&gt;</span></code>.</p>
+<p><em>(since 1.4.0)</em> The <code class="docutils literal notranslate"><span class="pre">MESONREWRITE</span></code> environment variable contains the path
+to the rewrite command that corresponds to the <code class="docutils literal notranslate"><span class="pre">meson</span></code> executable that
+was used to configure the build. (This might be a different path than the
+first executable found in <code class="docutils literal notranslate"><span class="pre">PATH</span></code>.) It can be used to remove or replace
+any <a href="Reference-manual_functions.html#run_command"><code>run_command()</code></a> that depends on the revision control system from the
+build configuration. Note that the value will contain many parts. For
+example, it may be <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">/path/to/meson.py</span> <span class="pre">introspect</span></code>. The user is
+responsible for splitting the string to an array if needed by splitting
+lexically like a UNIX shell would. If your script uses Python,
+<code class="docutils literal notranslate"><span class="pre">shlex.split()</span></code> is the easiest correct way to do this.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.48.0</span></p>
+</div>
+</div>
+<pre><code class="language-meson"># Causes the script given as argument to run during `dist`
+<a href="Reference-manual_elementary_void.html">void</a> add_dist_script(
+  <a href="Reference-manual_elementary_str.html">str</a> | <a href="Reference-manual_returned_file.html">file</a> | <a href="Reference-manual_returned_program.html">program</a>                                                                                                    <a href="#add_dist_script_script_name"><b>script_name</b></a>,     # The script to execute
+  <a href="Reference-manual_elementary_str.html">str</a> | <a href="Reference-manual_returned_file.html">file</a> | <a href="Reference-manual_returned_program.html">program</a>                                                                                                    <b>arg</b>...,          # Additional arguments
+)</code></pre>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+<section id="id1">
+<h4>Arguments<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<p>The method <code class="docutils literal notranslate"><span class="pre">meson.add_dist_script()</span></code> accepts the following positional arguments:</p>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="add_dist_script_script_name">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">script_name</code></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_file.html"><code>file</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_program.html"><code>program</code></a></span></p>
+  </td>
+        <td>
+<p>The script to execute.</p>
+<p><em>(since 0.55.0)</em> The output of <a href="Reference-manual_functions.html#find_program"><code>find_program()</code></a> as well as strings are accepted.</p>
+<p><em>(since 0.57.0)</em> <a href="Reference-manual_returned_file.html"><code>file</code></a> objects and the output of <a href="Reference-manual_functions.html#configure_file"><code>configure_file()</code></a> may be used.</p>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+<p>Additionally, the
+method accepts between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">infinity</span></code> variadic
+arguments (<code class="docutils literal notranslate"><span class="pre">arg...</span></code>) of type <code><span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_file.html"><code>file</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_program.html"><code>program</code></a></span></code>.</p>
+<p>Additional arguments</p>
+<p><em>(since 0.55.0)</em> The output of <a href="Reference-manual_functions.html#configure_file"><code>configure_file()</code></a>, <a href="Reference-manual_functions.html#files"><code>files()</code></a>, and <a href="Reference-manual_functions.html#find_program"><code>find_program()</code></a>
+as well as strings are accepted.</p>
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.49.0</span></p>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+</section>
+<section id="meson-add-install-script">
+<h3>meson.add_install_script()<a class="headerlink" href="#meson-add-install-script" title="Link to this heading">#</a></h3>
+<p>Causes the script given as an argument to be run during the install step,
+this script  will have the environment variables <code class="docutils literal notranslate"><span class="pre">MESON_SOURCE_ROOT</span></code>,
+<code class="docutils literal notranslate"><span class="pre">MESON_BUILD_ROOT</span></code>, <code class="docutils literal notranslate"><span class="pre">MESON_INSTALL_PREFIX</span></code>,
+<code class="docutils literal notranslate"><span class="pre">MESON_INSTALL_DESTDIR_PREFIX</span></code>, and <code class="docutils literal notranslate"><span class="pre">MESONINTROSPECT</span></code> set.
+All positional arguments are passed as parameters.</p>
+<p><em>(since 0.54.0)</em> If <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">install</span></code> is called with the <code class="docutils literal notranslate"><span class="pre">--quiet</span></code> option, the
+environment variable <code class="docutils literal notranslate"><span class="pre">MESON_INSTALL_QUIET</span></code> will be set.</p>
+<p><em>(since 1.1.0)</em> If <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">install</span></code> is called with the <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> option, the
+environment variable <code class="docutils literal notranslate"><span class="pre">MESON_INSTALL_DRY_RUN</span></code> will be set.</p>
+<p>Meson uses the <code class="docutils literal notranslate"><span class="pre">DESTDIR</span></code> environment variable as set by the
+inherited environment to determine the (temporary) installation
+location for files. Your install script must be aware of this while
+manipulating and installing files. The correct way to handle this is
+with the <code class="docutils literal notranslate"><span class="pre">MESON_INSTALL_DESTDIR_PREFIX</span></code> variable which is always set
+and contains <code class="docutils literal notranslate"><span class="pre">DESTDIR</span></code> (if set) and <code class="docutils literal notranslate"><span class="pre">prefix</span></code> joined together. This
+is useful because both are usually absolute paths and there are
+platform-specific edge-cases in joining two absolute paths.</p>
+<p>In case it is needed, <code class="docutils literal notranslate"><span class="pre">MESON_INSTALL_PREFIX</span></code> is also always set and
+has the value of the <code class="docutils literal notranslate"><span class="pre">prefix</span></code> option passed to Meson.</p>
+<p><code class="docutils literal notranslate"><span class="pre">MESONINTROSPECT</span></code> contains the path to the introspect command that
+corresponds to the <code class="docutils literal notranslate"><span class="pre">meson</span></code> executable that was used to configure the
+build. (This might be a different path than the first executable
+found in <code class="docutils literal notranslate"><span class="pre">PATH</span></code>.) It can be used to query build configuration. Note
+that the value will contain many parts, f.ex., it may be <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">/path/to/meson.py</span> <span class="pre">introspect</span></code>. The user is responsible for splitting
+the string to an array if needed by splitting lexically like a UNIX
+shell would. If your script uses Python, <code class="docutils literal notranslate"><span class="pre">shlex.split()</span></code> is the
+easiest correct way to do this.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+</div>
+</div>
+<pre><code class="language-meson"># Causes the script given as an argument to be run during the install step,
+<a href="Reference-manual_elementary_void.html">void</a> add_install_script(
+  <a href="Reference-manual_elementary_str.html">str</a> | <a href="Reference-manual_returned_file.html">file</a> | <a href="Reference-manual_returned_program.html">program</a> | <a href="Reference-manual_returned_exe.html">exe</a> | <a href="Reference-manual_returned_custom_tgt.html">custom_tgt</a> | <a href="Reference-manual_returned_custom_idx.html">custom_idx</a>                                                                                                                                                                                                       <a href="#add_install_script_script_name"><b>script_name</b></a>,     # The script to execute
+  <a href="Reference-manual_elementary_str.html">str</a> | <a href="Reference-manual_returned_file.html">file</a> | <a href="Reference-manual_returned_program.html">program</a> | <a href="Reference-manual_returned_exe.html">exe</a> | <a href="Reference-manual_returned_custom_tgt.html">custom_tgt</a> | <a href="Reference-manual_returned_custom_idx.html">custom_idx</a>                                                                                                                                                                                                       <b>arg</b>...,          # Additional arguments
+
+  # Keyword arguments:
+  <a href="#add_install_script_dry_run"><b>dry_run</b></a>         : <a href="Reference-manual_elementary_bool.html">bool</a>                                   # If `true` the script will be run even if `--dry-run` option is provided to
+  <a href="#add_install_script_install_tag"><b>install_tag</b></a>     : <a href="Reference-manual_elementary_str.html">str</a>                                    # A string used by the `meson install --tags` command
+  <a href="#add_install_script_skip_if_destdir"><b>skip_if_destdir</b></a> : <a href="Reference-manual_elementary_bool.html">bool</a>                                   # If `true` the script will not be run if DESTDIR is set during installation
+)</code></pre>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+<section id="id2">
+<h4>Arguments<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<p>The method <code class="docutils literal notranslate"><span class="pre">meson.add_install_script()</span></code> accepts the following positional arguments:</p>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="add_install_script_script_name">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">script_name</code></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_file.html"><code>file</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_program.html"><code>program</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_exe.html"><code>exe</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_custom_tgt.html"><code>custom_tgt</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_custom_idx.html"><code>custom_idx</code></a></span></p>
+  </td>
+        <td>
+<p>The script to execute.</p>
+<p><em>(since 0.55.0)</em> The output of <a href="Reference-manual_functions.html#find_program"><code>find_program()</code></a>, <a href="Reference-manual_functions.html#executable"><code>executable()</code></a>,
+<a href="Reference-manual_functions.html#custom_target"><code>custom_target()</code></a>, as well as strings are accepted.</p>
+<p><em>(since 0.57.0)</em> <a href="Reference-manual_returned_file.html"><code>file</code></a> objects and the output of <a href="Reference-manual_functions.html#configure_file"><code>configure_file()</code></a> may be used.</p>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+<p>Additionally, the
+method accepts between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">infinity</span></code> variadic
+arguments (<code class="docutils literal notranslate"><span class="pre">arg...</span></code>) of type <code><span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_file.html"><code>file</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_program.html"><code>program</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_exe.html"><code>exe</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_custom_tgt.html"><code>custom_tgt</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_custom_idx.html"><code>custom_idx</code></a></span></code>.</p>
+<p>Additional arguments</p>
+<p><em>(since 0.55.0)</em> The output of <a href="Reference-manual_functions.html#find_program"><code>find_program()</code></a>, <a href="Reference-manual_functions.html#executable"><code>executable()</code></a>,
+<a href="Reference-manual_functions.html#custom_target"><code>custom_target()</code></a>, as well as strings are accepted.</p>
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.49.0</span></p>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+<p>Finally, <code class="docutils literal notranslate"><span class="pre">meson.add_install_script()</span></code>
+accepts the following keyword arguments:</p>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="add_install_script_dry_run">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">dry_run</code>
+<br><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 1.1.0</span></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_bool.html"><code>bool</code></a></span>
+<br><code class="language-meson text-nowrap">default = false</code></p>
+  </td>
+        <td>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code> the script will be run even if <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> option is provided to
+the <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">install</span></code> command. The script can use the <code class="docutils literal notranslate"><span class="pre">MESON_INSTALL_DRY_RUN</span></code>
+variable to determine if it is in dry run mode or not.</p>
+  </td>
+      </tr>
+      <tr id="add_install_script_install_tag">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">install_tag</code>
+<br><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.60.0</span></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span></p>
+  </td>
+        <td>
+<p>A string used by the <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">install</span> <span class="pre">--tags</span></code> command
+to install only a subset of the files.
+By default the script has no install tag which means it is not being run when
+<code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">install</span> <span class="pre">--tags</span></code> argument is specified.</p>
+  </td>
+      </tr>
+      <tr id="add_install_script_skip_if_destdir">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">skip_if_destdir</code>
+<br><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.57.0</span></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_bool.html"><code>bool</code></a></span>
+<br><code class="language-meson text-nowrap">default = false</code></p>
+  </td>
+        <td>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code> the script will not be run if DESTDIR is set during installation.
+This is useful in the case the script updates system wide
+cache that is only needed when copying files into final destination.</p>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+</section>
+<section id="meson-add-postconf-script">
+<h3>meson.add_postconf_script()<a class="headerlink" href="#meson-add-postconf-script" title="Link to this heading">#</a></h3>
+<p>Runs the given command after all project files have been generated.
+This script will have the environment variables
+<code class="docutils literal notranslate"><span class="pre">MESON_SOURCE_ROOT</span></code> and <code class="docutils literal notranslate"><span class="pre">MESON_BUILD_ROOT</span></code> set.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+</div>
+</div>
+<pre><code class="language-meson"># Runs the given command after all project files have been generated
+<a href="Reference-manual_elementary_void.html">void</a> add_postconf_script(
+  <a href="Reference-manual_elementary_str.html">str</a> | <a href="Reference-manual_returned_file.html">file</a> | <a href="Reference-manual_returned_program.html">program</a>                                                                                                    <a href="#add_postconf_script_script_name"><b>script_name</b></a>,     # The script to execute
+  <a href="Reference-manual_elementary_str.html">str</a> | <a href="Reference-manual_returned_file.html">file</a> | <a href="Reference-manual_returned_program.html">program</a>                                                                                                    <b>arg</b>...,          # Additional arguments
+)</code></pre>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+<section id="id3">
+<h4>Arguments<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<p>The method <code class="docutils literal notranslate"><span class="pre">meson.add_postconf_script()</span></code> accepts the following positional arguments:</p>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="add_postconf_script_script_name">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">script_name</code></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_file.html"><code>file</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_program.html"><code>program</code></a></span></p>
+  </td>
+        <td>
+<p>The script to execute.</p>
+<p><em>(since 0.55.0)</em> The output of <a href="Reference-manual_functions.html#find_program"><code>find_program()</code></a> as well as strings are accepted.</p>
+<p><em>(since 0.57.0)</em> <a href="Reference-manual_returned_file.html"><code>file</code></a> objects and the output of <a href="Reference-manual_functions.html#configure_file"><code>configure_file()</code></a> may be used.</p>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+<p>Additionally, the
+method accepts between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">infinity</span></code> variadic
+arguments (<code class="docutils literal notranslate"><span class="pre">arg...</span></code>) of type <code><span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_file.html"><code>file</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_program.html"><code>program</code></a></span></code>.</p>
+<p>Additional arguments</p>
+<p><em>(since 0.55.0)</em> The output of <a href="Reference-manual_functions.html#configure_file"><code>configure_file()</code></a>, <a href="Reference-manual_functions.html#files"><code>files()</code></a>, and <a href="Reference-manual_functions.html#find_program"><code>find_program()</code></a>
+as well as strings are accepted.</p>
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.49.0</span></p>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+</section>
+<section id="meson-backend">
+<h3>meson.backend()<a class="headerlink" href="#meson-backend" title="Link to this heading">#</a></h3>
+<p>Returns a string representing the current backend:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ninja</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vs2010</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vs2012</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vs2013</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vs2015</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vs2017</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vs2019</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vs2022</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xcode</span></code></p></li>
+</ul>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.37.0</span></p>
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_str.html">str</a> backend()</code></pre>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+<section id="meson-build-options">
+<h3>meson.build_options()<a class="headerlink" href="#meson-build-options" title="Link to this heading">#</a></h3>
+<p>Returns a string with the configuration line used to set the current project up.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 1.1.0</span></p>
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_str.html">str</a> build_options()</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Do not try to parse this string!</strong></p>
+<p>You should use <a href="Reference-manual_returned_cfg_data.html#cfg_dataset_quoted"><code>cfg_data.set_quoted()</code></a> to safely escape any embedded
+quotes prior to storing it into e.g. a C header macro.</p>
+<p>The contents returned by this function are the same as the
+“Build Options:” line reported in <code class="docutils literal notranslate"><span class="pre">&lt;builddir&gt;/meson-logs/meson-log.txt</span></code>.</p>
+</div>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+<section id="meson-build-root">
+<h3>meson.build_root()<a class="headerlink" href="#meson-build-root" title="Link to this heading">#</a></h3>
+<p>Returns a string with the absolute path to the build root directory.
+This function will return the
+build root of the parent project if called from a subproject, which is usually
+not what you want. Try using <a href="Reference-manual_builtin_meson.html#mesoncurrent_build_dir"><code>meson.current_build_dir()</code></a> or <a href="Reference-manual_builtin_meson.html#mesonproject_build_root"><code>meson.project_build_root()</code></a>.
+In the rare cases where the root of the main project is needed,
+use <a href="Reference-manual_builtin_meson.html#mesonglobal_build_root"><code>meson.global_build_root()</code></a> that has the same behaviour but with a more explicit
+name.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2">Deprecated since 0.56.0</span></p>
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_str.html">str</a> build_root()</code></pre>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+<section id="meson-can-run-host-binaries">
+<h3>meson.can_run_host_binaries()<a class="headerlink" href="#meson-can-run-host-binaries" title="Link to this heading">#</a></h3>
+<p>Returns true if the build machine can run binaries compiled for the host.
+This returns <code class="docutils literal notranslate"><span class="pre">true</span></code> unless you are
+cross compiling, need a helper to run host binaries, and don’t have one.
+For example when cross compiling from Linux to Windows, one can use <code class="docutils literal notranslate"><span class="pre">wine</span></code>
+as the helper.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.55.0</span></p>
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_bool.html">bool</a> can_run_host_binaries()</code></pre>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+<section id="meson-current-build-dir">
+<h3>meson.current_build_dir()<a class="headerlink" href="#meson-current-build-dir" title="Link to this heading">#</a></h3>
+<p>Returns a string with the absolute path to the current build directory.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_str.html">str</a> current_build_dir()</code></pre>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+<section id="meson-current-source-dir">
+<h3>meson.current_source_dir()<a class="headerlink" href="#meson-current-source-dir" title="Link to this heading">#</a></h3>
+<p>Returns a string to the current source directory.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_str.html">str</a> current_source_dir()</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>You do not need to use this function!</strong></p>
+<p>When passing files from the current source directory to a function since
+that is the default. Also, you can use the <a href="Reference-manual_functions.html#files"><code>files()</code></a> function to
+refer to files in the current or any other source directory instead
+of constructing paths manually with <a href="Reference-manual_builtin_meson.html#mesoncurrent_source_dir"><code>meson.current_source_dir()</code></a>.</p>
+</div>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+<section id="meson-get-compiler">
+<h3>meson.get_compiler()<a class="headerlink" href="#meson-get-compiler" title="Link to this heading">#</a></h3>
+<p>Returns a <a href="Reference-manual_returned_compiler.html"><code>compiler</code></a> object describing a compiler.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+</div>
+</div>
+<pre><code class="language-meson"># Returns a <a href="Reference-manual_returned_compiler.html"><code>compiler</code></a> object describing a compiler.
+<a href="Reference-manual_returned_compiler.html">compiler</a> get_compiler(
+  <a href="Reference-manual_elementary_str.html">str</a>                                  <a href="#get_compiler_language"><b>language</b></a>,     # The language of the compiler to return
+
+  # Keyword arguments:
+  <a href="#get_compiler_native"><b>native</b></a> : <a href="Reference-manual_elementary_bool.html">bool</a>                                   # When set to `true` Meson returns the compiler for the build
+)</code></pre>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+<section id="id4">
+<h4>Arguments<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<p>The method <code class="docutils literal notranslate"><span class="pre">meson.get_compiler()</span></code> accepts the following positional arguments:</p>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_compiler_language">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">language</code></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span></p>
+  </td>
+        <td>
+<p>The language of the compiler to return.</p>
+<p>See our <a class="reference internal" href="Reference-tables.html#language-arguments-parameter-names"><span class="std std-ref">list of supported languages</span></a>.</p>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+<p>Finally, <code class="docutils literal notranslate"><span class="pre">meson.get_compiler()</span></code>
+accepts the following keyword arguments:</p>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_compiler_native">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">native</code></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_bool.html"><code>bool</code></a></span>
+<br><code class="language-meson text-nowrap">default = false</code></p>
+  </td>
+        <td>
+<p>When set to <code class="docutils literal notranslate"><span class="pre">true</span></code> Meson returns the compiler for the build
+machine (the “native” compiler) and when <code class="docutils literal notranslate"><span class="pre">false</span></code> it returns the host
+compiler (the “cross” compiler). If <code class="docutils literal notranslate"><span class="pre">native</span></code> is omitted, Meson
+returns the “cross” compiler if we’re currently cross-compiling and
+the “native” compiler if we’re not.</p>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+</section>
+<section id="meson-get-cross-property">
+<h3>meson.get_cross_property()<a class="headerlink" href="#meson-get-cross-property" title="Link to this heading">#</a></h3>
+<p>Returns the given property from a cross file, the optional fallback_value
+is returned if not cross compiling or the given property is not found.</p>
+<p>This method is replaced by <a href="Reference-manual_builtin_meson.html#mesonget_external_property"><code>meson.get_external_property()</code></a>.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2">Deprecated since 0.58.0</span></p>
+</div>
+</div>
+<pre><code class="language-meson"># Returns the given property from a cross file, the optional fallback_value
+<a href="Reference-manual_elementary_any.html">any</a> get_cross_property(
+  <a href="Reference-manual_elementary_str.html">str</a>                                  <a href="#get_cross_property_propname"><b>propname</b></a>,           # Name of the property in the cross / native file
+  <a href="Reference-manual_elementary_any.html">any</a>                                  [<a href="#get_cross_property_fallback_value"><b>fallback_value</b></a>],   # Value to return if `propname` is not set in the machine file
+)</code></pre>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+<section id="id5">
+<h4>Arguments<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<p><a class="reference internal" href="Syntax.html#argument-flattening"><span class="std std-ref">Argument flattening</span></a> is <strong>NOT SUPPORTED</strong> by this function.</p>
+<p>The method <code class="docutils literal notranslate"><span class="pre">meson.get_cross_property()</span></code> accepts the following positional arguments:</p>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_cross_property_propname">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">propname</code></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span></p>
+  </td>
+        <td>
+<p>Name of the property in the cross / native file.</p>
+  </td>
+      </tr>
+      <tr id="get_cross_property_fallback_value">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">fallback_value</code>
+<br><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-2">optional</span></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_any.html"><code>any</code></a></span></p>
+  </td>
+        <td>
+<p>Value to return if <code class="docutils literal notranslate"><span class="pre">propname</span></code> is not set in the machine file.</p>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+</section>
+<section id="meson-get-external-property">
+<h3>meson.get_external_property()<a class="headerlink" href="#meson-get-external-property" title="Link to this heading">#</a></h3>
+<p>Returns the given property from a native or cross file.
+The optional fallback_value is returned if the given property is not found.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.54.0</span></p>
+</div>
+</div>
+<pre><code class="language-meson"># Returns the given property from a native or cross file
+<a href="Reference-manual_elementary_any.html">any</a> get_external_property(
+  <a href="Reference-manual_elementary_str.html">str</a>                                  <a href="#get_external_property_propname"><b>propname</b></a>,           # Name of the property in the cross / native file
+  <a href="Reference-manual_elementary_any.html">any</a>                                  [<a href="#get_external_property_fallback_value"><b>fallback_value</b></a>],   # Value to return if `propname` is not set in the machine file
+
+  # Keyword arguments:
+  <a href="#get_external_property_native"><b>native</b></a> : <a href="Reference-manual_elementary_bool.html">bool</a>                                   # Setting `native` to `true` forces retrieving a variable from the
+)</code></pre>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+<section id="id6">
+<h4>Arguments<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<p><a class="reference internal" href="Syntax.html#argument-flattening"><span class="std std-ref">Argument flattening</span></a> is <strong>NOT SUPPORTED</strong> by this function.</p>
+<p>The method <code class="docutils literal notranslate"><span class="pre">meson.get_external_property()</span></code> accepts the following positional arguments:</p>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_external_property_propname">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">propname</code></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span></p>
+  </td>
+        <td>
+<p>Name of the property in the cross / native file.</p>
+  </td>
+      </tr>
+      <tr id="get_external_property_fallback_value">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">fallback_value</code>
+<br><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-2">optional</span></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_any.html"><code>any</code></a></span></p>
+  </td>
+        <td>
+<p>Value to return if <code class="docutils literal notranslate"><span class="pre">propname</span></code> is not set in the machine file.</p>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+<p>Finally, <code class="docutils literal notranslate"><span class="pre">meson.get_external_property()</span></code>
+accepts the following keyword arguments:</p>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_external_property_native">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">native</code></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_bool.html"><code>bool</code></a></span></p>
+  </td>
+        <td>
+<p>Setting <code class="docutils literal notranslate"><span class="pre">native</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> forces retrieving a variable from the
+native file, even when cross-compiling.
+If <code class="docutils literal notranslate"><span class="pre">native:</span> <span class="pre">false</span></code> or not specified, the variable is retrieved from the
+cross-file if cross-compiling, and from the native-file when not cross-compiling.</p>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+</section>
+<section id="meson-global-build-root">
+<h3>meson.global_build_root()<a class="headerlink" href="#meson-global-build-root" title="Link to this heading">#</a></h3>
+<p>Returns a string with the absolute path to the build root directory.
+This function will return the build root of the
+main project if called from a subproject, which is usually not what you want.
+It is usually preferable to use <a href="Reference-manual_builtin_meson.html#mesoncurrent_build_dir"><code>meson.current_build_dir()</code></a> or <a href="Reference-manual_builtin_meson.html#mesonproject_build_root"><code>meson.project_build_root()</code></a>.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.58.0</span></p>
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_str.html">str</a> global_build_root()</code></pre>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+<section id="meson-global-source-root">
+<h3>meson.global_source_root()<a class="headerlink" href="#meson-global-source-root" title="Link to this heading">#</a></h3>
+<p>Returns a string with the absolute path to the source root directory.
+This function will return the source root of the
+main project if called from a subproject, which is usually not what you want.
+It is usually preferable to use <a href="Reference-manual_builtin_meson.html#mesoncurrent_source_dir"><code>meson.current_source_dir()</code></a> or <a href="Reference-manual_builtin_meson.html#mesonproject_source_root"><code>meson.project_source_root()</code></a>.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.58.0</span></p>
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_str.html">str</a> global_source_root()</code></pre>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+<section id="meson-has-exe-wrapper">
+<h3>meson.has_exe_wrapper()<a class="headerlink" href="#meson-has-exe-wrapper" title="Link to this heading">#</a></h3>
+<p>Use <a href="Reference-manual_builtin_meson.html#mesoncan_run_host_binaries"><code>meson.can_run_host_binaries()</code></a> instead.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2">Deprecated since 0.55.0</span></p>
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_bool.html">bool</a> has_exe_wrapper()</code></pre>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+<section id="meson-has-external-property">
+<h3>meson.has_external_property()<a class="headerlink" href="#meson-has-external-property" title="Link to this heading">#</a></h3>
+<p>Checks whether the given property exist in a native or cross file.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.58.0</span></p>
+</div>
+</div>
+<pre><code class="language-meson"># Checks whether the given property exist in a native or cross file
+<a href="Reference-manual_elementary_bool.html">bool</a> has_external_property(
+  <a href="Reference-manual_elementary_str.html">str</a>                                  <a href="#has_external_property_propname"><b>propname</b></a>,     # Name of the property in the cross / native file
+
+  # Keyword arguments:
+  <a href="#has_external_property_native"><b>native</b></a> : <a href="Reference-manual_elementary_bool.html">bool</a>                                   # Setting `native` to `true` forces retrieving a variable from the
+)</code></pre>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+<section id="id7">
+<h4>Arguments<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<p>The method <code class="docutils literal notranslate"><span class="pre">meson.has_external_property()</span></code> accepts the following positional arguments:</p>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_external_property_propname">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">propname</code></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span></p>
+  </td>
+        <td>
+<p>Name of the property in the cross / native file.</p>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+<p>Finally, <code class="docutils literal notranslate"><span class="pre">meson.has_external_property()</span></code>
+accepts the following keyword arguments:</p>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_external_property_native">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">native</code></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_bool.html"><code>bool</code></a></span></p>
+  </td>
+        <td>
+<p>Setting <code class="docutils literal notranslate"><span class="pre">native</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> forces retrieving a variable from the
+native file, even when cross-compiling.
+If <code class="docutils literal notranslate"><span class="pre">native:</span> <span class="pre">false</span></code> or not specified, the variable is retrieved from the
+cross-file if cross-compiling, and from the native-file when not cross-compiling.</p>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+</section>
+<section id="meson-install-dependency-manifest">
+<h3>meson.install_dependency_manifest()<a class="headerlink" href="#meson-install-dependency-manifest" title="Link to this heading">#</a></h3>
+<p>Installs a manifest file
+containing a list of all subprojects, their versions and license names
+to the file name given as the argument.</p>
+<p>If license files are defined as well, they will be copied next to the
+manifest and referenced in it.</p>
+<p>If this function is not used, the builtin option <code class="docutils literal notranslate"><span class="pre">licensedir</span></code> can
+be used to install the manifest to a given directory with the name
+<code class="docutils literal notranslate"><span class="pre">depmf.json</span></code>.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+</div>
+</div>
+<pre><code class="language-meson"># Installs a manifest file
+<a href="Reference-manual_elementary_void.html">void</a> install_dependency_manifest(
+  <a href="Reference-manual_elementary_str.html">str</a>                                  <a href="#install_dependency_manifest_output_name"><b>output_name</b></a>,     # Name of the manifest file to install
+)</code></pre>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+<section id="id8">
+<h4>Arguments<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<p>The method <code class="docutils literal notranslate"><span class="pre">meson.install_dependency_manifest()</span></code> accepts the following positional arguments:</p>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="install_dependency_manifest_output_name">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">output_name</code></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span></p>
+  </td>
+        <td>
+<p>Name of the manifest file to install</p>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+</section>
+<section id="meson-is-cross-build">
+<h3>meson.is_cross_build()<a class="headerlink" href="#meson-is-cross-build" title="Link to this heading">#</a></h3>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the current build is a <a class="reference internal" href="Cross-compilation.html"><span class="std std-doc">cross build</span></a> and <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_bool.html">bool</a> is_cross_build()</code></pre>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+<section id="meson-is-subproject">
+<h3>meson.is_subproject()<a class="headerlink" href="#meson-is-subproject" title="Link to this heading">#</a></h3>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the current project is being built as a subproject of some other project and <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_bool.html">bool</a> is_subproject()</code></pre>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+<section id="meson-is-unity">
+<h3>meson.is_unity()<a class="headerlink" href="#meson-is-unity" title="Link to this heading">#</a></h3>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when doing a <a class="reference internal" href="Unity-builds.html"><span class="std std-doc">unity build</span></a> (multiple sources are combined before compilation to reduce build time) and <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_bool.html">bool</a> is_unity()</code></pre>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+<section id="meson-override-dependency">
+<h3>meson.override_dependency()<a class="headerlink" href="#meson-override-dependency" title="Link to this heading">#</a></h3>
+<p>Specifies that whenever <a href="Reference-manual_functions.html#dependency"><code>dependency()</code></a> with <code class="docutils literal notranslate"><span class="pre">name</span></code> is used, Meson should not
+look it up on the system but instead return <code class="docutils literal notranslate"><span class="pre">dep_object</span></code>, which may either be
+the result of <a href="Reference-manual_functions.html#dependency"><code>dependency()</code></a> or <a href="Reference-manual_functions.html#declare_dependency"><code>declare_dependency()</code></a>.</p>
+<p>Doing this in a subproject allows the parent
+project to retrieve the dependency without having to know the dependency
+variable name: <code class="docutils literal notranslate"><span class="pre">dependency(name,</span> <span class="pre">fallback</span> <span class="pre">:</span> <span class="pre">subproject_name)</span></code>.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.54.0</span></p>
+</div>
+</div>
+<pre><code class="language-meson"># Specifies that whenever <a href="Reference-manual_functions.html#dependency"><code>dependency()</code></a> with `name` is used, Meson should not
+<a href="Reference-manual_elementary_void.html">void</a> override_dependency(
+  <a href="Reference-manual_elementary_str.html">str</a>                                  <a href="#override_dependency_name"><b>name</b></a>,           # The name of the dependency to override
+  <a href="Reference-manual_returned_dep.html">dep</a>                                  <a href="#override_dependency_dep_object"><b>dep_object</b></a>,     # The dependency to set as the override for `name`
+
+  # Keyword arguments:
+  <a href="#override_dependency_native"><b>native</b></a> : <a href="Reference-manual_elementary_bool.html">bool</a>                                   # If set to `true`, the dependency is always overwritten for the build machine
+  <a href="#override_dependency_static"><b>static</b></a> : <a href="Reference-manual_elementary_bool.html">bool</a>                                   # Used to override static and/or shared dependencies separately
+)</code></pre>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+<section id="id9">
+<h4>Arguments<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<p>The method <code class="docutils literal notranslate"><span class="pre">meson.override_dependency()</span></code> accepts the following positional arguments:</p>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="override_dependency_name">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">name</code></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span></p>
+  </td>
+        <td>
+<p>The name of the dependency to override.</p>
+  </td>
+      </tr>
+      <tr id="override_dependency_dep_object">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">dep_object</code></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_returned_dep.html"><code>dep</code></a></span></p>
+  </td>
+        <td>
+<p>The dependency to set as the override for <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+<p>Finally, <code class="docutils literal notranslate"><span class="pre">meson.override_dependency()</span></code>
+accepts the following keyword arguments:</p>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="override_dependency_native">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">native</code></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_bool.html"><code>bool</code></a></span>
+<br><code class="language-meson text-nowrap">default = false</code></p>
+  </td>
+        <td>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, the dependency is always overwritten for the build machine.
+Otherwise, the dependency is overwritten for the host machine, which
+differs from the build machine when cross-compiling.</p>
+  </td>
+      </tr>
+      <tr id="override_dependency_static">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">static</code>
+<br><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.60.0</span></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_bool.html"><code>bool</code></a></span></p>
+  </td>
+        <td>
+<p>Used to override static and/or shared dependencies separately.
+If not specified it is assumed
+<code class="docutils literal notranslate"><span class="pre">dep_object</span></code> follows <code class="docutils literal notranslate"><span class="pre">default_library</span></code> option value.</p>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+</section>
+<section id="meson-override-find-program">
+<h3>meson.override_find_program()<a class="headerlink" href="#meson-override-find-program" title="Link to this heading">#</a></h3>
+<p>specifies that whenever <a href="Reference-manual_functions.html#find_program"><code>find_program()</code></a> is used to find a program
+named <code class="docutils literal notranslate"><span class="pre">progname</span></code>, Meson should not look it up on the system but
+instead return <code class="docutils literal notranslate"><span class="pre">program</span></code>, which may either be the result of
+<a href="Reference-manual_functions.html#find_program"><code>find_program()</code></a>, <a href="Reference-manual_functions.html#configure_file"><code>configure_file()</code></a> or <a href="Reference-manual_functions.html#executable"><code>executable()</code></a>.</p>
+<p><em>(since 0.55.0)</em> If a version
+check is passed to <a href="Reference-manual_functions.html#find_program"><code>find_program()</code></a> for a program that has been overridden with
+an executable, the current project version is used.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.46.0</span></p>
+</div>
+</div>
+<pre><code class="language-meson"># specifies that whenever <a href="Reference-manual_functions.html#find_program"><code>find_program()</code></a> is used to find a program
+<a href="Reference-manual_elementary_void.html">void</a> override_find_program(
+  <a href="Reference-manual_elementary_str.html">str</a>                                                                                                                     <a href="#override_find_program_progname"><b>progname</b></a>,     # The name of the program to override
+  <a href="Reference-manual_returned_exe.html">exe</a> | <a href="Reference-manual_returned_file.html">file</a> | <a href="Reference-manual_returned_program.html">program</a>                                                                                                    <a href="#override_find_program_program"><b>program</b></a>,      # The program to set as the override for `progname`
+)</code></pre>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+<section id="id10">
+<h4>Arguments<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
+<p>The method <code class="docutils literal notranslate"><span class="pre">meson.override_find_program()</span></code> accepts the following positional arguments:</p>
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="override_find_program_progname">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">progname</code></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_elementary_str.html"><code>str</code></a></span></p>
+  </td>
+        <td>
+<p>The name of the program to override.</p>
+  </td>
+      </tr>
+      <tr id="override_find_program_program">
+        <td class="text-center text-nowrap">
+<p><code class="language-meson">program</code></p>
+  </td>
+        <td class="text-center">
+<p><span class="text-nowrap"><a href="Reference-manual_returned_exe.html"><code>exe</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_file.html"><code>file</code></a></span> | <span class="text-nowrap"><a href="Reference-manual_returned_program.html"><code>program</code></a></span></p>
+  </td>
+        <td>
+<p>The program to set as the override for <code class="docutils literal notranslate"><span class="pre">progname</span></code>.</p>
+  </td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+</section>
+<section id="meson-project-build-root">
+<h3>meson.project_build_root()<a class="headerlink" href="#meson-project-build-root" title="Link to this heading">#</a></h3>
+<p>Returns a string with the absolute path to the build root directory of the current (sub)project.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.56.0</span></p>
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_str.html">str</a> project_build_root()</code></pre>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+<section id="meson-project-license">
+<h3>meson.project_license()<a class="headerlink" href="#meson-project-license" title="Link to this heading">#</a></h3>
+<p>Returns the array of licenses specified in <a href="Reference-manual_functions.html#project"><code>project()</code></a> function call.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.45.0</span></p>
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_array.html">array</a>[<a href="Reference-manual_elementary_str.html">str</a>] project_license()</code></pre>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+<section id="meson-project-license-files">
+<h3>meson.project_license_files()<a class="headerlink" href="#meson-project-license-files" title="Link to this heading">#</a></h3>
+<p>Returns the array of license files specified in the <a href="Reference-manual_functions.html#project"><code>project()</code></a> function call.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 1.1.0</span></p>
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_array.html">array</a>[<a href="Reference-manual_returned_file.html">file</a>] project_license_files()</code></pre>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+<section id="meson-project-name">
+<h3>meson.project_name()<a class="headerlink" href="#meson-project-name" title="Link to this heading">#</a></h3>
+<p>Returns the project name specified in the <a href="Reference-manual_functions.html#project"><code>project()</code></a> function call.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_str.html">str</a> project_name()</code></pre>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+<section id="meson-project-source-root">
+<h3>meson.project_source_root()<a class="headerlink" href="#meson-project-source-root" title="Link to this heading">#</a></h3>
+<p>Returns a string with the absolute path to the source root directory of the current (sub)project.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Since 0.56.0</span></p>
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_str.html">str</a> project_source_root()</code></pre>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+<section id="meson-project-version">
+<h3>meson.project_version()<a class="headerlink" href="#meson-project-version" title="Link to this heading">#</a></h3>
+<p>Returns the version string specified in <a href="Reference-manual_functions.html#project"><code>project()</code></a> function call.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_str.html">str</a> project_version()</code></pre>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+<section id="meson-source-root">
+<h3>meson.source_root()<a class="headerlink" href="#meson-source-root" title="Link to this heading">#</a></h3>
+<p>Returns a string with the absolute path to the source root directory.</p>
+<p>This function will return the source root of the
+parent project if called from a subproject, which is usually not what you want.
+Try using <a href="Reference-manual_builtin_meson.html#mesoncurrent_source_dir"><code>meson.current_source_dir()</code></a> or <a href="Reference-manual_builtin_meson.html#mesonproject_source_root"><code>meson.project_source_root()</code></a>.
+In the rare cases where the root of the main project is needed,
+use <a href="Reference-manual_builtin_meson.html#mesonglobal_source_root"><code>meson.global_source_root()</code></a> that has the same behaviour but with a more explicit
+name.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+<p><span class="d-inline-flex mb-1 px-1 fw-semibold small text-nowrap text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2">Deprecated since 0.56.0</span></p>
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_str.html">str</a> source_root()</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You should use the <a href="Reference-manual_functions.html#files"><code>files()</code></a> function
+to refer to files in the root source directory instead of
+constructing paths manually with <a href="Reference-manual_builtin_meson.html#mesonsource_root"><code>meson.source_root()</code></a>.</p>
+</div>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+<p style="padding: 7.5px; margin: 0px;"></p>
+</section>
+<section id="meson-version">
+<h3>meson.version()<a class="headerlink" href="#meson-version" title="Link to this heading">#</a></h3>
+<p>Return a string with the version of Meson.</p>
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+</div>
+</div>
+<pre><code class="language-meson"><a href="Reference-manual_elementary_str.html">str</a> version()</code></pre>
+<p style="padding: 7.5px; margin: 0px;"></p>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Reference-manual_builtin_host_machine.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Host machine information (<code class="docutils literal notranslate"><span class="pre">host_machine</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_machine</span></code>)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Reference-manual_builtin_target_machine.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Target machine information (<code class="docutils literal notranslate"><span class="pre">target_machine</span></code> extends <code class="docutils literal notranslate"><span class="pre">build_machine</span></code>)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-object-methods">Meson object methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-add-devenv">meson.add_devenv()</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#arguments">Arguments</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-add-dist-script">meson.add_dist_script()</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Arguments</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-add-install-script">meson.add_install_script()</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Arguments</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-add-postconf-script">meson.add_postconf_script()</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Arguments</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-backend">meson.backend()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-build-options">meson.build_options()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-build-root">meson.build_root()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-can-run-host-binaries">meson.can_run_host_binaries()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-current-build-dir">meson.current_build_dir()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-current-source-dir">meson.current_source_dir()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-get-compiler">meson.get_compiler()</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Arguments</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-get-cross-property">meson.get_cross_property()</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Arguments</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-get-external-property">meson.get_external_property()</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Arguments</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-global-build-root">meson.global_build_root()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-global-source-root">meson.global_source_root()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-has-exe-wrapper">meson.has_exe_wrapper()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-has-external-property">meson.has_external_property()</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Arguments</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-install-dependency-manifest">meson.install_dependency_manifest()</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Arguments</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-is-cross-build">meson.is_cross_build()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-is-subproject">meson.is_subproject()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-is-unity">meson.is_unity()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-override-dependency">meson.override_dependency()</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Arguments</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-override-find-program">meson.override_find_program()</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Arguments</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-project-build-root">meson.project_build_root()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-project-license">meson.project_license()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-project-license-files">meson.project_license_files()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-project-name">meson.project_name()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-project-source-root">meson.project_source_root()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-project-version">meson.project_version()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-source-root">meson.source_root()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meson-version">meson.version()</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/mesonbuild/meson/edit/master/docs/markdown/Reference-manual_builtin_meson.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">Website licensing information are available on the <a href="legal.html">Legal</a> page.</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

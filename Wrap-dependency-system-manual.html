@@ -1,0 +1,961 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Wrap dependency system manual &#8212; Meson documentation 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d99633c1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Wrap-dependency-system-manual';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Meson WrapDB packages" href="Wrapdb-projects.html" />
+    <link rel="prev" title="Using with Visual Studio" href="Using-with-Visual-Studio.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/meson_logo.png" class="logo__image only-light" alt="Meson documentation 1.0 documentation - Home"/>
+    <img src="_static/meson_logo.png" class="logo__image only-dark pst-js-only" alt="Meson documentation 1.0 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Running-Meson.html">Running Meson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Commands.html">Command-line commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuring-a-build-directory.html">Configuring a build directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-options.html">Build options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-targets.html">Build targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dependencies.html">Dependencies</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Subprojects.html">Subprojects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuration.html">Configuration</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generating-sources.html">Generating sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Custom-build-targets.html">Custom build targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-arguments.html">Adding arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compiler-properties.html">Compiler properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Include-directories.html">Include directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feature-autodetection.html">Feature autodetection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Disabler.html">Disabling parts of the build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Precompiled-headers.html">Precompiled headers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity-builds.html">Unity builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Threads.html">Threads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="External-commands.html">External commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Code-formatting.html">clang-format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-tests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Run-targets.html">Run targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IDE-integration.html">IDE integration</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Build-system-converters.html">Build system converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cross-compilation.html">Cross compilation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Machine-files.html">Cross and Native File reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Native-environments.html">Persistent native environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Localisation.html">Localisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-releases.html">Creating releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-OSX-packages.html">Creating OSX packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-Linux-binaries.html">Creating Linux binaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Project-templates.html">Project templates</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Reproducible-builds.html">Reproducible builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtox.html">How do I do X in Meson?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Java.html">Compiling Java applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Vala.html">Compiling Vala applications and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D.html">Compiling D applications</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Cython.html">Cython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rust.html">Using Rust with Meson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Using-with-Visual-Studio.html">Using with Visual Studio</a></li>
+
+
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Wrap dependency system manual</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Wrapdb-projects.html">Meson WrapDB packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-projects-to-wrapdb.html">Adding new projects to WrapDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-the-WrapDB.html">Using the WrapDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-wraptool.html">Using wraptool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wrap-best-practices-and-tips.html">Wrap best practices and tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shipping-prebuilt-binaries-as-wraps.html">Shipping prebuilt binaries as wraps</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="Guide.html" class="nav-link">Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Wrap dependency system manual</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="wrap-dependency-system-manual">
+<h1>Wrap dependency system manual<a class="headerlink" href="#wrap-dependency-system-manual" title="Link to this heading">#</a></h1>
+<p>One of the major problems of multiplatform development is wrangling
+all your dependencies. This is awkward on many platforms, especially
+on ones that do not have a built-in package manager. The latter problem
+has been worked around by having third party package managers. They
+are not really a solution for end user deployment, because you can’t
+tell them to install a package manager just to use your app. On these
+platforms you must produce self-contained applications. Same applies
+when destination platform is missing (up-to-date versions of) your
+application’s dependencies.</p>
+<p>The traditional approach to this has been to bundle dependencies
+inside your own project. Either as prebuilt libraries and headers or
+by embedding the source code inside your source tree and rewriting
+your build system to build them as part of your project.</p>
+<p>This is both tedious and error prone because it is always done by
+hand. The Wrap dependency system of Meson aims to provide an automated
+way to do this.</p>
+<section id="how-it-works">
+<h2>How it works<a class="headerlink" href="#how-it-works" title="Link to this heading">#</a></h2>
+<p>Meson has a concept of <a class="reference internal" href="Subprojects.html"><span class="std std-doc">subprojects</span></a>. They are a way
+of nesting one Meson project inside another. Any project that builds
+with Meson can detect that it is built as a subproject and build
+itself in a way that makes it easy to use (usually this means as a
+static library).</p>
+<p>To use this kind of a project as a dependency you could just copy and
+extract it inside your project’s <code class="docutils literal notranslate"><span class="pre">subprojects</span></code> directory.</p>
+<p>However there is a simpler way. You can specify a Wrap file that tells
+Meson how to download it for you. If you then use this subproject in
+your build, Meson will automatically download and extract it during
+build. This makes subproject embedding extremely easy.</p>
+<p>All wrap files must have a name of <code class="docutils literal notranslate"><span class="pre">&lt;project_name&gt;.wrap</span></code> form and be
+in <code class="docutils literal notranslate"><span class="pre">subprojects</span></code> dir.</p>
+<p>Currently Meson has four kinds of wraps:</p>
+<ul class="simple">
+<li><p>wrap-file</p></li>
+<li><p>wrap-git</p></li>
+<li><p>wrap-hg</p></li>
+<li><p>wrap-svn</p></li>
+</ul>
+</section>
+<section id="wrap-format">
+<h2>wrap format<a class="headerlink" href="#wrap-format" title="Link to this heading">#</a></h2>
+<p>Wrap files are written in ini format, with a single header containing
+the type of wrap, followed by properties describing how to obtain the
+sources, validate them, and modify them if needed. An example
+wrap-file for the wrap named <code class="docutils literal notranslate"><span class="pre">libfoobar</span></code> would have a filename
+<code class="docutils literal notranslate"><span class="pre">libfoobar.wrap</span></code> and would look like this:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[wrap-file]</span>
+<span class="na">directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">libfoobar-1.0</span>
+
+<span class="na">source_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">https://example.com/foobar-1.0.tar.gz</span>
+<span class="na">source_filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">foobar-1.0.tar.gz</span>
+<span class="na">source_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">5ebeea0dfb75d090ea0e7ff84799b2a7a1550db3fe61eb5f6f61c2e971e57663</span>
+</pre></div>
+</div>
+<p>An example wrap-git will look like this:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[wrap-git]</span>
+<span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">https://github.com/libfoobar/libfoobar.git</span>
+<span class="na">revision</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">HEAD</span>
+<span class="na">depth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
+</pre></div>
+</div>
+</section>
+<section id="accepted-configuration-properties-for-wraps">
+<h2>Accepted configuration properties for wraps<a class="headerlink" href="#accepted-configuration-properties-for-wraps" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">directory</span></code> - name of the subproject root directory, defaults to the
+name of the wrap.</p></li>
+</ul>
+<p>Since <em>0.55.0</em> those can be used in all wrap types, they were
+previously reserved to <code class="docutils literal notranslate"><span class="pre">wrap-file</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">patch_url</span></code> - download url to retrieve an optional overlay archive</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">patch_fallback_url</span></code> - fallback URL to be used when download from <code class="docutils literal notranslate"><span class="pre">patch_url</span></code> fails <em>Since: 0.55.0</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">patch_filename</span></code> - filename of the downloaded overlay archive</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">patch_hash</span></code> - sha256 checksum of the downloaded overlay archive</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">patch_directory</span></code> - <em>Since 0.55.0</em> Overlay directory, alternative to <code class="docutils literal notranslate"><span class="pre">patch_filename</span></code> in the case
+files are local instead of a downloaded archive. The directory must be placed in
+<code class="docutils literal notranslate"><span class="pre">subprojects/packagefiles</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">diff_files</span></code> - <em>Since 0.63.0</em> Comma-separated list of local diff files (see
+<a class="reference internal" href="#diff-files">Diff files</a> below).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">method</span></code> - <em>Since 1.3.0</em> The build system used by this subproject. Defaults to <code class="docutils literal notranslate"><span class="pre">meson</span></code>.
+Supported methods:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">meson</span></code> requires <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span></code> requires <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file. <a class="reference internal" href="#cmake-wraps">See details</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cargo</span></code> requires <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code> file. <a class="reference internal" href="#cargo-wraps">See details</a>.</p></li>
+</ul>
+</li>
+</ul>
+<section id="specific-to-wrap-file">
+<h3>Specific to wrap-file<a class="headerlink" href="#specific-to-wrap-file" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">source_url</span></code> - download url to retrieve the wrap-file source archive</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source_fallback_url</span></code> - fallback URL to be used when download from <code class="docutils literal notranslate"><span class="pre">source_url</span></code> fails <em>Since: 0.55.0</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source_filename</span></code> - filename of the downloaded source archive</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source_hash</span></code> - sha256 checksum of the downloaded source archive</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lead_directory_missing</span></code> - for <code class="docutils literal notranslate"><span class="pre">wrap-file</span></code> create the leading
+directory name. Needed when the source file does not have a leading
+directory.</p></li>
+</ul>
+<p>Since <em>0.55.0</em> it is possible to use only the <code class="docutils literal notranslate"><span class="pre">source_filename</span></code> and
+<code class="docutils literal notranslate"><span class="pre">patch_filename</span></code> value in a .wrap file (without <code class="docutils literal notranslate"><span class="pre">source_url</span></code> and
+<code class="docutils literal notranslate"><span class="pre">patch_url</span></code>) to specify a local archive in the
+<code class="docutils literal notranslate"><span class="pre">subprojects/packagefiles</span></code> directory. The <code class="docutils literal notranslate"><span class="pre">*_hash</span></code> entries are
+optional when using this method. This method should be preferred over
+the old <code class="docutils literal notranslate"><span class="pre">packagecache</span></code> approach described below.</p>
+<p>Since <em>0.49.0</em> if <code class="docutils literal notranslate"><span class="pre">source_filename</span></code> or <code class="docutils literal notranslate"><span class="pre">patch_filename</span></code> is found in the
+project’s <code class="docutils literal notranslate"><span class="pre">subprojects/packagecache</span></code> directory, it will be used instead
+of downloading the file, even if <code class="docutils literal notranslate"><span class="pre">--wrap-mode</span></code> option is set to
+<code class="docutils literal notranslate"><span class="pre">nodownload</span></code>. The file’s hash will be checked.</p>
+<p>Since <em>1.3.0</em> if the <code class="docutils literal notranslate"><span class="pre">MESON_PACKAGE_CACHE_DIR</span></code> environment variable is set, it is used instead of
+the project’s <code class="docutils literal notranslate"><span class="pre">subprojects/packagecache</span></code>. This allows sharing the cache across multiple
+projects. In addition it can contain an already extracted source tree as long as it
+has the same directory name as the <code class="docutils literal notranslate"><span class="pre">directory</span></code> field in the wrap file. In that
+case, the directory will be copied into <code class="docutils literal notranslate"><span class="pre">subprojects/</span></code> before applying patches.</p>
+</section>
+<section id="specific-to-vcs-based-wraps">
+<h3>Specific to VCS-based wraps<a class="headerlink" href="#specific-to-vcs-based-wraps" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code> - name of the wrap-git repository to clone. Required.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">revision</span></code> - name of the revision to checkout. Must be either: a
+valid value (such as a git tag) for the VCS’s <code class="docutils literal notranslate"><span class="pre">checkout</span></code> command, or
+(for git) <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> to track upstream’s default branch. Required.</p></li>
+</ul>
+</section>
+<section id="specific-to-wrap-git">
+<h3>Specific to wrap-git<a class="headerlink" href="#specific-to-wrap-git" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">depth</span></code> - shallowly clone the repository to X number of commits. This saves bandwidth and disk
+space, and should typically always be specified unless commit history is needed. Note
+that git always allow shallowly cloning branches, but in order to
+clone commit ids shallowly, the server must support
+<code class="docutils literal notranslate"><span class="pre">uploadpack.allowReachableSHA1InWant=true</span></code>.  <em>(since 0.52.0)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">push-url</span></code> - alternative url to configure as a git push-url. Useful if
+the subproject will be developed and changes pushed upstream.
+<em>(since 0.37.0)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clone-recursive</span></code> - also clone submodules of the repository
+<em>(since 0.48.0)</em></p></li>
+</ul>
+</section>
+</section>
+<section id="wrap-file-with-meson-build-patch">
+<h2>wrap-file with Meson build patch<a class="headerlink" href="#wrap-file-with-meson-build-patch" title="Link to this heading">#</a></h2>
+<p>Unfortunately most software projects in the world do not build with
+Meson. Because of this Meson allows you to specify a patch URL.</p>
+<p>For historic reasons this is called a “patch”, however, it serves as an
+overlay to add or replace files rather than modifying them. The file
+must be an archive; it is downloaded and automatically extracted into
+the subproject. The extracted files will include a Meson build
+definition for the given subproject.</p>
+<p>This approach makes it extremely simple to embed dependencies that
+require build system changes. You can write the Meson build definition
+for the dependency in total isolation. This is a lot better than doing
+it inside your own source tree, especially if it contains hundreds of
+thousands of lines of code. Once you have a working build definition,
+just zip up the Meson build files (and others you have changed) and
+put them somewhere where you can download them.</p>
+<p>Prior to <em>0.55.0</em> Meson build patches were only supported for
+wrap-file mode. When using wrap-git, the repository must contain all
+Meson build definitions. Since <em>0.55.0</em> Meson build patches are
+supported for any wrap modes, including wrap-git.</p>
+</section>
+<section id="diff-files">
+<h2>Diff files<a class="headerlink" href="#diff-files" title="Link to this heading">#</a></h2>
+<p><em>Since: 0.63.0</em></p>
+<p>You can also provide local patch files in <code class="docutils literal notranslate"><span class="pre">diff</span></code> format. For historic reasons,
+they are referred to as “diff files”, since the “patch” name is already used for
+overlay archives.</p>
+<p>The diff files are described by the <code class="docutils literal notranslate"><span class="pre">diff_files</span></code> property (a comma-separated
+list), and must be available locally in the <code class="docutils literal notranslate"><span class="pre">subprojects/packagefiles</span></code>
+directory.</p>
+<p>Meson will apply the diff files after extracting or cloning the project, and
+after applying the overlay archive (<code class="docutils literal notranslate"><span class="pre">patch_*</span></code>). For this feature, the <code class="docutils literal notranslate"><span class="pre">patch</span></code> or
+<code class="docutils literal notranslate"><span class="pre">git</span></code> command-line tool must be available.</p>
+<p>The diff files will be applied with <code class="docutils literal notranslate"><span class="pre">-p1</span></code>, i.e. treating the first path
+component as a prefix to be stripped. This is the default for diffs produced by
+Git.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[wrap-file]</span>
+<span class="na">directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">libfoobar-1.0</span>
+
+<span class="na">source_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">https://example.com/foobar-1.0.tar.gz</span>
+<span class="na">source_filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">foobar-1.0.tar.gz</span>
+<span class="na">source_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">5ebeea0dfb75d090ea0e7ff84799b2a7a1550db3fe61eb5f6f61c2e971e57663</span>
+
+<span class="na">diff_files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">libfoobar-1.0/0001.patch, libfoobar-1.0/0002.patch</span>
+</pre></div>
+</div>
+</section>
+<section id="provide-section">
+<h2><code class="docutils literal notranslate"><span class="pre">provide</span></code> section<a class="headerlink" href="#provide-section" title="Link to this heading">#</a></h2>
+<p>*Since <em>0.55.0</em></p>
+<p>Wrap files can define the dependencies it provides in the <code class="docutils literal notranslate"><span class="pre">[provide]</span></code>
+section.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[provide]</span>
+<span class="na">dependency_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">foo-1.0</span>
+</pre></div>
+</div>
+<p>When a wrap file provides the dependency <code class="docutils literal notranslate"><span class="pre">foo-1.0</span></code>, as above, any call to
+<code class="docutils literal notranslate"><span class="pre">dependency('foo-1.0')</span></code> will automatically fallback to that subproject even if
+no <code class="docutils literal notranslate"><span class="pre">fallback</span></code> keyword argument is given. A wrap file named <code class="docutils literal notranslate"><span class="pre">foo.wrap</span></code> implicitly
+provides the dependency name <code class="docutils literal notranslate"><span class="pre">foo</span></code> even when the <code class="docutils literal notranslate"><span class="pre">[provide]</span></code> section is missing.</p>
+<p>Optional dependencies, like <code class="docutils literal notranslate"><span class="pre">dependency('foo-1.0',</span> <span class="pre">required:</span> <span class="pre">get_option('foo_opt'))</span></code>
+where <code class="docutils literal notranslate"><span class="pre">foo_opt</span></code> is a feature option set to <code class="docutils literal notranslate"><span class="pre">auto</span></code>, will not fallback to the
+subproject defined in the wrap file, for 2 reasons:</p>
+<ul class="simple">
+<li><p>It allows for looking the dependency in other ways first, for example using
+<code class="docutils literal notranslate"><span class="pre">cc.find_library('foo')</span></code>, and only fallback if that fails:</p></li>
+</ul>
+<div class="highlight-meson notranslate"><div class="highlight"><pre><span></span><span class="c"># this won&#39;t use fallback defined in foo.wrap</span>
+<span class="n">foo_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;foo-1.0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">required</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">foo_dep</span><span class="p">.</span><span class="n">found</span><span class="p">()</span>
+<span class="w">  </span><span class="n">foo_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cc</span><span class="p">.</span><span class="n">find_library</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">has_headers</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;foo.h&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">required</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">foo_dep</span><span class="p">.</span><span class="n">found</span><span class="p">()</span>
+<span class="w">    </span><span class="c"># This will use the fallback</span>
+<span class="w">    </span><span class="n">foo_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;foo-1.0&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># or</span>
+<span class="w">    </span><span class="n">foo_dep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">dependency</span><span class="p">(</span><span class="s">&#39;foo-1.0&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">required</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="n">fallback</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;foo&#39;</span><span class="p">)</span>
+<span class="w">  </span><span class="k">endif</span>
+<span class="k">endif</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Sometimes not-found dependency is preferable to a fallback when the
+feature is not explicitly requested by the user. In that case
+<code class="docutils literal notranslate"><span class="pre">dependency('foo-1.0',</span> <span class="pre">required:</span> <span class="pre">get_option('foo_opt'))</span></code> will only
+fallback when the user sets <code class="docutils literal notranslate"><span class="pre">foo_opt</span></code> to <code class="docutils literal notranslate"><span class="pre">enabled</span></code> instead of
+<code class="docutils literal notranslate"><span class="pre">auto</span></code>.
+<em>Since 0.58.0</em> optional dependency like above will fallback to the subproject
+defined in the wrap file in the case <code class="docutils literal notranslate"><span class="pre">wrap_mode</span></code> is set to <code class="docutils literal notranslate"><span class="pre">forcefallback</span></code>
+or <code class="docutils literal notranslate"><span class="pre">force_fallback_for</span></code> contains the subproject.</p></li>
+</ul>
+<p>If it is desired to fallback for an optional dependency, the
+<code class="docutils literal notranslate"><span class="pre">fallback</span></code> or <code class="docutils literal notranslate"><span class="pre">allow_fallback</span></code> keyword arguments must be passed
+explicitly. <em>Since 0.56.0</em>, <code class="docutils literal notranslate"><span class="pre">dependency('foo-1.0',</span> <span class="pre">required:</span> <span class="pre">get_option('foo_opt'),</span> <span class="pre">allow_fallback:</span> <span class="pre">true)</span></code> will use the fallback
+even when <code class="docutils literal notranslate"><span class="pre">foo_opt</span></code> is set to <code class="docutils literal notranslate"><span class="pre">auto</span></code>. On version <em>0.55.0</em> the same
+effect could be achieved with <code class="docutils literal notranslate"><span class="pre">dependency('foo-1.0',</span> <span class="pre">required:</span> <span class="pre">get_option('foo_opt'),</span> <span class="pre">fallback:</span> <span class="pre">'foo')</span></code>.</p>
+<p>This mechanism assumes the subproject calls
+<code class="docutils literal notranslate"><span class="pre">meson.override_dependency('foo-1.0',</span> <span class="pre">foo_dep)</span></code> so Meson knows which
+dependency object should be used as fallback. Since that method was
+introduced in version <em>0.54.0</em>, as a transitional aid for projects
+that do not yet make use of it the variable name can be provided in
+the wrap file with entries in the format <code class="docutils literal notranslate"><span class="pre">foo-1.0</span> <span class="pre">=</span> <span class="pre">foo_dep</span></code>.</p>
+<p>For example when using a recent enough version of glib that uses
+<code class="docutils literal notranslate"><span class="pre">meson.override_dependency()</span></code> to override <code class="docutils literal notranslate"><span class="pre">glib-2.0</span></code>, <code class="docutils literal notranslate"><span class="pre">gobject-2.0</span></code>
+and <code class="docutils literal notranslate"><span class="pre">gio-2.0</span></code>, a wrap file would look like:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[wrap-git]</span>
+<span class="na">url</span><span class="o">=</span><span class="s">https://gitlab.gnome.org/GNOME/glib.git</span>
+<span class="na">revision</span><span class="o">=</span><span class="s">glib-2-62</span>
+<span class="na">depth</span><span class="o">=</span><span class="s">1</span>
+
+<span class="k">[provide]</span>
+<span class="na">dependency_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">glib-2.0, gobject-2.0, gio-2.0</span>
+</pre></div>
+</div>
+<p>With older version of glib dependency variable names need to be
+specified:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[wrap-git]</span>
+<span class="na">url</span><span class="o">=</span><span class="s">https://gitlab.gnome.org/GNOME/glib.git</span>
+<span class="na">revision</span><span class="o">=</span><span class="s">glib-2-62</span>
+<span class="na">depth</span><span class="o">=</span><span class="s">1</span>
+
+<span class="k">[provide]</span>
+<span class="na">glib-2.0</span><span class="o">=</span><span class="s">glib_dep</span>
+<span class="na">gobject-2.0</span><span class="o">=</span><span class="s">gobject_dep</span>
+<span class="na">gio-2.0</span><span class="o">=</span><span class="s">gio_dep</span>
+</pre></div>
+</div>
+<p>Programs can also be provided by wrap files, with the <code class="docutils literal notranslate"><span class="pre">program_names</span></code>
+key:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[provide]</span>
+<span class="na">program_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">myprog, otherprog</span>
+</pre></div>
+</div>
+<p>With such wrap file, <code class="docutils literal notranslate"><span class="pre">find_program('myprog')</span></code> will automatically
+fallback to use the subproject, assuming it uses
+<code class="docutils literal notranslate"><span class="pre">meson.override_find_program('myprog')</span></code>.</p>
+<section id="cmake-wraps">
+<h3>CMake wraps<a class="headerlink" href="#cmake-wraps" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is experimental and has no backwards or forwards compatibility guarantees.
+See <a class="reference internal" href="Mixing-build-systems.html"><span class="std std-doc">Meson’s rules on mixing build systems</span></a>.</p>
+</div>
+<p>Since the CMake module does not know the public name of the provided
+dependencies, a CMake <code class="docutils literal notranslate"><span class="pre">.wrap</span></code> file cannot use the <code class="docutils literal notranslate"><span class="pre">dependency_names</span> <span class="pre">=</span> <span class="pre">foo</span></code>
+syntax. Instead, the <code class="docutils literal notranslate"><span class="pre">dep_name</span> <span class="pre">=</span> <span class="pre">&lt;target_name&gt;_dep</span></code> syntax should be used, where
+<code class="docutils literal notranslate"><span class="pre">&lt;target_name&gt;</span></code> is the name of a CMake library with all non alphanumeric
+characters replaced by underscores <code class="docutils literal notranslate"><span class="pre">_</span></code>.</p>
+<p>For example, a CMake project that contains <code class="docutils literal notranslate"><span class="pre">add_library(foo-bar</span> <span class="pre">...)</span></code> in its
+<code class="docutils literal notranslate"><span class="pre">CMakeList.txt</span></code> and that applications would usually find using the dependency
+name <code class="docutils literal notranslate"><span class="pre">foo-bar-1.0</span></code> (e.g. via pkg-config) would have a wrap file like this:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[wrap-file]</span>
+<span class="na">...</span>
+<span class="na">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">cmake</span>
+<span class="k">[provide]</span>
+<span class="na">foo-bar-1.0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">foo_bar_dep</span>
+</pre></div>
+</div>
+</section>
+<section id="cargo-wraps">
+<h3>Cargo wraps<a class="headerlink" href="#cargo-wraps" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is experimental and has no backwards or forwards compatibility guarantees.
+See <a class="reference internal" href="Mixing-build-systems.html"><span class="std std-doc">Meson’s rules on mixing build systems</span></a>.</p>
+</div>
+<p>Cargo subprojects automatically call <code class="docutils literal notranslate"><span class="pre">override_dependency</span></code> with the name
+<code class="docutils literal notranslate"><span class="pre">&lt;package_name&gt;-&lt;version&gt;-&lt;suffix&gt;</span></code>, where every part is defeined as follows:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">package_name</span></code> is defined in <code class="docutils literal notranslate"><span class="pre">[package]</span> <span class="pre">name</span> <span class="pre">=</span> <span class="pre">...</span></code> section of the <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">version</span></code> is the API version deduced from <code class="docutils literal notranslate"><span class="pre">[package]</span> <span class="pre">version</span> <span class="pre">=</span> <span class="pre">...</span></code> as follow:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">x.y.z</span></code> -&gt; ‘x’</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0.x.y</span></code> -&gt; ‘0.x’</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0.0.x</span></code> -&gt; ‘0’
+It allows to make different dependencies for incompatible versions of the same
+crate.</p></li>
+</ul>
+</li>
+<li><p>the suffix is <code class="docutils literal notranslate"><span class="pre">-rs</span></code> for <code class="docutils literal notranslate"><span class="pre">rlib</span></code> and <code class="docutils literal notranslate"><span class="pre">dylib</span></code> crate types.  The suffix is added to
+distinguish Rust crates from C-ABI dependencies; for example <code class="docutils literal notranslate"><span class="pre">gstreamer-1.0</span></code>
+is a system pkg-config dependency and <code class="docutils literal notranslate"><span class="pre">gstreamer-0.22-rs</span></code> is a Cargo dependency.</p></li>
+</ul>
+<p>That means the <code class="docutils literal notranslate"><span class="pre">.wrap</span></code> file should have <code class="docutils literal notranslate"><span class="pre">dependency_names</span> <span class="pre">=</span> <span class="pre">foo-1-rs</span></code> in their
+<code class="docutils literal notranslate"><span class="pre">[provide]</span></code> section when <code class="docutils literal notranslate"><span class="pre">Cargo.toml</span></code> has package name <code class="docutils literal notranslate"><span class="pre">foo</span></code> and version <code class="docutils literal notranslate"><span class="pre">1.2</span></code>.</p>
+<p>Note that the version component was added in Meson 1.4, previous versions were
+using <code class="docutils literal notranslate"><span class="pre">&lt;package_name&gt;-rs</span></code> format.</p>
+<p>Cargo subprojects require a toml parser. Python &gt;= 3.11 have one built-in, older
+Python versions require either the external <code class="docutils literal notranslate"><span class="pre">tomli</span></code> module or <code class="docutils literal notranslate"><span class="pre">toml2json</span></code> program.</p>
+<p>For example, a Cargo project with the package name <code class="docutils literal notranslate"><span class="pre">foo-bar</span></code> would have a wrap
+file like that:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[wrap-file]</span>
+<span class="na">...</span>
+<span class="na">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">cargo</span>
+<span class="k">[provide]</span>
+<span class="na">dependency_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">foo-bar-0.1-rs</span>
+</pre></div>
+</div>
+<p>In addition, if the file <code class="docutils literal notranslate"><span class="pre">meson/meson.build</span></code> exists, Meson will call <code class="docutils literal notranslate"><span class="pre">subdir('meson')</span></code>
+where the project can add manual logic that would usually be part of <code class="docutils literal notranslate"><span class="pre">build.rs</span></code>.
+Some naming conventions need to be respected:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">extra_args</span></code> variable is pre-defined and can be used to add any Rust arguments.
+This is typically used as <code class="docutils literal notranslate"><span class="pre">extra_args</span> <span class="pre">+=</span> <span class="pre">['--cfg',</span> <span class="pre">'foo']</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">extra_deps</span></code> variable is pre-defined and can be used to add extra dependencies.
+This is typically used as <code class="docutils literal notranslate"><span class="pre">extra_deps</span> <span class="pre">+=</span> <span class="pre">dependency('foo')</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">features</span></code> variable is pre-defined and contains the list of features enabled
+on this crate.</p></li>
+</ul>
+<p>Since <em>1.5.0</em> Cargo wraps can also be provided with <code class="docutils literal notranslate"><span class="pre">Cargo.lock</span></code> file at the
+root of (sub)project source tree. Meson will automatically load that file, looking
+for crates found on <code class="docutils literal notranslate"><span class="pre">crates.io</span></code> or in a git repository, and will convert those
+crates into a series of wraps definitions.  Since <em>1.11.0</em> the overlay directory
+(<code class="docutils literal notranslate"><span class="pre">patch_directory</span></code>) is automatically detected, using the same directory as the
+dependency name for <code class="docutils literal notranslate"><span class="pre">crates.io</span></code> URLs, and the final component of the URL
+(possibly with the <code class="docutils literal notranslate"><span class="pre">.git</span></code> suffix removed) for “git” URLs.</p>
+<p>Since <em>1.10.0</em> Workspace Cargo.toml are supported.</p>
+</section>
+</section>
+<section id="using-wrapped-projects">
+<h2>Using wrapped projects<a class="headerlink" href="#using-wrapped-projects" title="Link to this heading">#</a></h2>
+<p>Wraps provide a convenient way of obtaining a project into your
+subproject directory. Then you use it as a regular subproject (see
+<a class="reference internal" href="Subprojects.html"><span class="std std-doc">subprojects</span></a>).</p>
+</section>
+<section id="getting-wraps">
+<h2>Getting wraps<a class="headerlink" href="#getting-wraps" title="Link to this heading">#</a></h2>
+<p>Usually you don’t want to write your wraps by hand.</p>
+<p>There is an online repository called
+<a class="reference external" href="https://wrapdb.mesonbuild.com">WrapDB</a> that provides many
+dependencies ready to use. You can read more about WrapDB
+<a class="reference internal" href="Using-the-WrapDB.html"><span class="std std-doc">here</span></a>.</p>
+<p>There is also a Meson subcommand to get and manage wraps (see <a class="reference internal" href="Using-wraptool.html"><span class="std std-doc">using
+wraptool</span></a>).</p>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Using-with-Visual-Studio.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Using with Visual Studio</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Wrapdb-projects.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Meson WrapDB packages</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">How it works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-format">wrap format</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accepted-configuration-properties-for-wraps">Accepted configuration properties for wraps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specific-to-wrap-file">Specific to wrap-file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specific-to-vcs-based-wraps">Specific to VCS-based wraps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specific-to-wrap-git">Specific to wrap-git</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-file-with-meson-build-patch">wrap-file with Meson build patch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diff-files">Diff files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#provide-section"><code class="docutils literal notranslate"><span class="pre">provide</span></code> section</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cmake-wraps">CMake wraps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cargo-wraps">Cargo wraps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-wrapped-projects">Using wrapped projects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-wraps">Getting wraps</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/mesonbuild/meson/edit/master/docs/markdown/Wrap-dependency-system-manual.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">Website licensing information are available on the <a href="legal.html">Legal</a> page.</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

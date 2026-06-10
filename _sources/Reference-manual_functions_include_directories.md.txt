@@ -1,0 +1,138 @@
+## include_directories()
+
+Returns an opaque object which contains the directories (relative to the
+current directory) given in the positional arguments. The result can then be
+passed to the `include_directories:` and `d_import_dirs:` keyword arguments
+when building executables or libraries. You can use the returned object in any
+subdirectory you want, Meson will make the paths work automatically.
+
+Note that this function call itself does not add the directories into
+the search path, since there is no global search path. For something
+like that, see [`add_project_arguments()`](#add_project_arguments).
+
+See also `implicit_include_directories` parameter of
+[[executable]], which adds current source and build
+directories to include path.
+
+Each directory given is converted to two include paths: one that is
+relative to the source root and one relative to the build root.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns an opaque object which contains the directories (relative to the
+[[#@inc]] include_directories(
+  [[#@str]]                                  <b>includes</b>...,  # Include paths to add
+
+  # Keyword arguments:
+  <a href="#include_directories_is_system"><b>is_system</b></a> : [[#@bool]]                                   # If set to `true`, flags the specified directories as system directories
+)</code></pre>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Example
+
+For example, with the following source tree layout in
+`/home/user/project.git`:
+
+`meson.build`:
+```meson
+project(...)
+
+subdir('include')
+subdir('src')
+
+...
+```
+
+`include/meson.build`:
+```meson
+inc = include_directories('.')
+
+...
+```
+
+`src/meson.build`:
+```meson
+sources = [...]
+
+executable('some-tool', sources,
+  include_directories : inc,
+  ...)
+
+...
+```
+
+If the build tree is `/tmp/build-tree`, the following include paths
+will be added to the `executable()` call: `-I/tmp/build-tree/include
+-I/home/user/project.git/include`.
+
+
+
+```{warning}
+When `is_system : true` is used, the include directory order on the
+command line is **reversed** compared to the order given in the
+arguments: the *last* directory listed has the highest priority
+(it appears first among the `-isystem` flags and is searched first
+by the compiler).  This is the opposite of the default (`is_system :
+false`), where the *first* directory listed has the highest priority.
+This may be changed in future releases, but behavior will not change
+as long as `meson_version` is not changed in `project()`.
+
+```
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+
+  The
+  function accepts between `0` and `infinity` variadic
+  arguments (`includes...`) of type <code><span class="text-nowrap">[[@str]]</span></code>.
+
+  Include paths to add.
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  The function `include_directories()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="include_directories_is_system">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">is_system</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  If set to `true`, flags the specified directories as system directories.
+This means that
+they will be used with the `-isystem` compiler argument rather than
+`-I` on compilers that support this flag (in practice everything
+except Visual Studio).
+
+  </td>
+      </tr>
+    </tbody>
+  </table>

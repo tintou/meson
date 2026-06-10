@@ -1,0 +1,8 @@
+---
+short-description: Returned objects
+render-subpages: true
+...
+# Returned objects
+
+See the [root manual document](Reference-manual.md) for
+a general overview.

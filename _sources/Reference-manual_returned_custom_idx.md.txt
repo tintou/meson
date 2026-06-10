@@ -1,0 +1,54 @@
+---
+short-description: "Returned object: Custom target index"
+title: Custom target index
+render-subpages: false
+...
+# Custom target index (`custom_idx`)
+
+References a specific output file of a [[@custom_tgt]] object.
+
+
+## Returned by
+
+Custom target index objects are returned by the following functions and methods:
+- [[custom_tgt.[index]]]
+
+
+
+
+## Custom target index methods
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### custom_idx.full_path()
+
+Returns a full path pointing to the result target file
+NOTE: In most cases using the object itself will do the same job as
+this and will also allow Meson to setup inter-target dependencies
+correctly. Please file a bug if that doesn't work for you.
+
+See [[custom_tgt.full_path]]
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.54.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] full_path()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+

@@ -1,0 +1,4274 @@
+---
+short-description: "Returned object: Compiler object"
+title: Compiler object
+render-subpages: false
+...
+# Compiler object (`compiler`)
+
+This object is returned by [[meson.get_compiler]].
+It represents a compiler for a given language and allows you to query its properties.
+
+
+## Returned by
+
+Compiler object objects are returned by the following functions and methods:
+- [[meson.get_compiler]]
+
+
+```{note}
+These compiler checks do not use compiler arguments added
+with `add_*_arguments()`, via `-Dlang_args` on the command-line, or
+through `CFLAGS`/`LDFLAGS`, etc in the environment. Hence, you can
+trust that the tests will be fully self-contained, and won't fail
+because of custom flags added by other parts of the build file or by
+users.
+
+```
+```{note}
+Note that if you have a single prefix with all your dependencies, you
+might find it easier to append to the environment variables
+`C_INCLUDE_PATH` with GCC/Clang and `INCLUDE` with MSVC to expand the
+default include path, and `LIBRARY_PATH` with GCC/Clang and `LIB` with
+MSVC to expand the default library search path.
+
+However, with GCC, these variables will be ignored when
+cross-compiling. In that case you need to use a specs file. See:
+http://www.mingw.org/wiki/SpecsFileHOWTO
+
+```
+
+
+## Compiler object methods
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.alignment()
+
+Returns the alignment of the specified type. For C-like languages,
+the headers `stddef.h` and `stdio.h` are included
+implicitly for native compilation, only `stddef.h` is included when
+cross-compiling.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns the alignment of the specified type
+[[#@int]] alignment(
+  [[#@str]]                                  <a href="#alignment_typename"><b>typename</b></a>,     # The name of the type to check
+
+  # Keyword arguments:
+  <a href="#alignment_args"><b>args</b></a>         : [[#@array]][[[#@str]]]                                                                          # Used to pass an array of compiler arguments
+  <a href="#alignment_dependencies"><b>dependencies</b></a> : [[#@dep]] | [[#@array]][[[#@dep]]]                                                                    # Additionally dependencies required for compiling and / or linking
+  <a href="#alignment_prefix"><b>prefix</b></a>       : [[#@str]] | [[#@array]][[[#@str]]]                                                                    # Used to add `#include`s and other things that are required
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `compiler.alignment()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="alignment_typename">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">typename</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The name of the type to check.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `compiler.alignment()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="alignment_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to pass an array of compiler arguments.
+Defining include paths for headers not in the default include path
+via `-Isome/path/to/header` is generally supported, however, usually not
+recommended.
+
+This is because include directories can also be specified via the
+`include_directories` or the `dependency` kwarg (if present).
+The same is also true for passing libraries to link with `-lfoo`.
+
+  </td>
+      </tr>
+      <tr id="alignment_dependencies">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dependencies</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@dep]]</span> | [[@array]][<span class="text-nowrap">[[@dep]]</span>]
+  </td>
+        <td>
+  
+  Additionally dependencies required for compiling and / or linking.
+  </td>
+      </tr>
+      <tr id="alignment_prefix">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">prefix</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to add `#include`s and other things that are required
+for the symbol to be declared. Since 1.0.0 an array is accepted
+too. When an array is passed, the items are concatenated together
+separated by a newline.
+System definitions should be passed via compiler args
+(eg: `_GNU_SOURCE` is often required for some symbols to be exposed
+on Linux, and it should be passed via `args` keyword argument).
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.check_header()
+
+Returns true if the specified header is *usable*
+with the specified prefix, dependencies, and arguments.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.47.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns true if the specified header is *usable*
+[[#@bool]] check_header(
+  [[#@str]]                                  <a href="#check_header_header_name"><b>header_name</b></a>,     # The header to check
+
+  # Keyword arguments:
+  <a href="#check_header_args"><b>args</b></a>                : [[#@array]][[[#@str]]]                                                                          # Used to pass an array of compiler arguments
+  <a href="#check_header_dependencies"><b>dependencies</b></a>        : [[#@dep]] | [[#@array]][[[#@dep]]]                                                                    # Additionally dependencies required for compiling and / or linking
+  <a href="#check_header_include_directories"><b>include_directories</b></a> : [[#@array]][[[#@inc]] | [[#@str]]]                                                                    # Extra directories for header searches, created with the
+  <a href="#check_header_no_builtin_args"><b>no_builtin_args</b></a>     : [[#@bool]]                                                                                # When set to `true`, the compiler arguments controlled by built-in configuration options are not added
+  <a href="#check_header_prefix"><b>prefix</b></a>              : [[#@str]] | [[#@array]][[[#@str]]]                                                                    # Used to add `#include`s and other things that are required
+  <a href="#check_header_required"><b>required</b></a>            : [[#@bool]] | [[#@feature]]                                                                      # When set to `true`, Meson will halt if the header check fails
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `compiler.check_header()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="check_header_header_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">header_name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The header to check.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `compiler.check_header()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="check_header_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to pass an array of compiler arguments.
+Defining include paths for headers not in the default include path
+via `-Isome/path/to/header` is generally supported, however, usually not
+recommended.
+
+This is because include directories can also be specified via the
+`include_directories` or the `dependency` kwarg (if present).
+The same is also true for passing libraries to link with `-lfoo`.
+
+  </td>
+      </tr>
+      <tr id="check_header_dependencies">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dependencies</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@dep]]</span> | [[@array]][<span class="text-nowrap">[[@dep]]</span>]
+  </td>
+        <td>
+  
+  Additionally dependencies required for compiling and / or linking.
+  </td>
+      </tr>
+      <tr id="check_header_include_directories">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">include_directories</code>
+  <br>{meson:since}`0.38.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Extra directories for header searches, created with the
+[[include_directories]] function.
+*(Since 1.10.0)* Strings are also accepted.
+
+  </td>
+      </tr>
+      <tr id="check_header_no_builtin_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">no_builtin_args</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, the compiler arguments controlled by built-in configuration options are not added.
+  </td>
+      </tr>
+      <tr id="check_header_prefix">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">prefix</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to add `#include`s and other things that are required
+for the symbol to be declared. Since 1.0.0 an array is accepted
+too. When an array is passed, the items are concatenated together
+separated by a newline.
+System definitions should be passed via compiler args
+(eg: `_GNU_SOURCE` is often required for some symbols to be exposed
+on Linux, and it should be passed via `args` keyword argument).
+
+  </td>
+      </tr>
+      <tr id="check_header_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  <br>{meson:since}`0.50.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, Meson will halt if the header check fails.
+When set to a [`feature`](Build-options.md#features) option, the feature will control if it is searched and whether to fail if not found.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.cmd_array()
+
+Returns an array containing the command(s) for the compiler.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@array]][[[#@str]]] cmd_array()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.compiles()
+
+Returns true if the code compiles.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns true if the code compiles
+[[#@bool]] compiles(
+  [[#@str]] | [[#@file]]                                                                   <a href="#compiles_code"><b>code</b></a>,     # The source code to check
+
+  # Keyword arguments:
+  <a href="#compiles_args"><b>args</b></a>                : [[#@array]][[[#@str]]]                                                                          # Used to pass an array of compiler arguments
+  <a href="#compiles_dependencies"><b>dependencies</b></a>        : [[#@dep]] | [[#@array]][[[#@dep]]]                                                                    # Additionally dependencies required for compiling and / or linking
+  <a href="#compiles_include_directories"><b>include_directories</b></a> : [[#@array]][[[#@inc]] | [[#@str]]]                                                                    # Extra directories for header searches, created with the
+  <a href="#compiles_name"><b>name</b></a>                : [[#@str]]                                                                                 # The name to use for printing a message about the compiler check
+  <a href="#compiles_no_builtin_args"><b>no_builtin_args</b></a>     : [[#@bool]]                                                                                # When set to `true`, the compiler arguments controlled by built-in configuration options are not added
+  <a href="#compiles_required"><b>required</b></a>            : [[#@bool]] | [[#@feature]]                                                                      # When set to `true`, Meson will halt if the check fails
+  <a href="#compiles_werror"><b>werror</b></a>              : [[#@bool]]                                                                                # When set to `true`, compiler warnings are treated as error
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `compiler.compiles()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="compiles_code">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">code</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span>
+  </td>
+        <td>
+  
+  The source code to check.
+
+If a string is passed, the code is used directly. If a [[@file]] object
+is passed, its content is used for the compiler check.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `compiler.compiles()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="compiles_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to pass an array of compiler arguments.
+Defining include paths for headers not in the default include path
+via `-Isome/path/to/header` is generally supported, however, usually not
+recommended.
+
+This is because include directories can also be specified via the
+`include_directories` or the `dependency` kwarg (if present).
+The same is also true for passing libraries to link with `-lfoo`.
+
+  </td>
+      </tr>
+      <tr id="compiles_dependencies">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dependencies</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@dep]]</span> | [[@array]][<span class="text-nowrap">[[@dep]]</span>]
+  </td>
+        <td>
+  
+  Additionally dependencies required for compiling and / or linking.
+  </td>
+      </tr>
+      <tr id="compiles_include_directories">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">include_directories</code>
+  <br>{meson:since}`0.38.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Extra directories for header searches, created with the
+[[include_directories]] function.
+*(Since 1.10.0)* Strings are also accepted.
+
+  </td>
+      </tr>
+      <tr id="compiles_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The name to use for printing a message about the compiler check.
+If this keyword argument is not passed, no message will be printed about the check.
+
+  </td>
+      </tr>
+      <tr id="compiles_no_builtin_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">no_builtin_args</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, the compiler arguments controlled by built-in configuration options are not added.
+  </td>
+      </tr>
+      <tr id="compiles_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  <br>{meson:since}`1.5.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, Meson will halt if the check fails.
+When set to a [`feature`](Build-options.md#features) option, the feature will control if it is searched and whether to fail if not found.
+  </td>
+      </tr>
+      <tr id="compiles_werror">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">werror</code>
+  <br>{meson:since}`1.3.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, compiler warnings are treated as error.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.compute_int()
+
+Computes the value of the given expression
+(as an example `1 + 2`). When cross compiling this is evaluated with
+an iterative algorithm, you can specify keyword arguments `low`
+(defaults to -1024), `high` (defaults to 1024) and `guess` to
+specify max and min values for the search and the value to try
+first.
+For C-like languages, the header `stddef.h` and `stdio.h` are included
+implicitly for native compilation, only `stddef.h` is included when
+cross-compiling.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.40.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Computes the value of the given expression
+[[#@int]] compute_int(
+  [[#@str]]                                  <a href="#compute_int_expr"><b>expr</b></a>,     # The expression to compute
+
+  # Keyword arguments:
+  <a href="#compute_int_args"><b>args</b></a>                : [[#@array]][[[#@str]]]                                                                          # Used to pass an array of compiler arguments
+  <a href="#compute_int_dependencies"><b>dependencies</b></a>        : [[#@dep]] | [[#@array]][[[#@dep]]]                                                                    # Additionally dependencies required for compiling and / or linking
+  <a href="#compute_int_guess"><b>guess</b></a>               : [[#@int]]                                                                                 # The value to try first
+  <a href="#compute_int_high"><b>high</b></a>                : [[#@int]]                                                                                 # The max value
+  <a href="#compute_int_include_directories"><b>include_directories</b></a> : [[#@array]][[[#@inc]] | [[#@str]]]                                                                    # Extra directories for header searches, created with the
+  <a href="#compute_int_low"><b>low</b></a>                 : [[#@int]]                                                                                 # The min value
+  <a href="#compute_int_no_builtin_args"><b>no_builtin_args</b></a>     : [[#@bool]]                                                                                # When set to `true`, the compiler arguments controlled by built-in configuration options are not added
+  <a href="#compute_int_prefix"><b>prefix</b></a>              : [[#@str]] | [[#@array]][[[#@str]]]                                                                    # Used to add `#include`s and other things that are required
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `compiler.compute_int()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="compute_int_expr">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">expr</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The expression to compute.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `compiler.compute_int()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="compute_int_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to pass an array of compiler arguments.
+Defining include paths for headers not in the default include path
+via `-Isome/path/to/header` is generally supported, however, usually not
+recommended.
+
+This is because include directories can also be specified via the
+`include_directories` or the `dependency` kwarg (if present).
+The same is also true for passing libraries to link with `-lfoo`.
+
+  </td>
+      </tr>
+      <tr id="compute_int_dependencies">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dependencies</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@dep]]</span> | [[@array]][<span class="text-nowrap">[[@dep]]</span>]
+  </td>
+        <td>
+  
+  Additionally dependencies required for compiling and / or linking.
+  </td>
+      </tr>
+      <tr id="compute_int_guess">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">guess</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@int]]</span>
+  </td>
+        <td>
+  
+  The value to try first.
+  </td>
+      </tr>
+      <tr id="compute_int_high">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">high</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@int]]</span>
+  <br><code class="language-meson text-nowrap">default = 1024</code>
+  </td>
+        <td>
+  
+  The max value.
+  </td>
+      </tr>
+      <tr id="compute_int_include_directories">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">include_directories</code>
+  <br>{meson:since}`0.38.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Extra directories for header searches, created with the
+[[include_directories]] function.
+*(Since 1.10.0)* Strings are also accepted.
+
+  </td>
+      </tr>
+      <tr id="compute_int_low">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">low</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@int]]</span>
+  <br><code class="language-meson text-nowrap">default = -1024</code>
+  </td>
+        <td>
+  
+  The min value.
+  </td>
+      </tr>
+      <tr id="compute_int_no_builtin_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">no_builtin_args</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, the compiler arguments controlled by built-in configuration options are not added.
+  </td>
+      </tr>
+      <tr id="compute_int_prefix">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">prefix</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to add `#include`s and other things that are required
+for the symbol to be declared. Since 1.0.0 an array is accepted
+too. When an array is passed, the items are concatenated together
+separated by a newline.
+System definitions should be passed via compiler args
+(eg: `_GNU_SOURCE` is often required for some symbols to be exposed
+on Linux, and it should be passed via `args` keyword argument).
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.find_library()
+
+Tries to find the library specified in the positional argument.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Tries to find the library specified in the positional argument
+[[#@dep]] find_library(
+  [[#@str]]                                  <a href="#find_library_libname"><b>libname</b></a>,     # The library to find
+
+  # Keyword arguments:
+  <a href="#find_library_dirs"><b>dirs</b></a>                       : [[#@array]][[[#@str]]]                                                                          # Additional directories to search in
+  <a href="#find_library_disabler"><b>disabler</b></a>                   : [[#@bool]]                                                                                # If `true`, this method will return a [[@disabler]] on a failed check.
+  <a href="#find_library_has_headers"><b>has_headers</b></a>                : [[#@array]][[[#@str]]]                                                                          # An array of headers that must be found as well
+  <a href="#find_library_header_args"><b>header_args</b></a>                : [[#@array]][[[#@str]]]                                                                          # When the `has_headers` kwarg is also used, this argument is passed to
+  <a href="#find_library_header_dependencies"><b>header_dependencies</b></a>        : [[#@dep]] | [[#@array]][[[#@dep]]]                                                                    # When the `has_headers` kwarg is also used, this argument is passed to
+  <a href="#find_library_header_include_directories"><b>header_include_directories</b></a> : [[#@array]][[[#@inc]] | [[#@str]]]                                                                    # When the `has_headers` kwarg is also used, this argument is passed to
+  <a href="#find_library_header_no_builtin_args"><b>header_no_builtin_args</b></a>     : [[#@bool]]                                                                                # When the `has_headers` kwarg is also used, this argument is passed to
+  <a href="#find_library_header_prefix"><b>header_prefix</b></a>              : [[#@str]]                                                                                 # When the `has_headers` kwarg is also used, this argument is passed to
+  <a href="#find_library_required"><b>required</b></a>                   : [[#@bool]] | [[#@feature]]                                                                      # If set `true`, Meson will abort with an error if the library could not
+  <a href="#find_library_static"><b>static</b></a>                     : [[#@bool]]                                                                                # If `true`, the search is limited to static libraries only
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `compiler.find_library()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="find_library_libname">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">libname</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The library to find.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `compiler.find_library()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="find_library_dirs">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dirs</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Additional directories to search in.
+
+By default the library is searched for in the system library directory
+(e.g. /usr/lib). Specifying more directories here, causes Meson to search
+in those directories as well as the system directories.
+
+  </td>
+      </tr>
+      <tr id="find_library_disabler">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">disabler</code>
+  <br>{meson:since}`0.49.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  If `true`, this method will return a [[@disabler]] on a failed check.
+  </td>
+      </tr>
+      <tr id="find_library_has_headers">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">has_headers</code>
+  <br>{meson:since}`0.50.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  An array of headers that must be found as well.
+This check is equivalent to checking each header with a
+[[compiler.has_header]] call.
+
+When used, kwargs that [[compiler.has_header]] would accept can be
+passed here prefixed with `header_`, and will have the same effect on
+the header check.
+
+  </td>
+      </tr>
+      <tr id="find_library_header_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">header_args</code>
+  <br>{meson:since}`0.51.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  When the `has_headers` kwarg is also used, this argument is passed to
+[[compiler.has_header]] as `args`.
+
+  </td>
+      </tr>
+      <tr id="find_library_header_dependencies">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">header_dependencies</code>
+  <br>{meson:since}`0.51.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@dep]]</span> | [[@array]][<span class="text-nowrap">[[@dep]]</span>]
+  </td>
+        <td>
+  
+  When the `has_headers` kwarg is also used, this argument is passed to
+[[compiler.has_header]] as `dependencies`.
+
+  </td>
+      </tr>
+      <tr id="find_library_header_include_directories">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">header_include_directories</code>
+  <br>{meson:since}`0.51.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  When the `has_headers` kwarg is also used, this argument is passed to
+[[compiler.has_header]] as `include_directories`.
+*(Since 1.10.0)* Strings are also accepted.
+
+  </td>
+      </tr>
+      <tr id="find_library_header_no_builtin_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">header_no_builtin_args</code>
+  <br>{meson:since}`0.51.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When the `has_headers` kwarg is also used, this argument is passed to
+[[compiler.has_header]] as `no_builtin_args`.
+
+  </td>
+      </tr>
+      <tr id="find_library_header_prefix">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">header_prefix</code>
+  <br>{meson:since}`0.51.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  When the `has_headers` kwarg is also used, this argument is passed to
+[[compiler.has_header]] as `prefix`.
+
+  </td>
+      </tr>
+      <tr id="find_library_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = true</code>
+  </td>
+        <td>
+  
+  If set `true`, Meson will abort with an error if the library could not
+be found. Otherwise, Meson will continue and the found method of the
+returned object will return `false`.
+
+When set to a [`feature`](Build-options.md#features) option, the feature
+will control if it is searched and whether to fail if not found.
+
+*(since 0.47.0)* The value of a `feature` option can also be passed here.
+
+  </td>
+      </tr>
+      <tr id="find_library_static">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">static</code>
+  <br>{meson:since}`0.51.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  If `true`, the search is limited to static libraries only.
+Setting this value to `false` (the default) will search for both shared
+*and* static libraries.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.first_supported_argument()
+
+Given an array of strings, returns a single-element array containing the first
+argument that passes the [[compiler.has_argument]] test or an empty array if
+none pass.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.43.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Given an array of strings, returns a single-element array containing the first
+[[#@array]][[[#@str]]] first_supported_argument(
+  [[#@str]]                                  <b>arg</b>...,  # The arguments to check
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+
+  The
+  method accepts between `0` and `infinity` variadic
+  arguments (`arg...`) of type <code><span class="text-nowrap">[[@str]]</span></code>.
+
+  The arguments to check.
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.first_supported_link_argument()
+
+Given an array of strings, returns the first argument that passes the
+[[compiler.has_link_argument]] test or an empty array if none pass.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.46.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Given an array of strings, returns the first argument that passes the
+[[#@array]][[[#@str]]] first_supported_link_argument(
+  [[#@str]]                                  <b>arg</b>...,  # The link arguments to check
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+
+  The
+  method accepts between `0` and `infinity` variadic
+  arguments (`arg...`) of type <code><span class="text-nowrap">[[@str]]</span></code>.
+
+  The link arguments to check.
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.get_argument_syntax()
+
+returns a string identifying the type of arguments the compiler takes.
+Can be one of `gcc`, `msvc`, or an undefined
+string value. This method is useful for identifying compilers that are not
+gcc or msvc, but use the same argument syntax as one of those two compilers
+such as clang or icc, especially when they use different syntax on different
+operating systems.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.49.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] get_argument_syntax()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.get_define()
+
+Returns the given preprocessor symbol's value
+as a string or empty string if it is not defined.
+
+*(since 0.47.0)* This method will concatenate string literals as
+the compiler would. E.g. `"a" "b"` will become `"ab"`.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.40.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns the given preprocessor symbol's value
+[[#@str]] get_define(
+  [[#@str]]                                  <a href="#get_define_definename"><b>definename</b></a>,     # The define to check
+
+  # Keyword arguments:
+  <a href="#get_define_args"><b>args</b></a>                : [[#@array]][[[#@str]]]                                                                          # Used to pass an array of compiler arguments
+  <a href="#get_define_dependencies"><b>dependencies</b></a>        : [[#@dep]] | [[#@array]][[[#@dep]]]                                                                    # Additionally dependencies required for compiling and / or linking
+  <a href="#get_define_include_directories"><b>include_directories</b></a> : [[#@array]][[[#@inc]] | [[#@str]]]                                                                    # Extra directories for header searches, created with the
+  <a href="#get_define_no_builtin_args"><b>no_builtin_args</b></a>     : [[#@bool]]                                                                                # When set to `true`, the compiler arguments controlled by built-in configuration options are not added
+  <a href="#get_define_prefix"><b>prefix</b></a>              : [[#@str]] | [[#@array]][[[#@str]]]                                                                    # Used to add `#include`s and other things that are required
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `compiler.get_define()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_define_definename">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">definename</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The define to check.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `compiler.get_define()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_define_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to pass an array of compiler arguments.
+Defining include paths for headers not in the default include path
+via `-Isome/path/to/header` is generally supported, however, usually not
+recommended.
+
+This is because include directories can also be specified via the
+`include_directories` or the `dependency` kwarg (if present).
+The same is also true for passing libraries to link with `-lfoo`.
+
+  </td>
+      </tr>
+      <tr id="get_define_dependencies">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dependencies</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@dep]]</span> | [[@array]][<span class="text-nowrap">[[@dep]]</span>]
+  </td>
+        <td>
+  
+  Additionally dependencies required for compiling and / or linking.
+  </td>
+      </tr>
+      <tr id="get_define_include_directories">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">include_directories</code>
+  <br>{meson:since}`0.38.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Extra directories for header searches, created with the
+[[include_directories]] function.
+*(Since 1.10.0)* Strings are also accepted.
+
+  </td>
+      </tr>
+      <tr id="get_define_no_builtin_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">no_builtin_args</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, the compiler arguments controlled by built-in configuration options are not added.
+  </td>
+      </tr>
+      <tr id="get_define_prefix">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">prefix</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to add `#include`s and other things that are required
+for the symbol to be declared. Since 1.0.0 an array is accepted
+too. When an array is passed, the items are concatenated together
+separated by a newline.
+System definitions should be passed via compiler args
+(eg: `_GNU_SOURCE` is often required for some symbols to be exposed
+on Linux, and it should be passed via `args` keyword argument).
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.get_id()
+
+Returns a string identifying the compiler.
+For example, `gcc`, `msvc`, [and more](Reference-tables.md#compiler-ids).
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] get_id()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.get_linker_id()
+
+Returns a string identifying the linker.
+For example, `ld.bfd`, `link`, [and more](Reference-tables.md#linker-ids).
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.53.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] get_linker_id()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.get_supported_arguments()
+
+Returns an array containing only the arguments supported by the compiler,
+as if [[compiler.has_argument]] were called on them individually.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.43.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns an array containing only the arguments supported by the compiler,
+[[#@array]][[[#@str]]] get_supported_arguments(
+  [[#@str]]                                  <b>arg</b>...,  # The arguments to check
+
+  # Keyword arguments:
+  <a href="#get_supported_arguments_checked"><b>checked</b></a> : [[#@str]]                                   # Supported values:
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+
+  The
+  method accepts between `0` and `infinity` variadic
+  arguments (`arg...`) of type <code><span class="text-nowrap">[[@str]]</span></code>.
+
+  The arguments to check.
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  The method `compiler.get_supported_arguments()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_supported_arguments_checked">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">checked</code>
+  <br>{meson:since}`0.59.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  <br><code class="language-meson text-nowrap">default = 'off'</code>
+  </td>
+        <td>
+  
+  Supported values:
+  - `'off'`: Quietly ignore unsupported arguments
+  - `'warn'`: Print a warning for unsupported arguments
+  - `'require'`: Abort if at least one argument is not supported
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.get_supported_function_attributes()
+
+Returns an array containing any names that are supported GCC style attributes.
+Equivalent to [[compiler.has_function_attribute]] was called on each of
+them individually.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.48.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@array]][[[#@str]]] get_supported_function_attributes()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.get_supported_link_arguments()
+
+Returns an array containing only the arguments supported by the compiler,
+as if [[compiler.has_link_argument]] were called on them individually.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.46.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns an array containing only the arguments supported by the compiler,
+[[#@array]][[[#@str]]] get_supported_link_arguments(
+  [[#@str]]                                  <b>arg</b>...,  # The link arguments to check
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+
+  The
+  method accepts between `0` and `infinity` variadic
+  arguments (`arg...`) of type <code><span class="text-nowrap">[[@str]]</span></code>.
+
+  The link arguments to check.
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.has_argument()
+
+Returns `true` if the compiler accepts the specified command line argument,
+that is, can compile code without erroring out or printing a warning about
+an unknown flag.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns `true` if the compiler accepts the specified command line argument,
+[[#@bool]] has_argument(
+  [[#@str]]                                  <a href="#has_argument_argument"><b>argument</b></a>,     # The argument to check
+
+  # Keyword arguments:
+  <a href="#has_argument_required"><b>required</b></a> : [[#@bool]] | [[#@feature]]                                                                    # When set to `true`, Meson will halt if the check fails
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `compiler.has_argument()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_argument_argument">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">argument</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The argument to check.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `compiler.has_argument()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_argument_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  <br>{meson:since}`1.3.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, Meson will halt if the check fails.
+When set to a [`feature`](Build-options.md#features) option, the feature will control if it is searched and whether to fail if not found.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.has_define()
+
+Returns true if the given preprocessor symbol is *defined*.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`1.3.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns true if the given preprocessor symbol is *defined*
+[[#@bool]] has_define(
+  [[#@str]]                                  <a href="#has_define_definename"><b>definename</b></a>,     # The define to check
+
+  # Keyword arguments:
+  <a href="#has_define_args"><b>args</b></a>                : [[#@array]][[[#@str]]]                                                                          # Used to pass an array of compiler arguments
+  <a href="#has_define_dependencies"><b>dependencies</b></a>        : [[#@dep]] | [[#@array]][[[#@dep]]]                                                                    # Additionally dependencies required for compiling and / or linking
+  <a href="#has_define_include_directories"><b>include_directories</b></a> : [[#@array]][[[#@inc]] | [[#@str]]]                                                                    # Extra directories for header searches, created with the
+  <a href="#has_define_no_builtin_args"><b>no_builtin_args</b></a>     : [[#@bool]]                                                                                # When set to `true`, the compiler arguments controlled by built-in configuration options are not added
+  <a href="#has_define_prefix"><b>prefix</b></a>              : [[#@str]] | [[#@array]][[[#@str]]]                                                                    # Used to add `#include`s and other things that are required
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `compiler.has_define()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_define_definename">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">definename</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The define to check.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `compiler.has_define()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_define_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to pass an array of compiler arguments.
+Defining include paths for headers not in the default include path
+via `-Isome/path/to/header` is generally supported, however, usually not
+recommended.
+
+This is because include directories can also be specified via the
+`include_directories` or the `dependency` kwarg (if present).
+The same is also true for passing libraries to link with `-lfoo`.
+
+  </td>
+      </tr>
+      <tr id="has_define_dependencies">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dependencies</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@dep]]</span> | [[@array]][<span class="text-nowrap">[[@dep]]</span>]
+  </td>
+        <td>
+  
+  Additionally dependencies required for compiling and / or linking.
+  </td>
+      </tr>
+      <tr id="has_define_include_directories">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">include_directories</code>
+  <br>{meson:since}`0.38.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Extra directories for header searches, created with the
+[[include_directories]] function.
+*(Since 1.10.0)* Strings are also accepted.
+
+  </td>
+      </tr>
+      <tr id="has_define_no_builtin_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">no_builtin_args</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, the compiler arguments controlled by built-in configuration options are not added.
+  </td>
+      </tr>
+      <tr id="has_define_prefix">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">prefix</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to add `#include`s and other things that are required
+for the symbol to be declared. Since 1.0.0 an array is accepted
+too. When an array is passed, the items are concatenated together
+separated by a newline.
+System definitions should be passed via compiler args
+(eg: `_GNU_SOURCE` is often required for some symbols to be exposed
+on Linux, and it should be passed via `args` keyword argument).
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.has_function()
+
+Returns true if the given function is provided
+by the standard library or a library passed in with the `args` keyword.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns true if the given function is provided
+[[#@bool]] has_function(
+  [[#@str]]                                  <a href="#has_function_funcname"><b>funcname</b></a>,     # The function to check
+
+  # Keyword arguments:
+  <a href="#has_function_args"><b>args</b></a>                : [[#@array]][[[#@str]]]                                                                          # Used to pass an array of compiler arguments
+  <a href="#has_function_dependencies"><b>dependencies</b></a>        : [[#@dep]] | [[#@array]][[[#@dep]]]                                                                    # Additionally dependencies required for compiling and / or linking
+  <a href="#has_function_include_directories"><b>include_directories</b></a> : [[#@array]][[[#@inc]] | [[#@str]]]                                                                    # Extra directories for header searches, created with the
+  <a href="#has_function_no_builtin_args"><b>no_builtin_args</b></a>     : [[#@bool]]                                                                                # When set to `true`, the compiler arguments controlled by built-in configuration options are not added
+  <a href="#has_function_prefix"><b>prefix</b></a>              : [[#@str]] | [[#@array]][[[#@str]]]                                                                    # Used to add `#include`s and other things that are required
+  <a href="#has_function_required"><b>required</b></a>            : [[#@bool]] | [[#@feature]]                                                                      # When set to `true`, Meson will halt if the check fails
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `compiler.has_function()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_function_funcname">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">funcname</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The function to check.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `compiler.has_function()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_function_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to pass an array of compiler arguments.
+Defining include paths for headers not in the default include path
+via `-Isome/path/to/header` is generally supported, however, usually not
+recommended.
+
+This is because include directories can also be specified via the
+`include_directories` or the `dependency` kwarg (if present).
+The same is also true for passing libraries to link with `-lfoo`.
+
+  </td>
+      </tr>
+      <tr id="has_function_dependencies">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dependencies</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@dep]]</span> | [[@array]][<span class="text-nowrap">[[@dep]]</span>]
+  </td>
+        <td>
+  
+  Additionally dependencies required for compiling and / or linking.
+  </td>
+      </tr>
+      <tr id="has_function_include_directories">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">include_directories</code>
+  <br>{meson:since}`0.38.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Extra directories for header searches, created with the
+[[include_directories]] function.
+*(Since 1.10.0)* Strings are also accepted.
+
+  </td>
+      </tr>
+      <tr id="has_function_no_builtin_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">no_builtin_args</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, the compiler arguments controlled by built-in configuration options are not added.
+  </td>
+      </tr>
+      <tr id="has_function_prefix">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">prefix</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to add `#include`s and other things that are required
+for the symbol to be declared. Since 1.0.0 an array is accepted
+too. When an array is passed, the items are concatenated together
+separated by a newline.
+System definitions should be passed via compiler args
+(eg: `_GNU_SOURCE` is often required for some symbols to be exposed
+on Linux, and it should be passed via `args` keyword argument).
+
+  </td>
+      </tr>
+      <tr id="has_function_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  <br>{meson:since}`1.3.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, Meson will halt if the check fails.
+When set to a [`feature`](Build-options.md#features) option, the feature will control if it is searched and whether to fail if not found.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.has_function_attribute()
+
+Returns `true` if the compiler supports the GNU style (`__attribute__(...)`) `name`.
+This is preferable to manual compile checks as it may be optimized for compilers that
+do not support such attributes.
+[This table](Reference-tables.md#gcc-__attribute__) lists all of the supported attributes.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.48.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns `true` if the compiler supports the GNU style (`__attribute__(
+[[#@bool]] has_function_attribute(
+  [[#@str]]                                  <a href="#has_function_attribute_name"><b>name</b></a>,     # The attribute name to check
+
+  # Keyword arguments:
+  <a href="#has_function_attribute_required"><b>required</b></a> : [[#@bool]] | [[#@feature]]                                                                    # When set to `true`, Meson will halt if the check fails
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `compiler.has_function_attribute()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_function_attribute_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The attribute name to check.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `compiler.has_function_attribute()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_function_attribute_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  <br>{meson:since}`1.3.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, Meson will halt if the check fails.
+When set to a [`feature`](Build-options.md#features) option, the feature will control if it is searched and whether to fail if not found.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.has_header()
+
+Returns true if the specified header is *exists*
+with the specified prefix, dependencies, and arguments.
+
+This method is faster than [[compiler.check_header]] since it only does a
+pre-processor check.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns true if the specified header is *exists*
+[[#@bool]] has_header(
+  [[#@str]]                                  <a href="#has_header_header_name"><b>header_name</b></a>,     # The header to check
+
+  # Keyword arguments:
+  <a href="#has_header_args"><b>args</b></a>                : [[#@array]][[[#@str]]]                                                                          # Used to pass an array of compiler arguments
+  <a href="#has_header_dependencies"><b>dependencies</b></a>        : [[#@dep]] | [[#@array]][[[#@dep]]]                                                                    # Additionally dependencies required for compiling and / or linking
+  <a href="#has_header_include_directories"><b>include_directories</b></a> : [[#@array]][[[#@inc]] | [[#@str]]]                                                                    # Extra directories for header searches, created with the
+  <a href="#has_header_no_builtin_args"><b>no_builtin_args</b></a>     : [[#@bool]]                                                                                # When set to `true`, the compiler arguments controlled by built-in configuration options are not added
+  <a href="#has_header_prefix"><b>prefix</b></a>              : [[#@str]] | [[#@array]][[[#@str]]]                                                                    # Used to add `#include`s and other things that are required
+  <a href="#has_header_required"><b>required</b></a>            : [[#@bool]] | [[#@feature]]                                                                      # When set to `true`, Meson will halt if the header check fails
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `compiler.has_header()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_header_header_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">header_name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The header to check.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `compiler.has_header()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_header_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to pass an array of compiler arguments.
+Defining include paths for headers not in the default include path
+via `-Isome/path/to/header` is generally supported, however, usually not
+recommended.
+
+This is because include directories can also be specified via the
+`include_directories` or the `dependency` kwarg (if present).
+The same is also true for passing libraries to link with `-lfoo`.
+
+  </td>
+      </tr>
+      <tr id="has_header_dependencies">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dependencies</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@dep]]</span> | [[@array]][<span class="text-nowrap">[[@dep]]</span>]
+  </td>
+        <td>
+  
+  Additionally dependencies required for compiling and / or linking.
+  </td>
+      </tr>
+      <tr id="has_header_include_directories">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">include_directories</code>
+  <br>{meson:since}`0.38.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Extra directories for header searches, created with the
+[[include_directories]] function.
+*(Since 1.10.0)* Strings are also accepted.
+
+  </td>
+      </tr>
+      <tr id="has_header_no_builtin_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">no_builtin_args</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, the compiler arguments controlled by built-in configuration options are not added.
+  </td>
+      </tr>
+      <tr id="has_header_prefix">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">prefix</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to add `#include`s and other things that are required
+for the symbol to be declared. Since 1.0.0 an array is accepted
+too. When an array is passed, the items are concatenated together
+separated by a newline.
+System definitions should be passed via compiler args
+(eg: `_GNU_SOURCE` is often required for some symbols to be exposed
+on Linux, and it should be passed via `args` keyword argument).
+
+  </td>
+      </tr>
+      <tr id="has_header_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  <br>{meson:since}`0.50.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, Meson will halt if the header check fails.
+When set to a [`feature`](Build-options.md#features) option, the feature will control if it is searched and whether to fail if not found.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.has_header_symbol()
+
+Detects whether a particular symbol is declared in the specified header.
+
+Symbols here include function, variable, `#define`, type definition, etc.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Detects whether a particular symbol is declared in the specified header
+[[#@bool]] has_header_symbol(
+  [[#@str]]                                  <a href="#has_header_symbol_header"><b>header</b></a>,     # The header to check
+  [[#@str]]                                  <a href="#has_header_symbol_symbol"><b>symbol</b></a>,     # The symbol to check
+
+  # Keyword arguments:
+  <a href="#has_header_symbol_args"><b>args</b></a>                : [[#@array]][[[#@str]]]                                                                          # Used to pass an array of compiler arguments
+  <a href="#has_header_symbol_dependencies"><b>dependencies</b></a>        : [[#@dep]] | [[#@array]][[[#@dep]]]                                                                    # Additionally dependencies required for compiling and / or linking
+  <a href="#has_header_symbol_include_directories"><b>include_directories</b></a> : [[#@array]][[[#@inc]] | [[#@str]]]                                                                    # Extra directories for header searches, created with the
+  <a href="#has_header_symbol_no_builtin_args"><b>no_builtin_args</b></a>     : [[#@bool]]                                                                                # When set to `true`, the compiler arguments controlled by built-in configuration options are not added
+  <a href="#has_header_symbol_prefix"><b>prefix</b></a>              : [[#@str]] | [[#@array]][[[#@str]]]                                                                    # Used to add `#include`s and other things that are required
+  <a href="#has_header_symbol_required"><b>required</b></a>            : [[#@bool]] | [[#@feature]]                                                                      # When set to `true`, Meson will halt if the header check fails
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `compiler.has_header_symbol()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_header_symbol_header">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">header</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The header to check.
+  </td>
+      </tr>
+      <tr id="has_header_symbol_symbol">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">symbol</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The symbol to check.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `compiler.has_header_symbol()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_header_symbol_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to pass an array of compiler arguments.
+Defining include paths for headers not in the default include path
+via `-Isome/path/to/header` is generally supported, however, usually not
+recommended.
+
+This is because include directories can also be specified via the
+`include_directories` or the `dependency` kwarg (if present).
+The same is also true for passing libraries to link with `-lfoo`.
+
+  </td>
+      </tr>
+      <tr id="has_header_symbol_dependencies">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dependencies</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@dep]]</span> | [[@array]][<span class="text-nowrap">[[@dep]]</span>]
+  </td>
+        <td>
+  
+  Additionally dependencies required for compiling and / or linking.
+  </td>
+      </tr>
+      <tr id="has_header_symbol_include_directories">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">include_directories</code>
+  <br>{meson:since}`0.38.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Extra directories for header searches, created with the
+[[include_directories]] function.
+*(Since 1.10.0)* Strings are also accepted.
+
+  </td>
+      </tr>
+      <tr id="has_header_symbol_no_builtin_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">no_builtin_args</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, the compiler arguments controlled by built-in configuration options are not added.
+  </td>
+      </tr>
+      <tr id="has_header_symbol_prefix">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">prefix</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to add `#include`s and other things that are required
+for the symbol to be declared. Since 1.0.0 an array is accepted
+too. When an array is passed, the items are concatenated together
+separated by a newline.
+System definitions should be passed via compiler args
+(eg: `_GNU_SOURCE` is often required for some symbols to be exposed
+on Linux, and it should be passed via `args` keyword argument).
+
+  </td>
+      </tr>
+      <tr id="has_header_symbol_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  <br>{meson:since}`0.50.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, Meson will halt if the header check fails.
+When set to a [`feature`](Build-options.md#features) option, the feature will control if it is searched and whether to fail if not found.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.has_link_argument()
+
+Returns `true` if the linker accepts the specified command line argument,
+that is, can
+compile and link code without erroring out or printing a warning
+about an unknown flag. Link arguments will be passed to the
+compiler, so should usually have the `-Wl,` prefix. On VisualStudio
+a `/link` argument will be prepended.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.46.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns `true` if the linker accepts the specified command line argument,
+[[#@bool]] has_link_argument(
+  [[#@str]]                                  <a href="#has_link_argument_argument"><b>argument</b></a>,     # The argument to check
+
+  # Keyword arguments:
+  <a href="#has_link_argument_required"><b>required</b></a> : [[#@bool]] | [[#@feature]]                                                                    # When set to `true`, Meson will halt if the check fails
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `compiler.has_link_argument()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_link_argument_argument">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">argument</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The argument to check.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `compiler.has_link_argument()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_link_argument_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  <br>{meson:since}`1.3.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, Meson will halt if the check fails.
+When set to a [`feature`](Build-options.md#features) option, the feature will control if it is searched and whether to fail if not found.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.has_member()
+
+Returns true if the type has the specified member.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns true if the type has the specified member
+[[#@bool]] has_member(
+  [[#@str]]                                  <a href="#has_member_typename"><b>typename</b></a>,       # The type to check
+  [[#@str]]                                  <a href="#has_member_membername"><b>membername</b></a>,     # The member to check
+
+  # Keyword arguments:
+  <a href="#has_member_args"><b>args</b></a>                : [[#@array]][[[#@str]]]                                                                          # Used to pass an array of compiler arguments
+  <a href="#has_member_dependencies"><b>dependencies</b></a>        : [[#@dep]] | [[#@array]][[[#@dep]]]                                                                    # Additionally dependencies required for compiling and / or linking
+  <a href="#has_member_include_directories"><b>include_directories</b></a> : [[#@array]][[[#@inc]] | [[#@str]]]                                                                    # Extra directories for header searches, created with the
+  <a href="#has_member_no_builtin_args"><b>no_builtin_args</b></a>     : [[#@bool]]                                                                                # When set to `true`, the compiler arguments controlled by built-in configuration options are not added
+  <a href="#has_member_prefix"><b>prefix</b></a>              : [[#@str]] | [[#@array]][[[#@str]]]                                                                    # Used to add `#include`s and other things that are required
+  <a href="#has_member_required"><b>required</b></a>            : [[#@bool]] | [[#@feature]]                                                                      # When set to `true`, Meson will halt if the check fails
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `compiler.has_member()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_member_typename">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">typename</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The type to check.
+  </td>
+      </tr>
+      <tr id="has_member_membername">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">membername</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The member to check.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `compiler.has_member()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_member_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to pass an array of compiler arguments.
+Defining include paths for headers not in the default include path
+via `-Isome/path/to/header` is generally supported, however, usually not
+recommended.
+
+This is because include directories can also be specified via the
+`include_directories` or the `dependency` kwarg (if present).
+The same is also true for passing libraries to link with `-lfoo`.
+
+  </td>
+      </tr>
+      <tr id="has_member_dependencies">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dependencies</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@dep]]</span> | [[@array]][<span class="text-nowrap">[[@dep]]</span>]
+  </td>
+        <td>
+  
+  Additionally dependencies required for compiling and / or linking.
+  </td>
+      </tr>
+      <tr id="has_member_include_directories">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">include_directories</code>
+  <br>{meson:since}`0.38.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Extra directories for header searches, created with the
+[[include_directories]] function.
+*(Since 1.10.0)* Strings are also accepted.
+
+  </td>
+      </tr>
+      <tr id="has_member_no_builtin_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">no_builtin_args</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, the compiler arguments controlled by built-in configuration options are not added.
+  </td>
+      </tr>
+      <tr id="has_member_prefix">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">prefix</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to add `#include`s and other things that are required
+for the symbol to be declared. Since 1.0.0 an array is accepted
+too. When an array is passed, the items are concatenated together
+separated by a newline.
+System definitions should be passed via compiler args
+(eg: `_GNU_SOURCE` is often required for some symbols to be exposed
+on Linux, and it should be passed via `args` keyword argument).
+
+  </td>
+      </tr>
+      <tr id="has_member_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  <br>{meson:since}`1.3.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, Meson will halt if the check fails.
+When set to a [`feature`](Build-options.md#features) option, the feature will control if it is searched and whether to fail if not found.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.has_members()
+
+Returns `true` if the type has *all* the specified members.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns `true` if the type has *all* the specified members
+[[#@bool]] has_members(
+  [[#@str]]                                  <a href="#has_members_typename"><b>typename</b></a>,     # The type to check
+  [[#@str]]                                  <b>member</b>...,    # The members to check
+
+  # Keyword arguments:
+  <a href="#has_members_args"><b>args</b></a>                : [[#@array]][[[#@str]]]                                                                          # Used to pass an array of compiler arguments
+  <a href="#has_members_dependencies"><b>dependencies</b></a>        : [[#@dep]] | [[#@array]][[[#@dep]]]                                                                    # Additionally dependencies required for compiling and / or linking
+  <a href="#has_members_include_directories"><b>include_directories</b></a> : [[#@array]][[[#@inc]] | [[#@str]]]                                                                    # Extra directories for header searches, created with the
+  <a href="#has_members_no_builtin_args"><b>no_builtin_args</b></a>     : [[#@bool]]                                                                                # When set to `true`, the compiler arguments controlled by built-in configuration options are not added
+  <a href="#has_members_prefix"><b>prefix</b></a>              : [[#@str]] | [[#@array]][[[#@str]]]                                                                    # Used to add `#include`s and other things that are required
+  <a href="#has_members_required"><b>required</b></a>            : [[#@bool]] | [[#@feature]]                                                                      # When set to `true`, Meson will halt if the check fails
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `compiler.has_members()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_members_typename">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">typename</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The type to check.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  Additionally, the
+  method accepts between `1` and `infinity` variadic
+  arguments (`member...`) of type <code><span class="text-nowrap">[[@str]]</span></code>.
+
+  The members to check
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  Finally, `compiler.has_members()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_members_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to pass an array of compiler arguments.
+Defining include paths for headers not in the default include path
+via `-Isome/path/to/header` is generally supported, however, usually not
+recommended.
+
+This is because include directories can also be specified via the
+`include_directories` or the `dependency` kwarg (if present).
+The same is also true for passing libraries to link with `-lfoo`.
+
+  </td>
+      </tr>
+      <tr id="has_members_dependencies">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dependencies</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@dep]]</span> | [[@array]][<span class="text-nowrap">[[@dep]]</span>]
+  </td>
+        <td>
+  
+  Additionally dependencies required for compiling and / or linking.
+  </td>
+      </tr>
+      <tr id="has_members_include_directories">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">include_directories</code>
+  <br>{meson:since}`0.38.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Extra directories for header searches, created with the
+[[include_directories]] function.
+*(Since 1.10.0)* Strings are also accepted.
+
+  </td>
+      </tr>
+      <tr id="has_members_no_builtin_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">no_builtin_args</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, the compiler arguments controlled by built-in configuration options are not added.
+  </td>
+      </tr>
+      <tr id="has_members_prefix">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">prefix</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to add `#include`s and other things that are required
+for the symbol to be declared. Since 1.0.0 an array is accepted
+too. When an array is passed, the items are concatenated together
+separated by a newline.
+System definitions should be passed via compiler args
+(eg: `_GNU_SOURCE` is often required for some symbols to be exposed
+on Linux, and it should be passed via `args` keyword argument).
+
+  </td>
+      </tr>
+      <tr id="has_members_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  <br>{meson:since}`1.3.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, Meson will halt if the check fails.
+When set to a [`feature`](Build-options.md#features) option, the feature will control if it is searched and whether to fail if not found.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.has_multi_arguments()
+
+the same as [[compiler.has_argument]] but takes multiple arguments
+and uses them all in a single compiler invocation.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.37.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># the same as [[compiler.has_argument]] but takes multiple arguments
+[[#@bool]] has_multi_arguments(
+  [[#@str]]                                  <b>arg</b>...,  # The arguments to check
+
+  # Keyword arguments:
+  <a href="#has_multi_arguments_required"><b>required</b></a> : [[#@bool]] | [[#@feature]]                                                                    # When set to `true`, Meson will halt if the check fails
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+
+  The
+  method accepts between `0` and `infinity` variadic
+  arguments (`arg...`) of type <code><span class="text-nowrap">[[@str]]</span></code>.
+
+  The arguments to check.
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  The method `compiler.has_multi_arguments()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_multi_arguments_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  <br>{meson:since}`1.3.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, Meson will halt if the check fails.
+When set to a [`feature`](Build-options.md#features) option, the feature will control if it is searched and whether to fail if not found.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.has_multi_link_arguments()
+
+the same as [[compiler.has_link_argument]] but takes multiple arguments
+and uses them all in a single compiler invocation.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.46.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># the same as [[compiler.has_link_argument]] but takes multiple arguments
+[[#@bool]] has_multi_link_arguments(
+  [[#@str]]                                  <b>arg</b>...,  # The link arguments to check
+
+  # Keyword arguments:
+  <a href="#has_multi_link_arguments_required"><b>required</b></a> : [[#@bool]] | [[#@feature]]                                                                    # When set to `true`, Meson will halt if the check fails
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+
+  The
+  method accepts between `0` and `infinity` variadic
+  arguments (`arg...`) of type <code><span class="text-nowrap">[[@str]]</span></code>.
+
+  The link arguments to check.
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  The method `compiler.has_multi_link_arguments()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_multi_link_arguments_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  <br>{meson:since}`1.3.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, Meson will halt if the check fails.
+When set to a [`feature`](Build-options.md#features) option, the feature will control if it is searched and whether to fail if not found.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.has_type()
+
+Returns `true` if the specified token is a type.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns `true` if the specified token is a type
+[[#@bool]] has_type(
+  [[#@str]]                                  <a href="#has_type_typename"><b>typename</b></a>,     # The type to check
+
+  # Keyword arguments:
+  <a href="#has_type_args"><b>args</b></a>                : [[#@array]][[[#@str]]]                                                                          # Used to pass an array of compiler arguments
+  <a href="#has_type_dependencies"><b>dependencies</b></a>        : [[#@dep]] | [[#@array]][[[#@dep]]]                                                                    # Additionally dependencies required for compiling and / or linking
+  <a href="#has_type_include_directories"><b>include_directories</b></a> : [[#@array]][[[#@inc]] | [[#@str]]]                                                                    # Extra directories for header searches, created with the
+  <a href="#has_type_no_builtin_args"><b>no_builtin_args</b></a>     : [[#@bool]]                                                                                # When set to `true`, the compiler arguments controlled by built-in configuration options are not added
+  <a href="#has_type_prefix"><b>prefix</b></a>              : [[#@str]] | [[#@array]][[[#@str]]]                                                                    # Used to add `#include`s and other things that are required
+  <a href="#has_type_required"><b>required</b></a>            : [[#@bool]] | [[#@feature]]                                                                      # When set to `true`, Meson will halt if the check fails
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `compiler.has_type()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_type_typename">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">typename</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The type to check.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `compiler.has_type()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_type_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to pass an array of compiler arguments.
+Defining include paths for headers not in the default include path
+via `-Isome/path/to/header` is generally supported, however, usually not
+recommended.
+
+This is because include directories can also be specified via the
+`include_directories` or the `dependency` kwarg (if present).
+The same is also true for passing libraries to link with `-lfoo`.
+
+  </td>
+      </tr>
+      <tr id="has_type_dependencies">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dependencies</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@dep]]</span> | [[@array]][<span class="text-nowrap">[[@dep]]</span>]
+  </td>
+        <td>
+  
+  Additionally dependencies required for compiling and / or linking.
+  </td>
+      </tr>
+      <tr id="has_type_include_directories">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">include_directories</code>
+  <br>{meson:since}`0.38.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Extra directories for header searches, created with the
+[[include_directories]] function.
+*(Since 1.10.0)* Strings are also accepted.
+
+  </td>
+      </tr>
+      <tr id="has_type_no_builtin_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">no_builtin_args</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, the compiler arguments controlled by built-in configuration options are not added.
+  </td>
+      </tr>
+      <tr id="has_type_prefix">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">prefix</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to add `#include`s and other things that are required
+for the symbol to be declared. Since 1.0.0 an array is accepted
+too. When an array is passed, the items are concatenated together
+separated by a newline.
+System definitions should be passed via compiler args
+(eg: `_GNU_SOURCE` is often required for some symbols to be exposed
+on Linux, and it should be passed via `args` keyword argument).
+
+  </td>
+      </tr>
+      <tr id="has_type_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  <br>{meson:since}`1.3.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, Meson will halt if the check fails.
+When set to a [`feature`](Build-options.md#features) option, the feature will control if it is searched and whether to fail if not found.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.links()
+
+Returns true if the code compiles and links.
+
+*Since 0.60.0*, if the `file` object's
+suffix does not match the compiler object's language, the compiler
+corresponding to the suffix is used to compile the source, while the
+target of the `links` method is used to link the resulting object file.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns true if the code compiles and links
+[[#@bool]] links(
+  [[#@str]] | [[#@file]]                                                                   <a href="#links_code"><b>code</b></a>,     # The source code to check
+
+  # Keyword arguments:
+  <a href="#links_args"><b>args</b></a>                : [[#@array]][[[#@str]]]                                                                          # Used to pass an array of compiler arguments
+  <a href="#links_dependencies"><b>dependencies</b></a>        : [[#@dep]] | [[#@array]][[[#@dep]]]                                                                    # Additionally dependencies required for compiling and / or linking
+  <a href="#links_include_directories"><b>include_directories</b></a> : [[#@array]][[[#@inc]] | [[#@str]]]                                                                    # Extra directories for header searches, created with the
+  <a href="#links_name"><b>name</b></a>                : [[#@str]]                                                                                 # The name to use for printing a message about the compiler check
+  <a href="#links_no_builtin_args"><b>no_builtin_args</b></a>     : [[#@bool]]                                                                                # When set to `true`, the compiler arguments controlled by built-in configuration options are not added
+  <a href="#links_required"><b>required</b></a>            : [[#@bool]] | [[#@feature]]                                                                      # When set to `true`, Meson will halt if the check fails
+  <a href="#links_werror"><b>werror</b></a>              : [[#@bool]]                                                                                # When set to `true`, compiler warnings are treated as error
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `compiler.links()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="links_code">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">code</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span>
+  </td>
+        <td>
+  
+  The source code to check.
+
+If a string is passed, the code is used directly. If a [[@file]] object
+is passed, its content is used for the compiler check.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `compiler.links()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="links_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to pass an array of compiler arguments.
+Defining include paths for headers not in the default include path
+via `-Isome/path/to/header` is generally supported, however, usually not
+recommended.
+
+This is because include directories can also be specified via the
+`include_directories` or the `dependency` kwarg (if present).
+The same is also true for passing libraries to link with `-lfoo`.
+
+  </td>
+      </tr>
+      <tr id="links_dependencies">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dependencies</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@dep]]</span> | [[@array]][<span class="text-nowrap">[[@dep]]</span>]
+  </td>
+        <td>
+  
+  Additionally dependencies required for compiling and / or linking.
+  </td>
+      </tr>
+      <tr id="links_include_directories">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">include_directories</code>
+  <br>{meson:since}`0.38.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Extra directories for header searches, created with the
+[[include_directories]] function.
+*(Since 1.10.0)* Strings are also accepted.
+
+  </td>
+      </tr>
+      <tr id="links_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The name to use for printing a message about the compiler check.
+If this keyword argument is not passed, no message will be printed about the check.
+
+  </td>
+      </tr>
+      <tr id="links_no_builtin_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">no_builtin_args</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, the compiler arguments controlled by built-in configuration options are not added.
+  </td>
+      </tr>
+      <tr id="links_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  <br>{meson:since}`1.5.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, Meson will halt if the check fails.
+When set to a [`feature`](Build-options.md#features) option, the feature will control if it is searched and whether to fail if not found.
+  </td>
+      </tr>
+      <tr id="links_werror">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">werror</code>
+  <br>{meson:since}`1.3.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, compiler warnings are treated as error.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.preprocess()
+
+Preprocess an array of source files but do not compile them. The preprocessor
+will receive the same arguments (include directories, defines, etc) as with
+normal compilation. That includes for example args added with
+`add_project_arguments()`, or on the command line with `-Dc_args=-DFOO`.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.64.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Preprocess an array of source files but do not compile them
+[[#@array]][[[#@custom_idx]]] preprocess(
+  [[#@str]] | [[#@file]] | [[#@custom_tgt]] | [[#@custom_idx]] | [[#@generated_list]]                                                                                                                                                                      <b>source</b>...,  # Input source to preprocess
+
+  # Keyword arguments:
+  <a href="#preprocess_compile_args"><b>compile_args</b></a>        : [[#@array]][[[#@str]]]                                                                                       # Extra flags to pass to the preprocessor
+  <a href="#preprocess_dependencies"><b>dependencies</b></a>        : [[#@dep]] | [[#@array]][[[#@dep]]]                                                                                 # Additionally dependencies required
+  <a href="#preprocess_depends"><b>depends</b></a>             : [[#@array]][[[#@build_tgt]] | [[#@custom_tgt]]]                                                                    # Specifies that this target depends on the specified
+  <a href="#preprocess_include_directories"><b>include_directories</b></a> : [[#@array]][[[#@inc]] | [[#@str]]]                                                                                 # Extra directories for header searches, created with the
+  <a href="#preprocess_output"><b>output</b></a>              : [[#@str]]                                                                                              # Template for name of preprocessed files: `@PLAINNAME@` is replaced by
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+
+  The
+  method accepts between `0` and `infinity` variadic
+  arguments (`source...`) of type <code><span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@custom_tgt]]</span> | <span class="text-nowrap">[[@custom_idx]]</span> | <span class="text-nowrap">[[@generated_list]]</span></code>.
+
+  Input source to preprocess. The following types are supported:
+
+- Strings relative to the current source directory
+- [[@file]] objects defined in any preceding build file
+- The return value of configure-time generators such as [[configure_file]]
+- The return value of build-time generators such as
+  [[custom_target]] or [[generator.process]]
+
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  The method `compiler.preprocess()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="preprocess_compile_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">compile_args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Extra flags to pass to the preprocessor
+
+  </td>
+      </tr>
+      <tr id="preprocess_dependencies">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dependencies</code>
+  <br>{meson:since}`1.1.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@dep]]</span> | [[@array]][<span class="text-nowrap">[[@dep]]</span>]
+  </td>
+        <td>
+  
+  Additionally dependencies required.
+  </td>
+      </tr>
+      <tr id="preprocess_depends">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">depends</code>
+  <br>{meson:since}`1.4.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@build_tgt]]</span> | <span class="text-nowrap">[[@custom_tgt]]</span>]
+  </td>
+        <td>
+  
+  Specifies that this target depends on the specified
+target(s). These targets should be built before starting
+to preprocess an input.
+
+  </td>
+      </tr>
+      <tr id="preprocess_include_directories">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">include_directories</code>
+  <br>{meson:since}`0.38.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Extra directories for header searches, created with the
+[[include_directories]] function.
+*(Since 1.10.0)* Strings are also accepted.
+
+  </td>
+      </tr>
+      <tr id="preprocess_output">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">output</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Template for name of preprocessed files: `@PLAINNAME@` is replaced by
+the source filename and `@BASENAME@` is replaced by the source filename
+without its extension.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.run()
+
+Attempts to compile and execute the given code fragment.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Attempts to compile and execute the given code fragment
+[[#@runresult]] run(
+  [[#@str]] | [[#@file]]                                                                   <a href="#run_code"><b>code</b></a>,     # The source code to check
+
+  # Keyword arguments:
+  <a href="#run_args"><b>args</b></a>                : [[#@array]][[[#@str]]]                                                                          # Used to pass an array of compiler arguments
+  <a href="#run_dependencies"><b>dependencies</b></a>        : [[#@dep]] | [[#@array]][[[#@dep]]]                                                                    # Additionally dependencies required for compiling and / or linking
+  <a href="#run_include_directories"><b>include_directories</b></a> : [[#@array]][[[#@inc]] | [[#@str]]]                                                                    # Extra directories for header searches, created with the
+  <a href="#run_name"><b>name</b></a>                : [[#@str]]                                                                                 # The name to use for printing a message about the compiler check
+  <a href="#run_no_builtin_args"><b>no_builtin_args</b></a>     : [[#@bool]]                                                                                # When set to `true`, the compiler arguments controlled by built-in configuration options are not added
+  <a href="#run_required"><b>required</b></a>            : [[#@bool]] | [[#@feature]]                                                                      # When set to `true`, Meson will halt if the check fails
+  <a href="#run_werror"><b>werror</b></a>              : [[#@bool]]                                                                                # When set to `true`, compiler warnings are treated as error
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `compiler.run()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="run_code">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">code</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span>
+  </td>
+        <td>
+  
+  The source code to check.
+
+If a string is passed, the code is used directly. If a [[@file]] object
+is passed, its content is used for the compiler check.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `compiler.run()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="run_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to pass an array of compiler arguments.
+Defining include paths for headers not in the default include path
+via `-Isome/path/to/header` is generally supported, however, usually not
+recommended.
+
+This is because include directories can also be specified via the
+`include_directories` or the `dependency` kwarg (if present).
+The same is also true for passing libraries to link with `-lfoo`.
+
+  </td>
+      </tr>
+      <tr id="run_dependencies">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dependencies</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@dep]]</span> | [[@array]][<span class="text-nowrap">[[@dep]]</span>]
+  </td>
+        <td>
+  
+  Additionally dependencies required for compiling and / or linking.
+  </td>
+      </tr>
+      <tr id="run_include_directories">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">include_directories</code>
+  <br>{meson:since}`0.38.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Extra directories for header searches, created with the
+[[include_directories]] function.
+*(Since 1.10.0)* Strings are also accepted.
+
+  </td>
+      </tr>
+      <tr id="run_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The name to use for printing a message about the compiler check.
+If this keyword argument is not passed, no message will be printed about the check.
+
+  </td>
+      </tr>
+      <tr id="run_no_builtin_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">no_builtin_args</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, the compiler arguments controlled by built-in configuration options are not added.
+  </td>
+      </tr>
+      <tr id="run_required">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">required</code>
+  <br>{meson:since}`1.5.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@feature]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, Meson will halt if the check fails.
+When set to a [`feature`](Build-options.md#features) option, the feature will control if it is searched and whether to fail if not found.
+  </td>
+      </tr>
+      <tr id="run_werror">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">werror</code>
+  <br>{meson:since}`1.3.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, compiler warnings are treated as error.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.sizeof()
+
+returns the size of the given type (e.g. `'int'`) or -1 if the type is unknown.
+For C-like languages, the header `stddef.h` and `stdio.h` are included
+implicitly for native compilation, only `stddef.h` is included when
+cross-compiling.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># returns the size of the given type (e
+[[#@int]] sizeof(
+  [[#@str]]                                  <a href="#sizeof_typename"><b>typename</b></a>,     # The type to compute
+
+  # Keyword arguments:
+  <a href="#sizeof_args"><b>args</b></a>                : [[#@array]][[[#@str]]]                                                                          # Used to pass an array of compiler arguments
+  <a href="#sizeof_dependencies"><b>dependencies</b></a>        : [[#@dep]] | [[#@array]][[[#@dep]]]                                                                    # Additionally dependencies required for compiling and / or linking
+  <a href="#sizeof_include_directories"><b>include_directories</b></a> : [[#@array]][[[#@inc]] | [[#@str]]]                                                                    # Extra directories for header searches, created with the
+  <a href="#sizeof_no_builtin_args"><b>no_builtin_args</b></a>     : [[#@bool]]                                                                                # When set to `true`, the compiler arguments controlled by built-in configuration options are not added
+  <a href="#sizeof_prefix"><b>prefix</b></a>              : [[#@str]] | [[#@array]][[[#@str]]]                                                                    # Used to add `#include`s and other things that are required
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `compiler.sizeof()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="sizeof_typename">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">typename</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The type to compute.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `compiler.sizeof()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="sizeof_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to pass an array of compiler arguments.
+Defining include paths for headers not in the default include path
+via `-Isome/path/to/header` is generally supported, however, usually not
+recommended.
+
+This is because include directories can also be specified via the
+`include_directories` or the `dependency` kwarg (if present).
+The same is also true for passing libraries to link with `-lfoo`.
+
+  </td>
+      </tr>
+      <tr id="sizeof_dependencies">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dependencies</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@dep]]</span> | [[@array]][<span class="text-nowrap">[[@dep]]</span>]
+  </td>
+        <td>
+  
+  Additionally dependencies required for compiling and / or linking.
+  </td>
+      </tr>
+      <tr id="sizeof_include_directories">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">include_directories</code>
+  <br>{meson:since}`0.38.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Extra directories for header searches, created with the
+[[include_directories]] function.
+*(Since 1.10.0)* Strings are also accepted.
+
+  </td>
+      </tr>
+      <tr id="sizeof_no_builtin_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">no_builtin_args</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true`, the compiler arguments controlled by built-in configuration options are not added.
+  </td>
+      </tr>
+      <tr id="sizeof_prefix">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">prefix</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Used to add `#include`s and other things that are required
+for the symbol to be declared. Since 1.0.0 an array is accepted
+too. When an array is passed, the items are concatenated together
+separated by a newline.
+System definitions should be passed via compiler args
+(eg: `_GNU_SOURCE` is often required for some symbols to be exposed
+on Linux, and it should be passed via `args` keyword argument).
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.symbols_have_underscore_prefix()
+
+Returns `true` if the C symbol mangling is one underscore (`_`) prefixed to the symbol.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.37.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@bool]] symbols_have_underscore_prefix()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### compiler.version()
+
+Returns the compiler's version number as a string.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] version()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+

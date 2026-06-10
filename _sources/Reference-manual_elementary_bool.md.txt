@@ -1,0 +1,181 @@
+---
+short-description: "Elementary object: Boolean"
+title: bool
+render-subpages: false
+...
+# Boolean (`bool`)
+
+A boolean object which is either `true` or `false`
+
+
+## Returned by
+
+Boolean objects are returned by the following functions and methods:
+- [[add_languages]]
+- [[get_option]]
+- [[is_disabler]]
+- [[is_variable]]
+- [[array.contains]]
+- [[build_tgt.found]]
+- [[cfg_data.get]]
+- [[cfg_data.get_unquoted]]
+- [[cfg_data.has]]
+- [[compiler.check_header]]
+- [[compiler.compiles]]
+- [[compiler.has_argument]]
+- [[compiler.has_define]]
+- [[compiler.has_function]]
+- [[compiler.has_function_attribute]]
+- [[compiler.has_header]]
+- [[compiler.has_header_symbol]]
+- [[compiler.has_link_argument]]
+- [[compiler.has_member]]
+- [[compiler.has_members]]
+- [[compiler.has_multi_arguments]]
+- [[compiler.has_multi_link_arguments]]
+- [[compiler.has_type]]
+- [[compiler.links]]
+- [[compiler.symbols_have_underscore_prefix]]
+- [[dep.found]]
+- [[dict.has_key]]
+- [[disabler.found]]
+- [[feature.allowed]]
+- [[feature.auto]]
+- [[feature.disabled]]
+- [[feature.enabled]]
+- [[int.is_even]]
+- [[int.is_odd]]
+- [[meson.can_run_host_binaries]]
+- [[meson.has_exe_wrapper]]
+- [[meson.has_external_property]]
+- [[meson.is_cross_build]]
+- [[meson.is_subproject]]
+- [[meson.is_unity]]
+- [[module.found]]
+- [[program.found]]
+- [[runresult.compiled]]
+- [[str.contains]]
+- [[str.endswith]]
+- [[str.startswith]]
+- [[str.version_compare]]
+- [[subproject.found]]
+
+
+
+
+## Boolean methods
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### bool.to_int()
+
+Returns `1` if `true` and `0` if `false`
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@int]] to_int()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### bool.to_string()
+
+Returns the string `'true'` if the boolean is true or `'false'` otherwise.
+You can also pass it two strings as positional
+arguments to specify what to return for true/false. For instance,
+`bool.to_string('yes', 'no')` will return `yes` if the boolean is
+true and `no` if it is false.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns the string `'true'` if the boolean is true or `'false'` otherwise
+[[#@str]] to_string(
+  [[#@str]]                                  [<a href="#to_string_true_str"><b>true_str</b></a>],    # The string to return when the boolean is `true`
+  [[#@str]]                                  [<a href="#to_string_false_str"><b>false_str</b></a>],   # The string to return when the boolean is `false`
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `bool.to_string()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="to_string_true_str">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">true_str</code>
+  <br>{meson:optional}` `
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  <br><code class="language-meson text-nowrap">default = 'true'</code>
+  </td>
+        <td>
+  
+  The string to return when the boolean is `true`
+  </td>
+      </tr>
+      <tr id="to_string_false_str">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">false_str</code>
+  <br>{meson:optional}` `
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  <br><code class="language-meson text-nowrap">default = 'false'</code>
+  </td>
+        <td>
+  
+  The string to return when the boolean is `false`
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+

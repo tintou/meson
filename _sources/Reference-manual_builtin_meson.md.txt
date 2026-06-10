@@ -1,0 +1,1867 @@
+---
+short-description: "Builtin object: Meson object"
+title: meson
+render-subpages: false
+...
+# Meson object (`meson`)
+
+The `meson` object allows you to introspect various properties of the
+system. This object is always mapped in the `meson` variable.
+
+
+
+
+
+
+## Meson object methods
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.add_devenv()
+
+add an [[@env]] object (returned by [[environment]])
+to the list of environments that will be applied when using [`meson devenv`](Commands.md#devenv)
+command line.
+
+This is useful for developers who wish to use the project without
+installing it, it is often needed to set for example the path to plugins
+directory, etc. Alternatively, a list or dictionary can be passed as first
+argument.
+
+``` meson
+devenv = environment()
+devenv.set('PLUGINS_PATH', meson.current_build_dir())
+...
+meson.add_devenv(devenv)
+```
+
+After configuring and compiling that project, a terminal can be opened with
+the environment set:
+
+```sh
+$ meson devenv -C <builddir>
+$ echo $PLUGINS_PATH
+/path/to/source/subdir
+```
+
+See [`meson devenv`](Commands.md#devenv) command documentation for a list of
+environment variables that are set by default by Meson.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.58.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># add an [[@env]] object (returned by [[environment]])
+[[#@void]] add_devenv(
+  [[#@env]] | [[#@str]] | [[#@array]][[[#@str]]] | [[#@dict]][[[#@str]]] | [[#@dict]][[[#@array]][[[#@str]]]]                                                                                                                                                                      <a href="#add_devenv_env"><b>env</b></a>,     # The [[@env]] object to add.
+
+  # Keyword arguments:
+  <a href="#add_devenv_method"><b>method</b></a>    : [[#@str]]                                   # Must be one of 'set', 'prepend', or 'append'
+  <a href="#add_devenv_separator"><b>separator</b></a> : [[#@str]]                                   # The separator to use for the initial values defined in
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `meson.add_devenv()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="add_devenv_env">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">env</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@env]]</span> | <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>] | [[@dict]][<span class="text-nowrap">[[@str]]</span>] | [[@dict]][[[@array]][<span class="text-nowrap">[[@str]]</span>]]
+  </td>
+        <td>
+  
+  The [[@env]] object to add.
+Since *0.62.0* array of strings is allowed in dictionary values. In that
+case values are joined using the separator.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `meson.add_devenv()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="add_devenv_method">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">method</code>
+  <br>{meson:since}`0.62.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Must be one of 'set', 'prepend', or 'append'
+(defaults to 'set'). Controls if initial values defined in the first
+positional argument are prepended, appended or replace the current value
+of the environment variable.
+
+  </td>
+      </tr>
+      <tr id="add_devenv_separator">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">separator</code>
+  <br>{meson:since}`0.62.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The separator to use for the initial values defined in
+the first positional argument. If not explicitly specified, the default
+path separator for the host operating system will be used, i.e. ';' for
+Windows and ':' for UNIX/POSIX systems.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.add_dist_script()
+
+Causes the script given as argument to run during `dist`
+operation after the
+distribution source has been generated but before it is
+archived. Note that this runs the script file that is in the
+_staging_ directory, not the one in the source directory. If the
+script file cannot be found in the staging directory, it is a hard
+error. The `MESON_DIST_ROOT` environment variables is set when dist scripts is
+run.
+
+*(since 0.54.0)* The `MESON_SOURCE_ROOT` and `MESON_BUILD_ROOT`
+environment variables are set when dist scripts are run. They are path to the
+root source and build directory of the main project, even when the script
+comes from a subproject.
+
+*(since 0.58.0)* This command can be invoked from a subproject, it was a hard
+error in earlier versions. Subproject dist scripts will only be executed
+when running `meson dist --include-subprojects`. `MESON_PROJECT_SOURCE_ROOT`,
+`MESON_PROJECT_BUILD_ROOT` and `MESON_PROJECT_DIST_ROOT` environment
+variables are set when dist scripts are run. They are identical to
+`MESON_SOURCE_ROOT`, `MESON_BUILD_ROOT` and `MESON_DIST_ROOT` for main project
+scripts, but for subproject scripts they have the path to the root of the
+subproject appended, usually `subprojects/<subproject-name>`.
+
+*(since 1.4.0)* The `MESONREWRITE` environment variable contains the path
+to the rewrite command that corresponds to the `meson` executable that
+was used to configure the build. (This might be a different path than the
+first executable found in `PATH`.) It can be used to remove or replace
+any [[run_command]] that depends on the revision control system from the
+build configuration. Note that the value will contain many parts. For
+example, it may be `python3 /path/to/meson.py introspect`. The user is
+responsible for splitting the string to an array if needed by splitting
+lexically like a UNIX shell would. If your script uses Python,
+`shlex.split()` is the easiest correct way to do this.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.48.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Causes the script given as argument to run during `dist`
+[[#@void]] add_dist_script(
+  [[#@str]] | [[#@file]] | [[#@program]]                                                                                                    <a href="#add_dist_script_script_name"><b>script_name</b></a>,     # The script to execute
+  [[#@str]] | [[#@file]] | [[#@program]]                                                                                                    <b>arg</b>...,          # Additional arguments
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `meson.add_dist_script()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="add_dist_script_script_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">script_name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@program]]</span>
+  </td>
+        <td>
+  
+  The script to execute.
+
+*(since 0.55.0)* The output of [[find_program]] as well as strings are accepted.
+
+*(since 0.57.0)* [[@file]] objects and the output of [[configure_file]] may be used.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  Additionally, the
+  method accepts between `0` and `infinity` variadic
+  arguments (`arg...`) of type <code><span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@program]]</span></code>.
+
+  Additional arguments
+
+*(since 0.55.0)* The output of [[configure_file]], [[files]], and [[find_program]]
+as well as strings are accepted.
+
+
+  {meson:since}`0.49.0`
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.add_install_script()
+
+Causes the script given as an argument to be run during the install step,
+this script  will have the environment variables `MESON_SOURCE_ROOT`,
+`MESON_BUILD_ROOT`, `MESON_INSTALL_PREFIX`,
+`MESON_INSTALL_DESTDIR_PREFIX`, and `MESONINTROSPECT` set.
+All positional arguments are passed as parameters.
+
+*(since 0.54.0)* If `meson install` is called with the `--quiet` option, the
+environment variable `MESON_INSTALL_QUIET` will be set.
+
+*(since 1.1.0)* If `meson install` is called with the `--dry-run` option, the
+environment variable `MESON_INSTALL_DRY_RUN` will be set.
+
+Meson uses the `DESTDIR` environment variable as set by the
+inherited environment to determine the (temporary) installation
+location for files. Your install script must be aware of this while
+manipulating and installing files. The correct way to handle this is
+with the `MESON_INSTALL_DESTDIR_PREFIX` variable which is always set
+and contains `DESTDIR` (if set) and `prefix` joined together. This
+is useful because both are usually absolute paths and there are
+platform-specific edge-cases in joining two absolute paths.
+
+In case it is needed, `MESON_INSTALL_PREFIX` is also always set and
+has the value of the `prefix` option passed to Meson.
+
+`MESONINTROSPECT` contains the path to the introspect command that
+corresponds to the `meson` executable that was used to configure the
+build. (This might be a different path than the first executable
+found in `PATH`.) It can be used to query build configuration. Note
+that the value will contain many parts, f.ex., it may be `python3
+/path/to/meson.py introspect`. The user is responsible for splitting
+the string to an array if needed by splitting lexically like a UNIX
+shell would. If your script uses Python, `shlex.split()` is the
+easiest correct way to do this.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Causes the script given as an argument to be run during the install step,
+[[#@void]] add_install_script(
+  [[#@str]] | [[#@file]] | [[#@program]] | [[#@exe]] | [[#@custom_tgt]] | [[#@custom_idx]]                                                                                                                                                                                                       <a href="#add_install_script_script_name"><b>script_name</b></a>,     # The script to execute
+  [[#@str]] | [[#@file]] | [[#@program]] | [[#@exe]] | [[#@custom_tgt]] | [[#@custom_idx]]                                                                                                                                                                                                       <b>arg</b>...,          # Additional arguments
+
+  # Keyword arguments:
+  <a href="#add_install_script_dry_run"><b>dry_run</b></a>         : [[#@bool]]                                   # If `true` the script will be run even if `--dry-run` option is provided to
+  <a href="#add_install_script_install_tag"><b>install_tag</b></a>     : [[#@str]]                                    # A string used by the `meson install --tags` command
+  <a href="#add_install_script_skip_if_destdir"><b>skip_if_destdir</b></a> : [[#@bool]]                                   # If `true` the script will not be run if DESTDIR is set during installation
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `meson.add_install_script()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="add_install_script_script_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">script_name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@program]]</span> | <span class="text-nowrap">[[@exe]]</span> | <span class="text-nowrap">[[@custom_tgt]]</span> | <span class="text-nowrap">[[@custom_idx]]</span>
+  </td>
+        <td>
+  
+  The script to execute.
+
+*(since 0.55.0)* The output of [[find_program]], [[executable]],
+[[custom_target]], as well as strings are accepted.
+
+*(since 0.57.0)* [[@file]] objects and the output of [[configure_file]] may be used.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  Additionally, the
+  method accepts between `0` and `infinity` variadic
+  arguments (`arg...`) of type <code><span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@program]]</span> | <span class="text-nowrap">[[@exe]]</span> | <span class="text-nowrap">[[@custom_tgt]]</span> | <span class="text-nowrap">[[@custom_idx]]</span></code>.
+
+  Additional arguments
+
+*(since 0.55.0)* The output of [[find_program]], [[executable]],
+[[custom_target]], as well as strings are accepted.
+
+
+  {meson:since}`0.49.0`
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  Finally, `meson.add_install_script()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="add_install_script_dry_run">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dry_run</code>
+  <br>{meson:since}`1.1.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  If `true` the script will be run even if `--dry-run` option is provided to
+the `meson install` command. The script can use the `MESON_INSTALL_DRY_RUN`
+variable to determine if it is in dry run mode or not.
+
+  </td>
+      </tr>
+      <tr id="add_install_script_install_tag">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">install_tag</code>
+  <br>{meson:since}`0.60.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  A string used by the `meson install --tags` command
+to install only a subset of the files.
+By default the script has no install tag which means it is not being run when
+`meson install --tags` argument is specified.
+
+  </td>
+      </tr>
+      <tr id="add_install_script_skip_if_destdir">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">skip_if_destdir</code>
+  <br>{meson:since}`0.57.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  If `true` the script will not be run if DESTDIR is set during installation.
+This is useful in the case the script updates system wide
+cache that is only needed when copying files into final destination.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.add_postconf_script()
+
+Runs the given command after all project files have been generated.
+This script will have the environment variables
+`MESON_SOURCE_ROOT` and `MESON_BUILD_ROOT` set.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Runs the given command after all project files have been generated
+[[#@void]] add_postconf_script(
+  [[#@str]] | [[#@file]] | [[#@program]]                                                                                                    <a href="#add_postconf_script_script_name"><b>script_name</b></a>,     # The script to execute
+  [[#@str]] | [[#@file]] | [[#@program]]                                                                                                    <b>arg</b>...,          # Additional arguments
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `meson.add_postconf_script()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="add_postconf_script_script_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">script_name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@program]]</span>
+  </td>
+        <td>
+  
+  The script to execute.
+
+*(since 0.55.0)* The output of [[find_program]] as well as strings are accepted.
+
+*(since 0.57.0)* [[@file]] objects and the output of [[configure_file]] may be used.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  Additionally, the
+  method accepts between `0` and `infinity` variadic
+  arguments (`arg...`) of type <code><span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@program]]</span></code>.
+
+  Additional arguments
+
+*(since 0.55.0)* The output of [[configure_file]], [[files]], and [[find_program]]
+as well as strings are accepted.
+
+
+  {meson:since}`0.49.0`
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.backend()
+
+Returns a string representing the current backend:
+
+- `ninja`
+- `vs2010`
+- `vs2012`
+- `vs2013`
+- `vs2015`
+- `vs2017`
+- `vs2019`
+- `vs2022`
+- `xcode`
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.37.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] backend()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.build_options()
+
+Returns a string with the configuration line used to set the current project up.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`1.1.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] build_options()</code></pre>
+
+
+```{note}
+**Do not try to parse this string!**
+
+You should use [[cfg_data.set_quoted]] to safely escape any embedded
+quotes prior to storing it into e.g. a C header macro.
+
+The contents returned by this function are the same as the
+"Build Options:" line reported in `<builddir>/meson-logs/meson-log.txt`.
+
+```
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.build_root()
+
+Returns a string with the absolute path to the build root directory.
+This function will return the
+build root of the parent project if called from a subproject, which is usually
+not what you want. Try using [[meson.current_build_dir]] or [[meson.project_build_root]].
+In the rare cases where the root of the main project is needed,
+use [[meson.global_build_root]] that has the same behaviour but with a more explicit
+name.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:deprecated}`0.56.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] build_root()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.can_run_host_binaries()
+
+Returns true if the build machine can run binaries compiled for the host.
+This returns `true` unless you are
+cross compiling, need a helper to run host binaries, and don't have one.
+For example when cross compiling from Linux to Windows, one can use `wine`
+as the helper.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.55.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@bool]] can_run_host_binaries()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.current_build_dir()
+
+Returns a string with the absolute path to the current build directory.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] current_build_dir()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.current_source_dir()
+
+Returns a string to the current source directory.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] current_source_dir()</code></pre>
+
+
+```{note}
+**You do not need to use this function!**
+
+When passing files from the current source directory to a function since
+that is the default. Also, you can use the [[files]] function to
+refer to files in the current or any other source directory instead
+of constructing paths manually with [[meson.current_source_dir]].
+
+```
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.get_compiler()
+
+Returns a [[@compiler]] object describing a compiler.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns a [[@compiler]] object describing a compiler.
+[[#@compiler]] get_compiler(
+  [[#@str]]                                  <a href="#get_compiler_language"><b>language</b></a>,     # The language of the compiler to return
+
+  # Keyword arguments:
+  <a href="#get_compiler_native"><b>native</b></a> : [[#@bool]]                                   # When set to `true` Meson returns the compiler for the build
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `meson.get_compiler()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_compiler_language">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">language</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The language of the compiler to return.
+
+See our [list of supported languages](Reference-tables.md#language-arguments-parameter-names).
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `meson.get_compiler()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_compiler_native">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">native</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to `true` Meson returns the compiler for the build
+machine (the "native" compiler) and when `false` it returns the host
+compiler (the "cross" compiler). If `native` is omitted, Meson
+returns the "cross" compiler if we're currently cross-compiling and
+the "native" compiler if we're not.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.get_cross_property()
+
+Returns the given property from a cross file, the optional fallback_value
+is returned if not cross compiling or the given property is not found.
+
+This method is replaced by [[meson.get_external_property]].
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:deprecated}`0.58.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns the given property from a cross file, the optional fallback_value
+[[#@any]] get_cross_property(
+  [[#@str]]                                  <a href="#get_cross_property_propname"><b>propname</b></a>,           # Name of the property in the cross / native file
+  [[#@any]]                                  [<a href="#get_cross_property_fallback_value"><b>fallback_value</b></a>],   # Value to return if `propname` is not set in the machine file
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+  [Argument flattening](Syntax.md#argument-flattening) is **NOT SUPPORTED** by this function.
+
+  The method `meson.get_cross_property()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_cross_property_propname">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">propname</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Name of the property in the cross / native file.
+  </td>
+      </tr>
+      <tr id="get_cross_property_fallback_value">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">fallback_value</code>
+  <br>{meson:optional}` `
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@any]]</span>
+  </td>
+        <td>
+  
+  Value to return if `propname` is not set in the machine file.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.get_external_property()
+
+Returns the given property from a native or cross file.
+The optional fallback_value is returned if the given property is not found.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.54.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Returns the given property from a native or cross file
+[[#@any]] get_external_property(
+  [[#@str]]                                  <a href="#get_external_property_propname"><b>propname</b></a>,           # Name of the property in the cross / native file
+  [[#@any]]                                  [<a href="#get_external_property_fallback_value"><b>fallback_value</b></a>],   # Value to return if `propname` is not set in the machine file
+
+  # Keyword arguments:
+  <a href="#get_external_property_native"><b>native</b></a> : [[#@bool]]                                   # Setting `native` to `true` forces retrieving a variable from the
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+  [Argument flattening](Syntax.md#argument-flattening) is **NOT SUPPORTED** by this function.
+
+  The method `meson.get_external_property()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_external_property_propname">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">propname</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Name of the property in the cross / native file.
+  </td>
+      </tr>
+      <tr id="get_external_property_fallback_value">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">fallback_value</code>
+  <br>{meson:optional}` `
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@any]]</span>
+  </td>
+        <td>
+  
+  Value to return if `propname` is not set in the machine file.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `meson.get_external_property()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="get_external_property_native">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">native</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  Setting `native` to `true` forces retrieving a variable from the
+native file, even when cross-compiling.
+If `native: false` or not specified, the variable is retrieved from the
+cross-file if cross-compiling, and from the native-file when not cross-compiling.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.global_build_root()
+
+Returns a string with the absolute path to the build root directory.
+This function will return the build root of the
+main project if called from a subproject, which is usually not what you want.
+It is usually preferable to use [[meson.current_build_dir]] or [[meson.project_build_root]].
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.58.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] global_build_root()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.global_source_root()
+
+Returns a string with the absolute path to the source root directory.
+This function will return the source root of the
+main project if called from a subproject, which is usually not what you want.
+It is usually preferable to use [[meson.current_source_dir]] or [[meson.project_source_root]].
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.58.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] global_source_root()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.has_exe_wrapper()
+
+Use [[meson.can_run_host_binaries]] instead.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:deprecated}`0.55.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@bool]] has_exe_wrapper()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.has_external_property()
+
+Checks whether the given property exist in a native or cross file.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.58.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Checks whether the given property exist in a native or cross file
+[[#@bool]] has_external_property(
+  [[#@str]]                                  <a href="#has_external_property_propname"><b>propname</b></a>,     # Name of the property in the cross / native file
+
+  # Keyword arguments:
+  <a href="#has_external_property_native"><b>native</b></a> : [[#@bool]]                                   # Setting `native` to `true` forces retrieving a variable from the
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `meson.has_external_property()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_external_property_propname">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">propname</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Name of the property in the cross / native file.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `meson.has_external_property()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="has_external_property_native">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">native</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  Setting `native` to `true` forces retrieving a variable from the
+native file, even when cross-compiling.
+If `native: false` or not specified, the variable is retrieved from the
+cross-file if cross-compiling, and from the native-file when not cross-compiling.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.install_dependency_manifest()
+
+Installs a manifest file
+containing a list of all subprojects, their versions and license names
+to the file name given as the argument.
+
+If license files are defined as well, they will be copied next to the
+manifest and referenced in it.
+
+If this function is not used, the builtin option `licensedir` can
+be used to install the manifest to a given directory with the name
+`depmf.json`.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Installs a manifest file
+[[#@void]] install_dependency_manifest(
+  [[#@str]]                                  <a href="#install_dependency_manifest_output_name"><b>output_name</b></a>,     # Name of the manifest file to install
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `meson.install_dependency_manifest()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="install_dependency_manifest_output_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">output_name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Name of the manifest file to install
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.is_cross_build()
+
+Returns `true` if the current build is a [cross build](Cross-compilation.md) and `false` otherwise.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@bool]] is_cross_build()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.is_subproject()
+
+Returns `true` if the current project is being built as a subproject of some other project and `false` otherwise.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@bool]] is_subproject()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.is_unity()
+
+Returns `true` when doing a [unity build](Unity-builds.md) (multiple sources are combined before compilation to reduce build time) and `false` otherwise.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@bool]] is_unity()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.override_dependency()
+
+Specifies that whenever [[dependency]] with `name` is used, Meson should not
+look it up on the system but instead return `dep_object`, which may either be
+the result of [[dependency]] or [[declare_dependency]].
+
+Doing this in a subproject allows the parent
+project to retrieve the dependency without having to know the dependency
+variable name: `dependency(name, fallback : subproject_name)`.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.54.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># Specifies that whenever [[dependency]] with `name` is used, Meson should not
+[[#@void]] override_dependency(
+  [[#@str]]                                  <a href="#override_dependency_name"><b>name</b></a>,           # The name of the dependency to override
+  [[#@dep]]                                  <a href="#override_dependency_dep_object"><b>dep_object</b></a>,     # The dependency to set as the override for `name`
+
+  # Keyword arguments:
+  <a href="#override_dependency_native"><b>native</b></a> : [[#@bool]]                                   # If set to `true`, the dependency is always overwritten for the build machine
+  <a href="#override_dependency_static"><b>static</b></a> : [[#@bool]]                                   # Used to override static and/or shared dependencies separately
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `meson.override_dependency()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="override_dependency_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The name of the dependency to override.
+  </td>
+      </tr>
+      <tr id="override_dependency_dep_object">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dep_object</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@dep]]</span>
+  </td>
+        <td>
+  
+  The dependency to set as the override for `name`.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `meson.override_dependency()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="override_dependency_native">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">native</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  If set to `true`, the dependency is always overwritten for the build machine.
+Otherwise, the dependency is overwritten for the host machine, which
+differs from the build machine when cross-compiling.
+
+  </td>
+      </tr>
+      <tr id="override_dependency_static">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">static</code>
+  <br>{meson:since}`0.60.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  Used to override static and/or shared dependencies separately.
+If not specified it is assumed
+`dep_object` follows `default_library` option value.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.override_find_program()
+
+specifies that whenever [[find_program]] is used to find a program
+named `progname`, Meson should not look it up on the system but
+instead return `program`, which may either be the result of
+[[find_program]], [[configure_file]] or [[executable]].
+
+*(since 0.55.0)* If a version
+check is passed to [[find_program]] for a program that has been overridden with
+an executable, the current project version is used.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.46.0`
+</div>
+</div>
+
+<pre><code class="language-meson"># specifies that whenever [[find_program]] is used to find a program
+[[#@void]] override_find_program(
+  [[#@str]]                                                                                                                     <a href="#override_find_program_progname"><b>progname</b></a>,     # The name of the program to override
+  [[#@exe]] | [[#@file]] | [[#@program]]                                                                                                    <a href="#override_find_program_program"><b>program</b></a>,      # The program to set as the override for `progname`
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  #### Arguments
+
+
+  The method `meson.override_find_program()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="override_find_program_progname">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">progname</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The name of the program to override.
+  </td>
+      </tr>
+      <tr id="override_find_program_program">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">program</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@exe]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@program]]</span>
+  </td>
+        <td>
+  
+  The program to set as the override for `progname`.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.project_build_root()
+
+Returns a string with the absolute path to the build root directory of the current (sub)project.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.56.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] project_build_root()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.project_license()
+
+Returns the array of licenses specified in [[project]] function call.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.45.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@array]][[[#@str]]] project_license()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.project_license_files()
+
+Returns the array of license files specified in the [[project]] function call.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`1.1.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@array]][[[#@file]]] project_license_files()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.project_name()
+
+Returns the project name specified in the [[project]] function call.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] project_name()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.project_source_root()
+
+Returns a string with the absolute path to the source root directory of the current (sub)project.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:since}`0.56.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] project_source_root()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.project_version()
+
+Returns the version string specified in [[project]] function call.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] project_version()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.source_root()
+
+Returns a string with the absolute path to the source root directory.
+
+This function will return the source root of the
+parent project if called from a subproject, which is usually not what you want.
+Try using [[meson.current_source_dir]] or [[meson.project_source_root]].
+In the rare cases where the root of the main project is needed,
+use [[meson.global_source_root]] that has the same behaviour but with a more explicit
+name.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+{meson:deprecated}`0.56.0`
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] source_root()</code></pre>
+
+
+```{note}
+You should use the [[files]] function
+to refer to files in the root source directory instead of
+constructing paths manually with [[meson.source_root]].
+
+```
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+### meson.version()
+
+Return a string with the version of Meson.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h4 style="margin-top: 0px;">Signature</h4>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson">[[#@str]] version()</code></pre>
+
+
+
+
+
+
+
+
+<p style="padding: 7.5px; margin: 0px;"></p>
+
+---
+

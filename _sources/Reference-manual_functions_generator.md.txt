@@ -1,0 +1,201 @@
+## generator()
+
+See also: [[custom_target]]
+
+This function creates a [[@generator]] object that can
+be used to run custom compilation commands. The only positional
+argument is the executable to use. It can either be a self-built
+executable or one returned by find_program.
+
+The template strings passed to all the keyword arguments accept
+the following special substitutions:
+
+- `@PLAINNAME@`: the complete input file name, e.g: `foo.c` becomes `foo.c` (unchanged)
+- `@BASENAME@`: the base of the input filename, e.g.: `foo.c.y` becomes `foo.c` (extension is removed)
+
+Each string passed to the `output` keyword argument *must* be
+constructed using one or both of these two substitutions.
+
+In addition to the above substitutions, the `arguments` keyword
+argument also accepts the following:
+
+- `@OUTPUT@`: the full path to the output file
+- `@INPUT@`: the full path to the input file
+- `@DEPFILE@`: the full path to the depfile
+- `@SOURCE_DIR@`: the full path to the root of the source tree
+- `@CURRENT_SOURCE_DIR@`: this is the directory where the currently processed meson.build is located in
+- `@BUILD_DIR@`: the full path to the root of the build dir where the output will be placed
+
+NOTE: Generators should only be used for outputs that will ***only***
+be used as inputs for a [[build_target]] or a [[custom_target]].
+When you use the processed output of a
+generator in multiple targets, the generator will be run multiple
+times to create outputs for each target. Each output will be created
+in a target-private directory `@BUILD_DIR@`.
+
+If you want to generate files for general purposes such as for
+generating headers to be used by several sources, or data that will be
+installed, and so on, use a [[custom_target]] instead.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># See also: [[custom_target]]
+[[#@generator]] generator(
+  [[#@exe]] | [[#@program]]                                                                   <a href="#generator_exe"><b>exe</b></a>,     # Executable for the command to run
+
+  # Keyword arguments:
+  <a href="#generator_arguments"><b>arguments</b></a> : [[#@array]][[[#@str]]]                                                                                                                                                                                # An array of template strings that will be the command line arguments passed to the executable
+  <a href="#generator_capture"><b>capture</b></a>   : [[#@bool]]                                                                                                                                                                                      # When this argument is set to true, Meson captures `stdout`
+  <a href="#generator_depends"><b>depends</b></a>   : [[#@array]][[[#@build_tgt]] | [[#@custom_tgt]] | [[#@custom_idx]] | [[#@program]]]                                                                                                                                      # An array of build targets that must be built before
+  <a href="#generator_depfile"><b>depfile</b></a>   : [[#@str]]                                                                                                                                                                                       # A template string pointing to a dependency file that a
+  <a href="#generator_output"><b>output</b></a>    : [[#@array]][[[#@str]]]                                                                                                                                                                                # Template string (or array of template strings) defining
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+  The function `generator()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="generator_exe">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">exe</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@exe]]</span> | <span class="text-nowrap">[[@program]]</span>
+  </td>
+        <td>
+  
+  Executable for the command to run
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+
+  Finally, `generator()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="generator_arguments">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">arguments</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  An array of template strings that will be the command line arguments passed to the executable.
+  </td>
+      </tr>
+      <tr id="generator_capture">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">capture</code>
+  <br>{meson:since}`0.43.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When this argument is set to true, Meson captures `stdout`
+of the `executable` and writes it to the target file
+specified as `output`.
+
+  </td>
+      </tr>
+      <tr id="generator_depends">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">depends</code>
+  <br>{meson:since}`0.51.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@build_tgt]]</span> | <span class="text-nowrap">[[@custom_tgt]]</span> | <span class="text-nowrap">[[@custom_idx]]</span> | <span class="text-nowrap">[[@program]]</span>]
+  </td>
+        <td>
+  
+  An array of build targets that must be built before
+this generator can be run. This is used if you have a generator that calls
+a second executable that is built in this project (custom_idx was not
+available between 0.60 and 1.4.0).  `program` is supported *since 1.11.2*.
+
+  </td>
+      </tr>
+      <tr id="generator_depfile">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">depfile</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  A template string pointing to a dependency file that a
+generator can write listing all the additional files this target
+depends on, for example a C compiler would list all the header files
+it included, and a change in any one of these files triggers a
+recompilation,
+
+  </td>
+      </tr>
+      <tr id="generator_output">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">output</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Template string (or array of template strings) defining
+how an output file name is (or multiple output names are) generated
+from a single source file name.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>

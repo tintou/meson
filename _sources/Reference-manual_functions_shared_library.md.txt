@@ -1,0 +1,1048 @@
+## shared_library()
+
+Builds a shared library with the given sources.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Builds a shared library with the given sources
+[[#@lib]] shared_library(
+  [[#@str]]                                                                                                                                                                                                                        <a href="#shared_library_target_name"><b>target_name</b></a>,     # The *unique* name of the build target
+  [[#@str]] | [[#@file]] | [[#@custom_tgt]] | [[#@custom_idx]] | [[#@generated_list]]                                                                                                                                                                      <b>source</b>...,       # Input source to compile
+
+  # Keyword arguments:
+  <a href="#shared_library__lang__args"><b>&lt;lang&gt;_args</b></a>                  : [[#@array]][[[#@str]] | [[#@file]]]                                                                                                                                                                                                                                                             # compiler flags to use for the given language; eg: `cpp_args` for C++
+  <a href="#shared_library__lang__pch"><b>&lt;lang&gt;_pch</b></a>                   : [[#@str]]                                                                                                                                                                                                                                                                           # precompiled header file to use for the given language
+  <a href="#shared_library_build_by_default"><b>build_by_default</b></a>             : [[#@bool]]                                                                                                                                                                                                                                                                          # Causes, when set to `true`, to have this target be built by default
+  <a href="#shared_library_build_rpath"><b>build_rpath</b></a>                  : [[#@str]]                                                                                                                                                                                                                                                                           # A string to add to target's rpath definition in the build dir,
+  <a href="#shared_library_build_subdir"><b>build_subdir</b></a>                 : [[#@str]]                                                                                                                                                                                                                                                                           # Places the build results in a subdirectory of the given name rather than directly into the build directory
+  <a href="#shared_library_d_debug"><b>d_debug</b></a>                      : [[#@array]][[[#@str]]]                                                                                                                                                                                                                                                                    # The [D version identifiers](https://dlang
+  <a href="#shared_library_d_import_dirs"><b>d_import_dirs</b></a>                : [[#@array]][[[#@inc]] | [[#@str]]]                                                                                                                                                                                                                                                              # the directories to add to the string search path (i
+  <a href="#shared_library_d_module_versions"><b>d_module_versions</b></a>            : [[#@array]][[[#@str]] | [[#@int]]]                                                                                                                                                                                                                                                              # List of module version identifiers set when compiling D sources
+  <a href="#shared_library_d_unittest"><b>d_unittest</b></a>                   : [[#@bool]]                                                                                                                                                                                                                                                                          # When set to true, the D modules are compiled in debug mode
+  <a href="#shared_library_darwin_versions"><b>darwin_versions</b></a>              : [[#@str]] | [[#@int]] | [[#@array]][[[#@str]]]                                                                                                                                                                                                                                                        # Defines the `compatibility version` and `current version` for the dylib on macOS
+  <a href="#shared_library_dependencies"><b>dependencies</b></a>                 : [[#@array]][[[#@dep]]]                                                                                                                                                                                                                                                                    # one or more dependency objects
+  <a href="#shared_library_extra_files"><b>extra_files</b></a>                  : [[#@str]] | [[#@file]]                                                                                                                                                                                                                                                                    # Not used for the build itself but are shown as source files in IDEs
+  <a href="#shared_library_gnu_symbol_visibility"><b>gnu_symbol_visibility</b></a>        : [[#@str]]                                                                                                                                                                                                                                                                           # Specifies how symbols should be exported, see
+  <a href="#shared_library_gui_app"><b>gui_app</b></a>                      : [[#@bool]]                                                                                                                                                                                                                                                                          # When set to true flags this target as a GUI application
+  <a href="#shared_library_implicit_include_directories"><b>implicit_include_directories</b></a> : [[#@bool]]                                                                                                                                                                                                                                                                          # Controls whether Meson adds the current source and build directories to the include path
+  <a href="#shared_library_include_directories"><b>include_directories</b></a>          : [[#@array]][[[#@inc]] | [[#@str]]]                                                                                                                                                                                                                                                              # one or more objects created with the [[include_directories]] function, or
+  <a href="#shared_library_install"><b>install</b></a>                      : [[#@bool]]                                                                                                                                                                                                                                                                          # When set to true, all outputs of this build_target will be installed
+  <a href="#shared_library_install_dir"><b>install_dir</b></a>                  : [[#@array]][[[#@str]] | [[#@bool]]]                                                                                                                                                                                                                                                             # override install directory for outputs of this build target
+  <a href="#shared_library_install_mode"><b>install_mode</b></a>                 : [[#@array]][[[#@str]] | [[#@int]]]                                                                                                                                                                                                                                                              # Specify the file mode in symbolic format
+  <a href="#shared_library_install_rpath"><b>install_rpath</b></a>                : [[#@str]]                                                                                                                                                                                                                                                                           # A string to set the target's rpath to after install
+  <a href="#shared_library_install_tag"><b>install_tag</b></a>                  : [[#@str]]                                                                                                                                                                                                                                                                           # A string used by the `meson install --tags` command
+  <a href="#shared_library_install_vala_gir"><b>install_vala_gir</b></a>             : [[#@str]] | [[#@bool]]                                                                                                                                                                                                                                                                    # If set to a string value, the vala generated gir library will be
+  <a href="#shared_library_install_vala_header"><b>install_vala_header</b></a>          : [[#@str]] | [[#@bool]]                                                                                                                                                                                                                                                                    # If set to a string value, the vala generated header will be installed to
+  <a href="#shared_library_install_vala_vapi"><b>install_vala_vapi</b></a>            : [[#@str]] | [[#@bool]]                                                                                                                                                                                                                                                                    # If set to a string value, the vala generated vapi library will be
+  <a href="#shared_library_link_args"><b>link_args</b></a>                    : [[#@array]][[[#@str]]]                                                                                                                                                                                                                                                                    # Flags to use during linking
+  <a href="#shared_library_link_depends"><b>link_depends</b></a>                 : [[#@str]] | [[#@file]] | [[#@custom_tgt]] | [[#@custom_idx]]                                                                                                                                                                                                                                          # Strings, files, or custom targets the link step depends on
+  <a href="#shared_library_link_early_args"><b>link_early_args</b></a>              : [[#@array]][[[#@str]]]                                                                                                                                                                                                                                                                    # Flags to use during linking
+  <a href="#shared_library_link_language"><b>link_language</b></a>                : [[#@str]]                                                                                                                                                                                                                                                                           # Makes the linker for this target be for the specified language
+  <a href="#shared_library_link_whole"><b>link_whole</b></a>                   : [[#@array]][[[#@lib]] | [[#@custom_tgt]] | [[#@custom_idx]]]                                                                                                                                                                                                                                          # Links all contents of the given static libraries whether they are used or
+  <a href="#shared_library_link_with"><b>link_with</b></a>                    : [[#@array]][[[#@lib]] | [[#@custom_tgt]] | [[#@custom_idx]]]                                                                                                                                                                                                                                          # One or more shared or static libraries
+  <a href="#shared_library_name_prefix"><b>name_prefix</b></a>                  : [[#@str]] | [[#@array]][[[#@void]]]                                                                                                                                                                                                                                                             # The string that will be used as the prefix for the
+  <a href="#shared_library_name_suffix"><b>name_suffix</b></a>                  : [[#@str]] | [[#@array]][[[#@void]]]                                                                                                                                                                                                                                                             # The string that will be used as the extension for the
+  <a href="#shared_library_native"><b>native</b></a>                       : [[#@bool]]                                                                                                                                                                                                                                                                          # Controls whether the target is compiled for the build or host machines
+  <a href="#shared_library_objects"><b>objects</b></a>                      : [[#@array]][[[#@extracted_obj]] | [[#@file]] | [[#@str]]]                                                                                                                                                                                                                                             # List of object files that should be linked in this target
+  <a href="#shared_library_override_options"><b>override_options</b></a>             : [[#@array]][[[#@str]]] | [[#@dict]][[[#@str]] | [[#@bool]] | [[#@int]] | [[#@array]][[[#@str]]]]                                                                                                                                                                                                                                # takes an array of strings in the same format as `project`'s `default_options`
+  <a href="#shared_library_rust_abi"><b>rust_abi</b></a>                     : [[#@str]]                                                                                                                                                                                                                                                                           # Set the specific ABI to compile (when compiling rust)
+  <a href="#shared_library_rust_crate_type"><b>rust_crate_type</b></a>              : [[#@str]]                                                                                                                                                                                                                                                                           # Set the specific type of rust crate to compile (when compiling rust)
+  <a href="#shared_library_rust_dependency_map"><b>rust_dependency_map</b></a>          : [[#@dict]][[[#@str]]]                                                                                                                                                                                                                                                                     # On rust targets this allows giving custom names to the crates that are
+  <a href="#shared_library_shortname"><b>shortname</b></a>                    : [[#@str]]                                                                                                                                                                                                                                                                           # A string specifying a DLL name fitting to 8
+  <a href="#shared_library_sources"><b>sources</b></a>                      : [[#@str]] | [[#@file]] | [[#@custom_tgt]] | [[#@custom_idx]] | [[#@generated_list]] | [[#@structured_src]]                                                                                                                                                                                                        # Additional source files
+  <a href="#shared_library_soversion"><b>soversion</b></a>                    : [[#@str]] | [[#@int]]                                                                                                                                                                                                                                                                     # A string or integer specifying the soversion of this shared library,
+  <a href="#shared_library_vala_gir"><b>vala_gir</b></a>                     : [[#@str]]                                                                                                                                                                                                                                                                           # If set, generates a GIR file with the given name
+  <a href="#shared_library_vala_header"><b>vala_header</b></a>                  : [[#@str]]                                                                                                                                                                                                                                                                           # On Vala targets, this provides a way to override the name of the generated
+  <a href="#shared_library_vala_vapi"><b>vala_vapi</b></a>                    : [[#@str]]                                                                                                                                                                                                                                                                           # On Vala targets, this provides a way to override the name of the generated
+  <a href="#shared_library_version"><b>version</b></a>                      : [[#@str]]                                                                                                                                                                                                                                                                           # A string specifying the version of this shared library,
+  <a href="#shared_library_vs_module_defs"><b>vs_module_defs</b></a>               : [[#@str]] | [[#@file]] | [[#@custom_tgt]] | [[#@custom_idx]]                                                                                                                                                                                                                                          # Specify a Microsoft module definition file for controlling symbol exports,
+  <a href="#shared_library_win_subsystem"><b>win_subsystem</b></a>                : [[#@str]]                                                                                                                                                                                                                                                                           # Specifies the subsystem type to use
+)</code></pre>
+
+
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+  The function `shared_library()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="shared_library_target_name">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">target_name</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The *unique* name of the build target
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  Additionally, the
+  function accepts between `0` and `infinity` variadic
+  arguments (`source...`) of type <code><span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@custom_tgt]]</span> | <span class="text-nowrap">[[@custom_idx]]</span> | <span class="text-nowrap">[[@generated_list]]</span></code>.
+
+  Input source to compile. The following types are supported:
+
+- Strings relative to the current source directory
+- [[@file]] objects defined in any preceding build file
+- The return value of configure-time generators such as [[configure_file]]
+- The return value of build-time generators such as
+  [[custom_target]] or [[generator.process]]
+
+These input files can be sources, objects, libraries, or any other
+file. Meson will automatically categorize them based on the extension
+and use them accordingly. For instance, sources (`.c`, `.cpp`,
+`.vala`, `.rs`, etc) will be compiled and objects (`.o`, `.obj`) and
+libraries (`.so`, `.dll`, etc) will be linked.
+
+With the Ninja backend, Meson will create a build-time [order-only
+dependency](https://ninja-build.org/manual.html#ref_dependencies) on
+all generated input files, including unknown files. This is needed to
+bootstrap the generation of the real dependencies in the
+[depfile](https://ninja-build.org/manual.html#ref_headers) generated
+by your compiler to determine when to rebuild sources. Ninja relies on
+this dependency file for all input files, generated and non-generated.
+The behavior is similar for other backends.
+
+
+  
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+  Finally, `shared_library()`
+  accepts the following keyword arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="shared_library__lang__args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">&lt;lang&gt;_args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span>]
+  </td>
+        <td>
+  
+  compiler flags to use for the given language; eg: `cpp_args` for C++
+
+  </td>
+      </tr>
+      <tr id="shared_library__lang__pch">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">&lt;lang&gt;_pch</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  precompiled header file to use for the given language
+  </td>
+      </tr>
+      <tr id="shared_library_build_by_default">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">build_by_default</code>
+  <br>{meson:since}`0.38.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = true</code>
+  </td>
+        <td>
+  
+  Causes, when set to `true`, to have this target be built by default.
+This means it will be built when `meson compile` is called without any
+arguments. The default value is `true` for all built target types.
+
+  </td>
+      </tr>
+      <tr id="shared_library_build_rpath">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">build_rpath</code>
+  <br>{meson:since}`0.42.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  A string to add to target's rpath definition in the build dir,
+but which will be removed on install
+
+  </td>
+      </tr>
+      <tr id="shared_library_build_subdir">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">build_subdir</code>
+  <br>{meson:since}`1.10.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Places the build results in a subdirectory of the given name rather than directly into the build directory. This does not affect the install directory, which uses install_dir.
+This allows inserting a directory name into the build path, either when needed to use the build result while building other targets or as a way to support multiple targets with the same basename by using unique build_subdir values for each one.
+To prevent collisions within the build directory, build_subdir is not allowed to match a file or directory in the source directory, nor contain '..' to refer to the parent of the build directory.
+  </td>
+      </tr>
+      <tr id="shared_library_d_debug">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">d_debug</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  The [D version identifiers](https://dlang.org/spec/version.html#version) to add
+during the compilation of D source files.
+
+  </td>
+      </tr>
+      <tr id="shared_library_d_import_dirs">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">d_import_dirs</code>
+  <br>{meson:since}`0.62.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  the directories to add to the string search path (i.e. `-J` switch for DMD).
+Must be objects created with the [[include_directories]] function or plain
+strings, which will be implicitly converted into [[@inc]] objects.
+
+  </td>
+      </tr>
+      <tr id="shared_library_d_module_versions">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">d_module_versions</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span>]
+  </td>
+        <td>
+  
+  List of module version identifiers set when compiling D sources.
+  </td>
+      </tr>
+      <tr id="shared_library_d_unittest">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">d_unittest</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to true, the D modules are compiled in debug mode.
+  </td>
+      </tr>
+      <tr id="shared_library_darwin_versions">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">darwin_versions</code>
+  <br>{meson:since}`0.48.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Defines the `compatibility version` and `current version` for the dylib on macOS.
+If an array is specified, it must be
+either zero, one, or two elements. If only one element is specified
+or if it's not an array the specified value will be used for setting
+both compatibility version and current version. If unspecified, the
+`soversion` will be used as per the aforementioned rules.
+
+  </td>
+      </tr>
+      <tr id="shared_library_dependencies">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">dependencies</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@dep]]</span>]
+  </td>
+        <td>
+  
+  one or more dependency objects
+created with
+[[dependency]] or [[compiler.find_library]]
+(for external deps) or [[declare_dependency]]
+(for deps built by the project)
+
+  </td>
+      </tr>
+      <tr id="shared_library_extra_files">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">extra_files</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span>
+  </td>
+        <td>
+  
+  Not used for the build itself but are shown as source files in IDEs
+that group files by targets (such as Visual Studio).
+
+These may only be static sources.
+
+  </td>
+      </tr>
+      <tr id="shared_library_gnu_symbol_visibility">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">gnu_symbol_visibility</code>
+  <br>{meson:since}`0.48.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Specifies how symbols should be exported, see
+e.g [the GCC Wiki](https://gcc.gnu.org/wiki/Visibility) for more
+information. This value can either be an empty string or one of
+`default`, `internal`, `hidden`, `protected` or `inlineshidden`, which
+is the same as `hidden` but also includes things like C++ implicit
+constructors as specified in the GCC manual. Ignored on compilers that
+do not support GNU visibility arguments. See also
+[`snippets.symbol_visibility_header()`](Snippets-module.md#symbol_visibility_header)
+method to help with defining public API.
+
+  </td>
+      </tr>
+      <tr id="shared_library_gui_app">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">gui_app</code>
+  <br>{meson:deprecated}`0.56.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to true flags this target as a GUI application
+on platforms where this makes a difference, **deprecated** since
+0.56.0, use `win_subsystem` instead.
+
+  </td>
+      </tr>
+      <tr id="shared_library_implicit_include_directories">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">implicit_include_directories</code>
+  <br>{meson:since}`0.42.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = true</code>
+  </td>
+        <td>
+  
+  Controls whether Meson adds the current source and build directories to the include path
+  </td>
+      </tr>
+      <tr id="shared_library_include_directories">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">include_directories</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@inc]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  one or more objects created with the [[include_directories]] function, or
+*(since 0.50.0)* strings, which will be implicitly convert to [[@inc]]
+objects
+
+  </td>
+      </tr>
+      <tr id="shared_library_install">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">install</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  When set to true, all outputs of this build_target will be installed.
+  </td>
+      </tr>
+      <tr id="shared_library_install_dir">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">install_dir</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@bool]]</span>]
+  </td>
+        <td>
+  
+  override install directory for outputs of this build target. If the value is a
+relative path, it will be considered relative the `prefix` option.
+For example, if you want to install plugins into a subdir, you'd use
+something like this: `install_dir : get_option('libdir') / 'projectname-1.0'`.
+
+This can be set to an array of values to control the the installation path
+of build targets with multiple outputs. Currently, that means Vala. Setting
+them to `true` means "use the default", and `false` means, don't install.
+By default the first element is true, and all other elements are false.
+
+*Since 1.11.0* Passing an array is deprecated, and install_vala_header,
+install_vala_vapi, and install_vala_gir keyword arguments should be used
+instead.
+
+  </td>
+      </tr>
+      <tr id="shared_library_install_mode">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">install_mode</code>
+  <br>{meson:since}`0.47.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span>]
+  </td>
+        <td>
+  
+  Specify the file mode in symbolic format
+and optionally the owner/uid and group/gid for the installed files.
+
+See the `install_mode` kwarg of [[install_data]] for more information.
+
+  </td>
+      </tr>
+      <tr id="shared_library_install_rpath">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">install_rpath</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  A string to set the target's rpath to after install
+(but *not* before that). On Windows, this argument has no effect.
+
+  </td>
+      </tr>
+      <tr id="shared_library_install_tag">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">install_tag</code>
+  <br>{meson:since}`0.60.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  A string used by the `meson install --tags` command
+to install only a subset of the files. By default all build targets have the
+tag `runtime` except for static libraries that have the `devel` tag.
+
+  </td>
+      </tr>
+      <tr id="shared_library_install_vala_gir">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">install_vala_gir</code>
+  <br>{meson:since}`1.11.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  If set to a string value, the vala generated gir library will be
+installed to that path, if set to `true`, the default gir path will be
+used, if `false` the gir library will not be installed.
+
+It is an error for this to be either `true` or a string and `vala_gir` to
+be unset.
+
+The default value is `false`.
+
+  </td>
+      </tr>
+      <tr id="shared_library_install_vala_header">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">install_vala_header</code>
+  <br>{meson:since}`1.11.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  If set to a string value, the vala generated header will be installed to
+that path, if set to `true`, the default include path will be used, if
+`false` the header will not be installed.
+
+The default value is `false`.
+
+  </td>
+      </tr>
+      <tr id="shared_library_install_vala_vapi">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">install_vala_vapi</code>
+  <br>{meson:since}`1.11.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  If set to a string value, the vala generated vapi library will be
+installed to that path, if set to `true`, the default vapi path will be
+used, if `false` the vapi library will not be installed.
+
+The default value is `false`.
+
+  </td>
+      </tr>
+      <tr id="shared_library_link_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">link_args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Flags to use during linking. You can use UNIX-style
+flags here for all platforms.
+
+  </td>
+      </tr>
+      <tr id="shared_library_link_depends">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">link_depends</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@custom_tgt]]</span> | <span class="text-nowrap">[[@custom_idx]]</span>
+  </td>
+        <td>
+  
+  Strings, files, or custom targets the link step depends on
+such as a symbol visibility map. The purpose is to
+automatically trigger a re-link (but not a re-compile) of the target
+when this file changes.
+
+  </td>
+      </tr>
+      <tr id="shared_library_link_early_args">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">link_early_args</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  Flags to use during linking. These are just like link_args,
+except that they are inserted into the linker command line
+before any object files or libraries. You can use UNIX-style
+flags here for all platforms. This is only supported when using
+the Ninja backend.
+
+  </td>
+      </tr>
+      <tr id="shared_library_link_language">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">link_language</code>
+  <br>{meson:since}`0.51.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Makes the linker for this target be for the specified language.
+It is generally unnecessary to set
+this, as Meson will detect the right linker to use in most cases. There are
+only two cases where this is needed. One, your main function in an
+executable is not in the language Meson picked, or second you want to force
+a library to use only one ABI.
+
+*(broken until 0.55.0)*
+
+  </td>
+      </tr>
+      <tr id="shared_library_link_whole">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">link_whole</code>
+  <br>{meson:since}`0.40.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@lib]]</span> | <span class="text-nowrap">[[@custom_tgt]]</span> | <span class="text-nowrap">[[@custom_idx]]</span>]
+  </td>
+        <td>
+  
+  Links all contents of the given static libraries whether they are used or
+not, equivalent to the `-Wl,--whole-archive` argument flag of GCC, or the
+'/WHOLEARCHIVE' MSVC linker option. This allows the linked target to
+re-export symbols from all objects in the static libraries.
+
+*(since 0.41.0)* If passed an array that array will be flattened.
+
+*(since 0.51.0)* This argument also accepts outputs produced by
+custom targets. The user must ensure that the output is a library in
+the correct format.
+
+  </td>
+      </tr>
+      <tr id="shared_library_link_with">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">link_with</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@lib]]</span> | <span class="text-nowrap">[[@custom_tgt]]</span> | <span class="text-nowrap">[[@custom_idx]]</span>]
+  </td>
+        <td>
+  
+  One or more shared or static libraries
+(built by this project) that this target should be linked with. *(since 0.41.0)* If passed an
+array that array will be flattened. *(since 0.51.0)* The arguments can also be custom targets.
+In this case Meson will assume that merely adding the output file in the linker command
+line is sufficient to make linking work. If this is not sufficient,
+then the build system writer must write all other steps manually.
+
+  </td>
+      </tr>
+      <tr id="shared_library_name_prefix">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">name_prefix</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@void]]</span>]
+  </td>
+        <td>
+  
+  The string that will be used as the prefix for the
+target output filename by overriding the default (only used for
+libraries). By default this is `lib` on all platforms and compilers,
+except for MSVC shared libraries where it is omitted to follow
+convention, and Cygwin shared libraries where it is `cyg`.
+
+Set this to `[]`, or omit the keyword argument for the default behaviour.
+
+  </td>
+      </tr>
+      <tr id="shared_library_name_suffix">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">name_suffix</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | [[@array]][<span class="text-nowrap">[[@void]]</span>]
+  </td>
+        <td>
+  
+  The string that will be used as the extension for the
+target by overriding the default. By default on Windows this is
+`exe` for executables and on other platforms it is omitted.
+
+For shared libraries, the default value
+is `dylib` on macOS, `dll` on Windows, and `so` everywhere else.
+For static libraries, it is `a` everywhere. By convention MSVC
+static libraries use the `lib` suffix, but we use `a` to avoid a
+potential name clash with shared libraries which also generate
+import libraries with a `lib` suffix.
+
+Set this to `[]`, or omit the keyword argument for the default behaviour.
+
+  </td>
+      </tr>
+      <tr id="shared_library_native">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">native</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  <br><code class="language-meson text-nowrap">default = false</code>
+  </td>
+        <td>
+  
+  Controls whether the target is compiled for the build or host machines.
+  </td>
+      </tr>
+      <tr id="shared_library_objects">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">objects</code>
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@extracted_obj]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  List of object files that should be linked in this target.
+
+**Since 1.1.0** this can include generated files in addition to
+object files that you don't have source to or that object files
+produced by other build targets.  In earlier release, generated
+object files had to be placed in `sources`.
+
+  </td>
+      </tr>
+      <tr id="shared_library_override_options">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">override_options</code>
+  <br>{meson:since}`0.40.0`
+  </td>
+        <td class="text-center">
+  
+  [[@array]][<span class="text-nowrap">[[@str]]</span>] | [[@dict]][<span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@bool]]</span> | <span class="text-nowrap">[[@int]]</span> | [[@array]][<span class="text-nowrap">[[@str]]</span>]]
+  </td>
+        <td>
+  
+  takes an array of strings in the same format as `project`'s `default_options`
+overriding the values of these options
+for this target only.
+*(since 1.2.0)*: A dictionary may now be passed.
+
+  </td>
+      </tr>
+      <tr id="shared_library_rust_abi">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">rust_abi</code>
+  <br>{meson:since}`1.3.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Set the specific ABI to compile (when compiling rust).
+- 'rust' (default): Create a "dylib" crate.
+- 'c': Create a "cdylib" crate.
+
+  </td>
+      </tr>
+      <tr id="shared_library_rust_crate_type">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">rust_crate_type</code>
+  <br>{meson:since}`0.42.0`
+  <br>{meson:deprecated}`1.3.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  Set the specific type of rust crate to compile (when compiling rust).
+
+If the target is an [[executable]] this defaults to "bin", the only
+allowed value.
+
+If it is a [[static_library]] it defaults to "lib", and may be "lib",
+"staticlib", or "rlib". If "lib" then Rustc will pick a default, "staticlib"
+means a C ABI library, "rlib" means a Rust ABI.
+
+If it is a [[shared_library]] it defaults to "lib", and may be "lib",
+"dylib", "cdylib", or "proc-macro". If "lib" then Rustc will pick a
+default, "cdylib" means a C ABI library, "dylib" means a Rust ABI, and
+"proc-macro" is a special rust procedural macro crate.
+
+"proc-macro" is new in 0.62.0.
+
+*Since 1.3.0* this is deprecated and replaced by "rust_abi" keyword argument.
+`proc_macro` crates are now handled by the [`rust.proc_macro()`](Rust-module.md#proc_macro)
+method.
+
+  </td>
+      </tr>
+      <tr id="shared_library_rust_dependency_map">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">rust_dependency_map</code>
+  <br>{meson:since}`1.2.0`
+  </td>
+        <td class="text-center">
+  
+  [[@dict]][<span class="text-nowrap">[[@str]]</span>]
+  </td>
+        <td>
+  
+  On rust targets this allows giving custom names to the crates that are
+linked into the target.  For example, passing a dependency map of
+`{ 'gtk4': 'gtk' }` has the same effect of writing `gtk.package = "gtk4"`
+in the `dependencies` section of a Cargo.toml file, or
+`extern crate gtk4 as gtk` inside Rust code.
+
+*Since 1.10.0*, the keys can be either crate names or target names.
+
+  </td>
+      </tr>
+      <tr id="shared_library_shortname">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">shortname</code>
+  <br>{meson:since}`1.10.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  A string specifying a DLL name fitting to 8.3 limit on OS/2 of this shared library.
+
+  </td>
+      </tr>
+      <tr id="shared_library_sources">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">sources</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@custom_tgt]]</span> | <span class="text-nowrap">[[@custom_idx]]</span> | <span class="text-nowrap">[[@generated_list]]</span> | <span class="text-nowrap">[[@structured_src]]</span>
+  </td>
+        <td>
+  
+  Additional source files. Same as the source varargs.
+  </td>
+      </tr>
+      <tr id="shared_library_soversion">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">soversion</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@int]]</span>
+  </td>
+        <td>
+  
+  A string or integer specifying the soversion of this shared library,
+such as `0`. On Linux and Windows this is used to set the
+soversion (or equivalent) in the filename. For example, if
+`soversion` is `4`, a Windows DLL will be called `foo-4.dll` and one
+of the aliases of the Linux shared library would be
+`libfoo.so.4`. If this is not specified, the first part of `version`
+is used instead (see below). For example, if `version` is `3.6.0` and
+`soversion` is not defined, it is set to `3`.
+
+  </td>
+      </tr>
+      <tr id="shared_library_vala_gir">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">vala_gir</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  If set, generates a GIR file with the given name. If this is unset then
+no GIR file will be generated.
+
+  </td>
+      </tr>
+      <tr id="shared_library_vala_header">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">vala_header</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  On Vala targets, this provides a way to override the name of the generated
+C compatible header for targets that generate them.
+
+If it is not set the default will be calculated from the target's name.
+
+  </td>
+      </tr>
+      <tr id="shared_library_vala_vapi">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">vala_vapi</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  On Vala targets, this provides a way to override the name of the generated
+VAPI file.
+
+If it is not set the default will be calculated from the target's name.
+
+  </td>
+      </tr>
+      <tr id="shared_library_version">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">version</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  A string specifying the version of this shared library,
+such as `1.1.0`. On Linux and OS X, this is used to set the shared
+library version in the filename, such as `libfoo.so.1.1.0` and
+`libfoo.1.1.0.dylib`. If this is not specified, `soversion` is used
+instead (see above).
+
+  </td>
+      </tr>
+      <tr id="shared_library_vs_module_defs">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">vs_module_defs</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span> | <span class="text-nowrap">[[@file]]</span> | <span class="text-nowrap">[[@custom_tgt]]</span> | <span class="text-nowrap">[[@custom_idx]]</span>
+  </td>
+        <td>
+  
+  Specify a Microsoft module definition file for controlling symbol exports,
+etc., on platforms where that is possible (e.g. Windows).
+
+*(Since 1.3.0)* [[@custom_idx]] are supported
+
+  </td>
+      </tr>
+      <tr id="shared_library_win_subsystem">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">win_subsystem</code>
+  <br>{meson:since}`0.56.0`
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  <br><code class="language-meson text-nowrap">default = 'console'</code>
+  </td>
+        <td>
+  
+  Specifies the subsystem type to use
+on the Windows platform. Typical values include `console` for text
+mode programs and `windows` for gui apps. The value can also contain
+version specification such as `windows,6.0`. See [MSDN
+documentation](https://docs.microsoft.com/en-us/cpp/build/reference/subsystem-specify-subsystem)
+for the full list.
+
+  </td>
+      </tr>
+    </tbody>
+  </table>

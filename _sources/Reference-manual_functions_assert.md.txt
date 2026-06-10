@@ -1,0 +1,76 @@
+## assert()
+
+Abort with an error message if `condition` evaluates to `false`.
+
+<p style="padding: 5px; margin: 0px;"></p> <!-- A bit of space because we remove the top margin below -->
+<div style="display: flex;">
+  <h3 style="margin-top: 0px;">Signature</h3>
+  <div style="flex-grow: 1;"></div>
+  <div class="d-flex flex-column align-items-center gap-1">
+
+</div>
+</div>
+
+<pre><code class="language-meson"># Abort with an error message if `condition` evaluates to `false`
+[[#@void]] assert(
+  [[#@bool]]                                  <a href="#assert_condition"><b>condition</b></a>,     # Abort if this evaluates to `false`
+  [[#@str]]                                   [<a href="#assert_message"><b>message</b></a>],     # The error message to print
+)</code></pre>
+
+
+```{note}
+The `message` argument is optional since 0.53.0 and defaults to print the condition statement.
+```
+
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- A bit more space -->
+
+  ### Arguments
+
+
+  The function `assert()` accepts the following positional arguments:
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        <th class="text-center text-nowrap">Name</th>
+        <th class="text-center text-nowrap">Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="assert_condition">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">condition</code>
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@bool]]</span>
+  </td>
+        <td>
+  
+  Abort if this evaluates to `false`
+  </td>
+      </tr>
+      <tr id="assert_message">
+        <td class="text-center text-nowrap">
+  
+  <code class="language-meson">message</code>
+  <br>{meson:optional}` `
+  </td>
+        <td class="text-center">
+  
+  <span class="text-nowrap">[[@str]]</span>
+  </td>
+        <td>
+  
+  The error message to print.
+  </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="padding: 5px; margin: 0px;"></p> <!-- Extra space -->
+
+

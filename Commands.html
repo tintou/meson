@@ -1,0 +1,1680 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Command-line commands &#8212; Meson documentation 1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d99633c1" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Commands';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = true;</script>
+    <link rel="icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Configuring a build directory" href="Configuring-a-build-directory.html" />
+    <link rel="prev" title="Running Meson" href="Running-Meson.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.0" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/meson_logo.png" class="logo__image only-light" alt="Meson documentation 1.0 documentation - Home"/>
+    <img src="_static/meson_logo.png" class="logo__image only-dark pst-js-only" alt="Meson documentation 1.0 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Getting-started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="Guide.html">
+    Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="Reference.html">
+    Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="About.html">
+    About
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Running-Meson.html">Running Meson</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Command-line commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuring-a-build-directory.html">Configuring a build directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-options.html">Build options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Build-targets.html">Build targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dependencies.html">Dependencies</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Subprojects.html">Subprojects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Configuration.html">Configuration</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generating-sources.html">Generating sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Custom-build-targets.html">Custom build targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adding-arguments.html">Adding arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compiler-properties.html">Compiler properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Include-directories.html">Include directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feature-autodetection.html">Feature autodetection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Disabler.html">Disabling parts of the build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Precompiled-headers.html">Precompiled headers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unity-builds.html">Unity builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Threads.html">Threads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="External-commands.html">External commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Code-formatting.html">clang-format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-tests.html">Unit tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Run-targets.html">Run targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IDE-integration.html">IDE integration</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Build-system-converters.html">Build system converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cross-compilation.html">Cross compilation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Machine-files.html">Cross and Native File reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Native-environments.html">Persistent native environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Localisation.html">Localisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-releases.html">Creating releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-OSX-packages.html">Creating OSX packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Creating-Linux-binaries.html">Creating Linux binaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Project-templates.html">Project templates</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Reproducible-builds.html">Reproducible builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtox.html">How do I do X in Meson?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Java.html">Compiling Java applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Vala.html">Compiling Vala applications and libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="D.html">Compiling D applications</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Cython.html">Cython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rust.html">Using Rust with Meson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Using-with-Visual-Studio.html">Using with Visual Studio</a></li>
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="Wrap-dependency-system-manual.html">Wrap dependency system manual</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Wrapdb-projects.html">Meson WrapDB packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Adding-new-projects-to-wrapdb.html">Adding new projects to WrapDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-the-WrapDB.html">Using the WrapDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using-wraptool.html">Using wraptool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Wrap-best-practices-and-tips.html">Wrap best practices and tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Shipping-prebuilt-binaries-as-wraps.html">Shipping prebuilt binaries as wraps</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="Guide.html" class="nav-link">Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Command-line commands</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="command-line-commands">
+<h1>Command-line commands<a class="headerlink" href="#command-line-commands" title="Link to this heading">#</a></h1>
+<p>There are two different ways of invoking Meson. First, you can run it
+directly from the source tree with the command
+<code class="docutils literal notranslate"><span class="pre">/path/to/source/meson.py</span></code>. Meson may also be installed in which case
+the command is simply <code class="docutils literal notranslate"><span class="pre">meson</span></code>. In this manual we only use the latter
+format for simplicity.</p>
+<p>Meson is invoked using the following syntax:
+<code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">[COMMAND]</span> <span class="pre">[COMMAND_OPTIONS]</span></code></p>
+<p>This section describes all available commands and some of their
+Optional arguments. The most common workflow is to run
+<a class="reference internal" href="#setup"><code class="docutils literal notranslate"><span class="pre">setup</span></code></a>, followed by <a class="reference internal" href="#compile"><code class="docutils literal notranslate"><span class="pre">compile</span></code></a>, and then
+<a class="reference internal" href="#install"><code class="docutils literal notranslate"><span class="pre">install</span></code></a>.</p>
+<p>For the full list of all available options for a specific command use
+the following syntax: <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">COMMAND</span> <span class="pre">--help</span></code></p>
+<section id="configure">
+<h2>configure<a class="headerlink" href="#configure" title="Link to this heading">#</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>meson<span class="w"> </span>configure<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--prefix<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--bindir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--datadir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--includedir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--infodir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--libdir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--licensedir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--libexecdir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--localedir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--localstatedir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--mandir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--sbindir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--sharedstatedir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--sysconfdir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--auto-features<span class="w"> </span><span class="o">{</span>enabled,disabled,auto<span class="o">}]</span>
+<span class="w">                  </span><span class="o">[</span>--backend<span class="w"> </span><span class="o">{</span>ninja,vs,vs2010,vs2012,vs2013,vs2015,vs2017,vs2019,vs2022,vs2026,xcode,none<span class="o">}]</span>
+<span class="w">                  </span><span class="o">[</span>--genvslite<span class="w"> </span><span class="o">{</span>vs2022,vs2026<span class="o">}]</span>
+<span class="w">                  </span><span class="o">[</span>--buildtype<span class="w"> </span><span class="o">{</span>plain,debug,debugoptimized,release,minsize,custom<span class="o">}]</span>
+<span class="w">                  </span><span class="o">[</span>--debug<span class="o">]</span><span class="w"> </span><span class="o">[</span>--default-library<span class="w"> </span><span class="o">{</span>shared,static,both<span class="o">}]</span>
+<span class="w">                  </span><span class="o">[</span>--default-both-libraries<span class="w"> </span><span class="o">{</span>shared,static,auto<span class="o">}]</span>
+<span class="w">                  </span><span class="o">[</span>--errorlogs<span class="o">]</span><span class="w"> </span><span class="o">[</span>--install-umask<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--layout<span class="w"> </span><span class="o">{</span>mirror,flat<span class="o">}]</span>
+<span class="w">                  </span><span class="o">[</span>--namingscheme<span class="w"> </span><span class="o">{</span>platform,classic<span class="o">}]</span>
+<span class="w">                  </span><span class="o">[</span>--optimization<span class="w"> </span><span class="o">{</span>plain,0,g,1,2,3,s<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--prefer-static<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--stdsplit<span class="o">]</span><span class="w"> </span><span class="o">[</span>--strip<span class="o">]</span><span class="w"> </span><span class="o">[</span>--unity<span class="w"> </span><span class="o">{</span>on,off,subprojects<span class="o">}]</span>
+<span class="w">                  </span><span class="o">[</span>--unity-size<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--warnlevel<span class="w"> </span><span class="o">{</span><span class="m">0</span>,1,2,3,everything<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--werror<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--wrap-mode<span class="w"> </span><span class="o">{</span>default,nofallback,nodownload,forcefallback,nopromote<span class="o">}]</span>
+<span class="w">                  </span><span class="o">[</span>--force-fallback-for<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--vsenv<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--os2-emxomf<span class="o">]</span><span class="w"> </span><span class="o">[</span>--pkgconfig.relocatable<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--python.bytecompile<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--python.install-env<span class="w"> </span><span class="o">{</span>auto,prefix,system,venv<span class="o">}]</span>
+<span class="w">                  </span><span class="o">[</span>--python.platlibdir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--python.purelibdir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--python.allow-limited-api<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--python.build-config<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--pkg-config-path<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--build.pkg-config-path<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--cmake-prefix-path<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--build.cmake-prefix-path<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>-D<span class="w"> </span><span class="nv">option</span><span class="o">=</span>value<span class="o">]</span><span class="w"> </span><span class="o">[</span>--clearcache<span class="o">]</span><span class="w"> </span><span class="o">[</span>--no-pager<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>-U<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>builddir<span class="o">]</span>
+</pre></div>
+</div>
+<p>Changes options of a configured meson project.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  builddir
+
+options:
+  -h, --help                            show this help message and exit
+  --prefix CMD_LINE_OPTIONS             Installation prefix.
+  --bindir CMD_LINE_OPTIONS             Executable directory.
+  --datadir CMD_LINE_OPTIONS            Data file directory.
+  --includedir CMD_LINE_OPTIONS         Header file directory.
+  --infodir CMD_LINE_OPTIONS            Info page directory.
+  --libdir CMD_LINE_OPTIONS             Library directory.
+  --licensedir CMD_LINE_OPTIONS         Licenses directory (default: ).
+  --libexecdir CMD_LINE_OPTIONS         Library executable directory.
+  --localedir CMD_LINE_OPTIONS          Locale data directory.
+  --localstatedir CMD_LINE_OPTIONS      Localstate data directory.
+  --mandir CMD_LINE_OPTIONS             Manual page directory.
+  --sbindir CMD_LINE_OPTIONS            System executable directory.
+  --sharedstatedir CMD_LINE_OPTIONS     Architecture-independent data directory.
+  --sysconfdir CMD_LINE_OPTIONS         Sysconf data directory.
+  --auto-features {enabled,disabled,auto}
+                                        Override value of all &#39;auto&#39; features
+                                        (default: auto).
+  --backend {ninja,vs,vs2010,vs2012,vs2013,vs2015,vs2017,vs2019,vs2022,vs2026,xcode,none}
+                                        Backend to use (default: ninja).
+  --genvslite {vs2022,vs2026}           Setup multiple buildtype-suffixed ninja-
+                                        backend build directories, and a
+                                        [builddir]_vs containing a Visual Studio
+                                        meta-backend with multiple
+                                        configurations that calls into them
+                                        (default: vs2022).
+  --buildtype {plain,debug,debugoptimized,release,minsize,custom}
+                                        Build type to use (default: debug).
+  --debug                               Enable debug symbols and other
+                                        information.
+  --default-library {shared,static,both}
+                                        Default library type (default: shared).
+  --default-both-libraries {shared,static,auto}
+                                        Default library type for both_libraries
+                                        (default: shared).
+  --errorlogs                           Whether to print the logs from failing
+                                        tests.
+  --install-umask CMD_LINE_OPTIONS      Default umask to apply on permissions of
+                                        installed files (default: 0o22).
+  --layout {mirror,flat}                Build directory layout (default:
+                                        mirror).
+  --namingscheme {platform,classic}     How target file names are formed
+                                        (default: classic).
+  --optimization {plain,0,g,1,2,3,s}    Optimization level (default: 0).
+  --prefer-static                       Whether to try static linking before
+                                        shared linking.
+  --stdsplit                            Split stdout and stderr in test logs.
+  --strip                               Strip targets on install.
+  --unity {on,off,subprojects}          Unity build (default: off).
+  --unity-size CMD_LINE_OPTIONS         Unity block size (default: 4).
+  --warnlevel {0,1,2,3,everything}      Compiler warning level to use (default:
+                                        1).
+  --werror                              Treat warnings as errors.
+  --wrap-mode {default,nofallback,nodownload,forcefallback,nopromote}
+                                        Wrap mode (default: default).
+  --force-fallback-for CMD_LINE_OPTIONS
+                                        Force fallback for those subprojects
+                                        (default: []).
+  --vsenv                               Activate Visual Studio environment.
+  --os2-emxomf                          Use OMF format on OS/2.
+  --pkgconfig.relocatable               Generate pkgconfig files as relocatable.
+  --python.bytecompile CMD_LINE_OPTIONS
+                                        Whether to compile bytecode (default:
+                                        0).
+  --python.install-env {auto,prefix,system,venv}
+                                        Which python environment to install to
+                                        (default: prefix).
+  --python.platlibdir CMD_LINE_OPTIONS  Directory for site-specific, platform-
+                                        specific files (default: ).
+  --python.purelibdir CMD_LINE_OPTIONS  Directory for site-specific, non-
+                                        platform-specific files (default: ).
+  --python.allow-limited-api            Whether to allow use of the Python
+                                        Limited API.
+  --python.build-config CMD_LINE_OPTIONS
+                                        Config file containing the build details
+                                        for the target Python installation
+                                        (default: ).
+  --pkg-config-path CMD_LINE_OPTIONS    List of additional paths for pkg-config
+                                        to search (just for host machine,
+                                        default: []).
+  --build.pkg-config-path CMD_LINE_OPTIONS
+                                        List of additional paths for pkg-config
+                                        to search (just for build machine,
+                                        default: []).
+  --cmake-prefix-path CMD_LINE_OPTIONS  List of additional prefixes for cmake to
+                                        search (just for host machine, default:
+                                        []).
+  --build.cmake-prefix-path CMD_LINE_OPTIONS
+                                        List of additional prefixes for cmake to
+                                        search (just for build machine, default:
+                                        []).
+  -D option=value                       Set the value of an option, can be used
+                                        several times to set multiple options.
+  --clearcache                          Clear cached state (e.g. found
+                                        dependencies)
+  --no-pager                            Do not redirect output to a pager
+  -U CMD_LINE_OPTIONS                   Remove a subproject option.
+</pre></div>
+</div>
+<p>Most arguments are the same as in <a class="reference internal" href="#setup"><code class="docutils literal notranslate"><span class="pre">setup</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reconfiguring a project will not reset options to their default
+values (even if they were changed in <code class="docutils literal notranslate"><span class="pre">meson.build</span></code>).</p>
+</div>
+<section id="examples">
+<h3>Examples:<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
+<p>List all available options:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="n">configure</span> <span class="n">builddir</span>
+</pre></div>
+</div>
+<p>Change value of a single option:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="n">configure</span> <span class="n">builddir</span> <span class="o">-</span><span class="n">Doption</span><span class="o">=</span><span class="n">new_value</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="compile">
+<h2>compile<a class="headerlink" href="#compile" title="Link to this heading">#</a></h2>
+<p><em>(since 0.54.0)</em></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>meson<span class="w"> </span>compile<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--clean<span class="o">]</span><span class="w"> </span><span class="o">[</span>-C<span class="w"> </span>WD<span class="o">]</span><span class="w"> </span><span class="o">[</span>-j<span class="w"> </span>JOBS<span class="o">]</span><span class="w"> </span><span class="o">[</span>-l<span class="w"> </span>LOAD_AVERAGE<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="o">]</span>
+<span class="w">                </span><span class="o">[</span>--ninja-args<span class="w"> </span>NINJA_ARGS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--vs-args<span class="w"> </span>VS_ARGS<span class="o">]</span>
+<span class="w">                </span><span class="o">[</span>--xcode-args<span class="w"> </span>XCODE_ARGS<span class="o">]</span>
+<span class="w">                </span><span class="o">[</span>TARGET<span class="w"> </span>...<span class="o">]</span>
+</pre></div>
+</div>
+<p>Builds a default or a specified target of a configured Meson project.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  TARGET                                Targets to build. Target has the
+                                        following format: [PATH_TO_TARGET/]TARGE
+                                        T_NAME.TARGET_SUFFIX[:TARGET_TYPE].
+
+options:
+  -h, --help                            show this help message and exit
+  --clean                               Clean the build directory.
+  -C WD                                 directory to cd into before running
+  -j JOBS, --jobs JOBS                  The number of worker jobs to run (if
+                                        supported). If the value is less than 1
+                                        the build program will guess.
+  -l LOAD_AVERAGE, --load-average LOAD_AVERAGE
+                                        The system load average to try to
+                                        maintain (if supported).
+  -v, --verbose                         Show more verbose output.
+  --ninja-args NINJA_ARGS               Arguments to pass to `ninja` (applied
+                                        only on `ninja` backend).
+  --vs-args VS_ARGS                     Arguments to pass to `msbuild` (applied
+                                        only on `vs` backend).
+  --xcode-args XCODE_ARGS               Arguments to pass to `xcodebuild`
+                                        (applied only on `xcode` backend).
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--verbose</span></code> argument is available since 0.55.0.</p>
+<section id="targets">
+<h3>Targets<a class="headerlink" href="#targets" title="Link to this heading">#</a></h3>
+<p><em>(since 0.55.0)</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">TARGET</span></code> has the following syntax <code class="docutils literal notranslate"><span class="pre">[PATH/]NAME.SUFFIX[:TYPE]</span></code>, where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NAME</span></code>: name of the target from <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">foo</span></code> from <code class="docutils literal notranslate"><span class="pre">executable('foo',</span> <span class="pre">...)</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUFFIX</span></code>: name of the suffix of the target from <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">exe</span></code> from <code class="docutils literal notranslate"><span class="pre">executable('foo',</span> <span class="pre">suffix:</span> <span class="pre">'exe',</span> <span class="pre">...)</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PATH</span></code>: path to the target relative to the root <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> file. Note: relative path for a target specified in the root <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> is <code class="docutils literal notranslate"><span class="pre">./</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TYPE</span></code>: type of the target. Can be one of the following: ‘executable’, ‘static_library’, ‘shared_library’, ‘shared_module’, ‘custom’, ‘alias’, ‘run’, ‘jar’.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">PATH</span></code>, <code class="docutils literal notranslate"><span class="pre">SUFFIX</span></code>, and <code class="docutils literal notranslate"><span class="pre">TYPE</span></code> can all be omitted if the resulting <code class="docutils literal notranslate"><span class="pre">TARGET</span></code> can be
+used to uniquely identify the target in <code class="docutils literal notranslate"><span class="pre">meson.build</span></code>.</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">SUFFIX</span></code> did not exist prior to 1.3.0.</p>
+</section>
+<section id="backend-specific-arguments">
+<h3>Backend specific arguments<a class="headerlink" href="#backend-specific-arguments" title="Link to this heading">#</a></h3>
+<p><em>(since 0.55.0)</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">BACKEND-args</span></code> use the following syntax:</p>
+<p>If you only pass a single string, then it is considered to have all
+values separated by commas. Thus invoking the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ meson compile --ninja-args=-n,-d,explain
+</pre></div>
+</div>
+<p>would add <code class="docutils literal notranslate"><span class="pre">-n</span></code>, <code class="docutils literal notranslate"><span class="pre">-d</span></code> and <code class="docutils literal notranslate"><span class="pre">explain</span></code> arguments to ninja invocation.</p>
+<p>If you need to have commas or spaces in your string values, then you
+need to pass the value with proper shell quoting like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ meson compile &quot;--ninja-args=[&#39;a,b&#39;, &#39;c d&#39;]&quot;
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>Examples:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Build the project:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="nb">compile</span> <span class="o">-</span><span class="n">C</span> <span class="n">builddir</span>
+</pre></div>
+</div>
+<p>Execute a dry run on ninja backend with additional debug info:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="nb">compile</span> <span class="o">--</span><span class="n">ninja</span><span class="o">-</span><span class="n">args</span><span class="o">=-</span><span class="n">n</span><span class="p">,</span><span class="o">-</span><span class="n">d</span><span class="p">,</span><span class="n">explain</span>
+</pre></div>
+</div>
+<p>Build three targets: two targets that have the same <code class="docutils literal notranslate"><span class="pre">foo</span></code> name, but
+different type, and a <code class="docutils literal notranslate"><span class="pre">bar</span></code> target:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="nb">compile</span> <span class="n">foo</span><span class="p">:</span><span class="n">shared_library</span> <span class="n">foo</span><span class="p">:</span><span class="n">static_library</span> <span class="n">bar</span>
+</pre></div>
+</div>
+<p>Produce a coverage html report (if available):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ninja</span> <span class="n">coverage</span><span class="o">-</span><span class="n">html</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="dist">
+<h2>dist<a class="headerlink" href="#dist" title="Link to this heading">#</a></h2>
+<p><em>(since 0.52.0)</em></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>meson<span class="w"> </span>dist<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>-C<span class="w"> </span>WD<span class="o">]</span><span class="w"> </span><span class="o">[</span>--allow-dirty<span class="o">]</span><span class="w"> </span><span class="o">[</span>--formats<span class="w"> </span>FORMATS<span class="o">]</span>
+<span class="w">             </span><span class="o">[</span>--include-subprojects<span class="o">]</span><span class="w"> </span><span class="o">[</span>--no-tests<span class="o">]</span><span class="w"> </span><span class="o">[</span>-j<span class="w"> </span>NUM_PROCESSES<span class="o">]</span>
+</pre></div>
+</div>
+<p>Generates a release archive from the current source tree.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>options:
+  -h, --help                            show this help message and exit
+  -C WD                                 directory to cd into before running
+  --allow-dirty                         Allow even when repository contains
+                                        uncommitted changes.
+  --formats FORMATS                     Comma separated list of archive types to
+                                        create. Supports xztar (default), bztar,
+                                        gztar, and zip.
+  --include-subprojects                 Include source code of subprojects that
+                                        have been used for the build.
+  --no-tests                            Do not build and test generated
+                                        packages.
+  -j NUM_PROCESSES, --num-processes NUM_PROCESSES
+                                        How many parallel processes to use (e.g.
+                                        for compilation and testing).
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="Creating-releases.html"><span class="std std-doc">notes about creating releases</span></a> for more info.</p>
+<section id="id2">
+<h3>Examples:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Create a release archive:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="n">dist</span> <span class="o">-</span><span class="n">C</span> <span class="n">builddir</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="init">
+<h2>init<a class="headerlink" href="#init" title="Link to this heading">#</a></h2>
+<p><em>(since 0.45.0)</em></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>meson<span class="w"> </span>init<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>-C<span class="w"> </span>WD<span class="o">]</span><span class="w"> </span><span class="o">[</span>-n<span class="w"> </span>NAME<span class="o">]</span><span class="w"> </span><span class="o">[</span>-e<span class="w"> </span>EXECUTABLE<span class="o">]</span><span class="w"> </span><span class="o">[</span>-d<span class="w"> </span>DEPS<span class="o">]</span>
+<span class="w">             </span><span class="o">[</span>-l<span class="w"> </span><span class="o">{</span>c,cpp,cs,cuda,d,fortran,java,objc,objcpp,rust,vala<span class="o">}]</span><span class="w"> </span><span class="o">[</span>-b<span class="o">]</span>
+<span class="w">             </span><span class="o">[</span>--builddir<span class="w"> </span>BUILDDIR<span class="o">]</span><span class="w"> </span><span class="o">[</span>-f<span class="o">]</span><span class="w"> </span><span class="o">[</span>--type<span class="w"> </span><span class="o">{</span>executable,library<span class="o">}]</span>
+<span class="w">             </span><span class="o">[</span>--version<span class="w"> </span>VERSION<span class="o">]</span>
+<span class="w">             </span><span class="o">[</span>sourcefile<span class="w"> </span>...<span class="o">]</span>
+</pre></div>
+</div>
+<p>Creates a basic set of build files based on a template.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  sourcefile                            source files. default: all recognized
+                                        files in current directory
+
+options:
+  -h, --help                            show this help message and exit
+  -C WD                                 directory to cd into before running
+  -n NAME, --name NAME                  project name. default: name of current
+                                        directory
+  -e EXECUTABLE, --executable EXECUTABLE
+                                        executable name. default: project name
+  -d DEPS, --deps DEPS                  dependencies, comma-separated
+  -l {c,cpp,cs,cuda,d,fortran,java,objc,objcpp,rust,vala}, --language {c,cpp,cs,cuda,d,fortran,java,objc,objcpp,rust,vala}
+                                        project language. default: autodetected
+                                        based on source files
+  -b, --build                           build after generation
+  --builddir BUILDDIR                   directory for build
+  -f, --force                           force overwrite of existing files and
+                                        directories.
+  --type {executable,library}           project type. default: executable based
+                                        project
+  --version VERSION                     project version. default: 0.1
+</pre></div>
+</div>
+<section id="id3">
+<h3>Examples:<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Create a project in <code class="docutils literal notranslate"><span class="pre">sourcedir</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="n">init</span> <span class="o">-</span><span class="n">C</span> <span class="n">sourcedir</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="env2mfile">
+<h2>env2mfile<a class="headerlink" href="#env2mfile" title="Link to this heading">#</a></h2>
+<p><em>This command is experimental and subject to change.</em></p>
+<p><em>{Since 0.62.0}</em></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>meson<span class="w"> </span>env2mfile<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">(</span>--cross<span class="w"> </span><span class="p">|</span><span class="w"> </span>--native<span class="w"> </span><span class="p">|</span><span class="w"> </span>--android<span class="o">)</span><span class="w"> </span><span class="o">[</span>--debarch<span class="w"> </span>DEBARCH<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--gccsuffix<span class="w"> </span>GCCSUFFIX<span class="o">]</span><span class="w"> </span>-o<span class="w"> </span>OUTFILE<span class="w"> </span><span class="o">[</span>--use-for-build<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--system<span class="w"> </span>SYSTEM<span class="o">]</span><span class="w"> </span><span class="o">[</span>--subsystem<span class="w"> </span>SUBSYSTEM<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--kernel<span class="w"> </span>KERNEL<span class="o">]</span><span class="w"> </span><span class="o">[</span>--cpu<span class="w"> </span>CPU<span class="o">]</span><span class="w"> </span><span class="o">[</span>--cpu-family<span class="w"> </span>CPU_FAMILY<span class="o">]</span>
+<span class="w">                  </span><span class="o">[</span>--endian<span class="w"> </span><span class="o">{</span>big,little<span class="o">}]</span>
+</pre></div>
+</div>
+<p>Create native and cross files from the current environment, typically
+by sniffing environment variables like <code class="docutils literal notranslate"><span class="pre">CC</span></code> and <code class="docutils literal notranslate"><span class="pre">CFLAGS</span></code>.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>options:
+  -h, --help               show this help message and exit
+  --cross                  Generate a cross compilation file.
+  --native                 Generate a native compilation file.
+  --android                Generate cross files for Android toolchains.
+  --debarch DEBARCH        The dpkg architecture to generate.
+  --gccsuffix GCCSUFFIX    A particular gcc version suffix if necessary.
+  -o OUTFILE               The output file or directory (for Android).
+  --use-for-build          Use _FOR_BUILD envvars.
+  --system SYSTEM          Define system for cross compilation.
+  --subsystem SUBSYSTEM    Define subsystem for cross compilation.
+  --kernel KERNEL          Define kernel for cross compilation.
+  --cpu CPU                Define cpu for cross compilation.
+  --cpu-family CPU_FAMILY  Define cpu family for cross compilation.
+  --endian {big,little}    Define endianness for cross compilation.
+</pre></div>
+</div>
+<section id="id4">
+<h3>Examples:<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>Autodetect the current cross build environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="n">env2mfile</span> <span class="o">--</span><span class="n">cross</span> <span class="o">-</span><span class="n">o</span> <span class="n">current_cross</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">cpu</span><span class="o">=</span><span class="n">arm7a</span> <span class="o">--</span><span class="n">cpu</span><span class="o">-</span><span class="n">family</span><span class="o">=</span><span class="n">arm</span> <span class="o">--</span><span class="n">system</span><span class="o">=</span><span class="n">linux</span>
+</pre></div>
+</div>
+<p>Generate a cross build using Debian system information:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="n">env2mfile</span> <span class="o">--</span><span class="n">cross</span> <span class="o">--</span><span class="n">debarch</span><span class="o">=</span><span class="n">armhf</span> <span class="o">-</span><span class="n">o</span> <span class="n">deb_arm_cross</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="introspect">
+<h2>introspect<a class="headerlink" href="#introspect" title="Link to this heading">#</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>meson<span class="w"> </span>introspect<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--ast<span class="o">]</span><span class="w"> </span><span class="o">[</span>--benchmarks<span class="o">]</span><span class="w"> </span><span class="o">[</span>--buildoptions<span class="o">]</span>
+<span class="w">                   </span><span class="o">[</span>--buildsystem-files<span class="o">]</span><span class="w"> </span><span class="o">[</span>--compilers<span class="o">]</span><span class="w"> </span><span class="o">[</span>--dependencies<span class="o">]</span>
+<span class="w">                   </span><span class="o">[</span>--scan-dependencies<span class="o">]</span><span class="w"> </span><span class="o">[</span>--installed<span class="o">]</span><span class="w"> </span><span class="o">[</span>--install-plan<span class="o">]</span>
+<span class="w">                   </span><span class="o">[</span>--machines<span class="o">]</span><span class="w"> </span><span class="o">[</span>--projectinfo<span class="o">]</span><span class="w"> </span><span class="o">[</span>--targets<span class="o">]</span><span class="w"> </span><span class="o">[</span>--tests<span class="o">]</span>
+<span class="w">                   </span><span class="o">[</span>--backend<span class="w"> </span><span class="o">{</span>ninja,none,vs,vs2010,vs2012,vs2013,vs2015,vs2017,vs2019,vs2022,vs2026,xcode<span class="o">}]</span>
+<span class="w">                   </span><span class="o">[</span>-a<span class="o">]</span><span class="w"> </span><span class="o">[</span>-i<span class="o">]</span><span class="w"> </span><span class="o">[</span>-f<span class="o">]</span>
+<span class="w">                   </span><span class="o">[</span>builddir<span class="o">]</span>
+</pre></div>
+</div>
+<p>Displays information about a configured Meson project.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  builddir                              The build directory
+
+options:
+  -h, --help                            show this help message and exit
+  --ast                                 Dump the AST of the meson file.
+  --benchmarks                          List all benchmarks.
+  --buildoptions                        List all build options.
+  --buildsystem-files                   List files that make up the build
+                                        system.
+  --compilers                           List used compilers.
+  --dependencies                        List external dependencies.
+  --scan-dependencies                   Scan for dependencies used in the
+                                        meson.build file.
+  --installed                           List all installed files and
+                                        directories.
+  --install-plan                        List all installed files and directories
+                                        with their details.
+  --machines                            Information about host, build, and
+                                        target machines.
+  --projectinfo                         Information about projects.
+  --targets                             List top level targets.
+  --tests                               List all unit tests.
+  --backend {ninja,none,vs,vs2010,vs2012,vs2013,vs2015,vs2017,vs2019,vs2022,vs2026,xcode}
+                                        The backend to use for the
+                                        --buildoptions introspection.
+  -a, --all                             Print all available information.
+  -i, --indent                          Enable pretty printed JSON.
+  -f, --force-object-output             Always use the new JSON format for
+                                        multiple entries (even for 0 and 1
+                                        introspection commands)
+</pre></div>
+</div>
+<section id="id5">
+<h3>Examples:<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>Display basic information about a configured project in <code class="docutils literal notranslate"><span class="pre">builddir</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="n">introspect</span> <span class="n">builddir</span> <span class="o">--</span><span class="n">projectinfo</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="install">
+<h2>install<a class="headerlink" href="#install" title="Link to this heading">#</a></h2>
+<p><em>(since 0.47.0)</em></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>meson<span class="w"> </span>install<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>-C<span class="w"> </span>WD<span class="o">]</span><span class="w"> </span><span class="o">[</span>--no-rebuild<span class="o">]</span><span class="w"> </span><span class="o">[</span>--only-changed<span class="o">]</span><span class="w"> </span><span class="o">[</span>-q<span class="o">]</span>
+<span class="w">                </span><span class="o">[</span>--destdir<span class="w"> </span>DESTDIR<span class="o">]</span><span class="w"> </span><span class="o">[</span>-n<span class="o">]</span>
+<span class="w">                </span><span class="o">[</span>--skip-subprojects<span class="w"> </span><span class="o">[</span>SKIP_SUBPROJECTS<span class="o">]]</span><span class="w"> </span><span class="o">[</span>--tags<span class="w"> </span>TAGS<span class="o">]</span>
+<span class="w">                </span><span class="o">[</span>--strip<span class="o">]</span>
+</pre></div>
+</div>
+<p>Installs the project to the prefix specified in <a class="reference internal" href="#setup"><code class="docutils literal notranslate"><span class="pre">setup</span></code></a>.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>options:
+  -h, --help                            show this help message and exit
+  -C WD                                 directory to cd into before running
+  --no-rebuild                          Do not rebuild before installing.
+  --only-changed                        Only overwrite files that are older than
+                                        the copied file.
+  -q, --quiet                           Do not print every file that was
+                                        installed.
+  --destdir DESTDIR                     Sets or overrides DESTDIR environment.
+                                        (Since 0.57.0)
+  -n, --dry-run                         Doesn&#39;t actually install, but print
+                                        logs. (Since 0.57.0)
+  --skip-subprojects [SKIP_SUBPROJECTS]
+                                        Do not install files from given
+                                        subprojects. (Since 0.58.0)
+  --tags TAGS                           Install only targets having one of the
+                                        given tags. (Since 0.60.0)
+  --strip                               Strip targets even if strip option was
+                                        not set during configure. (Since 0.62.0)
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="Installing.html"><span class="std std-doc">the installation documentation</span></a> for more info.</p>
+<section id="id6">
+<h3>Examples:<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>Install project to <code class="docutils literal notranslate"><span class="pre">prefix</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="n">install</span> <span class="o">-</span><span class="n">C</span> <span class="n">builddir</span>
+</pre></div>
+</div>
+<p>Install project to <code class="docutils literal notranslate"><span class="pre">$DESTDIR/prefix</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DESTDIR</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">staging</span><span class="o">/</span><span class="n">area</span> <span class="n">meson</span> <span class="n">install</span> <span class="o">-</span><span class="n">C</span> <span class="n">builddir</span>
+</pre></div>
+</div>
+<p>Since <em>0.60.0</em> <code class="docutils literal notranslate"><span class="pre">DESTDIR</span></code> and <code class="docutils literal notranslate"><span class="pre">--destdir</span></code> can be a path relative to build
+directory. An absolute path will be set into environment when executing scripts.</p>
+</section>
+</section>
+<section id="reprotest">
+<h2>reprotest<a class="headerlink" href="#reprotest" title="Link to this heading">#</a></h2>
+<p><em>(since 1.6.0)</em></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>meson<span class="w"> </span>reprotest<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--intermediaries<span class="o">]</span><span class="w"> </span><span class="o">[</span>mesonargs<span class="w"> </span>...<span class="o">]</span>
+</pre></div>
+</div>
+<p>Simple reproducible build tester that compiles the project twice and
+checks whether the end results are identical.</p>
+<p>This command must be run in the source root of the project you want to
+test.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  mesonargs         Arguments to pass to &quot;meson setup&quot;.
+
+options:
+  -h, --help        show this help message and exit
+  --intermediaries  Check intermediate files.
+</pre></div>
+</div>
+<section id="id7">
+<h3>Examples<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>meson reprotest
+</pre></div>
+</div>
+<p>Builds the current project with its default settings.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>meson reprotest --intermediaries -- --buildtype=debugoptimized
+</pre></div>
+</div>
+<p>Builds the target and also checks that all intermediate files like
+object files are also identical. All command line arguments after the
+<code class="docutils literal notranslate"><span class="pre">--</span></code> are passed directly to the underlying <code class="docutils literal notranslate"><span class="pre">meson</span></code> invocation. Only
+use option arguments, i.e. those that start with a dash, Meson sets
+directory arguments automatically.</p>
+</section>
+</section>
+<section id="rewrite">
+<h2>rewrite<a class="headerlink" href="#rewrite" title="Link to this heading">#</a></h2>
+<p><em>(since 0.50.0)</em></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>meson<span class="w"> </span>rewrite<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>-s<span class="w"> </span>SRCDIR<span class="o">]</span><span class="w"> </span><span class="o">[</span>-V<span class="o">]</span><span class="w"> </span><span class="o">[</span>-S<span class="o">]</span>
+<span class="w">                </span><span class="o">{</span>target,tgt,kwargs,default-options,def,command,cmd<span class="o">}</span><span class="w"> </span>...
+</pre></div>
+</div>
+<p>Modifies the Meson project.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>options:
+  -h, --help                            show this help message and exit
+  -s SRCDIR, --sourcedir SRCDIR         Path to source directory.
+  -V, --verbose                         Enable verbose output
+  -S, --skip-errors                     Skip errors instead of aborting
+
+Rewriter commands:
+  Rewrite command to execute
+
+  {target,tgt,kwargs,default-options,def,command,cmd}
+    target (tgt)                        Modify a target
+    kwargs                              Modify keyword arguments
+    default-options (def)               Modify the project default options
+    command (cmd)                       Execute a JSON array of commands
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="Rewriter.html"><span class="std std-doc">the Meson file rewriter documentation</span></a> for more info.</p>
+</section>
+<section id="setup">
+<h2>setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>meson<span class="w"> </span>setup<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--prefix<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--bindir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--datadir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--includedir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--infodir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--libdir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--licensedir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--libexecdir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--localedir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--localstatedir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--mandir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--sbindir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--sharedstatedir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--sysconfdir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--auto-features<span class="w"> </span><span class="o">{</span>enabled,disabled,auto<span class="o">}]</span>
+<span class="w">              </span><span class="o">[</span>--backend<span class="w"> </span><span class="o">{</span>ninja,vs,vs2010,vs2012,vs2013,vs2015,vs2017,vs2019,vs2022,vs2026,xcode,none<span class="o">}]</span>
+<span class="w">              </span><span class="o">[</span>--genvslite<span class="w"> </span><span class="o">{</span>vs2022,vs2026<span class="o">}]</span>
+<span class="w">              </span><span class="o">[</span>--buildtype<span class="w"> </span><span class="o">{</span>plain,debug,debugoptimized,release,minsize,custom<span class="o">}]</span>
+<span class="w">              </span><span class="o">[</span>--debug<span class="o">]</span><span class="w"> </span><span class="o">[</span>--default-library<span class="w"> </span><span class="o">{</span>shared,static,both<span class="o">}]</span>
+<span class="w">              </span><span class="o">[</span>--default-both-libraries<span class="w"> </span><span class="o">{</span>shared,static,auto<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--errorlogs<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--install-umask<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--layout<span class="w"> </span><span class="o">{</span>mirror,flat<span class="o">}]</span>
+<span class="w">              </span><span class="o">[</span>--namingscheme<span class="w"> </span><span class="o">{</span>platform,classic<span class="o">}]</span>
+<span class="w">              </span><span class="o">[</span>--optimization<span class="w"> </span><span class="o">{</span>plain,0,g,1,2,3,s<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--prefer-static<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--stdsplit<span class="o">]</span><span class="w"> </span><span class="o">[</span>--strip<span class="o">]</span><span class="w"> </span><span class="o">[</span>--unity<span class="w"> </span><span class="o">{</span>on,off,subprojects<span class="o">}]</span>
+<span class="w">              </span><span class="o">[</span>--unity-size<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--warnlevel<span class="w"> </span><span class="o">{</span><span class="m">0</span>,1,2,3,everything<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--werror<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--wrap-mode<span class="w"> </span><span class="o">{</span>default,nofallback,nodownload,forcefallback,nopromote<span class="o">}]</span>
+<span class="w">              </span><span class="o">[</span>--force-fallback-for<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--vsenv<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--os2-emxomf<span class="o">]</span><span class="w"> </span><span class="o">[</span>--pkgconfig.relocatable<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--python.bytecompile<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--python.install-env<span class="w"> </span><span class="o">{</span>auto,prefix,system,venv<span class="o">}]</span>
+<span class="w">              </span><span class="o">[</span>--python.platlibdir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--python.purelibdir<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--python.allow-limited-api<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--python.build-config<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--pkg-config-path<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--build.pkg-config-path<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--cmake-prefix-path<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--build.cmake-prefix-path<span class="w"> </span>CMD_LINE_OPTIONS<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>-D<span class="w"> </span><span class="nv">option</span><span class="o">=</span>value<span class="o">]</span><span class="w"> </span><span class="o">[</span>--native-file<span class="w"> </span>NATIVE_FILE<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--cross-file<span class="w"> </span>CROSS_FILE<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="o">]</span><span class="w"> </span><span class="o">[</span>--fatal-meson-warnings<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>--reconfigure<span class="o">]</span><span class="w"> </span><span class="o">[</span>--wipe<span class="o">]</span><span class="w"> </span><span class="o">[</span>--clearcache<span class="o">]</span>
+<span class="w">              </span><span class="o">[</span>builddir<span class="o">]</span><span class="w"> </span><span class="o">[</span>sourcedir<span class="o">]</span>
+</pre></div>
+</div>
+<p>Configures a build directory for the Meson project.</p>
+<p><em>Deprecated since 0.64.0</em>: This is the default Meson command (invoked if there
+was no COMMAND supplied). However, supplying the command is necessary to avoid
+clashes with future added commands, so “setup” should be used explicitly.</p>
+<p><em>Since 1.1.0</em> <code class="docutils literal notranslate"><span class="pre">--reconfigure</span></code> is allowed even if the build directory does not
+already exist, that argument is ignored in that case.</p>
+<p><em>Since 1.3.0</em> If the build directory already exists, options are updated with
+their new value given on the command line (<code class="docutils literal notranslate"><span class="pre">-Dopt=value</span></code>). Unless <code class="docutils literal notranslate"><span class="pre">--reconfigure</span></code>
+is also specified, this won’t reconfigure immediately. This has the same behaviour
+as <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">configure</span> <span class="pre">&lt;builddir&gt;</span> <span class="pre">-Dopt=value</span></code>.</p>
+<p><em>Since 1.3.0</em> It is possible to clear the cache and reconfigure in a single command
+with <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">setup</span> <span class="pre">--clearcache</span> <span class="pre">--reconfigure</span> <span class="pre">&lt;builddir&gt;</span></code>.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  builddir
+  sourcedir
+
+options:
+  -h, --help                            show this help message and exit
+  --prefix CMD_LINE_OPTIONS             Installation prefix.
+  --bindir CMD_LINE_OPTIONS             Executable directory.
+  --datadir CMD_LINE_OPTIONS            Data file directory.
+  --includedir CMD_LINE_OPTIONS         Header file directory.
+  --infodir CMD_LINE_OPTIONS            Info page directory.
+  --libdir CMD_LINE_OPTIONS             Library directory.
+  --licensedir CMD_LINE_OPTIONS         Licenses directory (default: ).
+  --libexecdir CMD_LINE_OPTIONS         Library executable directory.
+  --localedir CMD_LINE_OPTIONS          Locale data directory.
+  --localstatedir CMD_LINE_OPTIONS      Localstate data directory.
+  --mandir CMD_LINE_OPTIONS             Manual page directory.
+  --sbindir CMD_LINE_OPTIONS            System executable directory.
+  --sharedstatedir CMD_LINE_OPTIONS     Architecture-independent data directory.
+  --sysconfdir CMD_LINE_OPTIONS         Sysconf data directory.
+  --auto-features {enabled,disabled,auto}
+                                        Override value of all &#39;auto&#39; features
+                                        (default: auto).
+  --backend {ninja,vs,vs2010,vs2012,vs2013,vs2015,vs2017,vs2019,vs2022,vs2026,xcode,none}
+                                        Backend to use (default: ninja).
+  --genvslite {vs2022,vs2026}           Setup multiple buildtype-suffixed ninja-
+                                        backend build directories, and a
+                                        [builddir]_vs containing a Visual Studio
+                                        meta-backend with multiple
+                                        configurations that calls into them
+                                        (default: vs2022).
+  --buildtype {plain,debug,debugoptimized,release,minsize,custom}
+                                        Build type to use (default: debug).
+  --debug                               Enable debug symbols and other
+                                        information.
+  --default-library {shared,static,both}
+                                        Default library type (default: shared).
+  --default-both-libraries {shared,static,auto}
+                                        Default library type for both_libraries
+                                        (default: shared).
+  --errorlogs                           Whether to print the logs from failing
+                                        tests.
+  --install-umask CMD_LINE_OPTIONS      Default umask to apply on permissions of
+                                        installed files (default: 0o22).
+  --layout {mirror,flat}                Build directory layout (default:
+                                        mirror).
+  --namingscheme {platform,classic}     How target file names are formed
+                                        (default: classic).
+  --optimization {plain,0,g,1,2,3,s}    Optimization level (default: 0).
+  --prefer-static                       Whether to try static linking before
+                                        shared linking.
+  --stdsplit                            Split stdout and stderr in test logs.
+  --strip                               Strip targets on install.
+  --unity {on,off,subprojects}          Unity build (default: off).
+  --unity-size CMD_LINE_OPTIONS         Unity block size (default: 4).
+  --warnlevel {0,1,2,3,everything}      Compiler warning level to use (default:
+                                        1).
+  --werror                              Treat warnings as errors.
+  --wrap-mode {default,nofallback,nodownload,forcefallback,nopromote}
+                                        Wrap mode (default: default).
+  --force-fallback-for CMD_LINE_OPTIONS
+                                        Force fallback for those subprojects
+                                        (default: []).
+  --vsenv                               Activate Visual Studio environment.
+  --os2-emxomf                          Use OMF format on OS/2.
+  --pkgconfig.relocatable               Generate pkgconfig files as relocatable.
+  --python.bytecompile CMD_LINE_OPTIONS
+                                        Whether to compile bytecode (default:
+                                        0).
+  --python.install-env {auto,prefix,system,venv}
+                                        Which python environment to install to
+                                        (default: prefix).
+  --python.platlibdir CMD_LINE_OPTIONS  Directory for site-specific, platform-
+                                        specific files (default: ).
+  --python.purelibdir CMD_LINE_OPTIONS  Directory for site-specific, non-
+                                        platform-specific files (default: ).
+  --python.allow-limited-api            Whether to allow use of the Python
+                                        Limited API.
+  --python.build-config CMD_LINE_OPTIONS
+                                        Config file containing the build details
+                                        for the target Python installation
+                                        (default: ).
+  --pkg-config-path CMD_LINE_OPTIONS    List of additional paths for pkg-config
+                                        to search (just for host machine,
+                                        default: []).
+  --build.pkg-config-path CMD_LINE_OPTIONS
+                                        List of additional paths for pkg-config
+                                        to search (just for build machine,
+                                        default: []).
+  --cmake-prefix-path CMD_LINE_OPTIONS  List of additional prefixes for cmake to
+                                        search (just for host machine, default:
+                                        []).
+  --build.cmake-prefix-path CMD_LINE_OPTIONS
+                                        List of additional prefixes for cmake to
+                                        search (just for build machine, default:
+                                        []).
+  -D option=value                       Set the value of an option, can be used
+                                        several times to set multiple options.
+  --native-file NATIVE_FILE             File containing overrides for native
+                                        compilation environment.
+  --cross-file CROSS_FILE               File describing cross compilation
+                                        environment.
+  -v, --version                         show program&#39;s version number and exit
+  --fatal-meson-warnings                Make all Meson warnings fatal
+  --reconfigure                         Set options and reconfigure the project.
+                                        Useful when new options have been added
+                                        to the project and the default value is
+                                        not working.
+  --wipe                                Wipe build directory and reconfigure
+                                        using previous command line options.
+                                        Useful when build directory got
+                                        corrupted, or when rebuilding with a
+                                        newer version of meson.
+  --clearcache                          Clear cached state (e.g. found
+                                        dependencies). Since 1.3.0.
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="Running-Meson.html#configuring-the-build-directory"><span class="std std-ref">Meson introduction
+page</span></a> for more info.</p>
+<section id="id8">
+<h3>Examples:<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>Configures <code class="docutils literal notranslate"><span class="pre">builddir</span></code> with default values:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="n">setup</span> <span class="n">builddir</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="subprojects">
+<h2>subprojects<a class="headerlink" href="#subprojects" title="Link to this heading">#</a></h2>
+<p><em>(since 0.49.0)</em></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>meson<span class="w"> </span>subprojects<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span>
+<span class="w">                    </span><span class="o">{</span>update,checkout,download,foreach,purge,packagefiles<span class="o">}</span>
+<span class="w">                    </span>...
+</pre></div>
+</div>
+<p>Manages subprojects of the Meson project. <em>Since 0.59.0</em> commands are run on
+multiple subprojects in parallel by default, use <code class="docutils literal notranslate"><span class="pre">--num-processes=1</span></code> if it is
+not desired.</p>
+<p>Since <em>0.64.0</em> the <code class="docutils literal notranslate"><span class="pre">update</span></code> subcommand will not download new wrap files
+from WrapDB any more. Use <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">wrap</span> <span class="pre">update</span></code> command for that instead.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>options:
+  -h, --help                            show this help message and exit
+
+Commands:
+  {update,checkout,download,foreach,purge,packagefiles}
+    update                              Update all subprojects from wrap files
+    checkout                            Checkout a branch (git only)
+    download                            Ensure subprojects are fetched, even if
+                                        not in use. Already downloaded
+                                        subprojects are not modified. This can
+                                        be used to pre-fetch all subprojects and
+                                        avoid downloads during configure.
+    foreach                             Execute a command in each subproject
+                                        directory.
+    purge                               Remove all wrap-based subproject
+                                        artifacts
+    packagefiles                        Manage the packagefiles overlay
+</pre></div>
+</div>
+</section>
+<section id="test">
+<h2>test<a class="headerlink" href="#test" title="Link to this heading">#</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>meson<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>-k<span class="w"> </span>MAXFAIL<span class="o">]</span><span class="w"> </span><span class="o">[</span>--repeat<span class="w"> </span>REPEAT<span class="o">]</span><span class="w"> </span><span class="o">[</span>--no-rebuild<span class="o">]</span><span class="w"> </span><span class="o">[</span>--gdb<span class="o">]</span>
+<span class="w">             </span><span class="o">[</span>--gdb-path<span class="w"> </span>GDB_PATH<span class="o">]</span><span class="w"> </span><span class="o">[</span>-i<span class="o">]</span><span class="w"> </span><span class="o">[</span>--list<span class="o">]</span><span class="w"> </span><span class="o">[</span>--wrapper<span class="w"> </span>WRAPPER<span class="o">]</span>
+<span class="w">             </span><span class="o">[</span>-C<span class="w"> </span>WD<span class="o">]</span><span class="w"> </span><span class="o">[</span>--suite<span class="w"> </span>SUITE<span class="o">]</span><span class="w"> </span><span class="o">[</span>--no-suite<span class="w"> </span>SUITE<span class="o">]</span><span class="w"> </span><span class="o">[</span>--exclude<span class="w"> </span>EXCLUDE<span class="o">]</span>
+<span class="w">             </span><span class="o">[</span>--no-stdsplit<span class="o">]</span><span class="w"> </span><span class="o">[</span>--print-errorlogs<span class="o">]</span><span class="w"> </span><span class="o">[</span>--benchmark<span class="o">]</span>
+<span class="w">             </span><span class="o">[</span>--logbase<span class="w"> </span>LOGBASE<span class="o">]</span><span class="w"> </span><span class="o">[</span>-j<span class="w"> </span>NUM_PROCESSES<span class="o">]</span><span class="w"> </span><span class="o">[</span>-v<span class="o">]</span><span class="w"> </span><span class="o">[</span>-q<span class="o">]</span>
+<span class="w">             </span><span class="o">[</span>-t<span class="w"> </span>TIMEOUT_MULTIPLIER<span class="o">]</span><span class="w"> </span><span class="o">[</span>--setup<span class="w"> </span>SETUP<span class="o">]</span>
+<span class="w">             </span><span class="o">[</span>--test-args<span class="w"> </span>TEST_ARGS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--max-lines<span class="w"> </span>MAX_LINES<span class="o">]</span>
+<span class="w">             </span><span class="o">[</span>--slice<span class="w"> </span>SLICE/NUM_SLICES<span class="o">]</span>
+<span class="w">             </span><span class="o">[</span>args<span class="w"> </span>...<span class="o">]</span>
+</pre></div>
+</div>
+<p>Run tests for the configure Meson project.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  args                                  Optional list of test names to run.
+                                        &quot;testname&quot; to run all tests with that
+                                        name, &quot;subprojname:testname&quot; to
+                                        specifically run &quot;testname&quot; from
+                                        &quot;subprojname&quot;, &quot;subprojname:&quot; to run all
+                                        tests defined by &quot;subprojname&quot;.
+
+options:
+  -h, --help                            show this help message and exit
+  -k MAXFAIL, --maxfail MAXFAIL         Number of failing tests before aborting
+                                        the test run. (default: 0, to disable
+                                        aborting on failure)
+  --repeat REPEAT                       Number of times to run the tests.
+  --no-rebuild                          Do not rebuild before running tests.
+  --gdb                                 Run test under gdb.
+  --gdb-path GDB_PATH                   Path to the gdb binary (default: gdb).
+  -i, --interactive                     Run tests with interactive input/output.
+  --list                                List available tests.
+  --wrapper WRAPPER                     wrapper to run tests with (e.g.
+                                        Valgrind)
+  -C WD                                 directory to cd into before running
+  --suite SUITE                         Only run tests belonging to the given
+                                        suite.
+  --no-suite SUITE                      Do not run tests belonging to the given
+                                        suite.
+  --exclude EXCLUDE                     Exclude tests with the given name.
+  --no-stdsplit                         Do not split stderr and stdout in test
+                                        logs.
+  --print-errorlogs                     Whether to print failing tests&#39; logs.
+  --benchmark                           Run benchmarks instead of tests.
+  --logbase LOGBASE                     Base name for log file.
+  -j NUM_PROCESSES, --num-processes NUM_PROCESSES
+                                        How many parallel processes to use.
+  -v, --verbose                         Do not redirect stdout and stderr
+  -q, --quiet                           Produce less output to the terminal.
+  -t TIMEOUT_MULTIPLIER, --timeout-multiplier TIMEOUT_MULTIPLIER
+                                        Define a multiplier for test timeout,
+                                        for example when running tests in
+                                        particular conditions they might take
+                                        more time to execute. (&lt;= 0 to disable
+                                        timeout)
+  --setup SETUP                         Which test setup to use.
+  --test-args TEST_ARGS                 Arguments to pass to the specified
+                                        test(s) or all tests
+  --max-lines MAX_LINES                 Maximum number of lines to show from a
+                                        long test log. Since 1.5.0.
+  --slice SLICE/NUM_SLICES              Split tests into NUM_SLICES slices and
+                                        execute slice SLICE. Since 1.8.0.
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="Unit-tests.html"><span class="std std-doc">the unit test documentation</span></a> for more info.</p>
+<p>Since <em>1.2.0</em> you can use wildcards in <em>args</em> for test names.
+For example, “bas*” will match all test with names beginning with “bas”.</p>
+<p>Since <em>1.2.0</em> it is an error to provide a test name or wildcard that
+does not match any test.</p>
+<section id="id9">
+<h3>Examples:<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>Run tests for the project:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="n">test</span> <span class="o">-</span><span class="n">C</span> <span class="n">builddir</span>
+</pre></div>
+</div>
+<p>Run only <code class="docutils literal notranslate"><span class="pre">specific_test_1</span></code> and <code class="docutils literal notranslate"><span class="pre">specific_test_2</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">meson</span> <span class="n">test</span> <span class="o">-</span><span class="n">C</span> <span class="n">builddir</span> <span class="n">specific_test_1</span> <span class="n">specific_test_2</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="wrap">
+<h2>wrap<a class="headerlink" href="#wrap" title="Link to this heading">#</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>meson<span class="w"> </span>wrap<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span>
+<span class="w">             </span><span class="o">{</span>list,search,install,update,info,status,promote,update-db<span class="o">}</span><span class="w"> </span>...
+</pre></div>
+</div>
+<p>An utility to manage WrapDB dependencies.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>options:
+  -h, --help                            show this help message and exit
+
+Commands:
+  {list,search,install,update,info,status,promote,update-db}
+    list                                show all available projects
+    search                              search the db by name
+    install                             install the specified project
+    update                              Update wrap files from WrapDB (Since
+                                        0.63.0)
+    info                                show available versions of a project
+    status                              show installed and available versions of
+                                        your projects
+    promote                             bring a subsubproject up to the master
+                                        project
+    update-db                           Update list of projects available in
+                                        WrapDB (Since 0.61.0)
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="Using-wraptool.html"><span class="std std-doc">the WrapDB tool documentation</span></a> for more info.</p>
+</section>
+<section id="devenv">
+<h2>devenv<a class="headerlink" href="#devenv" title="Link to this heading">#</a></h2>
+<p><em>(since 0.58.0)</em></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>meson<span class="w"> </span>devenv<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>-C<span class="w"> </span>BUILDDIR<span class="o">]</span><span class="w"> </span><span class="o">[</span>--workdir<span class="w"> </span>WORKDIR<span class="o">]</span><span class="w"> </span><span class="o">[</span>--dump<span class="w"> </span><span class="o">[</span>DUMP<span class="o">]]</span>
+<span class="w">               </span><span class="o">[</span>--dump-format<span class="w"> </span><span class="o">{</span>sh,export,vscode<span class="o">}]</span>
+<span class="w">               </span>...
+</pre></div>
+</div>
+<p>Runs a command, or open interactive shell if no command is provided, with
+environment setup to run project from the build directory, without installation.</p>
+<p>We automatically handle <code class="docutils literal notranslate"><span class="pre">bash</span></code> and set <code class="docutils literal notranslate"><span class="pre">$PS1</span></code> accordingly. If the automatic <code class="docutils literal notranslate"><span class="pre">$PS1</span></code>
+override is not desired (maybe you have a fancy custom prompt), set the
+<code class="docutils literal notranslate"><span class="pre">$MESON_DISABLE_PS1_OVERRIDE</span></code> environment variable and use <code class="docutils literal notranslate"><span class="pre">$MESON_PROJECT_NAME</span></code>
+when setting the custom prompt, for example with a snippet like the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>...
+<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">MESON_PROJECT_NAME</span><span class="p">-</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span>
+<span class="k">then</span>
+<span class="w">  </span><span class="nv">PS1</span><span class="o">+=</span><span class="s2">&quot;[ </span><span class="si">${</span><span class="nv">MESON_PROJECT_NAME</span><span class="si">}</span><span class="s2"> ]&quot;</span>
+<span class="k">fi</span>
+...
+</pre></div>
+</div>
+<p>These variables are set in environment in addition to those set using <a href="Reference-manual_builtin_meson.html#mesonadd_devenv"><code>meson.add_devenv()</code></a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MESON_DEVENV</span></code> is defined to <code class="docutils literal notranslate"><span class="pre">'1'</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MESON_PROJECT_NAME</span></code> is defined to the main project’s name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PKG_CONFIG_PATH</span></code> includes the directory where Meson generates <code class="docutils literal notranslate"><span class="pre">-uninstalled.pc</span></code>
+files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PATH</span></code> includes every directory where there is an executable that would be
+installed into <code class="docutils literal notranslate"><span class="pre">bindir</span></code>. On windows it also includes every directory where there
+is a DLL needed to run those executables.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> includes every directory where there is a shared library that
+would be installed into <code class="docutils literal notranslate"><span class="pre">libdir</span></code>. This allows to run system application using
+custom build of some libraries. For example running system GEdit when building
+GTK from git. On OSX the environment variable is <code class="docutils literal notranslate"><span class="pre">DYLD_LIBRARY_PATH</span></code> and
+<code class="docutils literal notranslate"><span class="pre">PATH</span></code> on Windows.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GI_TYPELIB_PATH</span></code> includes every directory where a GObject Introspection
+typelib is built. This is automatically set when using <code class="docutils literal notranslate"><span class="pre">gnome.generate_gir()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GSETTINGS_SCHEMA_DIR</span></code> <em>Since 0.59.0</em> includes every directory where a GSettings
+schemas is compiled. This is automatically set when using <code class="docutils literal notranslate"><span class="pre">gnome.compile_schemas()</span></code>.
+Note that this requires GLib &gt;= 2.64 when <code class="docutils literal notranslate"><span class="pre">gnome.compile_schemas()</span></code> is used in
+more than one directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QEMU_LD_PREFIX</span></code> <em>Since 1.0.0</em> is set to the <code class="docutils literal notranslate"><span class="pre">sys_root</span></code> value from cross file
+when cross compiling and that property is defined.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">XDG_DATA_DIRS</span></code> <em>Since 1.11.0</em> if not set in user’s environment, the default value
+<code class="docutils literal notranslate"><span class="pre">/usr/local/share:/usr/share</span></code> is set before adding project paths.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">XDG_CONFIG_DIRS</span></code> <em>Since 1.11.0</em> if not set in user’s environment, the default value
+<code class="docutils literal notranslate"><span class="pre">/etc/xdg</span></code> is set before adding project paths.</p></li>
+</ul>
+<p><em>Since 0.62.0</em> if bash-completion scripts are being installed and the
+shell is bash, they will be automatically sourced.</p>
+<p><em>Since 0.62.0</em> when GDB helper scripts (*-gdb.py, *-gdb.gdb, and *-gdb.csm)
+are installed with a library name that matches one being built, Meson adds the
+needed auto-load commands into <code class="docutils literal notranslate"><span class="pre">&lt;builddir&gt;/.gdbinit</span></code> file. When running gdb from
+top build directory, that file is loaded by gdb automatically. In the case of
+python scripts that needs to load other python modules, <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> may need
+to be modified using <code class="docutils literal notranslate"><span class="pre">meson.add_devenv()</span></code>.</p>
+<p><em>Since 0.63.0</em> when cross compiling for Windows <code class="docutils literal notranslate"><span class="pre">WINEPATH</span></code> is used instead
+of <code class="docutils literal notranslate"><span class="pre">PATH</span></code> which allows running Windows executables using wine. Note that since
+<code class="docutils literal notranslate"><span class="pre">WINEPATH</span></code> size is currently limited to 1024 characters, paths relative to the
+root of build directory are used. That means current workdir must be the root of
+build directory when running wine.</p>
+<p><em>Since 1.1.0</em> <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">devenv</span> <span class="pre">--dump</span> <span class="pre">[&lt;filename&gt;]</span></code> command takes an optional
+filename argument to write the environment into a file instead of printing to
+stdout.</p>
+<p><em>Since 1.1.0</em> <code class="docutils literal notranslate"><span class="pre">--dump-format</span></code> argument has been added to select which shell
+format should be used. There are currently 3 formats supported:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sh</span></code>: Lines are in the format <code class="docutils literal notranslate"><span class="pre">VAR=/prepend:$VAR:/append</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">export</span></code>: Same as <code class="docutils literal notranslate"><span class="pre">sh</span></code> but with extra <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">VAR</span></code> lines.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vscode</span></code>: Same as <code class="docutils literal notranslate"><span class="pre">sh</span></code> but without <code class="docutils literal notranslate"><span class="pre">$VAR</span></code> substitution because they do not
+seems to be properly supported by vscode.</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  command                           Command to run in developer environment
+                                    (default: interactive shell)
+
+options:
+  -h, --help                        show this help message and exit
+  -C BUILDDIR                       Path to build directory
+  --workdir WORKDIR, -w WORKDIR     Directory to cd into before running
+                                    (default: builddir, Since 1.0.0)
+  --dump [DUMP]                     Only print required environment (Since
+                                    0.62.0) Takes an optional file path (Since
+                                    1.1.0)
+  --dump-format {sh,export,vscode}  Format used with --dump (Since 1.1.0)
+</pre></div>
+</div>
+</section>
+<section id="format">
+<h2>format<a class="headerlink" href="#format" title="Link to this heading">#</a></h2>
+<p><em>(since 1.5.0)</em></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>meson<span class="w"> </span>format<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>-q<span class="w"> </span><span class="p">|</span><span class="w"> </span>-d<span class="w"> </span><span class="p">|</span><span class="w"> </span>-i<span class="o">]</span><span class="w"> </span><span class="o">[</span>-r<span class="o">]</span><span class="w"> </span><span class="o">[</span>-s<span class="o">]</span><span class="w"> </span><span class="o">[</span>-c<span class="w"> </span>meson.format<span class="o">]</span><span class="w"> </span><span class="o">[</span>-e<span class="o">]</span>
+<span class="w">               </span><span class="o">[</span>-o<span class="w"> </span>OUTPUT<span class="o">]</span><span class="w"> </span><span class="o">[</span>--source-file-path<span class="w"> </span>SOURCE_FILE_PATH<span class="o">]</span>
+<span class="w">               </span><span class="o">[</span>sources<span class="w"> </span>...<span class="o">]</span>
+</pre></div>
+</div>
+<p>Format specified <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> documents. For compatibility with <code class="docutils literal notranslate"><span class="pre">muon</span></code>, <code class="docutils literal notranslate"><span class="pre">fmt</span></code>
+is an alias to <code class="docutils literal notranslate"><span class="pre">format</span></code>.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>positional arguments:
+  sources                               meson source files
+
+options:
+  -h, --help                            show this help message and exit
+  -q, --check-only                      silently exit with 1 if files would be
+                                        modified by meson format
+  -d, --check-diff                      exit with 1 and show diff if files would
+                                        be modified by meson format
+  -i, --inplace                         format files in-place
+  -r, --recursive                       recurse subdirs (requires --check-only,
+                                        --check-diff or --inplace option)
+  -s, --subprojects                     recurse subprojects (requires
+                                        --recursive)
+  -c meson.format, --configuration meson.format
+                                        read configuration from meson.format
+  -e, --editor-config                   try to read configuration from
+                                        .editorconfig
+  -o OUTPUT, --output OUTPUT            output file (implies having exactly one
+                                        input)
+  --source-file-path SOURCE_FILE_PATH   path to use, when reading from stdin
+</pre></div>
+</div>
+<p>The configuration file is a <code class="docutils literal notranslate"><span class="pre">.ini</span></code> file. If a <code class="docutils literal notranslate"><span class="pre">meson.format</span></code> file exists
+beside the provided build file to analyze, and no configuration file is
+provided on the command line, the <code class="docutils literal notranslate"><span class="pre">meson.format</span></code> file is automatically used.</p>
+<p>If no build file is provided on the command line, the <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> file in
+current directory is analyzed.</p>
+<p>The following options are recognized:</p>
+<ul class="simple">
+<li><p>max_line_length (int): When an array, a dict, a function or a method
+would be longer that this, it is formatted one argument per line
+(Default is 80).</p></li>
+<li><p>indent_by (str): Indentation to use (Default is four spaces <code class="docutils literal notranslate"><span class="pre">'</span>&#160;&#160;&#160; <span class="pre">'</span></code>).</p></li>
+<li><p>space_array (bool): Whether to add spaces between <code class="docutils literal notranslate"><span class="pre">[]</span></code> and array
+arguments (default is false).</p></li>
+<li><p>kwargs_force_multiline (bool): If true, arguments are formatted one per
+line as soon as there is a keyword argument (default is false).</p></li>
+<li><p>wide_colon (bool): If true, a space is placed before colon in dict
+and in keyword arguments (default is false).</p></li>
+<li><p>no_single_comma_function (bool): If true, a comma is never appended
+to function arguments if there is only one argument, even if
+using multiline arguments (default is false).</p></li>
+<li><p>end_of_line (‘cr’, ‘lf’, ‘crlf’, ‘native’): Line ending to use
+(applied when using <code class="docutils literal notranslate"><span class="pre">--output</span></code> or <code class="docutils literal notranslate"><span class="pre">--inline</span></code> argument) (default
+is ‘native).</p></li>
+<li><p>indent_before_comments (str): Indentation to use before inline comments
+(default is two spaces <code class="docutils literal notranslate"><span class="pre">'</span>&#160; <span class="pre">'</span></code>).</p></li>
+<li><p>simplify_string_literals (bool): When true, multiline strings are
+converted to single line strings if they don’t contain newlines.
+Formatted strings are converted to normal strings if they don’t
+contain substitutions (default is true).</p></li>
+<li><p>insert_final_newline (bool): If true, force the <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> file
+to end with a newline character (default is true).</p></li>
+<li><p>tab_width (int): Width of tab stops, used to compute line length
+when <code class="docutils literal notranslate"><span class="pre">indent_by</span></code> uses tab characters (default is 4).</p></li>
+<li><p>sort_files (bool): When true, arguments of <code class="docutils literal notranslate"><span class="pre">files()</span></code> function are
+sorted (default was true before 1.11.0; <em>since 1.11.0</em> it is false).
+<em>Since 1.11.0</em>, arguments are sorted
+<a class="reference internal" href="Style-guide.html#sorting-source-paths"><span class="std std-ref">naturally</span></a> rather than
+alphabetically.</p></li>
+<li><p>group_arg_value (bool): When true, string argument with <code class="docutils literal notranslate"><span class="pre">--</span></code> prefix
+followed by string argument without <code class="docutils literal notranslate"><span class="pre">--</span></code> prefix are grouped on the
+same line, in multiline arguments (default is false).</p></li>
+<li><p>use_editor_config (bool): When true, also uses config from .editorconfig .</p></li>
+</ul>
+<p>The first six options are the same than for the <code class="docutils literal notranslate"><span class="pre">muon</span> <span class="pre">fmt</span></code> command.</p>
+<p>It is also possible to use a <code class="docutils literal notranslate"><span class="pre">.editorconfig</span></code> file, by providing
+the <code class="docutils literal notranslate"><span class="pre">--editor-config</span></code> option on the command line, or with the
+<code class="docutils literal notranslate"><span class="pre">use_editor_config</span></code> option in the config file.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">--recursive</span></code> option is specified, <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> files from
+<code class="docutils literal notranslate"><span class="pre">subdir</span></code> are also analyzed (must be used in conjunction with <code class="docutils literal notranslate"><span class="pre">--inplace</span></code>
+or <code class="docutils literal notranslate"><span class="pre">--check-only</span></code> option).</p>
+<p><em>Since 1.7.0</em> You can use <code class="docutils literal notranslate"><span class="pre">-</span></code> as source file name to read source from standard
+input instead of reading it from a file. This cannot be used with <code class="docutils literal notranslate"><span class="pre">--recursive</span></code>
+or <code class="docutils literal notranslate"><span class="pre">--inline</span></code> arguments.</p>
+<p><em>Since 1.9.0</em> Using <code class="docutils literal notranslate"><span class="pre">-</span></code> as source file with <code class="docutils literal notranslate"><span class="pre">--editor-config</span></code> now requires
+<code class="docutils literal notranslate"><span class="pre">--source-file-path</span></code> argument to ensure consistent results.</p>
+<p><em>Since 1.10.0</em> When <code class="docutils literal notranslate"><span class="pre">--check-diff</span></code> is specified, instead of silently exiting
+with an error code, <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">format</span></code> will print a diff of the formatting changes.</p>
+<section id="differences-with-muon-fmt">
+<h3>Differences with <code class="docutils literal notranslate"><span class="pre">muon</span> <span class="pre">fmt</span></code><a class="headerlink" href="#differences-with-muon-fmt" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">format</span></code> command should be compatible with the <code class="docutils literal notranslate"><span class="pre">muon</span> <span class="pre">fmt</span></code> command.
+However, it has more features, and some differences:</p>
+<ul class="simple">
+<li><p>By default, <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">format</span></code> put two spaces before inline comments,
+while <code class="docutils literal notranslate"><span class="pre">muon</span> <span class="pre">fmt</span></code> only puts one.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">muon</span> <span class="pre">fmt</span></code> can potentially mix crlf and lf end-of-lines, as it is not aware
+of them. <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">format</span></code> will always be consistent in the output it produces.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">muon</span> <span class="pre">fmt</span></code> only recognize the <code class="docutils literal notranslate"><span class="pre">indent_by</span></code> option from .editorconfig files.
+<code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">format</span></code> also recognizes <code class="docutils literal notranslate"><span class="pre">max_line_length</span></code>, <code class="docutils literal notranslate"><span class="pre">end_of_line</span></code>,
+<code class="docutils literal notranslate"><span class="pre">insert_final_newline</span></code> and <code class="docutils literal notranslate"><span class="pre">tab_width</span></code> options.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">format</span></code> has many additional format rules (see option list above).</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Running-Meson.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Running Meson</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Configuring-a-build-directory.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Configuring a build directory</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure">configure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compile">compile</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#targets">Targets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backend-specific-arguments">Backend specific arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Examples:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dist">dist</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Examples:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#init">init</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Examples:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#env2mfile">env2mfile</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Examples:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introspect">introspect</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Examples:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install">install</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Examples:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reprotest">reprotest</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Examples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rewrite">rewrite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Examples:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subprojects">subprojects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test">test</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Examples:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap">wrap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#devenv">devenv</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format">format</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differences-with-muon-fmt">Differences with <code class="docutils literal notranslate"><span class="pre">muon</span> <span class="pre">fmt</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/mesonbuild/meson/edit/master/docs/markdown/Commands.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">Website licensing information are available on the <a href="legal.html">Legal</a> page.</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
