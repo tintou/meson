@@ -46,6 +46,10 @@ def main() -> None:
         # Copy new HTML content
         shutil.copytree(html_dir, repo, dirs_exist_ok=True)
 
+        # Disable Jekyll processing so GitHub Pages serves _static and other
+        # underscore-prefixed directories without stripping them.
+        (repo / '.nojekyll').touch()
+
         subprocess.run(['git', '-C', str(repo), 'add', '-A'], check=True)
 
         result = subprocess.run(
