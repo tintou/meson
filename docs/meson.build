@@ -113,7 +113,7 @@ sphinx_conf = configure_file(
     }
 )
 
-custom_target(
+sphinx_docs = custom_target(
     'sphinx_docs',
     input: sphinx_conf,
     output: 'sphinx_docs.stamp',
@@ -129,6 +129,16 @@ custom_target(
     ],
     depends: [refman_md, docs_gen],
     build_by_default: true,
+)
+
+run_target('upload',
+    command: [
+        py,
+        files('sphinx/upload.py'),
+        meson.current_build_dir() / (meson.project_name() + '-doc') / 'html',
+        meson.project_source_root(),
+    ],
+    depends: sphinx_docs,
 )
 
 test('validate_links', find_program('./validatelinks.py'), args: meson.current_source_dir() / 'markdown' / 'Users.md', timeout: 65)

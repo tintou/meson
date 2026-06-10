@@ -9,6 +9,7 @@ on:
   push:
     branches:
       - master
+      - tintou/doc-publish
     paths:
       - .github/workflows/website.yml
       - docs/**
@@ -28,8 +29,6 @@ permissions:
 # change here.
 jobs:
   update_website:
-    env:
-      HAS_SSH_KEY: ${{ secrets.WEBSITE_PRIV_KEY != '' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -54,13 +53,6 @@ jobs:
           path: ~/.cache/pip
           key: website-pip-${{ github.run_number }}
 
-      - name: Setup SSH Keys and known_hosts
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: |
-          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-          ssh-add - <<< "${{ secrets.WEBSITE_PRIV_KEY }}"
-        if: github.ref == 'refs/heads/master' && env.HAS_SSH_KEY == 'true'
       - name: Build website
         run: |
           git config --global user.name "github-actions"
@@ -71,11 +63,12 @@ jobs:
           ninja -C _build test
       - name: Update website
         env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          git config --global url."https://x-access-token:${GITHUB_TOKEN}@github.com/".insteadOf "git@github.com:"
           cd docs
           ninja -C _build upload
-        if: github.ref == 'refs/heads/master' && env.HAS_SSH_KEY == 'true'
+        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/tintou/doc-publish'
       - name: Release the current JSON docs
         uses: svenstaro/upload-release-action@v2
         with:

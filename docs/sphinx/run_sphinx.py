@@ -17,7 +17,9 @@ def main() -> None:
             shutil.copy2(md_file, staging)
 
         subprocess.run(
-            [sphinx_build, '-b', 'html', '-c', conf_dir, staging, output_dir],
+            [sphinx_build, '-b', 'html', '-c', conf_dir,
+             '-d', str(pathlib.Path(output_dir).parent / 'doctrees'),
+             staging, output_dir],
             check=True,
         )
 
